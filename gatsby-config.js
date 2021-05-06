@@ -1,6 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: "Harmindera International",
+    siteUrl:"https://harminderainternational.gatsbyjs.io"
   },
   plugins: [
     {
@@ -13,7 +14,7 @@ module.exports = {
     "gatsby-plugin-gatsby-cloud",
     "gatsby-plugin-image",
     "gatsby-plugin-react-helmet",
-    // "gatsby-plugin-sitemap",
+    "gatsby-plugin-sitemap",
     {
       resolve: "gatsby-plugin-manifest",
       options: {
