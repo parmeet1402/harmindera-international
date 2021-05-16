@@ -32,7 +32,7 @@ module.exports = {
     {
       resolve: "gatsby-plugin-manifest",
       options: {
-        icon: "src/assets/images/company-logo-square.svg",
+        icon: "src/content/¸assets/images/company-logo-square.svg",
         name: title,
         short_name: "HI",
         start_url: "/",
@@ -121,7 +121,8 @@ module.exports = {
         content: path.join(__dirname, "src/content"),
         assets: path.join(__dirname, "src/content/assets"),
         context: path.join(__dirname, "src/context"),
-        hooks: path.join(__dirname, "src/hooks"),
+        hooks: path.join(__dirname, "src/utils/hooks"),
+        constants: path.join(__dirname, "src/utils/constants"),
         pages: path.join(__dirname, "src/pages"),
         services: path.join(__dirname, "src/services"),
         styles: path.join(__dirname, "src/styles"),
