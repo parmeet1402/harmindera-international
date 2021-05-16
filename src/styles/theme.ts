@@ -37,6 +37,9 @@ const HarminderaTheme = createMuiTheme({
     caption: configTypography.caption,
     overline: configTypography.overline,
   },
+  shape: {
+    borderRadius: 10,
+  },
   overrides: {
     MuiGrid: {
       root: {
