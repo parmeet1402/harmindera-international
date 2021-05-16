@@ -112,8 +112,8 @@ export default DevelopForm;
                 - email - Done
                 - phone number - Done
         - Textarea - Done
-        - buttons page
-        - form component
+        - buttons page - Pending
+        - form component - Pending
 
         / Not required ATM
             - Select Menu 
