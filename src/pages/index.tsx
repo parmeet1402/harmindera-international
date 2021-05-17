@@ -1,12 +1,17 @@
-import React from "react"
+import React from "react";
 
-const IndexPage = () => {
-
+const LandingPage = () => {
   return (
     <div>
-      <h2>Heya</h2>
+      {/* <Image
+        fileName={"assets/images/company-logo.svg"}
+        alt={"dsafads"}
+        style={{ width: "200px", height: "200px" }}
+      /> */}
+      {/* <CompanyLogo /> */}
+      <h2>Landing Page</h2>
     </div>
-  )
-}
+  );
+};
 
-export default IndexPage;
+export default LandingPage;
