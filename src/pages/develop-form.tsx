@@ -5,7 +5,7 @@ import InputBase from "@material-ui/core/InputBase";
 import InputAdornment from "@material-ui/core/InputAdornment";
 
 import FormHelperText from "@material-ui/core/FormHelperText";
-import { fade, withStyles } from "@material-ui/core/styles";
+import { withStyles } from "@material-ui/core/styles";
 import { SearchOutlined } from "@material-ui/icons";
 
 const BootstrapInput = withStyles((theme) => ({
