@@ -2,6 +2,7 @@ import { createMuiTheme } from "@material-ui/core/styles";
 import createBreakpoints from "@material-ui/core/styles/createBreakpoints";
 import { configColors } from "./palette";
 import { configTypography } from "./typography";
+import { configShadows } from "./shadows";
 
 // Variables
 // const borderColor = "rgba(0, 0, 0, 0.23)";
@@ -13,6 +14,7 @@ const HarminderaTheme = createMuiTheme({
   palette: {
     common: configColors.common,
     primary: configColors.primary,
+    secondary: configColors.secondary,
     error: configColors.error,
     warning: configColors.warning,
     success: configColors.success,
@@ -40,6 +42,7 @@ const HarminderaTheme = createMuiTheme({
   shape: {
     borderRadius: 10,
   },
+  shadows: configShadows,
   overrides: {
     MuiGrid: {
       root: {

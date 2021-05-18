@@ -58,6 +58,7 @@ type GreyColor = {
 type Config = {
   common: CommonColor;
   primary: MaterialColor;
+  secondary: MaterialColor;
   error: MaterialColor;
   warning: MaterialColor;
   success: MaterialColor;
@@ -79,6 +80,12 @@ export const configColors: Config = {
     main: "#035AFC",
     dark: "#0803FC",
     contrastText: "#FFFFFF",
+  },
+  secondary: {
+    main: "#fff",
+    light: "#faf",
+    dark: "#fff ",
+    contrastText: "#fff",
   },
 
   error: {
@@ -152,11 +159,4 @@ export const configColors: Config = {
     dark: "#1976d2",
     contrastText: "#fff",
   }, */
-  /*   secondary: {
-    main: "rgb(220, 0, 78)",
-    light: "rgb(227, 51, 113)",
-    dark: "rgb(154, 0, 54)",
-    contrastText: "#fff",
-  },
-  */
 };

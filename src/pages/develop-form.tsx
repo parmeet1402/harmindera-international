@@ -1,12 +1,15 @@
 import React from "react";
 import FormControl from "@material-ui/core/FormControl";
 import Input from "@material-ui/core/Input";
-import InputBase from "@material-ui/core/InputBase";
+// import InputBase from "@material-ui/core/InputBase";
 import InputAdornment from "@material-ui/core/InputAdornment";
+import Button from "@material-ui/core/Button";
+// import ButtonBase from "@material-ui/core/ButtonBase";
 
 import FormHelperText from "@material-ui/core/FormHelperText";
 import { withStyles } from "@material-ui/core/styles";
 import { SearchOutlined } from "@material-ui/icons";
+import { IconButton } from "@material-ui/core";
 
 const BootstrapInput = withStyles((theme) => ({
   root: {
@@ -37,6 +40,98 @@ const FormHelperTextStyled = withStyles((theme) => ({
     fontWeight: theme.typography.fontWeightMedium,
   },
 }))(FormHelperText);
+
+const StyledButton = withStyles((theme) => ({
+  root: {
+    padding: "16px 38px",
+  },
+  label: {
+    fontSize: "1rem",
+    textTransform: "none",
+    fontWeight: 500,
+  },
+  disabled: {
+    cursor: "not-allowed",
+  },
+}))(Button);
+
+const StyledOutlinedButton = withStyles((theme) => ({
+  root: {
+    padding: "16px 38px",
+  },
+  outlined: {
+    "&:hover": {
+      color: theme.palette.primary.main,
+      background: theme.palette.common.white,
+    },
+  },
+  label: {
+    fontSize: "1rem",
+    textTransform: "none",
+    fontWeight: 500,
+  },
+  disabled: {
+    cursor: "not-allowed",
+  },
+}))(Button);
+
+const StyledRoundedButton = withStyles((theme) => ({
+  root: {
+    padding: "16px 38px",
+    borderRadius: "24px",
+    background: theme.palette.primary.lighter,
+    boxShadow: theme.shadows[1],
+  },
+  label: {
+    fontSize: "1rem",
+    textTransform: "none",
+    fontWeight: 500,
+  },
+  disabled: {
+    cursor: "not-allowed",
+  },
+}))(Button);
+
+const StyledTextButton = withStyles((theme) => ({
+  root: {
+    padding: "16px 38px",
+  },
+  label: {
+    fontSize: "1rem",
+    textTransform: "none",
+    fontWeight: 500,
+  },
+  disabled: {
+    cursor: "not-allowed",
+  },
+}))(Button);
+
+const StyledIconButton = withStyles((theme) => ({
+  root: {
+    background: theme.palette.primary.main,
+    "&:hover": {
+      background: theme.palette.primary.dark,
+    },
+  },
+  label: {
+    color: theme.palette.common.white,
+  },
+}))(IconButton);
+
+const StyledIconWithTextButton = withStyles((theme) => ({
+  root: {
+    padding: "16px 38px",
+  },
+  label: {
+    fontSize: "1rem",
+    textTransform: "none",
+    fontWeight: 500,
+  },
+  disabled: {
+    cursor: "not-allowed",
+  },
+}))(Button);
+
 const DevelopForm = () => {
   return (
     <div style={{ padding: "20px" }}>
@@ -96,7 +191,51 @@ const DevelopForm = () => {
           id="boostrap-input"
           placeholder="Search Field"
         />
+        ̣̣
       </FormControl>
+      <br />
+      <br />
+      <br />
+      <StyledButton variant="contained" color="primary">
+        Try it for free
+      </StyledButton>
+      <br />
+      <br />
+      <div
+        style={{
+          backgroundColor: "#3162BD",
+        }}
+      >
+        <StyledOutlinedButton color="secondary" variant="outlined">
+          Try it for free
+        </StyledOutlinedButton>
+      </div>
+      <br />
+      <br />
+      <StyledRoundedButton variant="contained" color="primary">
+        Try it for free
+      </StyledRoundedButton>
+      <br />
+      <br />
+      <StyledTextButton color="primary">Try it for free</StyledTextButton>
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <IconButton aria-label="search" color="primary">
+        <SearchOutlined fontSize="inherit" />
+      </IconButton>
+      <br />
+      <br />
+      <StyledIconButton aria-label="search" color="primary">
+        <SearchOutlined fontSize="inherit" />
+      </StyledIconButton>
+      <br />
+      <br />
+      <StyledIconWithTextButton color="primary" variant="contained" startIcon={<SearchOutlined />}>
+        Search
+      </StyledIconWithTextButton>
     </div>
   );
 };
@@ -119,5 +258,4 @@ export default DevelopForm;
             - Select Menu 
             - Checkbox          
 
-            
 */
