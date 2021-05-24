@@ -32,7 +32,7 @@ module.exports = {
     {
       resolve: "gatsby-plugin-manifest",
       options: {
-        icon: "src/content/¸assets/images/company-logo-square.svg",
+        icon: "src/content/assets/images/company-logo-square.svg",
         name: title,
         short_name: "HI",
         start_url: "/",
@@ -108,26 +108,6 @@ module.exports = {
         // stylesProvider: {
         //   injectFirst: true,
         // },
-      },
-    },
-
-    {
-      resolve: "gatsby-plugin-root-import",
-      options: {
-        config: path.join(__dirname, "config"),
-        src: path.join(__dirname, "src"),
-        components: path.join(__dirname, "src/components"),
-        containers: path.join(__dirname, "src/containers"),
-        content: path.join(__dirname, "src/content"),
-        assets: path.join(__dirname, "src/content/assets"),
-        context: path.join(__dirname, "src/context"),
-        hooks: path.join(__dirname, "src/utils/hooks"),
-        constants: path.join(__dirname, "src/utils/constants"),
-        pages: path.join(__dirname, "src/pages"),
-        services: path.join(__dirname, "src/services"),
-        styles: path.join(__dirname, "src/styles"),
-        templates: path.join(__dirname, "src/templates"),
-        utils: path.join(__dirname, "src/utils"),
       },
     },
   ],

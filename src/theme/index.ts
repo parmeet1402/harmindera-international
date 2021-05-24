@@ -1,12 +1,26 @@
-import { createMuiTheme } from "@material-ui/core/styles";
-import createBreakpoints from "@material-ui/core/styles/createBreakpoints";
+import { createMuiTheme, Theme } from "@material-ui/core/styles";
+// import createBreakpoints from "@material-ui/core/styles/createBreakpoints";
 import { configColors } from "./palette";
 import { configTypography } from "./typography";
 import { configShadows } from "./shadows";
+// import configOverrides from "./overrides";
+
+// Alter theme structure
+declare module "@material-ui/core/styles/createPalette" {
+  interface PaletteColor {
+    lighter?: string;
+  }
+}
+
+const getButtonPadding = fontSize => {
+  return `${(fontSize * 1.18725).toPrecision(2)}px ${(fontSize * 2.18725).toPrecision(
+    2,
+  )}px !important`;
+};
 
 // Variables
 // const borderColor = "rgba(0, 0, 0, 0.23)";
-const borderRadius = 5;
+const BORDER_RADIUS = 5;
 
 const HarminderaTheme = createMuiTheme({
   // @ts-ignore
@@ -51,7 +65,37 @@ const HarminderaTheme = createMuiTheme({
     },
     MuiCard: {
       root: {
-        borderRadius,
+        BORDER_RADIUS,
+      },
+    },
+    MuiButton: {
+      root: {
+        padding: getButtonPadding(16),
+      },
+      sizeLarge: {
+        padding: getButtonPadding(20),
+        "& span:first-of-type": {
+          fontSize: configTypography.h6?.fontSize,
+        },
+      },
+      sizeSmall: {
+        padding: getButtonPadding(12),
+        "& span:first-of-type": {
+          fontSize: configTypography.button?.fontSize,
+        },
+      },
+      label: {
+        fontSize: "1rem",
+        textTransform: "none",
+        fontWeight: 500,
+      },
+      outlinedSecondary: {
+        /*  padding: "16px 38px", */
+
+        "&:hover": {
+          /*  color: configColors.primary.main,
+          backgroundColor: configColors.common.white, */
+        },
       },
     },
   },

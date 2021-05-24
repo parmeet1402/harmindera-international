@@ -1,8 +1,8 @@
 {
     "compilerOptions": {
-        "module": "esnext",
-        "target": "esnext",
-        "jsx": "preserve",
+        "module": "CommonJS",
+        "target": "ESNext",
+        "jsx": "react",
         "lib": [
             "dom",
             "es2015",
@@ -29,13 +29,20 @@
         "resolveJsonModule": true,
         "skipDefaultLibCheck": false,
         "experimentalDecorators": true,
+        "baseUrl": "./",
+        "paths": {
+            "@components/*":["src/components/*"],
+            "@containers/*":["src/containers/*"],
+            "@content/*":["src/content/*"],
+            "@context/*":["src/content/*"],
+            "@pages/*":["src/pages/*"],
+            "@services/*":["src/services/*"],
+            "@styles/*":["src/styles/*"],
+            "@templates/*":["src/templates/*"],
+            "@theme/*":["src/theme/*"],
+            "@utils/*":["src/utils/*"],
+          },
     },
-    "include": [
-        "./src/**/*"
-, "assets", "config", ".cache/config", "./type.d.ts", "plugins"    ],
-    "exclude": [
-        "node_modules",
-        "public",
-        ".cache"
-    ]
+    "exclude": ["node_modules"],
+    "include": ["./src/**/*"]
 }

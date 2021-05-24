@@ -4,6 +4,7 @@ import Input from "@material-ui/core/Input";
 // import InputBase from "@material-ui/core/InputBase";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import Button from "@material-ui/core/Button";
+import ButtonComponent from "../components/Button";
 // import ButtonBase from "@material-ui/core/ButtonBase";
 
 import FormHelperText from "@material-ui/core/FormHelperText";
@@ -136,14 +137,14 @@ const DevelopForm = () => {
   return (
     <div style={{ padding: "20px" }}>
       <FormControl>
-        <BootstrapInput disableUnderline id="boostrap-input" placeholder="Name" />
+        {/* <BootstrapInput disableUnderline id="boostrap-input" placeholder="Name" /> */}
         <FormHelperTextStyled error id="my-helper-text">
           Minimum 8 numbers
         </FormHelperTextStyled>
       </FormControl>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <FormControl>
-        <BootstrapInput disableUnderline id="boostrap-input" placeholder="Name" />
+        {/* <BootstrapInput disableUnderline id="boostrap-input" placeholder="Name" /> */}
       </FormControl>
       <br />
       <br />
@@ -152,7 +153,7 @@ const DevelopForm = () => {
         <BootstrapInput
           disableUnderline
           type="email"
-          id="boostrap-input"
+          // id="boostrap-input"
           placeholder="Email Field"
         />
       </FormControl>
@@ -161,7 +162,7 @@ const DevelopForm = () => {
         <BootstrapInput
           disableUnderline
           type="tel"
-          id="boostrap-input"
+          // id="boostrap-input"
           placeholder="Telephone Field"
         />
       </FormControl>
@@ -177,7 +178,7 @@ const DevelopForm = () => {
             </InputAdornment>
           }
           type="search"
-          id="boostrap-input"
+          // id="boostrap-input"
           placeholder="Search Field"
         />
       </FormControl>
@@ -188,11 +189,41 @@ const DevelopForm = () => {
           rows={5}
           disableUnderline
           type="search"
-          id="boostrap-input"
+          // id="boostrap-input"
           placeholder="Search Field"
         />
         ̣̣
       </FormControl>
+      <br />
+      <br />
+      <ButtonComponent
+        onClick={() => {
+          console.log("object");
+        }}
+      >
+        Try it for free
+      </ButtonComponent>
+      <br />
+      <br />
+      <br />
+      <ButtonComponent
+        onClick={() => {
+          console.log("object");
+        }}
+      >
+        Try it for free
+      </ButtonComponent>
+      <br />
+      <br />
+      <br />
+      <br />
+      <div style={{ backgroundColor: "rgb(49, 98, 189)" }}>
+        <ButtonComponent variant="outlined" color="secondary" onClick={() => console.log("object")}>
+          Try it for free
+        </ButtonComponent>
+      </div>
+      <br />
+      <br />
       <br />
       <br />
       <br />

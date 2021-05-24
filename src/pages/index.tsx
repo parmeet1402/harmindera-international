@@ -1,14 +1,12 @@
 import React from "react";
+import Button from "@components/Button";
 
 const LandingPage = () => {
   return (
     <div>
-      {/* <Image
-        fileName={"assets/images/company-logo.svg"}
-        alt={"dsafads"}
-        style={{ width: "200px", height: "200px" }}
-      /> */}
-      {/* <CompanyLogo /> */}
+      <Button isRounded onClick={() => console.log("asdf")}>
+        Try it for free
+      </Button>
       <h2>Landing Page</h2>
     </div>
   );

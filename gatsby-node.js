@@ -1,6 +1,143 @@
-// ? Template File
+// Extend default Gatsby config with SVGR support, aliases and Webpack Bundle Analyzer
+const path = require("path");
+const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
+
+exports.onCreateWebpackConfig = ({ getConfig, actions, stage }) => {
+  const existingConfig = getConfig();
+
+  /*   const rules = existingConfig.module.rules.map((rule) => {
+    if (String(rule.test) === String(/\.(ico|svg|jpg|jpeg|png|gif|webp|avif)(\?.*)?$/)) {
+      return {
+        ...rule,
+        exclude: path.resolve(__dirname, "./src/icons"),
+      };
+    }
+    return rule;
+  });
+ */
+  /* actions.replaceWebpackConfig({
+    ...existingConfig,
+    module: {
+      ...existingConfig.module,
+      rules,
+    },
+  }); */
+
+  actions.setWebpackConfig({
+    /* module: {
+      rules: [
+        {
+          test: /\.svg$/,
+          include: path.resolve(__dirname, "./src/icons"),
+          issuer: /\.((j|t)sx?)$/,
+          use: {
+            loader: require.resolve(`@svgr/webpack`),
+            options: {
+              titleProp: true,
+            },
+          },
+        },
+      ],
+    }, */
+    /* plugins:
+      stage === "build-javascript"
+        ? [
+            new BundleAnalyzerPlugin({
+              analyzerMode: "static",
+              defaultSizes: "gzip",
+              openAnalyzer: false,
+              generateStatsFile: true,
+            }),
+          ]
+        : [], */
+    resolve: {
+      alias: {
+        "@components": path.resolve(__dirname, "src/components"),
+        "@containers": path.resolve(__dirname, "src/containers"),
+        "@content": path.resolve(__dirname, "src/content"),
+        "@context": path.resolve(__dirname, "src/context"),
+        "@pages": path.resolve(__dirname, "src/pages"),
+        "@services": path.resolve(__dirname, "src/services"),
+        "@styles": path.resolve(__dirname, "src/styles"),
+        "@theme": path.resolve(__dirname, "src/theme"),
+        "@utils": path.resolve(__dirname, "src/utils"),
+      },
+    },
+  });
+};
 
 /* const path = require("path");
+const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
+
+exports.onCreateWebpackConfig = ({ getConfig, actions, stage }) => {
+  const existingConfig = getConfig();
+
+  const rules = existingConfig.module.rules.map((rule) => {
+    if (String(rule.test) === String(/\.(ico|svg|jpg|jpeg|png|gif|webp|avif)(\?.*)?$/)) {
+      return {
+        ...rule,
+        exclude: path.resolve(__dirname, "./src/icons"),
+      };
+    }
+    return rule;
+  });
+
+  actions.replaceWebpackConfig({
+    ...existingConfig,
+    module: {
+      ...existingConfig.module,
+      rules,
+    },
+  });
+
+  actions.setWebpackConfig({
+    module: {
+      rules: [
+        {
+          test: /\.svg$/,
+          include: path.resolve(__dirname, "./src/icons"),
+          issuer: /\.((j|t)sx?)$/,
+          use: {
+            loader: require.resolve(`@svgr/webpack`),
+            options: {
+              titleProp: true,
+            },
+          },
+        },
+      ],
+    },
+    plugins:
+      stage === "build-javascript"
+        ? [
+            new BundleAnalyzerPlugin({
+              analyzerMode: "static",
+              defaultSizes: "gzip",
+              openAnalyzer: false,
+              generateStatsFile: true,
+            }),
+          ]
+        : [],
+    resolve: {
+      alias: {
+        "@": path.resolve(__dirname, "src"),
+      },
+    },
+  });
+};
+ */
+/* 
+exports.modifyWebpackConfig = function ({ config, env }) {
+  config.merge({
+    resolve: {
+      alias: {
+        src: path.resolve(__dirname, "src"),
+      },
+    },
+  });
+  return config;
+}; */
+
+/* 
 const getBaseUrl = require("./src/utils/getBaseUrl");
 const { defaultLang, langTextMap = {} } = require("./config/site"); */
 
