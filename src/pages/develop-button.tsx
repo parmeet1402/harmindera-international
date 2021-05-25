@@ -1,6 +1,12 @@
 import React from "react";
-import Button, { SolidButton, OutlinedButton, TextButton, RoundedButton } from "@components/Button";
-import { Button as MaterialButton, ButtonProps } from "@material-ui/core";
+import Button, {
+  SolidButton,
+  OutlinedButton,
+  TextButton,
+  RoundedButton,
+  IconBaseButton,
+} from "@components/Button";
+import { SearchOutlined, ChevronLeft } from "@material-ui/icons";
 
 const DevelopForm = () => {
   return (
@@ -128,6 +134,66 @@ const DevelopForm = () => {
           <br />
           <br />
           <TextButton rounded>Rounded</TextButton>
+        </div>
+      </div>
+      <br />
+      <br />
+      <br />
+      <br />
+      <hr />
+      <br />
+      <br />
+      <h1>Icon Button</h1>
+      <div style={{ padding: "20px", display: "flex", justifyContent: "space-between" }}>
+        <div>
+          <SolidButton startIcon={<SearchOutlined />} size="large">
+            Try it for free
+          </SolidButton>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <SolidButton startIcon={<SearchOutlined />}>Try it for free</SolidButton>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <SolidButton startIcon={<SearchOutlined />} size="small">
+            Try it for free
+          </SolidButton>
+          <br />
+          <br />
+          <br />
+          <SolidButton startIcon={<SearchOutlined />} bgColor="primary">
+            Primary
+          </SolidButton>
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <SolidButton startIcon={<SearchOutlined />} bgColor="warning">
+            Warning
+          </SolidButton>
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <SolidButton startIcon={<SearchOutlined />} bgColor="error">
+            Danger
+          </SolidButton>
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <SolidButton startIcon={<SearchOutlined />} bgColor="success">
+            Success
+          </SolidButton>
+          <br />
+          <br />
+          <br />
+          <SolidButton startIcon={<SearchOutlined />} rounded>
+            Rounded
+          </SolidButton>
+        </div>
+      </div>
+      <div style={{ padding: "20px", display: "flex", justifyContent: "space-between" }}>
+        <div>
+          <IconBaseButton aria-label="Search" iconColor="primary" iconColorVariant="main">
+            <ChevronLeft fontSize="large" />
+          </IconBaseButton>
+          <IconBaseButton
+            aria-label="Search"
+            solidBackground
+            backgroundColor="warning"
+            backgroundColorVariant="main"
+          >
+            <ChevronLeft />
+          </IconBaseButton>
         </div>
       </div>
     </div>
