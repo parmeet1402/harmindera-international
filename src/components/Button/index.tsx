@@ -128,84 +128,121 @@ interface IconBaseButtonColor {
 
 type Size = "large" | "medium" | "small";
 
+type AllColors =
+  | "common"
+  | "primary"
+  | "secondary"
+  | "error"
+  | "warning"
+  | "success"
+  | "grey"
+  | "text"
+  | "background"
+  | "action";
+
+type AllVariants =
+  | "lighter"
+  | "light"
+  | "main"
+  | "dark"
+  | "contrastText"
+  | "primary"
+  | "secondary"
+  | "disabled"
+  | "hint"
+  | "black"
+  | "white"
+  | "paper"
+  | "default"
+  | "level2"
+  | "level1"
+  | "active"
+  | "hover"
+  | "selected"
+  | "disabled"
+  | "disabledBackground"
+  | "focus";
+
+interface IconColorVariants {
+  color?: AllColors;
+  colorVariant?: AllVariants;
+  hover?: AllColors;
+  hoverVariant?: AllVariants;
+}
+
 interface IconBaseButtonProps {
-  // iconColor?: IconBaseButtonColor;
+  variant?: "transparent" | "filled";
+  disableElevation?: boolean;
 
-  // shape: "circle" | "rounded";
-  // colors?: {
-  //   icon?: IconBaseButtonColor;
-  //   background?: IconBaseButtonColor;
-  // };
-  // icon?: IconBaseButtonColor;
-  // iconSize?: Size;
-  // buttonSize?: Size;
-  // background?: IconBaseButtonColor;
-  // transparent?: boolean;
-
-  iconColor?: Color;
-  iconColorVariant?: ColorVariant;
-  solidBackground?: boolean;
-  backgroundColor?: Color;
-  backgroundColorVariant?: ColorVariant;
+  colorOverrides?: {
+    icon?: IconColorVariants;
+    background?: IconColorVariants;
+  };
 
   // Required
-  "aria-label": string;
+  // "aria-label": string;
 }
 
 const useIconStyles = makeStyles(theme => ({
   root: {
-    color: (props: {
-      iconColor: Color;
-      iconColorVariant: ColorVariant;
-      solidBackground: boolean;
-    }) =>
-      props.solidBackground
-        ? theme.palette.common.white
-        : theme.palette[props.iconColor][props.iconColorVariant],
-
-    backgroundColor: (props: {
-      backgroundColor: Color;
-      backgroundColorVariant: ColorVariant;
-      solidBackground: boolean;
-    }) =>
-      props.solidBackground
-        ? theme.palette[props.backgroundColor][props.backgroundColorVariant]
+    backgroundColor: (props: IconBaseButtonProps & IconButtonProps) =>
+      props.variant === "filled"
+        ? theme.palette[props.colorOverrides?.background?.color || "primary"][
+            props.colorOverrides?.background?.colorVariant || "main"
+          ]
         : "transparent",
-
+    color: (props: IconBaseButtonProps & IconButtonProps) =>
+      theme.palette[props.colorOverrides?.icon?.color || "primary"][
+        props.colorOverrides?.icon?.colorVariant || "main"
+      ],
     "&:hover": {
-      backgroundColor: (props: {
-        iconColor: Color;
-        iconColorVariant: ColorVariant;
-        solidBackground: boolean;
-        backgroundColor: Color;
-        backgroundColorVariant: ColorVariant;
-      }) =>
-        props.solidBackground
-          ? theme.palette[props.backgroundColor].dark
-          : fade(theme.palette[props.backgroundColor][props.backgroundColorVariant] || "", 0.04),
+      backgroundColor: (props: IconBaseButtonProps & IconButtonProps) =>
+        props.variant === "filled"
+          ? theme.palette[props.colorOverrides?.background?.color || "primary"][
+              props.colorOverrides?.background?.colorVariant || "main"
+            ]
+          : "transparent",
+      color: (props: IconBaseButtonProps & IconButtonProps) =>
+        theme.palette[props.colorOverrides?.icon?.hover || "primary"][
+          props.colorOverrides?.icon?.hoverVariant || "main"
+        ],
     },
   },
-  label: {},
 }));
 
 const IconBaseButton: React.FC<IconBaseButtonProps & IconButtonProps> = props => {
   const {
-    iconColor = "primary",
-    iconColorVariant = "main",
-    backgroundColor = "primary",
-    backgroundColorVariant = "main",
-    solidBackground = false,
+    children,
+    disableElevation = false,
+    variant = "transparent",
+    colorOverrides = {
+      icon: {
+        color: "primary",
+        colorVariant: "main",
+        hover: "primary",
+        hoverVariant: "main",
+      },
+
+      background: {
+        color: "primary",
+        colorVariant: "main",
+        hover: "primary",
+        hoverVariant: "main",
+      },
+    },
     ...restProps
   } = props;
-  const { root, label } = useIconStyles({
-    iconColor,
-    iconColorVariant,
-    solidBackground,
-    backgroundColor,
-    backgroundColorVariant,
+  const { root } = useIconStyles({
+    disableElevation,
+    variant,
+    colorOverrides,
     ...restProps,
   });
-  return <MaterialIconButton classes={{ root, label }} {...restProps}></MaterialIconButton>;
+  return (
+    <MaterialIconButton classes={{ root }} {...restProps}>
+      {children}
+    </MaterialIconButton>
+  );
 };
 
 export { SolidButton, OutlinedButton, TextButton, RoundedButton, IconBaseButton };

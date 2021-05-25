@@ -183,17 +183,41 @@ const DevelopForm = () => {
       </div>
       <div style={{ padding: "20px", display: "flex", justifyContent: "space-between" }}>
         <div>
-          <IconBaseButton aria-label="Search" iconColor="primary" iconColorVariant="main">
-            <ChevronLeft fontSize="large" />
-          </IconBaseButton>
           <IconBaseButton
             aria-label="Search"
-            solidBackground
-            backgroundColor="warning"
-            backgroundColorVariant="main"
+            colorOverrides={{
+              icon: {
+                color: "text",
+                colorVariant: "primary",
+                hover: "text",
+                hoverVariant: "primary",
+              },
+            }}
           >
-            <ChevronLeft />
+            <ChevronLeft fontSize="large" />
           </IconBaseButton>
+          <div style={{ background: "blue" }}>
+            <IconBaseButton
+              aria-label="Search"
+              variant="filled"
+              colorOverrides={{
+                icon: {
+                  color: "primary",
+                  colorVariant: "main",
+                  hover: "primary",
+                  hoverVariant: "main",
+                },
+                background: {
+                  color: "secondary",
+                  colorVariant: "main",
+                  hover: "secondary",
+                  hoverVariant: "dark",
+                },
+              }}
+            >
+              <ChevronLeft fontSize="large" />
+            </IconBaseButton>
+          </div>
         </div>
       </div>
     </div>
