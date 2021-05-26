@@ -5,10 +5,8 @@ import {
   IconButton as MaterialIconButton,
   IconButtonProps,
 } from "@material-ui/core";
-import { makeStyles, fade } from "@material-ui/core/styles";
-
-export type Color = "primary" | "secondary" | "warning" | "success" | "error";
-export type ColorVariant = "lighter" | "light" | "main" | "dark" | "contrastText";
+import { makeStyles } from "@material-ui/core/styles";
+import { Color, ColorVariant } from "@theme/types";
 
 interface BaseButtonProps {
   bgColor?: Color;

@@ -98,6 +98,33 @@ const HarminderaTheme = createMuiTheme({
         },
       },
     },
+    MuiInput: {
+      root: {
+        "label + &": {
+          marginTop: "24px",
+        },
+        backgroundColor: configColors.grey["100"],
+        borderRadius: "10px",
+        padding: "11px 14px",
+        width: "424px",
+        position: "relative",
+        border: `1px solid ${configColors.grey["200"]}`,
+      },
+      focused: {
+        backgroundColor: configColors.common.white,
+        border: `1px solid ${configColors.grey["400"]}`,
+      },
+
+      multiline: {
+        padding: "16px 14px",
+      },
+    },
+
+    MuiFormHelperText: {
+      root: {
+        fontWeight: configTypography.fontWeightMedium,
+      },
+    },
   },
 });
 

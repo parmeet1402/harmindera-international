@@ -5,7 +5,7 @@ import Button, {
   TextButton,
   RoundedButton,
   IconBaseButton,
-} from "@components/Button";
+} from "@components/form/Button";
 import { SearchOutlined, ChevronLeft } from "@material-ui/icons";
 
 const DevelopForm = () => {
