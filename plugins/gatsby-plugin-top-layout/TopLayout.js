@@ -1,5 +1,5 @@
 import React from "react";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 import { Helmet } from "react-helmet";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { ThemeProvider } from "@material-ui/core/styles";
@@ -20,6 +20,7 @@ export default function TopLayout(props) {
   );
 }
 
-TopLayout.propTypes = {
+/* TopLayout.propTypes = {
   children: PropTypes.node,
 };
+ */

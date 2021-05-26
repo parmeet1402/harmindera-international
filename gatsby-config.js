@@ -1,4 +1,4 @@
-const path = require("path");
+// const path = require("path");
 const { author, title, description, keywords, siteUrl, defaultLang } = require("./config/site");
 
 module.exports = {

@@ -1,5 +1,5 @@
 import React from "react";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 
 import { StaticQuery, graphql } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
@@ -25,7 +25,7 @@ const Image = ({ fileName, alt, ...restProps }) => (
     `}
     render={({ images }) => {
       console.log(images);
-      const image = images.edges.find((n) => n.node.relativePath.includes(fileName));
+      const image = images.edges.find(n => n.node.relativePath.includes(fileName));
 
       console.log(image);
       if (!image) {
@@ -42,11 +42,11 @@ const Image = ({ fileName, alt, ...restProps }) => (
   />
 );
 
-Image.propTypes = {
+/* Image.propTypes = {
   fileName: PropTypes.string.isRequired,
   alt: PropTypes.string,
 };
-
+ */
 Image.defaultProps = {
   alt: null,
 };

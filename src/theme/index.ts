@@ -1,4 +1,4 @@
-import { createMuiTheme, Theme } from "@material-ui/core/styles";
+import { createMuiTheme } from "@material-ui/core/styles";
 // import createBreakpoints from "@material-ui/core/styles/createBreakpoints";
 import { configColors } from "./palette";
 import { configTypography } from "./typography";
@@ -12,7 +12,7 @@ declare module "@material-ui/core/styles/createPalette" {
   }
 }
 
-const getButtonPadding = fontSize => {
+const getButtonPadding = (fontSize: number) => {
   return `${(fontSize * 1.18725).toPrecision(2)}px ${(fontSize * 2.18725).toPrecision(
     2,
   )}px !important`;
@@ -23,8 +23,6 @@ const getButtonPadding = fontSize => {
 const BORDER_RADIUS = 5;
 
 const HarminderaTheme = createMuiTheme({
-  // @ts-ignore
-  // type: "light",
   palette: {
     common: configColors.common,
     primary: configColors.primary,

@@ -26,7 +26,6 @@ type ConfigShadows = [
   string,
 ];
 
-
 const DARK_COLOR = "rgba(0,0,0,0.2)";
 const MEDIUM_COLOR = "rgba(0,0,0,0.14)";
 const LIGHT_COLOR = "rgba(0,0,0,0.12)";

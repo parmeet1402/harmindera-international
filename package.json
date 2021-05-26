@@ -13,7 +13,9 @@
     "build": "gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "lint": "eslint --ignore-path .gitignore . --ext ts --ext tsx --ext js --ext jsx"
+    "lint": "eslint --ignore-path .gitignore . --ext ts --ext tsx --ext js --ext jsx",
+    "lint:fix": "eslint --fix --ignore-path .gitignore . --ext ts --ext tsx --ext js --ext jsx"
+    
   },
   "dependencies": {
     "@fontsource/poppins": "^4.2.2",
@@ -22,7 +24,7 @@
     "@material-ui/styles": "^4.11.4",
     "@svgr/webpack": "^5.5.0",
     "@typescript-eslint/eslint-plugin": "^4.24.0",
-    "@typescript-eslint/parser": "^4.24.0",
+    "@typescript-eslint/parser": "^4.25.0",
     "clsx": "^1.1.1",
     "gatsby": "^3.2.1",
     "gatsby-plugin-gatsby-cloud": "^2.3.0",
@@ -61,6 +63,8 @@
     "eslint": "^7.26.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-import-resolver-alias": "^1.1.2",
+    "eslint-import-resolver-typescript": "^2.4.0",
+    "eslint-plugin-import": "^2.23.3",
     "eslint-plugin-jest": "^24.3.6",
     "eslint-plugin-jest-dom": "^3.9.0",
     "eslint-plugin-jsx-a11y": "^6.4.1",
@@ -70,7 +74,9 @@
     "eslint-plugin-testing-library": "^4.5.0",
     "eslint-webpack-plugin": "^2.5.4",
     "gatsby-plugin-eslint": "^3.0.0",
+    "jest": "^27.0.1",
     "prettier": "^2.2.1",
+    "typescript": "^4.3.2",
     "webpack-bundle-analyzer": "^4.4.2"
   }
 }

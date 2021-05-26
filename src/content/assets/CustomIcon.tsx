@@ -1,11 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const CustomIcon = () => {
-    return (
-        <div>
-            
-        </div>
-    )
-}
+  return <div></div>;
+};
 
-export default CustomIcon
+export default CustomIcon;

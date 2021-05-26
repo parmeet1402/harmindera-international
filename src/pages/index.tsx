@@ -4,7 +4,7 @@ import Button from "@components/form/Button";
 const LandingPage = () => {
   return (
     <div>
-      <Button isRounded onClick={() => console.log("asdf")}>
+      <Button rounded onClick={() => console.log("asdf")}>
         Try it for free
       </Button>
       <h2>Landing Page</h2>

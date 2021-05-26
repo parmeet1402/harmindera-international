@@ -1,9 +1,9 @@
 // Extend default Gatsby config with SVGR support, aliases and Webpack Bundle Analyzer
 const path = require("path");
-const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
+// const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
 
-exports.onCreateWebpackConfig = ({ getConfig, actions, stage }) => {
-  const existingConfig = getConfig();
+exports.onCreateWebpackConfig = ({ actions }) => {
+  // const existingConfig = getConfig();
 
   /*   const rules = existingConfig.module.rules.map((rule) => {
     if (String(rule.test) === String(/\.(ico|svg|jpg|jpeg|png|gif|webp|avif)(\?.*)?$/)) {
@@ -39,7 +39,7 @@ exports.onCreateWebpackConfig = ({ getConfig, actions, stage }) => {
         },
       ],
     }, */
-    /* plugins:
+    /*  plugins:
       stage === "build-javascript"
         ? [
             new BundleAnalyzerPlugin({

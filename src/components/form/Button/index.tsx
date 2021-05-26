@@ -6,7 +6,7 @@ import {
   IconButtonProps,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import { Color, ColorVariant } from "@theme/types";
+import { Color, ColorVariant, AllColors, AllVariants } from "@theme/types";
 
 interface BaseButtonProps {
   bgColor?: Color;
@@ -14,6 +14,7 @@ interface BaseButtonProps {
   rounded?: boolean;
 }
 
+/* eslint-disable */
 const useStyles = makeStyles(theme => ({
   root: {
     borderRadius: (props: { rounded: boolean }) => (props.rounded ? "28px" : "10px"),
@@ -118,49 +119,6 @@ const RoundedButton: React.FC<BaseButtonProps & ButtonProps> = props => {
   );
 };
 
-interface IconBaseButtonColor {
-  color: Color;
-  variant: ColorVariant;
-  hover: ColorVariant;
-}
-
-type Size = "large" | "medium" | "small";
-
-type AllColors =
-  | "common"
-  | "primary"
-  | "secondary"
-  | "error"
-  | "warning"
-  | "success"
-  | "grey"
-  | "text"
-  | "background"
-  | "action";
-
-type AllVariants =
-  | "lighter"
-  | "light"
-  | "main"
-  | "dark"
-  | "contrastText"
-  | "primary"
-  | "secondary"
-  | "disabled"
-  | "hint"
-  | "black"
-  | "white"
-  | "paper"
-  | "default"
-  | "level2"
-  | "level1"
-  | "active"
-  | "hover"
-  | "selected"
-  | "disabled"
-  | "disabledBackground"
-  | "focus";
-
 interface IconColorVariants {
   color?: AllColors;
   colorVariant?: AllVariants;
@@ -181,26 +139,31 @@ interface IconBaseButtonProps {
   // "aria-label": string;
 }
 
+// @ts-ignore
 const useIconStyles = makeStyles(theme => ({
   root: {
-    backgroundColor: (props: IconBaseButtonProps & IconButtonProps) =>
+    backgroundColor: (props: IconBaseButtonProps) =>
       props.variant === "filled"
-        ? theme.palette[props.colorOverrides?.background?.color || "primary"][
+        ? //@ts-ignore
+          theme.palette[props?.colorOverrides?.background.color || "primary"][
             props.colorOverrides?.background?.colorVariant || "main"
           ]
         : "transparent",
     color: (props: IconBaseButtonProps & IconButtonProps) =>
+      //@ts-ignore
       theme.palette[props.colorOverrides?.icon?.color || "primary"][
         props.colorOverrides?.icon?.colorVariant || "main"
       ],
     "&:hover": {
       backgroundColor: (props: IconBaseButtonProps & IconButtonProps) =>
         props.variant === "filled"
-          ? theme.palette[props.colorOverrides?.background?.color || "primary"][
+          ? //@ts-ignore
+            theme.palette[props.colorOverrides?.background?.color || "primary"][
               props.colorOverrides?.background?.colorVariant || "main"
             ]
           : "transparent",
       color: (props: IconBaseButtonProps & IconButtonProps) =>
+        //@ts-ignore
         theme.palette[props.colorOverrides?.icon?.hover || "primary"][
           props.colorOverrides?.icon?.hoverVariant || "main"
         ],
@@ -242,6 +205,8 @@ const IconBaseButton: React.FC<IconBaseButtonProps & IconButtonProps> = props =>
     </MaterialIconButton>
   );
 };
+
+/* eslint-enable */
 
 export { SolidButton, OutlinedButton, TextButton, RoundedButton, IconBaseButton };
 export default ButtonBase;

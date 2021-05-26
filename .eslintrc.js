@@ -4,7 +4,7 @@ module.exports = {
   extends: [
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended",
-    "prettier/@typescript-eslint",
+    // "prettier/@typescript-eslint",
     "plugin:prettier/recommended",
     //  From TS starter
     "eslint:recommended",
@@ -73,18 +73,18 @@ module.exports = {
     // allow "any" as type
     "@typescript-eslint/no-explicit-any": "off",
     // allow @ts-ignore for testing purposes
-    "@typescript-eslint/ban-ts-ignore": "off",
+    // "@typescript-eslint/ban-ts-ignore": "off",
 
     //  From TS starter
-    "@typescript-eslint/ban-ts-comment": 1,
+    // "@typescript-eslint/ban-ts-comment": 1,
     "@typescript-eslint/naming-convention": 0,
     "@typescript-eslint/explicit-module-boundary-types": 0,
     "@typescript-eslint/no-empty-function": 0,
     "@typescript-eslint/no-var-requires": 0,
-    "@typescript-eslint/no-unused-vars": [1, { ignoreRestSiblings: true }],
+    // "@typescript-eslint/no-unused-vars": [1, { ignoreRestSiblings: true }],
     "@typescript-eslint/no-use-before-define": 0,
     "jsx-a11y/no-onchange": 0,
-    "import/no-named-as-default": 0,
+    // "import/no-named-as-default": 0,
     "react/display-name": 0,
     "import/extensions": "off",
   },

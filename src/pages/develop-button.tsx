@@ -1,5 +1,5 @@
 import React from "react";
-import Button, {
+import {
   SolidButton,
   OutlinedButton,
   TextButton,

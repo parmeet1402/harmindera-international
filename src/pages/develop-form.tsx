@@ -14,7 +14,7 @@ const DevelopForm = () => {
       <TextField
         placeholder="Search"
         error
-        autoFocus
+        // autoFocus
         helperText={"Hey buddy, I am doing good and what about you??"}
         startAdornment={
           <InputAdornment position="start">

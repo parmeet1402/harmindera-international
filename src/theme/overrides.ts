@@ -1,5 +1,5 @@
 const BORDER_RADIUS = 10;
-import { configColors } from "../src/styles/palette";
+import { configColors } from "./palette";
 
 const configOverrides = {
   MuiGrid: {
