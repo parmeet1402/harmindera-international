@@ -1,11 +1,11 @@
 // Extend default Gatsby config with SVGR support, aliases and Webpack Bundle Analyzer
 const path = require("path");
-// const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
+const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
 
-exports.onCreateWebpackConfig = ({ actions }) => {
-  // const existingConfig = getConfig();
+exports.onCreateWebpackConfig = ({ getConfig, actions, stage }) => {
+  const existingConfig = getConfig();
 
-  /*   const rules = existingConfig.module.rules.map((rule) => {
+  const rules = existingConfig.module.rules.map(rule => {
     if (String(rule.test) === String(/\.(ico|svg|jpg|jpeg|png|gif|webp|avif)(\?.*)?$/)) {
       return {
         ...rule,
@@ -14,17 +14,17 @@ exports.onCreateWebpackConfig = ({ actions }) => {
     }
     return rule;
   });
- */
-  /* actions.replaceWebpackConfig({
+
+  actions.replaceWebpackConfig({
     ...existingConfig,
     module: {
       ...existingConfig.module,
       rules,
     },
-  }); */
+  });
 
   actions.setWebpackConfig({
-    /* module: {
+    module: {
       rules: [
         {
           test: /\.svg$/,
@@ -38,8 +38,8 @@ exports.onCreateWebpackConfig = ({ actions }) => {
           },
         },
       ],
-    }, */
-    /*  plugins:
+    },
+    plugins:
       stage === "build-javascript"
         ? [
             new BundleAnalyzerPlugin({
@@ -49,7 +49,7 @@ exports.onCreateWebpackConfig = ({ actions }) => {
               generateStatsFile: true,
             }),
           ]
-        : [], */
+        : [],
     resolve: {
       alias: {
         "@components": path.resolve(__dirname, "src/components"),

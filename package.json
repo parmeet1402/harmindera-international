@@ -15,7 +15,6 @@
     "clean": "gatsby clean",
     "lint": "eslint --ignore-path .gitignore . --ext ts --ext tsx --ext js --ext jsx",
     "lint:fix": "eslint --fix --ignore-path .gitignore . --ext ts --ext tsx --ext js --ext jsx"
-    
   },
   "dependencies": {
     "@fontsource/poppins": "^4.2.2",

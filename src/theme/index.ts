@@ -107,10 +107,10 @@ const HarminderaTheme = createMuiTheme({
         width: "424px",
         position: "relative",
         border: `1px solid ${configColors.grey["200"]}`,
-      },
-      focused: {
-        backgroundColor: configColors.common.white,
-        border: `1px solid ${configColors.grey["400"]}`,
+        "&$focused": {
+          backgroundColor: configColors.common.white,
+          border: `1px solid ${configColors.grey["400"]}`,
+        },
       },
 
       multiline: {
