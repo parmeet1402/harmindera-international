@@ -1,10 +1,11 @@
 import React from "react";
+import Layout from "@components/layout";
 
 const TermsAndConditionsPage = () => {
   return (
-    <div>
+    <Layout>
       <h2>Terms & Conditions Page</h2>
-    </div>
+    </Layout>
   );
 };
 

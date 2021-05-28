@@ -36,9 +36,10 @@ const LIGHT_COLOR = "rgba(0,0,0,0.12)";
 
 export const configShadows: ConfigShadows = [
   "none",
+  `0px 1px 0px 0px ${LIGHT_COLOR}`,
+  `0px 1px 4px 0px ${LIGHT_COLOR}`,
   `0px 2px 1px -1px ${DARK_COLOR},0px 1px 1px 0px ${MEDIUM_COLOR},0px 1px 3px 0px ${LIGHT_COLOR}`,
-  `0px 3px 1px -1px ${MEDIUM_COLOR},0px 2px 2px 0px ${MEDIUM_COLOR},0px 1px 5px 0px ${LIGHT_COLOR}`,
-  `0px 3px 3px -2px ${DARK_COLOR},0px 3px 4px 0px ${MEDIUM_COLOR},0px 1px 8px 0px ${LIGHT_COLOR}`,
+  // `0px 3px 3px -2px ${DARK_COLOR},0px 3px 4px 0px ${MEDIUM_COLOR},0px 1px 8px 0px ${LIGHT_COLOR}`,
   `0px 2px 4px -1px ${DARK_COLOR},0px 4px 5px 0px ${MEDIUM_COLOR},0px 1px 10px 0px ${LIGHT_COLOR}`,
   `0px 3px 5px -1px ${DARK_COLOR},0px 5px 8px 0px ${MEDIUM_COLOR},0px 1px 14px 0px ${LIGHT_COLOR}`,
   `0px 3px 5px -1px ${DARK_COLOR},0px 6px 10px 0px ${MEDIUM_COLOR},0px 1px 18px 0px ${LIGHT_COLOR}`,

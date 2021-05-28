@@ -87,14 +87,7 @@ const HarminderaTheme = createMuiTheme({
         textTransform: "none",
         fontWeight: 500,
       },
-      outlinedSecondary: {
-        /*  padding: "16px 38px", */
-
-        "&:hover": {
-          /*  color: configColors.primary.main,
-          backgroundColor: configColors.common.white, */
-        },
-      },
+      outlinedSecondary: {},
     },
     MuiInput: {
       root: {
@@ -121,6 +114,19 @@ const HarminderaTheme = createMuiTheme({
     MuiFormHelperText: {
       root: {
         fontWeight: configTypography.fontWeightMedium,
+      },
+    },
+
+    MuiAppBar: {
+      colorDefault: {
+        minHeight: "72px",
+        boxShadow: configShadows[1],
+      },
+    },
+
+    MuiToolbar: {
+      root: {
+        minheight: "72px",
       },
     },
   },

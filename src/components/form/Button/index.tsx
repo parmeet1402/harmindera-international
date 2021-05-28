@@ -9,8 +9,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import { Color, ColorVariant, AllColors, AllVariants } from "@theme/types";
 
 interface BaseButtonProps {
-  bgColor?: Color;
-  bgColorVariant?: ColorVariant;
+  bgColor?: AllColors;
+  bgColorVariant?: AllVariants;
   rounded?: boolean;
 }
 
