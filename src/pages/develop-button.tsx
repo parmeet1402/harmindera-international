@@ -4,7 +4,7 @@ import {
   OutlinedButton,
   TextButton,
   RoundedButton,
-  IconBaseButton,
+  IconButton,
 } from "@components/form/Button";
 import { SearchOutlined, ChevronLeft } from "@material-ui/icons";
 
@@ -183,7 +183,7 @@ const DevelopForm = () => {
       </div>
       <div style={{ padding: "20px", display: "flex", justifyContent: "space-between" }}>
         <div>
-          <IconBaseButton
+          <IconButton
             aria-label="Search"
             colorOverrides={{
               icon: {
@@ -195,9 +195,9 @@ const DevelopForm = () => {
             }}
           >
             <ChevronLeft fontSize="large" />
-          </IconBaseButton>
+          </IconButton>
           <div style={{ background: "blue" }}>
-            <IconBaseButton
+            <IconButton
               aria-label="Search"
               variant="filled"
               colorOverrides={{
@@ -216,7 +216,7 @@ const DevelopForm = () => {
               }}
             >
               <ChevronLeft fontSize="large" />
-            </IconBaseButton>
+            </IconButton>
           </div>
         </div>
       </div>

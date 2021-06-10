@@ -6,6 +6,37 @@ const LandingPage = () => {
   return (
     <Layout>
       <h3>Reliable Manufacturer of JCB Parts</h3>
+      <h3>Reliable Manufacturer of JCB Parts</h3>
+      <h3>Reliable Manufacturer of JCB Parts</h3>
+      <h3>Reliable Manufacturer of JCB Parts</h3>
+      <h3>Reliable Manufacturer of JCB Parts</h3>
+      <h3>Reliable Manufacturer of JCB Parts</h3>
+      <h3>Reliable Manufacturer of JCB Parts</h3>
+      <h3>Reliable Manufacturer of JCB Parts</h3>
+      <h3>Reliable Manufacturer of JCB Parts</h3>
+      <h3>Reliable Manufacturer of JCB Parts</h3>
+      <h3>Reliable Manufacturer of JCB Parts</h3>
+      <h3>Reliable Manufacturer of JCB Parts</h3>
+      <h3>Reliable Manufacturer of JCB Parts</h3>
+      <h3>Reliable Manufacturer of JCB Parts</h3>
+      <h3>Reliable Manufacturer of JCB Parts</h3>
+      <h3>Reliable Manufacturer of JCB Parts</h3> <h3>Reliable Manufacturer of JCB Parts</h3>
+      <h3>Reliable Manufacturer of JCB Parts</h3>
+      <h3>Reliable Manufacturer of JCB Parts</h3>
+      <h3>Reliable Manufacturer of JCB Parts</h3>
+      <h3>Reliable Manufacturer of JCB Parts</h3>
+      <h3>Reliable Manufacturer of JCB Parts</h3>
+      <h3>Reliable Manufacturer of JCB Parts</h3>
+      <h3>Reliable Manufacturer of JCB Parts</h3>
+      <h3>Reliable Manufacturer of JCB Parts</h3>
+      <h3>Reliable Manufacturer of JCB Parts</h3>
+      <h3>Reliable Manufacturer of JCB Parts</h3>
+      <h3>Reliable Manufacturer of JCB Parts</h3>
+      <h3>Reliable Manufacturer of JCB Parts</h3>
+      <h3>Reliable Manufacturer of JCB Parts</h3>
+      <h3>Reliable Manufacturer of JCB Parts</h3>
+      <h3>Reliable Manufacturer of JCB Parts</h3>
+      <h3>Reliable Manufacturer of JCB Parts</h3>
       {/*  <Button rounded onClick={() => console.log("asdf")}>
         Try it for free
       </Button>

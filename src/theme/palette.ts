@@ -23,6 +23,8 @@ type BackgroundColor = {
   default: string;
   level2: string;
   level1: string;
+  dark1: string;
+  dark2: string;
 };
 
 type ActionColor = {
@@ -55,6 +57,20 @@ type GreyColor = {
   A700?: string;
 };
 
+type SingleCategoryColor = {
+  foreground: string;
+  background: string;
+};
+
+type CategoryColor = {
+  trending: SingleCategoryColor;
+  jcbParts: SingleCategoryColor;
+  autoParts: SingleCategoryColor;
+  nut: SingleCategoryColor;
+  bolt: SingleCategoryColor;
+  agricultureParts: SingleCategoryColor;
+};
+
 type Config = {
   common: CommonColor;
   primary: MaterialColor;
@@ -66,6 +82,7 @@ type Config = {
   text: TextColor;
   background: BackgroundColor;
   action: ActionColor;
+  category: CategoryColor;
 };
 
 export const configColors: Config = {
@@ -112,14 +129,6 @@ export const configColors: Config = {
     300: "#E9EAEF",
     400: "#B5BDC9",
     500: "#616161",
-    /*  "600": "#757575",
-    "700": "#616161",
-    "800": "#424242",
-    "900": "#212121",
-    A100: "#d5d5d5",
-    A200: "#aaaaaa",
-    A400: "#303030",
-    A700: "#616161", */
   },
 
   text: {
@@ -134,20 +143,53 @@ export const configColors: Config = {
     default: "#FFFFFF",
     level2: "#3162BD",
     level1: "#F4F4F5",
+    dark1: "#0803FC",
+    dark2: "#0B0D17",
   },
   action: {
     active: "#035AFC",
-    hover: "#0803FC",
-    hoverOpacity: 0.04,
-    selected: "#0803FC",
+    hover: "#0803FC10",
+    hoverOpacity: 0.1,
+    selected: "#0803FC08",
     selectedOpacity: 0.08,
     disabled: "#616161",
-    disabledBackground: "#E9EAEF",
+    disabledBackground: "#E9EAEF38",
     disabledOpacity: 0.38,
-    focus: "#0803FC",
+    focus: "#0803FC12",
     focusOpacity: 0.12,
     activatedOpacity: 0.12,
   },
+
+  category: {
+    trending: {
+      foreground: "#5DA956",
+      background: "#BBE2B6",
+    },
+    jcbParts: {
+      foreground: "#DC5323",
+      background: "#FCB49C",
+    },
+
+    agricultureParts: {
+      foreground: "#4870B7",
+      background: "#A6C3F2",
+    },
+
+    nut: {
+      foreground: "#3EA0C1",
+      background: "#9EE1FA",
+    },
+    bolt: {
+      foreground: "#6032CD",
+      background: "#BFA5F3",
+    },
+
+    autoParts: {
+      foreground: "#4FB0A4",
+      background: "#B1E7E0",
+    },
+  },
+
   // Status: Not Implemented
   /* type: "light", */
   /* divider: "#1E283920", */

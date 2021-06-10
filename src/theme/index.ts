@@ -3,12 +3,57 @@ import { createMuiTheme } from "@material-ui/core/styles";
 import { configColors } from "./palette";
 import { configTypography } from "./typography";
 import { configShadows } from "./shadows";
+import { configZIndex } from "./z-index";
+import React from "react";
 // import configOverrides from "./overrides";
+import createBreakpoints from "@material-ui/core/styles/createBreakpoints";
 
 // Alter theme structure
 declare module "@material-ui/core/styles/createPalette" {
   interface PaletteColor {
     lighter?: string;
+  }
+  interface PaletteOptions {
+    category: {
+      trending: {
+        foreground: string;
+        background: string;
+      };
+      jcbParts: {
+        foreground: string;
+        background: string;
+      };
+      agricultureParts: {
+        foreground: string;
+        background: string;
+      };
+      nut: {
+        foreground: string;
+        background: string;
+      };
+      bolt: {
+        foreground: string;
+        background: string;
+      };
+      autoParts: {
+        foreground: string;
+        background: string;
+      };
+    };
+  }
+
+  interface TypeBackground {
+    level1: string;
+    level2: string;
+    dark1: string;
+    dark2: string;
+  }
+}
+declare module "@material-ui/core/styles/zIndex" {
+  interface ZIndex {
+    backdrop: number;
+    expandedSearchBar: number;
+    navbarDropdownMenu: number;
   }
 }
 
@@ -21,6 +66,21 @@ const getButtonPadding = (fontSize: number) => {
 // Variables
 // const borderColor = "rgba(0, 0, 0, 0.23)";
 const BORDER_RADIUS = 5;
+const breakpoints = createBreakpoints({
+  values: {
+    /* xs: 0,
+    sm: 576,
+    md: 768,
+    lg: 992,
+    xl: 1200, */
+
+    lg: 1280,
+    md: 960,
+    sm: 600,
+    xl: 1920,
+    xs: 0,
+  },
+});
 
 const HarminderaTheme = createMuiTheme({
   palette: {
@@ -34,6 +94,7 @@ const HarminderaTheme = createMuiTheme({
     text: configColors.text,
     background: configColors.background,
     action: configColors.action,
+    category: configColors.category,
   },
   typography: {
     fontFamily: configTypography.fontFamily,
@@ -55,6 +116,8 @@ const HarminderaTheme = createMuiTheme({
     borderRadius: 10,
   },
   shadows: configShadows,
+  zIndex: configZIndex,
+  breakpoints,
   overrides: {
     MuiGrid: {
       root: {
@@ -118,15 +181,25 @@ const HarminderaTheme = createMuiTheme({
     },
 
     MuiAppBar: {
-      colorDefault: {
+      colorSecondary: {
         minHeight: "72px",
         boxShadow: configShadows[1],
+
+        [breakpoints.down("sm")]: {
+          minHeight: "64px",
+        },
       },
     },
 
     MuiToolbar: {
       root: {
-        minheight: "72px",
+        minHeight: "72px !important",
+
+        [breakpoints.down("sm")]: {
+          minHeight: "64px !important",
+          paddingLeft: "16px !important",
+          paddingRight: "16px !important",
+        },
       },
     },
   },

@@ -41,6 +41,7 @@
             "@templates/*":["src/templates/*"],
             "@theme/*":["src/theme/*"],
             "@utils/*":["src/utils/*"],
+            "@zustand/*":["src/zustand/*"],
           },
     },
     "exclude": ["node_modules"],

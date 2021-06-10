@@ -171,7 +171,7 @@ const useIconStyles = makeStyles(theme => ({
   },
 }));
 
-const IconBaseButton: React.FC<IconBaseButtonProps & IconButtonProps> = props => {
+const IconButton: React.FC<IconBaseButtonProps & IconButtonProps> = props => {
   const {
     children,
     disableElevation = false,
@@ -208,5 +208,5 @@ const IconBaseButton: React.FC<IconBaseButtonProps & IconButtonProps> = props =>
 
 /* eslint-enable */
 
-export { SolidButton, OutlinedButton, TextButton, RoundedButton, IconBaseButton };
+export { SolidButton, OutlinedButton, TextButton, RoundedButton, IconButton};
 export default ButtonBase;

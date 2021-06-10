@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   InputAdornment,
   Card,
@@ -12,15 +12,23 @@ import { makeStyles } from "@material-ui/core/styles";
 import { SearchOutlined, InboxOutlined } from "@material-ui/icons";
 import TextField from "@components/form/TextField";
 import { TextButton } from "@components/form/Button";
+import useUIStore from "@zustand/ui";
+/* import { SearchResult, SearchResults } from "./types";
 
-/* interface Props {
-  isFocused: boolean;
-  setIsFocused: (value: boolean) => void;
+enum _StateMachine {
+  "IDLE" = "IDLE",
+  "SEARCHING" = "SEARCHING",
+  "FETCHED" = "FETCHED",
+  "ERROR" = "ERROR",
 } */
 
 const useStyles = makeStyles(theme => ({
   formControlStyles: {
     marginLeft: "auto",
+    position: "absolute",
+    right: "20px",
+    zIndex: (props: { isFocused: boolean }) =>
+      props.isFocused ? theme.zIndex.expandedSearchBar : theme.zIndex.expandedSearchBar - 2,
   },
   searchRootFocusedStyles: {
     height: "48px",
@@ -39,6 +47,7 @@ const useStyles = makeStyles(theme => ({
   },
   cardRootStyles: {
     position: "absolute",
+    zIndex: theme.zIndex.expandedSearchBar,
     background: theme.palette.background.paper,
     borderRadius: "0 0 4px 4px",
     paddingTop: "64px",
@@ -51,6 +60,7 @@ const useStyles = makeStyles(theme => ({
   },
   cardRootHiddenStyles: {
     position: "absolute",
+    // zIndex: theme.zIndex.expandedSearchBar,
     background: theme.palette.background.paper,
     borderRadius: "0 0 4px 4px",
     paddingTop: "64px",
@@ -64,6 +74,7 @@ const useStyles = makeStyles(theme => ({
   },
   showUpButton: {
     position: "absolute",
+    zIndex: theme.zIndex.expandedSearchBar,
     opacity: 1,
     transform: "scale(1)",
     transition: theme.transitions.create(["opacity", "transform"]),
@@ -80,9 +91,51 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
+type Category = "autoParts" | "agricultureParts" | "nut" | "bolts" | "jcbParts";
+
+const getCategoryIcon = (category: Category) => {
+  /* switch (category) {
+    case "autoParts":
+      return <AutoParts />;
+  } */
+};
+
+const generateInitialData = () => {
+  return [];
+  /* return [
+    {
+      icon: React.ReactNode,
+  label: string,
+  redirectURL: string,
+  type: "category" | "product" | "search",
+  category?: string,
+    }
+  ] */
+};
+
 const ExpandableSearchField = () => {
   const [isFocused, setIsFocused] = useState(false);
-  // const { setIsFocused, isFocused } = props;
+  const { showBackdrop, hideBackdrop } = useUIStore();
+  const [state, setState] = useState({
+    isLoading: false,
+    searchQuery: "",
+    results: [],
+    count: { total: 0, category: 0, products: 0 },
+  });
+
+  useEffect(() => {
+    generateInitialData();
+  }, []);
+
+  const handleFocus = () => {
+    setIsFocused(true);
+    showBackdrop();
+  };
+
+  const handleBlur = () => {
+    setIsFocused(false);
+    hideBackdrop();
+  };
 
   const {
     searchRootFocusedStyles,
@@ -92,7 +145,43 @@ const ExpandableSearchField = () => {
     cardRootStyles,
     showUpButton,
     hideDownButton,
-  } = useStyles();
+  } = useStyles({ isFocused });
+
+  /* 
+
+
+
+  dataStructure = {
+    isLoading: false,
+    data: [],
+    searchTerm: empty_string
+  }
+
+
+  initialState:{
+    isLoading: false,
+    data: []
+    searchTerm: filled_string
+  }
+
+  loadingState: [
+    isLoading: true,
+    searchTerm: filled_string
+  ]
+
+  searchedState: {
+    isLoading: false,
+    data:[].length,
+    searchTErm: filled_string
+  }
+
+  noRessultsFound:{
+    isLoading: false,
+    data: []
+    searchTerm: filled_string
+  }
+  
+  */
 
   return (
     <>
@@ -149,10 +238,6 @@ const ExpandableSearchField = () => {
             <ListItemText primary="Search for TVS" />
           </ListItem>
         </List>
-        {/* Categories */}
-        {/* Search */}
-        {/* Search for particular query */}
-        {/* Enable Overlay mode */}
       </Card>
       <TextField
         id="nav__search-input-field"
@@ -160,10 +245,10 @@ const ExpandableSearchField = () => {
         formControlProps={{ classes: { root: formControlStyles } }}
         classes={{
           root: isFocused ? searchRootFocusedStyles : searchRootStyles,
-          focused: searchRootFocusedStyles,
+          // focused: searchRootFocusedStyles,
         }}
-        onFocus={() => setIsFocused(true)}
-        onBlur={() => setIsFocused(false)}
+        onFocus={handleFocus}
+        onBlur={handleBlur}
         type="search"
         inputProps={{ "aria-label": "search" }}
         startAdornment={

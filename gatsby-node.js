@@ -60,6 +60,7 @@ exports.onCreateWebpackConfig = ({ actions }) => {
         "@styles": path.resolve(__dirname, "src/styles"),
         "@theme": path.resolve(__dirname, "src/theme"),
         "@utils": path.resolve(__dirname, "src/utils"),
+        "@zustand": path.resolve(__dirname, "src/zustand"),
       },
     },
   });
