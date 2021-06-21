@@ -21,6 +21,10 @@ const useStyles = makeStyles(theme => ({
     "& h4": {
       marginLeft: "2px",
     },
+
+    "&#active-link--nav": {
+      color: theme.palette.primary.main,
+    },
   },
   formControlStyles: {
     width: "100%",
