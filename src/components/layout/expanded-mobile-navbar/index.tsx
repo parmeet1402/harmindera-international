@@ -19,7 +19,7 @@ interface Props {}
 const useStyles = makeStyles(theme => ({
   root: {
     "& h4": {
-      marginLeft: "2px",
+      marginLeft: "8px",
     },
 
     "&#active-link--nav": {
@@ -28,7 +28,8 @@ const useStyles = makeStyles(theme => ({
   },
   formControlStyles: {
     width: "100%",
-    margin: "0 auto 28px",
+    // margin: "0 auto 28px",
+    margin: "0 auto 16px",
     "&>div": {
       width: "100%",
       margin: "20px auto",
@@ -86,6 +87,7 @@ export const ExpandedMobileNavbar = (props: Props) => {
             <SearchOutlined />
           </InputAdornment>
         }
+        autoComplete="off"
       />
 
       {links.map(item => (

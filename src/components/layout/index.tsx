@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
+import { Toolbar } from "@material-ui/core";
+
 import Navbar from "./desktop/navbar";
 import Footer from "./desktop/footer";
 import Overlay from "./overlay";
-import {} from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
-import { useTheme } from "@material-ui/core/styles";
+import { useTheme, makeStyles } from "@material-ui/core/styles";
 import { ExpandedMobileNavbar } from "./expanded-mobile-navbar";
 import useUIStore from "@zustand/ui";
 import useKeyboardOpen from "@utils/hooks/use-keyboard-open";
@@ -14,10 +15,24 @@ interface Props {
   children: React.ReactNode | React.ReactChildren;
 }
 
+const useStyles = makeStyles(theme => ({
+  mainStyles: theme.mixins.toolbar,
+  pad: {
+    height: 56,
+    [`${theme.breakpoints.up("xs")} and (orientation: landscape)`]: {
+      height: 48,
+    },
+    [theme.breakpoints.up("sm")]: {
+      height: 64,
+    },
+  },
+}));
+
 const Layout = (props: Props) => {
   const { children } = props;
   const { isMobileNavbarExpanded, keyboardOpened, keyboardClosed } = useUIStore();
   const [isKeyboardOpen] = useKeyboardOpen();
+  const { mainStyles, pad } = useStyles();
 
   useEffect(() => {
     if (isKeyboardOpen) {
@@ -28,16 +43,19 @@ const Layout = (props: Props) => {
   }, [isKeyboardOpen]);
 
   const theme = useTheme();
+  console.log(theme.mixins.toolbar);
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   // style={{ marginTop: isMobile ? "64px" : "72px" }}
   return (
     <>
       <Navbar />
-      <Overlay />
+      {/* <Overlay /> */}
       <ExpandedMobileNavbar />
+      <div className={pad} />
       {!isMobileNavbarExpanded && <main>{children}</main>}
       {!isMobileNavbarExpanded && <Footer />}
+      {/* <Toolbar /> */}
     </>
   );
 };

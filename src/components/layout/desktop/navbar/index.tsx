@@ -23,8 +23,10 @@ const Navbar = () => {
     }
   };
 
+  // position="static"
+
   return (
-    <AppBar position="static" color="secondary">
+    <AppBar position="fixed" color="secondary">
       <Toolbar>
         <Logo />
         {!isMobile ? (
