@@ -256,6 +256,7 @@ const ExpandableSearchField = () => {
             <SearchOutlined />
           </InputAdornment>
         }
+        autoComplete="off"
       />
       <TextButton
         classes={{

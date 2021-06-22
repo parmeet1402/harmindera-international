@@ -35,14 +35,14 @@ const data = {
         },
       ],
     },
-    {
+    /* {
       links: [
         {
           label: "About",
           link: "/about",
         },
       ],
-    },
+    }, */
   ],
 
   services: [
@@ -90,48 +90,45 @@ const data = {
 
   reachUs: [
     {
-      icon: <MailOutlineOutlined />,
+      icon: <MailOutlineOutlined color="secondary" />,
       links: [{ label: "hello@harmindera.co", link: "" }],
     },
     {
-      icon: <PhoneOutlined />,
+      icon: <PhoneOutlined color="secondary" />,
       links: [
         { label: "+91 9876100890", link: "" },
         { label: "+91 9876600890", link: "" },
         { label: "+91 9356210290", link: "" },
       ],
     },
+
     {
-      icon: <PhoneOutlined />,
-      links: [
-        { label: "+91 9876100890", link: "" },
-        { label: "+91 9876600890", link: "" },
-        { label: "+91 9356210290", link: "" },
-      ],
-    },
-    {
-      icon: <RoomOutlined />,
+      icon: <RoomOutlined color="secondary" />,
       links: [{ label: "122-B Model House, Model Town,Ludhiana, 141002", link: "" }],
     },
   ],
 };
 
 const useStyles = makeStyles(theme => ({
-  root: {
+  footerStyles: {
     backgroundColor: theme.palette.background.dark2,
+  },
+  root: {
+    // backgroundColor: theme.palette.background.dark2,
     color: theme.palette.secondary.main,
-    padding: "20px",
+    padding: "94px",
   },
   gridRoot: {
     // backgroundColor: "red",
-    maxWidth: "900px",
-    width: "90%",
+    // maxWidth: "900px",
+    // width: "90%",
     margin: "0 auto",
   },
   linkStyles: {
     // margin: "12px",
     fontWeight: theme.typography.fontWeightBold,
-    color: theme.palette.secondary.main,
+    color: theme.palette.grey["300"],
+    marginLeft: "12px",
 
     "&#active-link--nav": {
       color: theme.palette.secondary.main,
@@ -141,79 +138,132 @@ const useStyles = makeStyles(theme => ({
       color: theme.palette.secondary.main,
     },
   },
+  iconGridStyles: {
+    marginTop: "12px",
+  },
 }));
 
 const Footer = () => {
-  const { root, gridRoot, linkStyles } = useStyles();
+  const { root, gridRoot, linkStyles, footerStyles, iconGridStyles } = useStyles();
   return (
-    <Container classes={{ root }}>
-      <Grid classes={{ root: gridRoot }} container justify="center" spacing={4}>
-        <Grid item xs={3}>
-          <Grid container direction="column" alignItems="center" style={{ margin: "0 20px" }}>
-            <Logo variant="light" />
-            <Grid>
-              <IconButton
-                colorOverrides={{
-                  icon: {
-                    color: "text",
-                    colorVariant: "primary",
-                    hover: "text",
-                    hoverVariant: "primary",
-                  },
-                }}
-              >
-                <WhatsApp />
-              </IconButton>
-              <IconButton
-                colorOverrides={{
-                  icon: {
-                    color: "text",
-                    colorVariant: "primary",
-                    hover: "text",
-                    hoverVariant: "primary",
-                  },
-                }}
-              >
-                <RoomOutlined />
-              </IconButton>
-              <IconButton
-                colorOverrides={{
-                  icon: {
-                    color: "text",
-                    colorVariant: "primary",
-                    hover: "text",
-                    hoverVariant: "primary",
-                  },
-                }}
-              >
-                <PhoneOutlined />
-              </IconButton>
-              <IconButton
-                colorOverrides={{
-                  icon: {
-                    color: "text",
-                    colorVariant: "primary",
-                    hover: "text",
-                    hoverVariant: "primary",
-                  },
-                }}
-              >
-                <MailOutlineOutlined />
-              </IconButton>
+    <footer className={footerStyles}>
+      <Container classes={{ root }}>
+        <Grid classes={{ root: gridRoot }} container justify="center" spacing={4}>
+          <Grid item xs={3}>
+            <Grid container direction="column">
+              <Grid style={{ textAlign: "center", marginLeft: "-50%" }}>
+                <Logo variant="light" />
+                <Grid classes={{ root: iconGridStyles }}>
+                  <IconButton
+                    colorOverrides={{
+                      icon: {
+                        color: "secondary",
+                        colorVariant: "main",
+                        hover: "secondary",
+                        hoverVariant: "main",
+                      },
+                    }}
+                  >
+                    <WhatsApp />
+                  </IconButton>
+                  <IconButton
+                    colorOverrides={{
+                      icon: {
+                        color: "secondary",
+                        colorVariant: "main",
+                        hover: "secondary",
+                        hoverVariant: "main",
+                      },
+                    }}
+                  >
+                    <RoomOutlined />
+                  </IconButton>
+                  <IconButton
+                    colorOverrides={{
+                      icon: {
+                        color: "secondary",
+                        colorVariant: "main",
+                        hover: "secondary",
+                        hoverVariant: "main",
+                      },
+                    }}
+                  >
+                    <PhoneOutlined />
+                  </IconButton>
+                  <IconButton
+                    colorOverrides={{
+                      icon: {
+                        color: "secondary",
+                        colorVariant: "main",
+                        hover: "secondary",
+                        hoverVariant: "main",
+                      },
+                    }}
+                  >
+                    <MailOutlineOutlined />
+                  </IconButton>
+                </Grid>
+              </Grid>
             </Grid>
           </Grid>
-        </Grid>
-        <Grid item xs={3}>
-          <Grid direction="column" container>
-            <Typography variant="h6">Quick links</Typography>
-            {data.quickLinks.map(item => {
+          <Grid item xs={3}>
+            <Grid direction="column" container>
+              <Typography variant="h5">Quick links</Typography>
+              {data.quickLinks.map(item => {
+                return (
+                  <Grid>
+                    {item.icon ? item.icon : <></>}
+                    <Grid direction="column">
+                      {item.links.map(link => (
+                        <Link href={link.link} classes={{ root: linkStyles }}>
+                          <Typography variant="body2">{link.label}</Typography>
+                        </Link>
+                      ))}
+                    </Grid>
+                  </Grid>
+                );
+              })}
+            </Grid>
+          </Grid>
+          <Grid item xs={3}>
+            <Typography variant="h5">Services</Typography>
+            {data.services.map(item => {
               return (
                 <Grid>
                   {item.icon ? item.icon : <></>}
                   <Grid direction="column">
                     {item.links.map(link => (
-                      <Link href={link.link} classes={{ root: linkStyles }}>
-                        {link.label}
+                      <Link
+                        href={link.link}
+                        classes={{
+                          root: linkStyles,
+                        }}
+                      >
+                        <Typography variant="body2">{link.label}</Typography>
+                      </Link>
+                    ))}
+                  </Grid>
+                </Grid>
+              );
+            })}
+          </Grid>
+          <Grid item xs={3}>
+            <Typography variant="h5" style={{ marginBottom: "20px" }}>
+              Reach us
+            </Typography>
+            {data.reachUs.map(item => {
+              return (
+                <Grid container direction="row" wrap="nowrap">
+                  <Link href={item.links[0].link}>{item.icon ? item.icon : <></>}</Link>
+                  <Grid container direction="column" style={{ marginBottom: "16px" }}>
+                    {item.links.map(link => (
+                      <Link
+                        href={link.link}
+                        classes={{
+                          root: linkStyles,
+                        }}
+                      >
+                        <Typography variant="body2">{link.label}</Typography>
                       </Link>
                     ))}
                   </Grid>
@@ -222,52 +272,8 @@ const Footer = () => {
             })}
           </Grid>
         </Grid>
-        <Grid item xs={3}>
-          <Typography variant="h6">Services</Typography>
-          {data.services.map(item => {
-            return (
-              <Grid>
-                {item.icon ? item.icon : <></>}
-                <Grid direction="column">
-                  {item.links.map(link => (
-                    <Link
-                      href={link.link}
-                      classes={{
-                        root: linkStyles,
-                      }}
-                    >
-                      {link.label}
-                    </Link>
-                  ))}
-                </Grid>
-              </Grid>
-            );
-          })}
-        </Grid>
-        <Grid item xs={3}>
-          <Typography variant="h6">Reach us</Typography>
-          {data.reachUs.map(item => {
-            return (
-              <Grid container direction="row">
-                {item.icon ? item.icon : <></>}
-                <Grid container direction="column">
-                  {item.links.map(link => (
-                    <Link
-                      href={link.link}
-                      classes={{
-                        root: linkStyles,
-                      }}
-                    >
-                      {link.label}
-                    </Link>
-                  ))}
-                </Grid>
-              </Grid>
-            );
-          })}
-        </Grid>
-      </Grid>
-    </Container>
+      </Container>
+    </footer>
   );
 };
 
