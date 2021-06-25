@@ -117,6 +117,22 @@ const useStyles = makeStyles(theme => ({
     // backgroundColor: theme.palette.background.dark2,
     color: theme.palette.secondary.main,
     padding: "94px",
+    overflowX: "hidden",
+    [`${theme.breakpoints.down("md")}`]: {
+      padding: "58px 72px",
+      "&>div": {
+        display: "grid",
+        gridTemplateColumns: "1fr",
+      },
+    },
+
+    [`${theme.breakpoints.down("sm")}`]: {
+      padding: "50px 60px",
+    },
+
+    [`${theme.breakpoints.down("xs")}`]: {
+      padding: "24px 0px",
+    },
   },
   gridRoot: {
     // backgroundColor: "red",
@@ -141,17 +157,41 @@ const useStyles = makeStyles(theme => ({
   iconGridStyles: {
     marginTop: "12px",
   },
+  iconContainerStyles: {
+    textAlign: "center",
+    marginLeft: "-50%",
+    [`${theme.breakpoints.down("md")}`]: {
+      textAlign: "left",
+      marginLeft: "0",
+    },
+  },
+  remainingContainerStyles: {
+    [`${theme.breakpoints.down("md")}`]: {
+      marginLeft: "8px",
+      "&>div>div": {
+        marginLeft: "8px",
+      },
+    },
+  },
 }));
 
 const Footer = () => {
-  const { root, gridRoot, linkStyles, footerStyles, iconGridStyles } = useStyles();
+  const {
+    root,
+    gridRoot,
+    linkStyles,
+    footerStyles,
+    iconGridStyles,
+    iconContainerStyles,
+    remainingContainerStyles,
+  } = useStyles();
   return (
     <footer className={footerStyles}>
       <Container classes={{ root }}>
         <Grid classes={{ root: gridRoot }} container justify="center" spacing={4}>
-          <Grid item xs={3}>
+          <Grid item>
             <Grid container direction="column">
-              <Grid style={{ textAlign: "center", marginLeft: "-50%" }}>
+              <Grid classes={{ root: iconContainerStyles }}>
                 <Logo variant="light" />
                 <Grid classes={{ root: iconGridStyles }}>
                   <IconButton
@@ -206,7 +246,7 @@ const Footer = () => {
               </Grid>
             </Grid>
           </Grid>
-          <Grid item xs={3}>
+          <Grid item classes={{ root: remainingContainerStyles }}>
             <Grid direction="column" container>
               <Typography variant="h5">Quick links</Typography>
               {data.quickLinks.map(item => {
@@ -215,7 +255,11 @@ const Footer = () => {
                     {item.icon ? item.icon : <></>}
                     <Grid direction="column">
                       {item.links.map(link => (
-                        <Link href={link.link} classes={{ root: linkStyles }}>
+                        <Link
+                          href={link.link}
+                          style={{ marginLeft: "120px" }}
+                          classes={{ root: linkStyles }}
+                        >
                           <Typography variant="body2">{link.label}</Typography>
                         </Link>
                       ))}
@@ -225,7 +269,7 @@ const Footer = () => {
               })}
             </Grid>
           </Grid>
-          <Grid item xs={3}>
+          <Grid item classes={{ root: remainingContainerStyles }}>
             <Typography variant="h5">Services</Typography>
             {data.services.map(item => {
               return (
@@ -247,7 +291,7 @@ const Footer = () => {
               );
             })}
           </Grid>
-          <Grid item xs={3}>
+          <Grid item classes={{ root: remainingContainerStyles }}>
             <Typography variant="h5" style={{ marginBottom: "20px" }}>
               Reach us
             </Typography>
