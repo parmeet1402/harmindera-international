@@ -131,7 +131,9 @@ const useStyles = makeStyles(theme => ({
     },
 
     [`${theme.breakpoints.down("xs")}`]: {
+      // padding: "24px 16px",
       padding: "24px 0px",
+      // width: "calc(100% - 32px)",
     },
   },
   gridRoot: {
@@ -139,6 +141,7 @@ const useStyles = makeStyles(theme => ({
     // maxWidth: "900px",
     // width: "90%",
     margin: "0 auto",
+    width: "calc(100% - 60px)",
   },
   linkStyles: {
     // margin: "12px",
@@ -167,10 +170,22 @@ const useStyles = makeStyles(theme => ({
   },
   remainingContainerStyles: {
     [`${theme.breakpoints.down("md")}`]: {
-      marginLeft: "8px",
+      // marginLeft: "8px",
+      padding: "32px 0 !important",
+
       "&>div>div": {
         marginLeft: "8px",
       },
+    },
+  },
+  firstContainerStyles: {
+    [`${theme.breakpoints.down("md")}`]: {
+      // marginLeft: "8px",
+      padding: "32px 0 !important",
+
+      /*       "&>div>div": {
+        marginLeft: "8px",
+      }, */
     },
   },
 }));
@@ -184,12 +199,13 @@ const Footer = () => {
     iconGridStyles,
     iconContainerStyles,
     remainingContainerStyles,
+    firstContainerStyles,
   } = useStyles();
   return (
     <footer className={footerStyles}>
       <Container classes={{ root }}>
         <Grid classes={{ root: gridRoot }} container justify="center" spacing={4}>
-          <Grid item>
+          <Grid item classes={{ root: firstContainerStyles }}>
             <Grid container direction="column">
               <Grid classes={{ root: iconContainerStyles }}>
                 <Logo variant="light" />
@@ -279,6 +295,7 @@ const Footer = () => {
                     {item.links.map(link => (
                       <Link
                         href={link.link}
+                        style={{ marginLeft: "120px" }}
                         classes={{
                           root: linkStyles,
                         }}
