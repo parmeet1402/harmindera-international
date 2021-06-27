@@ -5,14 +5,23 @@ const CustomIcon = () => {
   return <div></div>;
 };
 
-export const Logo = ({ variant = "dark" }) => {
+export const Logo = ({ variant = "dark", size = "medium" }) => {
+  const height = size === "large" ? "170" : "127";
+  const width = size === "large" ? "46.85" : "35";
+
   return (
     <svg
-      width="127"
-      height="35"
+      width={height}
+      height={width}
       viewBox="0 0 127 35"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      // transform="scale(1.90)"
+      // origin="0 0"
+      // vertOriginX="0"
+      // vertOriginY="0"
+
+      // style={{ transform: "scale(1.4)" }}
     >
       <g id="Group 206">
         <rect id="Rectangle 592" width="31" height="35" rx="7" fill="#0803FC" />

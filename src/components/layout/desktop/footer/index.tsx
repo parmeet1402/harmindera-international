@@ -35,14 +35,6 @@ const data = {
         },
       ],
     },
-    /* {
-      links: [
-        {
-          label: "About",
-          link: "/about",
-        },
-      ],
-    }, */
   ],
 
   services: [
@@ -114,7 +106,6 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: theme.palette.background.dark2,
   },
   root: {
-    // backgroundColor: theme.palette.background.dark2,
     color: theme.palette.secondary.main,
     padding: "94px",
     overflowX: "hidden",
@@ -131,23 +122,18 @@ const useStyles = makeStyles(theme => ({
     },
 
     [`${theme.breakpoints.down("xs")}`]: {
-      // padding: "24px 16px",
       padding: "24px 0px",
-      // width: "calc(100% - 32px)",
     },
   },
   gridRoot: {
-    // backgroundColor: "red",
-    // maxWidth: "900px",
-    // width: "90%",
     margin: "0 auto",
     width: "calc(100% - 60px)",
   },
   linkStyles: {
-    // margin: "12px",
     fontWeight: theme.typography.fontWeightBold,
-    color: theme.palette.grey["300"],
-    marginLeft: "12px",
+    color: `${theme.palette.grey["300"]} !important`,
+    marginLeft: "8px",
+    marginBottom: "4px",
 
     "&#active-link--nav": {
       color: theme.palette.secondary.main,
@@ -170,22 +156,16 @@ const useStyles = makeStyles(theme => ({
   },
   remainingContainerStyles: {
     [`${theme.breakpoints.down("md")}`]: {
-      // marginLeft: "8px",
       padding: "32px 0 !important",
 
       "&>div>div": {
-        marginLeft: "8px",
+        marginLeft: "4px",
       },
     },
   },
   firstContainerStyles: {
     [`${theme.breakpoints.down("md")}`]: {
-      // marginLeft: "8px",
       padding: "32px 0 !important",
-
-      /*       "&>div>div": {
-        marginLeft: "8px",
-      }, */
     },
   },
 }));
@@ -208,7 +188,7 @@ const Footer = () => {
           <Grid item classes={{ root: firstContainerStyles }}>
             <Grid container direction="column">
               <Grid classes={{ root: iconContainerStyles }}>
-                <Logo variant="light" />
+                <Logo variant="light" size="large" />
                 <Grid classes={{ root: iconGridStyles }}>
                   <IconButton
                     colorOverrides={{

@@ -67,7 +67,7 @@ export const ExpandedMobileNavbar = (props: Props) => {
 
   return (
     <Box
-      height="calc(100vh - 58px)"
+      height={`${window.innerHeight - 58}px`}
       width="100%"
       position="absolute"
       top="0"
@@ -105,7 +105,7 @@ export const ExpandedMobileNavbar = (props: Props) => {
         </Link>
       ))}
       {isFooterVisible && (
-        <Box position="absolute" bottom="34px" width="80%" ml="2px">
+        <Box position="absolute" bottom="30px" width="80%" ml="2px">
           <Typography variant="h6" classes={{ root: boldStyle }}>
             {config.title}
           </Typography>
