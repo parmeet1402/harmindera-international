@@ -43,7 +43,7 @@ const data = {
       links: [
         {
           label: "JCB Parts",
-          link: "products/jcb-parts",
+          link: "/products/jcb-parts",
         },
       ],
     },
@@ -51,7 +51,7 @@ const data = {
       links: [
         {
           label: "Nuts",
-          link: "products/nuts",
+          link: "/products/nuts",
         },
       ],
     },
@@ -59,7 +59,7 @@ const data = {
       links: [
         {
           label: "Bolts",
-          link: "products/bolts",
+          link: "/products/bolts",
         },
       ],
     },
@@ -67,7 +67,7 @@ const data = {
       links: [
         {
           label: "Agriculture Products",
-          link: "products/agriculture-products",
+          link: "/products/agriculture-products",
         },
       ],
     },
@@ -75,7 +75,7 @@ const data = {
       links: [
         {
           label: "Auto Parts",
-          link: "products/auto-parts",
+          link: "/products/auto-parts",
         },
       ],
     },

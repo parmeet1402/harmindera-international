@@ -4,17 +4,28 @@ const { author, title, description, keywords, siteUrl, defaultLang } = require("
 module.exports = {
   siteMetadata: {
     title,
+    titleTemplate: `%s | ${title}`,
     siteUrl,
     keywords,
     description,
     author,
+    lang: defaultLang,
   },
   plugins: [
-    // TODO: Create Tracking Id for google analaytics
+    // TODO: Create Tracking Id for google analytics
     /* {
       resolve: "gatsby-plugin-google-analytics",
       options: {
         trackingId,
+      },
+    }, */
+
+    // `gatsby-plugin-transition-link`,
+    /* {
+      resolve: `gatsby-plugin-transition-link`,
+      options: {
+        // layout: require.resolve("./plugins/gatsby-plugin-top-layout/TopLayout"),
+        // layout: require.resolve("./src/components/layout/index.tsx"),
       },
     }, */
 

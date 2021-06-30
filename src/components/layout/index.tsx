@@ -9,6 +9,7 @@ import { useTheme, makeStyles } from "@material-ui/core/styles";
 import { ExpandedMobileNavbar } from "./expanded-mobile-navbar";
 import useUIStore from "@zustand/ui";
 import useKeyboardOpen from "@utils/hooks/use-keyboard-open";
+// import theme from "../../theme";
 
 interface Props {
   name?: string;
@@ -19,16 +20,58 @@ const useStyles = makeStyles(theme => ({
   mainStyles: theme.mixins.toolbar,
   pad: {
     height: 56,
+    // height: 32,
     [`${theme.breakpoints.up("xs")} and (orientation: landscape)`]: {
       height: 48,
     },
     [theme.breakpoints.up("sm")]: {
       height: 64,
+      // height: 32,
     },
   },
 }));
 
 const Layout = (props: Props) => {
+  const { children } = props;
+  const { isMobileNavbarExpanded, keyboardOpened, keyboardClosed } = useUIStore();
+  const [isKeyboardOpen] = useKeyboardOpen();
+  const { mainStyles, pad } = useStyles();
+
+  useEffect(() => {
+    if (isKeyboardOpen) {
+      keyboardOpened();
+    } else {
+      keyboardClosed();
+    }
+  }, [isKeyboardOpen]);
+
+  const theme = useTheme();
+  // console.log(theme.mixins.toolbar);
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+
+  // style={{ marginTop: isMobile ? "64px" : "72px" }}
+  return (
+    <>
+      {/* <Helmet>
+        <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
+      </Helmet>
+      <ThemeProvider theme={theme}>
+        <CssBaseline /> */}
+      <Navbar />
+      {/* <Overlay /> */}
+      <ExpandedMobileNavbar />
+      <div className={pad} />
+      {!isMobileNavbarExpanded && <main>{children}</main>}
+      {!isMobileNavbarExpanded && <Footer />}
+      {/* <Toolbar /> */}
+      {/* </ThemeProvider> */}
+    </>
+  );
+};
+
+export default Layout;
+
+/* const Layout = (props: Props) => {
   const { children } = props;
   const { isMobileNavbarExpanded, keyboardOpened, keyboardClosed } = useUIStore();
   const [isKeyboardOpen] = useKeyboardOpen();
@@ -50,27 +93,25 @@ const Layout = (props: Props) => {
   return (
     <>
       <Navbar />
-      {/* <Overlay /> */}
       <ExpandedMobileNavbar />
       <div className={pad} />
       {!isMobileNavbarExpanded && <main>{children}</main>}
       {!isMobileNavbarExpanded && <Footer />}
-      {/* <Toolbar /> */}
     </>
   );
 };
 
-export default Layout;
+export default Layout; */
 
 // DONE: Hover for products link
 // DONE: Set hover and tap color for the links
 // DONE: Enable overlays
 // DONE: Add icons for all the 6 categories and call them as per the project
-// TODO: Fixed Header
+// DONE: Fixed Header
 
 // Mobile navbar
 
-// TODO: Scroll to hide feature on mobile
+// DONE: Scroll to hide feature on mobile
 // DONE: Hamburger and times icon toggle for full screen view
 // DONE: Links
 // DONE: Navbar opened Footer Information

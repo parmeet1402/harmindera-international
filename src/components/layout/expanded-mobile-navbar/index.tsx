@@ -47,6 +47,8 @@ const links = [
   { label: "Contact Us", path: "/contact" },
 ];
 
+// const innerHeight = window.innerHeight;
+
 export const ExpandedMobileNavbar = (props: Props) => {
   const { isMobileNavbarExpanded, shrinkMobileNavbar } = useUIStore();
   const { root, formControlStyles, boldStyle } = useStyles();
@@ -65,15 +67,33 @@ export const ExpandedMobileNavbar = (props: Props) => {
 
   const isFooterVisible = !isFocused;
 
-  return (
-    <Box
-      height={`${window.innerHeight - 58}px`}
+  /* height={`${window.innerHeight - 58}px`}
       width="100%"
       position="absolute"
       top="0"
       mt="59px"
       px="16px"
+      bgcolor="background.paper" */
+
+  /*   position="absolute"
+      height={`${window.innerHeight - 58}px`}
+      width="100%"
+      top="100px"
+      mt="59px"
+      px="16px"
       bgcolor="background.paper"
+      className="avi" */
+  return (
+    <Box
+      position="absolute"
+      height={`${window.innerHeight - 58}px`}
+      width="100%"
+      top="100px"
+      mt="-32px"
+      // mt="59px"
+      px="16px"
+      bgcolor="background.paper"
+      className="avi"
     >
       <TextField
         id="nav__search-input-field--mobile"
@@ -89,21 +109,23 @@ export const ExpandedMobileNavbar = (props: Props) => {
         }
         autoComplete="off"
       />
+      <div onClick={shrinkMobileNavbar}>
+        {links.map(item => (
+          <Link
+            href={item.path}
+            classes={{
+              root,
+            }}
+            // key={item.path}
+            // onClick={shrinkMobileNavbar}
+          >
+            <Typography variant="h4" gutterBottom>
+              {item.label}
+            </Typography>
+          </Link>
+        ))}
+      </div>
 
-      {links.map(item => (
-        <Link
-          href={item.path}
-          classes={{
-            root,
-          }}
-          key={item.path}
-          onClick={shrinkMobileNavbar}
-        >
-          <Typography variant="h4" gutterBottom>
-            {item.label}
-          </Typography>
-        </Link>
-      ))}
       {isFooterVisible && (
         <Box position="absolute" bottom="30px" width="80%" ml="2px">
           <Typography variant="h6" classes={{ root: boldStyle }}>

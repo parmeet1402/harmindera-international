@@ -8,7 +8,7 @@ module.exports = {
     "Bolts Manufacturer",
     "Forging",
     "Manufacturer in Ludhiana",
-    "Agriculture Parts Manufactuere in Ludhiana",
+    "Agriculture Parts Manufacturer in Ludhiana",
   ],
   description: "Harmindera International is a ludhiana based manufacturing firm",
   author: "parmeetsingh1402",
@@ -19,6 +19,35 @@ module.exports = {
     // ja: "日本語",
   },
   siteUrl: "https://harminderainternational.gatsbyjs.io",
+
+  address: {
+    city: "City",
+    region: "Region",
+    country: "Country",
+    zipCode: "ZipCode",
+  },
+
+  contact: {
+    email: "email",
+    phoneNumber: "phone number",
+  },
+  foundingDate: "1970",
+
+  googleAnalyticsID: "dfd",
+  socialLinks: {
+    whatsapp: "",
+  },
+
+  // Used for App and Offline manifest e.g. Mobile Home Screen
+  shortTitle: `Jamify`,
+  siteIcon: `favicon.png`,
+  backgroundColor: `#e9e9e9`,
+  themeColor: `#15171A`,
+
+  short_name: "HI",
+  start_url: "/",
+  background_color: "#ffffff",
+  theme_color: "#0803FC",
 };
 
 /* 
