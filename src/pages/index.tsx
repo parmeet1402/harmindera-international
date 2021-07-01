@@ -1,7 +1,7 @@
 import React from "react";
 import Button from "@components/form/Button";
 import Layout from "@components/layout";
-import SEO from "@components/seo";
+import SEO from "@components/layout/seo";
 
 const LandingPage = () => {
   return (

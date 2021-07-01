@@ -34,6 +34,7 @@
     "@typescript-eslint/eslint-plugin": "^4.24.0",
     "@typescript-eslint/parser": "^4.25.0",
     "clsx": "^1.1.1",
+    "framer-motion": "^4.1.17",
     "gatsby": "^3.2.1",
     "gatsby-plugin-gatsby-cloud": "^2.3.0",
     "gatsby-plugin-i18n": "^1.0.1",

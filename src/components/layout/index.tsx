@@ -4,6 +4,7 @@ import { Toolbar } from "@material-ui/core";
 import Navbar from "./desktop/navbar";
 import Footer from "./desktop/footer";
 import Overlay from "./overlay";
+import Transition from "./transition";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { useTheme, makeStyles } from "@material-ui/core/styles";
 import { ExpandedMobileNavbar } from "./expanded-mobile-navbar";
@@ -51,7 +52,7 @@ const Layout = (props: Props) => {
 
   // style={{ marginTop: isMobile ? "64px" : "72px" }}
   return (
-    <>
+    <Transition>
       {/* <Helmet>
         <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
       </Helmet>
@@ -61,11 +62,13 @@ const Layout = (props: Props) => {
       {/* <Overlay /> */}
       <ExpandedMobileNavbar />
       <div className={pad} />
+      {/* {<main>{children}</main>}</Transition> */}
       {!isMobileNavbarExpanded && <main>{children}</main>}
+
       {!isMobileNavbarExpanded && <Footer />}
       {/* <Toolbar /> */}
       {/* </ThemeProvider> */}
-    </>
+    </Transition>
   );
 };
 
