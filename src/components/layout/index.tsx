@@ -7,9 +7,10 @@ import useTheme from "@material-ui/core/styles/useTheme";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 // Components
-import Navbar from "./desktop/navbar";
-import Footer from "./desktop/footer";
+import Navbar from "./navbar";
+import Footer from "./footer";
 import Transition from "./transition";
+import SEO from "./seo"
 
 // Hooks
 import useKeyboardOpen from "@utils/hooks/use-keyboard-open";
@@ -67,7 +68,7 @@ const Layout = (props: Props) => {
     </Transition>
   );
 };
-
+export { SEO };
 export default Layout;
 
 // DONE: Hover for products link

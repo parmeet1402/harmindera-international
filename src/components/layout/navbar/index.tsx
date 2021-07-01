@@ -11,7 +11,7 @@ import MenuRoundedIcon from "@material-ui/icons/MenuRounded";
 import CloseRoundedIcon from "@material-ui/icons/CloseRounded";
 import { IconButton } from "@components/form/Button";
 import useUIStore from "@zustand/ui";
-import ExpandedMobileNavbar from "@components/layout/expanded-mobile-navbar";
+import ExpandedMobileNavbar from "./expanded-mobile-navbar";
 
 interface Props {
   window?: () => Window;
