@@ -11,6 +11,7 @@ import MenuRoundedIcon from "@material-ui/icons/MenuRounded";
 import CloseRoundedIcon from "@material-ui/icons/CloseRounded";
 import { IconButton } from "@components/form/Button";
 import useUIStore from "@zustand/ui";
+import ExpandedMobileNavbar from "@components/layout/expanded-mobile-navbar";
 
 interface Props {
   window?: () => Window;
@@ -33,39 +34,40 @@ const Navbar = (props: Props) => {
     }
   };
 
-  // position="static"
-
   return (
-    <Slide appear={false} direction="down" in={!trigger}>
-      <AppBar position="fixed" color="secondary">
-        <Toolbar>
-          <Logo />
-          {!isMobile ? (
-            <>
-              <Links />
-              <ExpandableSearchField />
-            </>
-          ) : (
-            <>
-              <IconButton
-                style={{ marginLeft: "auto" }}
-                onClick={handleIconButtonClick}
-                colorOverrides={{
-                  icon: {
-                    color: "text",
-                    colorVariant: "primary",
-                    hover: "text",
-                    hoverVariant: "primary",
-                  },
-                }}
-              >
-                {isMobileNavbarExpanded ? <CloseRoundedIcon /> : <MenuRoundedIcon />}
-              </IconButton>
-            </>
-          )}
-        </Toolbar>
-      </AppBar>
-    </Slide>
+    <>
+      <Slide appear={false} direction="down" in={!trigger}>
+        <AppBar position="fixed" color="secondary">
+          <Toolbar>
+            <Logo />
+            {!isMobile ? (
+              <>
+                <Links />
+                <ExpandableSearchField />
+              </>
+            ) : (
+              <>
+                <IconButton
+                  style={{ marginLeft: "auto" }}
+                  onClick={handleIconButtonClick}
+                  colorOverrides={{
+                    icon: {
+                      color: "text",
+                      colorVariant: "primary",
+                      hover: "text",
+                      hoverVariant: "primary",
+                    },
+                  }}
+                >
+                  {isMobileNavbarExpanded ? <CloseRoundedIcon /> : <MenuRoundedIcon />}
+                </IconButton>
+              </>
+            )}
+          </Toolbar>
+        </AppBar>
+      </Slide>
+      <ExpandedMobileNavbar />
+    </>
   );
 };
 

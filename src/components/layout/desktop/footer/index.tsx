@@ -252,13 +252,9 @@ const Footer = () => {
                   return (
                     <Grid>
                       {item.icon ? item.icon : <></>}
-                      <Grid direction="column">
+                      <Grid direction="column" container>
                         {item.links.map(link => (
-                          <Link
-                            href={link.link}
-                            // style={{ marginLeft: "120px" }}
-                            classes={{ root: linkStyles }}
-                          >
+                          <Link href={link.link} classes={{ root: linkStyles }}>
                             <Typography variant="body2">{link.label}</Typography>
                           </Link>
                         ))}
@@ -274,11 +270,10 @@ const Footer = () => {
                 return (
                   <Grid>
                     {item.icon ? item.icon : <></>}
-                    <Grid direction="column">
+                    <Grid direction="column" container>
                       {item.links.map(link => (
                         <Link
                           href={link.link}
-                          // style={{ marginLeft: "120px" }}
                           classes={{
                             root: linkStyles,
                           }}

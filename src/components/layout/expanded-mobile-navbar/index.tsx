@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import useUIStore from "@zustand/ui";
-import { Box, Grid, InputAdornment, Typography } from "@material-ui/core";
 import TextField from "@components/form/TextField";
 import {
   MailOutlineOutlined,
@@ -13,6 +12,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Link from "@components/navigation/Link";
 import { IconButton } from "@components/form/Button";
 import config from "../../../../config/site";
+import { Box, Grid, InputAdornment, Typography } from "@material-ui/core";
 
 interface Props {}
 
@@ -49,7 +49,7 @@ const links = [
 
 // const innerHeight = window.innerHeight;
 
-export const ExpandedMobileNavbar = (props: Props) => {
+const ExpandedMobileNavbar = (props: Props) => {
   const { isMobileNavbarExpanded, shrinkMobileNavbar } = useUIStore();
   const { root, formControlStyles, boldStyle } = useStyles();
 
@@ -189,3 +189,5 @@ export const ExpandedMobileNavbar = (props: Props) => {
     </Box>
   );
 };
+
+export default ExpandedMobileNavbar;

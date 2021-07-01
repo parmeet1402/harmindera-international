@@ -1,8 +1,11 @@
 import React, { ReactChild, ReactChildren, ReactNode } from "react";
+
+// Material UI
+import makeStyles from "@material-ui/core/styles/makeStyles";
+
+// External
 import { AnimatePresence, motion } from "framer-motion";
 import { useLocation } from "@reach/router";
-
-import { makeStyles } from "@material-ui/core/styles";
 import clsx from "clsx";
 
 interface Props {
@@ -56,7 +59,7 @@ const Transition = (props: Props) => {
     <AnimatePresence>
       <motion.div
         className={cover1Styles}
-        key={pathname}
+        key={`${pathname}-1`}
         variants={variants}
         initial="initial"
         animate="animate"
@@ -64,7 +67,7 @@ const Transition = (props: Props) => {
       ></motion.div>
       <motion.div
         className={cover2Styles}
-        key={pathname}
+        key={`${pathname}-2`}
         variants={variants}
         initial="initial"
         animate="animate"
@@ -72,7 +75,7 @@ const Transition = (props: Props) => {
       ></motion.div>
       <motion.div
         className={cover3Styles}
-        key={pathname}
+        key={`${pathname}-3`}
         variants={variants}
         initial="initial"
         animate="animate"

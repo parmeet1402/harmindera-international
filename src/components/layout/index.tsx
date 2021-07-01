@@ -1,110 +1,74 @@
-import React, { useState, useEffect } from "react";
-import { Toolbar } from "@material-ui/core";
+import React, { useEffect } from "react";
 
+// Material UI
+import Box from "@material-ui/core/Box";
+import makeStyles from "@material-ui/core/styles/makeStyles";
+import useTheme from "@material-ui/core/styles/useTheme";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
+
+// Components
 import Navbar from "./desktop/navbar";
 import Footer from "./desktop/footer";
-import Overlay from "./overlay";
 import Transition from "./transition";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
-import { useTheme, makeStyles } from "@material-ui/core/styles";
-import { ExpandedMobileNavbar } from "./expanded-mobile-navbar";
-import useUIStore from "@zustand/ui";
-import useKeyboardOpen from "@utils/hooks/use-keyboard-open";
-// import theme from "../../theme";
 
-interface Props {
-  name?: string;
-  children: React.ReactNode | React.ReactChildren;
-}
+// Hooks
+import useKeyboardOpen from "@utils/hooks/use-keyboard-open";
+
+// State
+import useUIStore from "@zustand/ui";
 
 const useStyles = makeStyles(theme => ({
-  mainStyles: theme.mixins.toolbar,
+  main: theme.mixins.toolbar,
   pad: {
     height: 56,
-    // height: 32,
     [`${theme.breakpoints.up("xs")} and (orientation: landscape)`]: {
       height: 48,
     },
     [theme.breakpoints.up("sm")]: {
       height: 64,
-      // height: 32,
     },
   },
 }));
 
+interface Props {
+  name?: string;
+  children: React.ReactChild | React.ReactChildren | React.ReactNode;
+}
+
 const Layout = (props: Props) => {
   const { children } = props;
-  const { isMobileNavbarExpanded, keyboardOpened, keyboardClosed } = useUIStore();
-  const [isKeyboardOpen] = useKeyboardOpen();
-  const { mainStyles, pad } = useStyles();
 
+  const { isMobileNavbarExpanded, keyboardOpened, keyboardClosed } = useUIStore();
+  const classes = useStyles();
+  const theme = useTheme();
+
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+
+  // Keyboard open state for mobile devices
+  const [isKeyboardOpen] = useKeyboardOpen();
   useEffect(() => {
-    if (isKeyboardOpen) {
-      keyboardOpened();
+    if (!isMobile) {
+      if (isKeyboardOpen) {
+        keyboardOpened();
+      } else {
+        keyboardClosed();
+      }
     } else {
       keyboardClosed();
     }
   }, [isKeyboardOpen]);
 
-  const theme = useTheme();
-  // console.log(theme.mixins.toolbar);
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-
-  // style={{ marginTop: isMobile ? "64px" : "72px" }}
   return (
     <Transition>
-      {/* <Helmet>
-        <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
-      </Helmet>
-      <ThemeProvider theme={theme}>
-        <CssBaseline /> */}
       <Navbar />
-      {/* <Overlay /> */}
-      <ExpandedMobileNavbar />
-      <div className={pad} />
-      {/* {<main>{children}</main>}</Transition> */}
-      {!isMobileNavbarExpanded && <main>{children}</main>}
-
+      <Box className={classes.pad} />
+      {!isMobileNavbarExpanded && <main className={classes.main}>{children}</main>}
       {!isMobileNavbarExpanded && <Footer />}
-      {/* <Toolbar /> */}
-      {/* </ThemeProvider> */}
     </Transition>
   );
 };
 
 export default Layout;
-
-/* const Layout = (props: Props) => {
-  const { children } = props;
-  const { isMobileNavbarExpanded, keyboardOpened, keyboardClosed } = useUIStore();
-  const [isKeyboardOpen] = useKeyboardOpen();
-  const { mainStyles, pad } = useStyles();
-
-  useEffect(() => {
-    if (isKeyboardOpen) {
-      keyboardOpened();
-    } else {
-      keyboardClosed();
-    }
-  }, [isKeyboardOpen]);
-
-  const theme = useTheme();
-  console.log(theme.mixins.toolbar);
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-
-  // style={{ marginTop: isMobile ? "64px" : "72px" }}
-  return (
-    <>
-      <Navbar />
-      <ExpandedMobileNavbar />
-      <div className={pad} />
-      {!isMobileNavbarExpanded && <main>{children}</main>}
-      {!isMobileNavbarExpanded && <Footer />}
-    </>
-  );
-};
-
-export default Layout; */
 
 // DONE: Hover for products link
 // DONE: Set hover and tap color for the links
@@ -120,7 +84,7 @@ export default Layout; */
 // DONE: Navbar opened Footer Information
 // DONE: Search Bar
 
-// TODO: Update theme to have category colors as well
+// DONE: Update theme to have category colors as well
 // TODO: Structure data for categories
 // TODO: Structure data for links
 // TODO: Categories and Products Division
@@ -132,26 +96,3 @@ export default Layout; */
 // TODO: Searching State
 // TODO: Data more than normal height
 // TODO: All Functions which are missing
-/* 
- - Layout Component (Master)
- - SEO Component 
- - Navbar Component
- - Footer Component
-
- - Flex Component
- - Grid Component
-
- - Section Component
-
- - Overlay Component
- - Transition Component
- 
-
-
-
- Extras
- - Banner Component
- - Breadcrumbs Component
-
-
-*/

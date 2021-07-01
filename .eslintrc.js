@@ -18,6 +18,7 @@ module.exports = {
     "plugin:jest-dom/recommended",
     "plugin:testing-library/react",
     "prettier",
+    "plugin:import/recommended",
   ],
   settings: {
     react: {
@@ -53,7 +54,7 @@ module.exports = {
     node: true,
     es6: true,
   },
-  plugins: ["@typescript-eslint", "react", "prettier"],
+  plugins: ["@typescript-eslint", "react", "prettier", "import"],
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
@@ -88,5 +89,68 @@ module.exports = {
     // "import/no-named-as-default": 0,
     "react/display-name": 0,
     "import/extensions": "off",
+
+    "import/order": [
+      "error",
+      {
+        groups: ["builtin", "external", "internal"],
+        pathGroups: [
+          {
+            pattern: "react",
+            group: "external",
+            position: "before",
+          },
+        ],
+        pathGroupsExcludedImportTypes: ["react"],
+        "newlines-between": "always",
+        alphabetize: {
+          order: "asc",
+          caseInsensitive: true,
+        },
+      },
+    ],
+    /* "import/order": [
+      "error",
+      {
+        groups: ["builtin", "external", "internal", ["parent", "sibling"]],
+        pathGroups: [
+          {
+            pattern: "react",
+            group: "external",
+            position: "before",
+          },
+        ],
+        pathGroupsExcludedImportTypes: ["react"],
+        "newlines-between": "always",
+        alphabetize: {
+          order: "asc",
+          caseInsensitive: true,
+        },
+      },
+    ], */
+    /* "import/order": [
+      "error",
+      {
+        groups: ["builtin", "external", "internal", "parent", "sibling"],
+        pathGroups: [
+          {
+            pattern: "react",
+            group: "external",
+            position: "before",
+          },
+        ],
+        pathGroupsExcludedImportTypes: ["builtin"],
+        "newlines-between": "always",
+        alphabetize: {
+          order: "asc",
+          caseInsensitive: true,
+        },
+      },
+    ], */
   },
 };
+
+/* 
+
+
+*/
