@@ -1,7 +1,5 @@
 import React from "react";
 import { Link as GatsbyLink } from "gatsby";
-// import GatsbyLink from "gatsby-plugin-transition-link";
-// import AniLink from "gatsby-plugin-transition-link/AniLink";
 
 import { Link as MaterialLink, LinkProps } from "@material-ui/core";
 

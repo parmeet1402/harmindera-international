@@ -20,15 +20,6 @@ module.exports = {
       },
     }, */
 
-    // `gatsby-plugin-transition-link`,
-    /* {
-      resolve: `gatsby-plugin-transition-link`,
-      options: {
-        // layout: require.resolve("./plugins/gatsby-plugin-top-layout/TopLayout"),
-        // layout: require.resolve("./src/components/layout/index.tsx"),
-      },
-    }, */
-
     {
       resolve: "gatsby-source-contentful",
       options: {
