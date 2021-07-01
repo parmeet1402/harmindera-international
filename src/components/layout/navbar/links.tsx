@@ -21,6 +21,7 @@ const links = [
 
 const WIDTH = "28";
 
+// TODO: Generate this one
 const categories = [
   { name: "JCB Parts", icon: <JCB width={WIDTH} height={WIDTH} /> },
   { name: "Auto Parts", icon: <Rickshaw width={WIDTH} height={WIDTH} /> },

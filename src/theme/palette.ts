@@ -1,3 +1,5 @@
+const { categories } = require("../content/data/categories.json");
+
 type MaterialColor = {
   lighter?: string;
   light: string;
@@ -162,31 +164,31 @@ export const configColors: Config = {
 
   category: {
     trending: {
-      foreground: "#5DA956",
-      background: "#BBE2B6",
+      foreground: categories.trending.colors.foreground,
+      background: categories.trending.colors.background,
     },
     jcbParts: {
-      foreground: "#DC5323",
-      background: "#FCB49C",
+      foreground: categories.jcbParts.colors.foreground,
+      background: categories.jcbParts.colors.jcbParts,
     },
 
     agricultureParts: {
-      foreground: "#4870B7",
-      background: "#A6C3F2",
+      foreground: categories.agricultureParts.colors.foreground,
+      background: categories.jcbParts.colors.agricultureParts,
     },
 
     nut: {
-      foreground: "#3EA0C1",
-      background: "#9EE1FA",
+      foreground: categories.nut.colors.foreground,
+      background: categories.jcbParts.colors.nut,
     },
     bolt: {
-      foreground: "#6032CD",
-      background: "#BFA5F3",
+      foreground: categories.bolt.colors.foreground,
+      background: categories.jcbParts.colors.bolt,
     },
 
     autoParts: {
-      foreground: "#4FB0A4",
-      background: "#B1E7E0",
+      foreground: categories.autoParts.colors.foreground,
+      background: categories.jcbParts.colors.autoParts,
     },
   },
 
