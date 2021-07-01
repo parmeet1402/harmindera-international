@@ -21,32 +21,14 @@ const Link = (props: Props & LinkProps) => {
       color="textPrimary"
       variant="body2"
       component={GatsbyLink}
-      // cover
-      // direction="left"
       to={href}
-      // duration={1}
       underline="none"
       getProps={isActive}
-      // bg="#0803FC"
       {...restProps}
     >
       {children}
     </MaterialLink>
   );
 };
-
-/* <MaterialLink
-      color="textPrimary"
-      variant="body2"
-      component={AniLink}
-      fade
-      to={href}
-      underline="none"
-      getProps={isActive}
-
-      {...restProps}
-    >
-      {children}
-    </MaterialLink> */
 
 export default Link;
