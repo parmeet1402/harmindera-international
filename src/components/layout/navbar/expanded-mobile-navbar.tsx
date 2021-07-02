@@ -1,23 +1,32 @@
 import React, { useState } from "react";
-import useUIStore from "@zustand/ui";
+
+// Material UI
+import Box from "@material-ui/core/Box";
+import Grid from "@material-ui/core/Grid";
+import InputAdornment from "@material-ui/core/InputAdornment";
+import Typography from "@material-ui/core/Typography";
+import makeStyles from "@material-ui/core/styles/makeStyles";
+import MailOutlineOutlined from "@material-ui/icons/MailOutlineOutlined";
+import PhoneOutlined from "@material-ui/icons/PhoneOutlined";
+import RoomOutlined from "@material-ui/icons/RoomOutlined";
+import SearchOutlined from "@material-ui/icons/SearchOutlined";
+import WhatsApp from "@material-ui/icons/WhatsApp";
+
+// Internal
+import config from "../../../../config/site";
+
+// Components
 import TextField from "@components/form/TextField";
-import {
-  MailOutlineOutlined,
-  PhoneOutlined,
-  RoomOutlined,
-  SearchOutlined,
-  WhatsApp,
-} from "@material-ui/icons";
-import { makeStyles } from "@material-ui/core/styles";
 import Link from "@components/navigation/Link";
 import { IconButton } from "@components/form/Button";
-import config from "../../../../config/site";
-import { Box, Grid, InputAdornment, Typography } from "@material-ui/core";
+
+// State
+import useUIStore from "@zustand/ui";
 
 interface Props {}
 
 const useStyles = makeStyles(theme => ({
-  root: {
+  link: {
     "& h4": {
       marginLeft: "8px",
     },
@@ -26,16 +35,15 @@ const useStyles = makeStyles(theme => ({
       color: theme.palette.primary.main,
     },
   },
-  formControlStyles: {
+  formControl: {
     width: "100%",
-    // margin: "0 auto 28px",
     margin: "0 auto 16px",
     "&>div": {
       width: "100%",
       margin: "20px auto",
     },
   },
-  boldStyle: {
+  bold: {
     fontWeight: "bold",
   },
 }));
@@ -47,14 +55,13 @@ const links = [
   { label: "Contact Us", path: "/contact" },
 ];
 
-// const innerHeight = window.innerHeight;
-
 const ExpandedMobileNavbar = (props: Props) => {
+  const classes = useStyles();
+
   const { isMobileNavbarExpanded, shrinkMobileNavbar } = useUIStore();
-  const { root, formControlStyles, boldStyle } = useStyles();
 
+  // Handle Focus state of search field
   const [isFocused, setIsFocused] = useState(false);
-
   const handleFocus = () => {
     setIsFocused(true);
   };
@@ -63,26 +70,11 @@ const ExpandedMobileNavbar = (props: Props) => {
     setIsFocused(false);
   };
 
-  if (!isMobileNavbarExpanded) return <></>;
-
   const isFooterVisible = !isFocused;
 
-  /* height={`${window.innerHeight - 58}px`}
-      width="100%"
-      position="absolute"
-      top="0"
-      mt="59px"
-      px="16px"
-      bgcolor="background.paper" */
+  // Return empty fragment when navbar isn't expanded
+  if (!isMobileNavbarExpanded) return <></>;
 
-  /*   position="absolute"
-      height={`${window.innerHeight - 58}px`}
-      width="100%"
-      top="100px"
-      mt="59px"
-      px="16px"
-      bgcolor="background.paper"
-      className="avi" */
   return (
     <Box
       position="absolute"
@@ -90,7 +82,6 @@ const ExpandedMobileNavbar = (props: Props) => {
       width="100%"
       top="100px"
       mt="-32px"
-      // mt="59px"
       px="16px"
       bgcolor="background.paper"
       className="avi"
@@ -98,7 +89,7 @@ const ExpandedMobileNavbar = (props: Props) => {
       <TextField
         id="nav__search-input-field--mobile"
         placeholder="Search products"
-        formControlProps={{ classes: { root: formControlStyles } }}
+        formControlProps={{ classes: { root: classes.formControl } }}
         inputProps={{ "aria-label": "search" }}
         onFocus={handleFocus}
         onBlur={handleBlur}
@@ -114,7 +105,7 @@ const ExpandedMobileNavbar = (props: Props) => {
           <Link
             href={item.path}
             classes={{
-              root,
+              root: classes.link,
             }}
             // key={item.path}
             // onClick={shrinkMobileNavbar}
@@ -128,7 +119,7 @@ const ExpandedMobileNavbar = (props: Props) => {
 
       {isFooterVisible && (
         <Box position="absolute" bottom="30px" width="80%" ml="2px">
-          <Typography variant="h6" classes={{ root: boldStyle }}>
+          <Typography variant="h6" classes={{ root: classes.bold }}>
             {config.title}
           </Typography>
           <Typography variant="body2" style={{ width: "70%", marginBottom: "16px" }}>

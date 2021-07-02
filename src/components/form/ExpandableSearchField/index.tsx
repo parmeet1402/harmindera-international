@@ -1,20 +1,27 @@
 import React, { useState, useEffect } from "react";
-import {
-  InputAdornment,
-  Card,
-  List,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
-  Divider,
-} from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
-import { SearchOutlined, InboxOutlined } from "@material-ui/icons";
+
+// Material UI
+import InputAdornment from "@material-ui/core/InputAdornment";
+import Card from "@material-ui/core/Card";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemIcon from "@material-ui/core/ListItemIcon";
+import ListItemText from "@material-ui/core/ListItemText";
+import Divider from "@material-ui/core/Divider";
+
+import makeStyles from "@material-ui/core/styles/makeStyles";
+import SearchOutlined from "@material-ui/icons/SearchOutlined";
+import InboxOutlined from "@material-ui/icons/InboxOutlined";
+
+// Components
 import TextField from "@components/form/TextField";
 import { TextButton } from "@components/form/Button";
-import useUIStore from "@zustand/ui";
-/* import { SearchResult, SearchResults } from "./types";
 
+// State
+import useUIStore from "@zustand/ui";
+
+// Todo: Setup State Management
+/* import { SearchResult, SearchResults } from "./types";
 enum _StateMachine {
   "IDLE" = "IDLE",
   "SEARCHING" = "SEARCHING",
@@ -23,29 +30,34 @@ enum _StateMachine {
 } */
 
 const useStyles = makeStyles(theme => ({
-  formControlStyles: {
+  formControl: {
     marginLeft: "auto",
     position: "absolute",
     right: "20px",
     zIndex: (props: { isFocused: boolean }) =>
       props.isFocused ? theme.zIndex.expandedSearchBar : theme.zIndex.expandedSearchBar - 2,
   },
-  searchRootFocusedStyles: {
+
+  searchRootFocused: {
     height: "48px",
     transition: theme.transitions.create(["width", "transform"]),
     width: "36ch",
+
     /* Prevent changing color and border of search field */
     border: "none !important",
     backgroundColor: `${theme.palette.grey["100"]} !important`,
+
     transform: "translateX(-100px)",
   },
-  searchRootStyles: {
+
+  searchRoot: {
     height: "48px",
     transition: theme.transitions.create(["width", "transform"]),
     width: "30ch",
     transform: "translateX(0)",
   },
-  cardRootStyles: {
+
+  cardRoot: {
     position: "absolute",
     zIndex: theme.zIndex.expandedSearchBar,
     background: theme.palette.background.paper,
@@ -58,7 +70,8 @@ const useStyles = makeStyles(theme => ({
     boxShadow: theme.shadows[2],
     transition: theme.transitions.create(["opacity"]),
   },
-  cardRootHiddenStyles: {
+
+  cardRootHidden: {
     position: "absolute",
     // zIndex: theme.zIndex.expandedSearchBar,
     background: theme.palette.background.paper,
@@ -91,27 +104,30 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-type Category = "autoParts" | "agricultureParts" | "nut" | "bolts" | "jcbParts";
+// TODO: Add global type for category
+// type Category = "autoParts" | "agricultureParts" | "nut" | "bolts" | "jcbParts";
 
-const getCategoryIcon = (category: Category) => {
-  /* switch (category) {
-    case "autoParts":
-      return <AutoParts />;
-  } */
-};
+// TODO: Get category icon function
+/* const getCategoryIcon = (category: Category) => {
+  //  switch (category) {
+  //   case "autoParts":
+  //     return <AutoParts />;
+  // } 
+}; */
 
-const generateInitialData = () => {
+// Todo: Generate initial data
+/* const generateInitialData = () => {
   return [];
-  /* return [
-    {
-      icon: React.ReactNode,
-  label: string,
-  redirectURL: string,
-  type: "category" | "product" | "search",
-  category?: string,
-    }
-  ] */
-};
+  //  return [
+  //   {
+  //     icon: React.ReactNode,
+  // label: string,
+  // redirectURL: string,
+  // type: "category" | "product" | "search",
+  // category?: string,
+  //   }
+  // ] 
+}; */
 
 const ExpandableSearchField = () => {
   const [isFocused, setIsFocused] = useState(false);
@@ -124,7 +140,7 @@ const ExpandableSearchField = () => {
   });
 
   useEffect(() => {
-    generateInitialData();
+    // generateInitialData();
   }, []);
 
   const handleFocus = () => {
@@ -137,99 +153,20 @@ const ExpandableSearchField = () => {
     hideBackdrop();
   };
 
-  const {
-    searchRootFocusedStyles,
-    formControlStyles,
-    searchRootStyles,
-    cardRootHiddenStyles,
-    cardRootStyles,
-    showUpButton,
-    hideDownButton,
-  } = useStyles({ isFocused });
-
-  /* 
-
-
-
-  dataStructure = {
-    isLoading: false,
-    data: [],
-    searchTerm: empty_string
-  }
-
-
-  initialState:{
-    isLoading: false,
-    data: []
-    searchTerm: filled_string
-  }
-
-  loadingState: [
-    isLoading: true,
-    searchTerm: filled_string
-  ]
-
-  searchedState: {
-    isLoading: false,
-    data:[].length,
-    searchTErm: filled_string
-  }
-
-  noRessultsFound:{
-    isLoading: false,
-    data: []
-    searchTerm: filled_string
-  }
-  
-  */
+  const classes = useStyles({ isFocused });
 
   return (
     <>
-      <Card classes={{ root: isFocused ? cardRootStyles : cardRootHiddenStyles }}>
+      <Card classes={{ root: isFocused ? classes.cardRoot : classes.cardRootHidden }}>
         <List>
-          <ListItem button>
-            <ListItemIcon>
-              <InboxOutlined />
-            </ListItemIcon>
-            <ListItemText primary="TVS FLange" />
-          </ListItem>
-          <ListItem button>
-            <ListItemIcon>
-              <InboxOutlined />
-            </ListItemIcon>
-            <ListItemText primary="TVS FLange" />
-          </ListItem>
-          <ListItem button>
-            <ListItemIcon>
-              <InboxOutlined />
-            </ListItemIcon>
-            <ListItemText primary="TVS FLange" />
-          </ListItem>
-          <ListItem button>
-            <ListItemIcon>
-              <InboxOutlined />
-            </ListItemIcon>
-            <ListItemText primary="TVS FLange" />
-          </ListItem>
-          <ListItem button>
-            <ListItemIcon>
-              <InboxOutlined />
-            </ListItemIcon>
-            <ListItemText primary="TVS FLange" />
-          </ListItem>
-          <Divider />
-          <ListItem button>
-            <ListItemIcon>
-              <InboxOutlined />
-            </ListItemIcon>
-            <ListItemText primary="TVS FLange" />
-          </ListItem>
-          <ListItem button>
-            <ListItemIcon>
-              <InboxOutlined />
-            </ListItemIcon>
-            <ListItemText primary="TVS FLange" />
-          </ListItem>
+          {[...Array(8)].map(() => (
+            <ListItem button>
+              <ListItemIcon>
+                <InboxOutlined />
+              </ListItemIcon>
+              <ListItemText primary="TVS FLange" />
+            </ListItem>
+          ))}
           <Divider />
           <ListItem button>
             <ListItemIcon>
@@ -242,10 +179,10 @@ const ExpandableSearchField = () => {
       <TextField
         id="nav__search-input-field"
         placeholder="Search Products"
-        formControlProps={{ classes: { root: formControlStyles } }}
+        formControlProps={{ classes: { root: classes.formControl } }}
         classes={{
-          root: isFocused ? searchRootFocusedStyles : searchRootStyles,
-          // focused: searchRootFocusedStyles,
+          root: isFocused ? classes.searchRootFocused : classes.searchRoot,
+          // focused: searchRootFocused,
         }}
         onFocus={handleFocus}
         onBlur={handleBlur}
@@ -260,7 +197,7 @@ const ExpandableSearchField = () => {
       />
       <TextButton
         classes={{
-          root: isFocused ? showUpButton : hideDownButton,
+          root: isFocused ? classes.showUpButton : classes.hideDownButton,
         }}
         size="small"
         bgColor="text"

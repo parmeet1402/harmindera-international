@@ -10,7 +10,7 @@ import useMediaQuery from "@material-ui/core/useMediaQuery";
 import Navbar from "./navbar";
 import Footer from "./footer";
 import Transition from "./transition";
-import SEO from "./seo"
+import SEO from "./seo";
 
 // Hooks
 import useKeyboardOpen from "@utils/hooks/use-keyboard-open";
@@ -19,15 +19,9 @@ import useKeyboardOpen from "@utils/hooks/use-keyboard-open";
 import useUIStore from "@zustand/ui";
 
 const useStyles = makeStyles(theme => ({
-  main: theme.mixins.toolbar,
-  pad: {
-    height: 56,
-    [`${theme.breakpoints.up("xs")} and (orientation: landscape)`]: {
-      height: 48,
-    },
-    [theme.breakpoints.up("sm")]: {
-      height: 64,
-    },
+  pad: theme.mixins.toolbar,
+  main: {
+    minHeight: "calc(100vh - 60px)",
   },
 }));
 
