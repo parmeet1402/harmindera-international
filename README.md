@@ -11,6 +11,7 @@ It is an e-commerce website that serves as a product catalogue for a manufacturi
 1. [Technologies](#technologies)
 2. [Installation & Setup Instructions](#installation-and-setup-instructions)
 
+
 <br />
 
 
@@ -45,4 +46,5 @@ To Start Server:
 
 To Visit App:
 
-`localhost:8000`  
+
+`localhost:8000` 

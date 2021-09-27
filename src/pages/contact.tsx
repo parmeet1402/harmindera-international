@@ -1,11 +1,12 @@
-import React from 'react'
+import Layout from "@components/layout";
+import React from "react";
 
 const ContactUsPage = () => {
-    return (
-        <div>
-            <h2>Contact Us Page</h2>
-        </div>
-    )
-}
+  return (
+    <Layout>
+      <h2>Contact Us Page</h2>
+    </Layout>
+  );
+};
 
-export default ContactUsPage
+export default ContactUsPage;

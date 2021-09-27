@@ -1,3 +1,4 @@
+import Layout from "@components/layout";
 import React from "react";
 
 const ProductsPage = () => {
@@ -8,9 +9,9 @@ const ProductsPage = () => {
         /products/category/product-name -> Single Product Page
      */
   return (
-    <div>
+    <Layout>
       <h2>Products page</h2>
-    </div>
+    </Layout>
   );
 };
 

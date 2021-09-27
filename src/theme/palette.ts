@@ -1,3 +1,5 @@
+const { categories } = require("../content/data/categories.json");
+
 type MaterialColor = {
   lighter?: string;
   light: string;
@@ -23,6 +25,8 @@ type BackgroundColor = {
   default: string;
   level2: string;
   level1: string;
+  dark1: string;
+  dark2: string;
 };
 
 type ActionColor = {
@@ -55,9 +59,24 @@ type GreyColor = {
   A700?: string;
 };
 
+type SingleCategoryColor = {
+  foreground: string;
+  background: string;
+};
+
+type CategoryColor = {
+  trending: SingleCategoryColor;
+  jcbParts: SingleCategoryColor;
+  autoParts: SingleCategoryColor;
+  nut: SingleCategoryColor;
+  bolt: SingleCategoryColor;
+  agricultureParts: SingleCategoryColor;
+};
+
 type Config = {
   common: CommonColor;
   primary: MaterialColor;
+  secondary: MaterialColor;
   error: MaterialColor;
   warning: MaterialColor;
   success: MaterialColor;
@@ -65,6 +84,7 @@ type Config = {
   text: TextColor;
   background: BackgroundColor;
   action: ActionColor;
+  category: CategoryColor;
 };
 
 export const configColors: Config = {
@@ -79,6 +99,12 @@ export const configColors: Config = {
     main: "#035AFC",
     dark: "#0803FC",
     contrastText: "#FFFFFF",
+  },
+  secondary: {
+    main: "#fff",
+    light: "#faf",
+    dark: "#fff ",
+    contrastText: "#fff",
   },
 
   error: {
@@ -105,14 +131,6 @@ export const configColors: Config = {
     300: "#E9EAEF",
     400: "#B5BDC9",
     500: "#616161",
-    /*  "600": "#757575",
-    "700": "#616161",
-    "800": "#424242",
-    "900": "#212121",
-    A100: "#d5d5d5",
-    A200: "#aaaaaa",
-    A400: "#303030",
-    A700: "#616161", */
   },
 
   text: {
@@ -127,20 +145,53 @@ export const configColors: Config = {
     default: "#FFFFFF",
     level2: "#3162BD",
     level1: "#F4F4F5",
+    dark1: "#0803FC",
+    dark2: "#0B0D17",
   },
   action: {
     active: "#035AFC",
-    hover: "#0803FC",
-    hoverOpacity: 0.04,
-    selected: "#0803FC",
+    hover: "#0803FC10",
+    hoverOpacity: 0.1,
+    selected: "#0803FC08",
     selectedOpacity: 0.08,
     disabled: "#616161",
-    disabledBackground: "#E9EAEF",
+    disabledBackground: "#E9EAEF38",
     disabledOpacity: 0.38,
-    focus: "#0803FC",
+    focus: "#0803FC12",
     focusOpacity: 0.12,
     activatedOpacity: 0.12,
   },
+
+  category: {
+    trending: {
+      foreground: categories.trending.colors.foreground,
+      background: categories.trending.colors.background,
+    },
+    jcbParts: {
+      foreground: categories.jcbParts.colors.foreground,
+      background: categories.jcbParts.colors.jcbParts,
+    },
+
+    agricultureParts: {
+      foreground: categories.agricultureParts.colors.foreground,
+      background: categories.jcbParts.colors.agricultureParts,
+    },
+
+    nut: {
+      foreground: categories.nut.colors.foreground,
+      background: categories.jcbParts.colors.nut,
+    },
+    bolt: {
+      foreground: categories.bolt.colors.foreground,
+      background: categories.jcbParts.colors.bolt,
+    },
+
+    autoParts: {
+      foreground: categories.autoParts.colors.foreground,
+      background: categories.jcbParts.colors.autoParts,
+    },
+  },
+
   // Status: Not Implemented
   /* type: "light", */
   /* divider: "#1E283920", */
@@ -152,11 +203,4 @@ export const configColors: Config = {
     dark: "#1976d2",
     contrastText: "#fff",
   }, */
-  /*   secondary: {
-    main: "rgb(220, 0, 78)",
-    light: "rgb(227, 51, 113)",
-    dark: "rgb(154, 0, 54)",
-    contrastText: "#fff",
-  },
-  */
 };

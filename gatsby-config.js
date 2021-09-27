@@ -1,16 +1,18 @@
-const path = require("path");
+// const path = require("path");
 const { author, title, description, keywords, siteUrl, defaultLang } = require("./config/site");
 
 module.exports = {
   siteMetadata: {
     title,
+    titleTemplate: `%s | ${title}`,
     siteUrl,
     keywords,
     description,
     author,
+    lang: defaultLang,
   },
   plugins: [
-    // TODO: Create Tracking Id for google analaytics
+    // TODO: Create Tracking Id for google analytics
     /* {
       resolve: "gatsby-plugin-google-analytics",
       options: {
@@ -108,26 +110,6 @@ module.exports = {
         // stylesProvider: {
         //   injectFirst: true,
         // },
-      },
-    },
-
-    {
-      resolve: "gatsby-plugin-root-import",
-      options: {
-        config: path.join(__dirname, "config"),
-        src: path.join(__dirname, "src"),
-        components: path.join(__dirname, "src/components"),
-        containers: path.join(__dirname, "src/containers"),
-        content: path.join(__dirname, "src/content"),
-        assets: path.join(__dirname, "src/content/assets"),
-        context: path.join(__dirname, "src/context"),
-        hooks: path.join(__dirname, "src/utils/hooks"),
-        constants: path.join(__dirname, "src/utils/constants"),
-        pages: path.join(__dirname, "src/pages"),
-        services: path.join(__dirname, "src/services"),
-        styles: path.join(__dirname, "src/styles"),
-        templates: path.join(__dirname, "src/templates"),
-        utils: path.join(__dirname, "src/utils"),
       },
     },
   ],

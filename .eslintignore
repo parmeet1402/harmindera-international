@@ -4,3 +4,10 @@
 .vscode/*
 
 public/*
+# node_modules
+# public
+# coverage
+# docs
+# !.storybook
+
+src/*

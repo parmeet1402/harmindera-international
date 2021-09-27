@@ -1,16 +1,12 @@
 import React from "react";
+import Layout, { SEO } from "@components/layout";
 
 const LandingPage = () => {
   return (
-    <div>
-      {/* <Image
-        fileName={"assets/images/company-logo.svg"}
-        alt={"dsafads"}
-        style={{ width: "200px", height: "200px" }}
-      /> */}
-      {/* <CompanyLogo /> */}
-      <h2>Landing Page</h2>
-    </div>
+    <Layout>
+      <SEO />
+      <h3>Reliable Manufacturer of JCB Parts</h3>
+    </Layout>
   );
 };
 

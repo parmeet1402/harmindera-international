@@ -1,11 +1,12 @@
-import React from 'react'
+import React from "react";
+import Layout from "@components/layout";
 
 const TermsAndConditionsPage = () => {
-    return (
-        <div>
-            <h2>Terms & Conditions Page</h2>
-        </div>
-    )
-}
+  return (
+    <Layout>
+      <h2>Terms & Conditions Page</h2>
+    </Layout>
+  );
+};
 
 export default TermsAndConditionsPage;

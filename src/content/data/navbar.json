@@ -1,0 +1,24 @@
+{
+  "links": {
+    "home": {
+      "label": "Home",
+      "slug": "",
+      "hasSubLinks": false
+    },
+    "about": {
+      "label": "About",
+      "slug": "about",
+      "hasSubLinks": false
+    },
+    "products": {
+      "label": "Products",
+      "slug": "products",
+      "hasSubLinks": true
+    },
+    "contactUs": {
+      "label": "Contact Us",
+      "slug": "contact-us",
+      "hasSubLinks": false
+    }
+  }
+}

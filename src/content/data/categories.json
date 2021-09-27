@@ -1,0 +1,86 @@
+{
+  "categories": {
+    "trending": {
+      "_id": "cat-1",
+
+      "label": "Trending",
+      "description": "",
+      "slug": "trending",
+      "colors": {
+        "main": "#5BA554",
+        "foreground": "#5DA956",
+        "background": "#BBE2B6"
+      },
+      "tags": ["Trending"],
+      "icon": "Trending"
+    },
+    "jcbParts": {
+      "_id": "cat-2",
+      "label": "JCB Parts",
+      "description": "",
+      "slug": "jcb-parts",
+      "colors": {
+        "main": "#E37650",
+        "foreground": "#DC5323",
+        "background": "#FCB49C"
+      },
+      "tags": ["JCB Parts"],
+      "icon": "JCB"
+    },
+    "agricultureParts": {
+      "_id": "cat-3",
+      "label": "Agriculture Parts",
+      "description": "",
+      "slug": "agriculture-parts",
+      "colors": {
+        "main": "#56B3A8",
+        "foreground": "#4870B7",
+        "background": "#A6C3F2"
+      },
+      "tags": ["Agriculture Parts"],
+      "icon": "Tractor"
+    },
+
+    "nut": {
+      "_id": "cat-4",
+      "label": "Nut",
+      "description": "",
+      "slug": "nut",
+      "colors": {
+        "main": "#4BA6C5",
+        "foreground": "#3EA0C1",
+        "background": "#9EE1FA"
+      },
+      "tags": ["nut"],
+      "icon": "Nut"
+    },
+
+    "bolt": {
+      "_id": "cat-5",
+      "label": "Bolt",
+      "description": "",
+      "slug": "bolt",
+      "colors": {
+        "main": "#8765D9",
+        "foreground": "#6032CD",
+        "background": "#BFA5F3"
+      },
+      "tags": ["Bolt"],
+      "icon": "Bolt"
+    },
+
+    "autoParts": {
+      "_id": "cat-6",
+      "label": "Auto Parts",
+      "description": "",
+      "slug": "auto-parts",
+      "colors": {
+        "main": "#7190C7",
+        "foreground": "#4FB0A4",
+        "background": "#B1E7E0"
+      },
+      "tags": ["Auto Parts"],
+      "icon": "Rickshaw"
+    }
+  }
+}
