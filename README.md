@@ -4,11 +4,13 @@ It is an e-commerce website that serves as a product catalogue for a manufacturi
 [![Status](https://img.shields.io/badge/Status-Development-blue.svg)](https://shields.io/)
 
 
+
 <br />
 
 ### Table of contents
-1. Technologies
-2. Installation & Setup Instructions
+1. [Technologies](#technologies)
+2. [Installation & Setup Instructions](#installation-and-setup-instructions)
+
 
 <br />
 
@@ -25,7 +27,7 @@ It is an e-commerce website that serves as a product catalogue for a manufacturi
 
 <br />
 
-### Installation & Setup Instructions
+### Installation and Setup Instructions
  
 
 Clone down this repository. You will need `node` and `npm` installed globally on your machine.  
@@ -43,5 +45,6 @@ To Start Server:
 `npm start`  
 
 To Visit App:
+
 
 `localhost:8000` 
