@@ -57,6 +57,14 @@ declare module "@material-ui/core/styles/zIndex" {
   }
 }
 
+// declare module "@material-ui/core/styles/createBreakpoints" {
+//   interface Breakpoints {
+//     values: {
+//       xsm: number;
+//     };
+//   }
+// }
+
 const getButtonPadding = (fontSize: number) => {
   return `${(fontSize * 1.18725).toPrecision(2)}px ${(fontSize * 2.18725).toPrecision(
     2,
@@ -73,7 +81,7 @@ const breakpoints = createBreakpoints({
     md: 768,
     lg: 992,
     xl: 1200, */
-    
+
     xl: 1920,
     lg: 1280,
     md: 960,

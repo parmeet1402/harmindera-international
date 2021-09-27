@@ -77,7 +77,6 @@ const Links = () => {
             >
               {label}
             </Link>
-            {/*  */}
             {index === 2 && isProductsCardHoverVisible && (
               <CategoriesLinksCard setProductsCardHoverVisible={setProductsCardHoverVisible} />
             )}
