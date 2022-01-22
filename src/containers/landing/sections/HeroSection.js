@@ -10,13 +10,18 @@ import makeStyles from "@material-ui/core/styles/makeStyles";
 import Typewriter from "typewriter-effect";
 import { Typography } from "@material-ui/core";
 import { SolidButton, TextButton } from "@components/form/Button";
+import { GlobeIcon } from "@content/assets/CustomIcon";
 
 const useStyles = makeStyles(theme => ({
   grid: {
     backgroundColor: theme.palette.common.white,
     height: "100vh",
-    padding: theme.spacing(12),
+    padding: theme.spacing(14),
   },
+  leftGridItem: {
+    marginTop: theme.spacing(6),
+  },
+  rightGridItem: {},
   typewriterEffectWrapper: {
     color: theme.palette.primary.dark,
     display: "inline-block",
@@ -27,19 +32,38 @@ const useStyles = makeStyles(theme => ({
   primaryButtonStyles: {
     marginRight: theme.spacing(1),
   },
+  heading: {
+    // fontWeight: 900,
+  },
   subHeading: {
-    width: "80%",
+    // width: "85%",
+    margin: theme.spacing(1, 0, 6),
+  },
+  secondaryText: {
+    marginLeft: theme.spacing(1),
   },
 }));
 
 const content = {
-  heading: "Reliable manufacturer of ",
-  subHeading:
-    "Our team comprising of 500+ highly skilled engineers and workers is here to fulfil needs for your business.",
+  heading: (
+    <>
+      Reliable manufacturer <br /> of{" "}
+    </>
+  ),
+  subHeading: (
+    <>
+      Our team comprising of 500+ highly skilled engineers <br /> and workers is here to fulfil
+      needs for your business.
+    </>
+  ),
   primaryButton: "Browser Products",
   secondaryButton: "Contact Us",
-  secondaryText:
-    "Trusted by over 160+ beloved clients of ours from all the leading countries in the world",
+  secondaryText: (
+    <>
+      Trusted by over 160+ beloved clients of ours from <br /> all the leading countries in the
+      world
+    </>
+  ),
   images: [
     {
       id: "b9314081-f741-5cfb-a4f3-59f6b604af46",
@@ -90,10 +114,9 @@ const HeroSection = () => {
 
   return (
     <Grid container spacing={2} className={classes.grid}>
-      <Grid item xs={6}>
-        <Typography variant="h3" component="h1">
+      <Grid item xs={6} className={classes.leftGridItem}>
+        <Typography variant="h3" className={classes.heading} component="h1">
           {content.heading}
-          <br />
           <Typewriter
             color="red"
             options={{
@@ -110,12 +133,19 @@ const HeroSection = () => {
           {content.subHeading}
         </Typography>
         <SolidButton size="medium" className={classes.primaryButtonStyles}>
-          {content.primaryButton}
+          {content.primaryButton}{" "}
         </SolidButton>
         <TextButton size="medium">{content.secondaryButton}</TextButton>
+        <br />
+        <Box display="flex" mt={6}>
+          <GlobeIcon />
+          <Typography className={classes.secondaryText} color="textSecondary">
+            {content.secondaryText}
+          </Typography>
+        </Box>
       </Grid>
-      <Grid item xs={5}>
-        H
+      <Grid item xs={5} className={classes.rightGridItem}>
+        {/* TODO: image slider */}
       </Grid>
     </Grid>
   );
@@ -130,7 +160,7 @@ export default HeroSection;
 // DONE: Heading UI
 // DONE: Subheading UI
 // DONE: Buttons UI
-// TODO: Secondary Text
+// DONE: Secondary Text
 // TODO: Image Carousel UI (Slider)
 
 // TODO: Buttons Functionality

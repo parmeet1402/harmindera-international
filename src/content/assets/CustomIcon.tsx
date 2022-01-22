@@ -208,4 +208,44 @@ export const Trending = (props: any) => (
   </svg>
 );
 
+export const GlobeIcon = (props: any) => (
+  <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path
+      d="M22 38.5C31.1127 38.5 38.5 31.1127 38.5 22C38.5 12.8873 31.1127 5.5 22 5.5C12.8873 5.5 5.5 12.8873 5.5 22C5.5 31.1127 12.8873 38.5 22 38.5Z"
+      stroke="#2C3E50"
+      stroke-width="2.75"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M6.6001 16.5H37.4001"
+      stroke="#2C3E50"
+      stroke-width="2.75"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M6.6001 27.5H37.4001"
+      stroke="#2C3E50"
+      stroke-width="2.75"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M21.0834 5.5C17.9948 10.4493 16.3574 16.1661 16.3574 22C16.3574 27.8339 17.9948 33.5507 21.0834 38.5"
+      stroke="#2C3E50"
+      stroke-width="2.75"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M22.9165 5.5C26.005 10.4493 27.6425 16.1661 27.6425 22C27.6425 27.8339 26.005 33.5507 22.9165 38.5"
+      stroke="#2C3E50"
+      stroke-width="2.75"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  </svg>
+);
+
 export default CustomIcon;

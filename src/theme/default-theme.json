@@ -1,0 +1,378 @@
+{
+  "theme": {
+    "breakpoints": {
+      "keys": ["xs", "sm", "md", "lg", "xl"],
+      "values": {
+        "xl": 1920,
+        "lg": 1280,
+        "md": 960,
+        "sm": 600,
+        "xs": 0
+      }
+    },
+    "direction": "ltr",
+    "mixins": {
+      "toolbar": {
+        "minHeight": 56,
+        "@media (min-width:0px) and (orientation: landscape)": {
+          "minHeight": 48
+        },
+        "@media (min-width:600px)": {
+          "minHeight": 64
+        }
+      }
+    },
+    "overrides": {
+      "MuiGrid": {
+        "root": {
+          "wordBreak": "break-word"
+        }
+      },
+      "MuiCard": {
+        "root": {
+          "BORDER_RADIUS": 5
+        }
+      },
+      "MuiButton": {
+        "root": {
+          "padding": "19px 35px !important"
+        },
+        "sizeLarge": {
+          "padding": "24px 44px !important",
+          "& span:first-of-type": {
+            "fontSize": "19px"
+          }
+        },
+        "sizeSmall": {
+          "padding": "14px 26px !important",
+          "& span:first-of-type": {
+            "fontSize": "13px"
+          }
+        },
+        "label": {
+          "fontSize": "1rem",
+          "textTransform": "none",
+          "fontWeight": 500
+        },
+        "outlinedSecondary": {}
+      },
+      "MuiInput": {
+        "root": {
+          "label + &": {
+            "marginTop": "24px"
+          },
+          "backgroundColor": "#F4F4F5",
+          "borderRadius": "10px",
+          "padding": "11px 14px",
+          "width": "424px",
+          "position": "relative",
+          "border": "1px solid #E9EAEB",
+          "&$focused": {
+            "backgroundColor": "#FFFFFF",
+            "border": "1px solid #B5BDC9"
+          }
+        },
+        "multiline": {
+          "padding": "16px 14px"
+        }
+      },
+      "MuiFormHelperText": {
+        "root": {
+          "fontWeight": 500
+        }
+      },
+      "MuiAppBar": {
+        "colorSecondary": {
+          "minHeight": "72px",
+          "boxShadow": "0px 1px 0px 0px rgba(0,0,0,0.12)",
+          "@media (max-width:959.95px)": {
+            "minHeight": "64px"
+          }
+        }
+      },
+      "MuiToolbar": {
+        "root": {
+          "minHeight": "72px !important",
+          "@media (max-width:959.95px)": {
+            "minHeight": "64px !important",
+            "paddingLeft": "16px !important",
+            "paddingRight": "16px !important"
+          }
+        }
+      }
+    },
+    "palette": {
+      "common": {
+        "black": "#1E2839",
+        "white": "#FFFFFF"
+      },
+      "type": "light",
+      "primary": {
+        "lighter": "#ACC8FE",
+        "light": "#3162BD",
+        "main": "#035AFC",
+        "dark": "#0803FC",
+        "contrastText": "#FFFFFF"
+      },
+      "secondary": {
+        "main": "#fff",
+        "light": "#faf",
+        "dark": "#fff ",
+        "contrastText": "#fff"
+      },
+      "error": {
+        "light": "#FF9983",
+        "main": "#FF3232",
+        "dark": "#B71934",
+        "contrastText": "#fff"
+      },
+      "warning": {
+        "light": "#FFD588",
+        "main": "#FFA93A",
+        "dark": "#B7661D",
+        "contrastText": "#fff"
+      },
+      "info": {
+        "light": "#64b5f6",
+        "main": "#2196f3",
+        "dark": "#1976d2",
+        "contrastText": "#fff"
+      },
+      "success": {
+        "light": "#C3EE70",
+        "main": "#7CC918",
+        "dark": "#4B900C",
+        "contrastText": "#fff"
+      },
+      "grey": {
+        "50": "#fafafa",
+        "100": "#F4F4F5",
+        "200": "#E9EAEB",
+        "300": "#E9EAEF",
+        "400": "#B5BDC9",
+        "500": "#616161",
+        "600": "#757575",
+        "700": "#616161",
+        "800": "#424242",
+        "900": "#212121",
+        "A100": "#d5d5d5",
+        "A200": "#aaaaaa",
+        "A400": "#303030",
+        "A700": "#616161"
+      },
+      "contrastThreshold": 3,
+      "tonalOffset": 0.2,
+      "text": {
+        "primary": "#1E2839",
+        "secondary": "#1E283950",
+        "disabled": "#1E283920",
+        "hint": "#1E283920"
+      },
+      "divider": "rgba(0, 0, 0, 0.12)",
+      "background": {
+        "paper": "#FFFFFF",
+        "default": "#FFFFFF",
+        "level2": "#3162BD",
+        "level1": "#F4F4F5",
+        "dark1": "#0803FC",
+        "dark2": "#0B0D17"
+      },
+      "action": {
+        "active": "#035AFC",
+        "hover": "#0803FC10",
+        "hoverOpacity": 0.1,
+        "selected": "#0803FC08",
+        "selectedOpacity": 0.08,
+        "disabled": "#616161",
+        "disabledBackground": "#E9EAEF38",
+        "disabledOpacity": 0.38,
+        "focus": "#0803FC12",
+        "focusOpacity": 0.12,
+        "activatedOpacity": 0.12
+      },
+      "category": {
+        "trending": {
+          "foreground": "#5DA956",
+          "background": "#BBE2B6"
+        },
+        "jcbParts": {
+          "foreground": "#DC5323"
+        },
+        "agricultureParts": {
+          "foreground": "#4870B7"
+        },
+        "nut": {
+          "foreground": "#3EA0C1"
+        },
+        "bolt": {
+          "foreground": "#6032CD"
+        },
+        "autoParts": {
+          "foreground": "#4FB0A4"
+        }
+      }
+    },
+    "props": {},
+    "shadows": [
+      "none",
+      "0px 1px 0px 0px rgba(0,0,0,0.12)",
+      "0px 1px 4px 0px rgba(0,0,0,0.12)",
+      "0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12)",
+      "0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12)",
+      "0px 3px 5px -1px rgba(0,0,0,0.2),0px 5px 8px 0px rgba(0,0,0,0.14),0px 1px 14px 0px rgba(0,0,0,0.12)",
+      "0px 3px 5px -1px rgba(0,0,0,0.2),0px 6px 10px 0px rgba(0,0,0,0.14),0px 1px 18px 0px rgba(0,0,0,0.12)",
+      "0px 4px 5px -2px rgba(0,0,0,0.2),0px 7px 10px 1px rgba(0,0,0,0.14),0px 2px 16px 1px rgba(0,0,0,0.12)",
+      "0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12)",
+      "0px 5px 6px -3px rgba(0,0,0,0.2),0px 9px 12px 1px rgba(0,0,0,0.14),0px 3px 16px 2px rgba(0,0,0,0.12)",
+      "0px 6px 6px -3px rgba(0,0,0,0.2),0px 10px 14px 1px rgba(0,0,0,0.14),0px 4px 18px 3px rgba(0,0,0,0.12)",
+      "0px 6px 7px -4px rgba(0,0,0,0.2),0px 11px 15px 1px rgba(0,0,0,0.14),0px 4px 20px 3px rgba(0,0,0,0.12)",
+      "0px 7px 8px -4px rgba(0,0,0,0.2),0px 12px 17px 2px rgba(0,0,0,0.14),0px 5px 22px 4px rgba(0,0,0,0.12)",
+      "0px 7px 8px -4px rgba(0,0,0,0.2),0px 13px 19px 2px rgba(0,0,0,0.14),0px 5px 24px 4px rgba(0,0,0,0.12)",
+      "0px 7px 9px -4px rgba(0,0,0,0.2),0px 14px 21px 2px rgba(0,0,0,0.14),0px 5px 26px 4px rgba(0,0,0,0.12)",
+      "0px 8px 9px -5px rgba(0,0,0,0.2),0px 15px 22px 2px rgba(0,0,0,0.14),0px 6px 28px 5px rgba(0,0,0,0.12)",
+      "0px 8px 10px -5px rgba(0,0,0,0.2),0px 16px 24px 2px rgba(0,0,0,0.14),0px 6px 30px 5px rgba(0,0,0,0.12)",
+      "0px 8px 11px -5px rgba(0,0,0,0.2),0px 17px 26px 2px rgba(0,0,0,0.14),0px 6px 32px 5px rgba(0,0,0,0.12)",
+      "0px 9px 11px -5px rgba(0,0,0,0.2),0px 18px 28px 2px rgba(0,0,0,0.14),0px 7px 34px 6px rgba(0,0,0,0.12)",
+      "0px 9px 12px -6px rgba(0,0,0,0.2),0px 19px 29px 2px rgba(0,0,0,0.14),0px 7px 36px 6px rgba(0,0,0,0.12)",
+      "0px 10px 13px -6px rgba(0,0,0,0.2),0px 20px 31px 3px rgba(0,0,0,0.14),0px 8px 38px 7px rgba(0,0,0,0.12)",
+      "0px 10px 13px -6px rgba(0,0,0,0.2),0px 21px 33px 3px rgba(0,0,0,0.14),0px 8px 40px 7px rgba(0,0,0,0.12)",
+      "0px 10px 14px -6px rgba(0,0,0,0.2),0px 22px 35px 3px rgba(0,0,0,0.14),0px 8px 42px 7px rgba(0,0,0,0.12)",
+      "0px 11px 14px -7px rgba(0,0,0,0.2),0px 23px 36px 3px rgba(0,0,0,0.14),0px 9px 44px 8px rgba(0,0,0,0.12)",
+      "0px 11px 15px -7px rgba(0,0,0,0.2),0px 24px 38px 3px rgba(0,0,0,0.14),0px 9px 46px 8px rgba(0,0,0,0.12)"
+    ],
+    "typography": {
+      "htmlFontSize": 16,
+      "fontFamily": "'Poppins', sans-serif",
+      "fontSize": 14,
+      "fontWeightLight": 300,
+      "fontWeightRegular": 400,
+      "fontWeightMedium": 500,
+      "fontWeightBold": 700,
+      "h1": {
+        "fontFamily": "'Poppins', sans-serif",
+        "fontWeight": 300,
+        "fontSize": "93px",
+        "lineHeight": 1.4,
+        "letterSpacing": "-1.5px"
+      },
+      "h2": {
+        "fontFamily": "'Poppins', sans-serif",
+        "fontWeight": 700,
+        "fontSize": "58px",
+        "lineHeight": 1.425,
+        "letterSpacing": "-0.5px"
+      },
+      "h3": {
+        "fontFamily": "'Poppins', sans-serif",
+        "fontWeight": 700,
+        "fontSize": "46px",
+        "lineHeight": 1.45,
+        "letterSpacing": "0px"
+      },
+      "h4": {
+        "fontFamily": "'Poppins', sans-serif",
+        "fontWeight": 400,
+        "fontSize": "33px",
+        "lineHeight": 1.475,
+        "letterSpacing": "0.25px"
+      },
+      "h5": {
+        "fontFamily": "'Poppins', sans-serif",
+        "fontWeight": 400,
+        "fontSize": "23px",
+        "lineHeight": 1.5,
+        "letterSpacing": "0px"
+      },
+      "h6": {
+        "fontFamily": "'Poppins', sans-serif",
+        "fontWeight": 500,
+        "fontSize": "19px",
+        "lineHeight": 1.525,
+        "letterSpacing": "0.15px"
+      },
+      "subtitle1": {
+        "fontFamily": "'Poppins', sans-serif",
+        "fontWeight": 400,
+        "fontSize": "18px",
+        "lineHeight": 1.525,
+        "letterSpacing": "0.15px"
+      },
+      "subtitle2": {
+        "fontFamily": "'Poppins', sans-serif",
+        "fontWeight": 500,
+        "fontSize": "13px",
+        "lineHeight": 1.525,
+        "letterSpacing": "0.1px"
+      },
+      "body1": {
+        "fontFamily": "'Poppins', sans-serif",
+        "fontWeight": 400,
+        "fontSize": "15px",
+        "lineHeight": 1.525,
+        "letterSpacing": "0.5px"
+      },
+      "body2": {
+        "fontFamily": "'Poppins', sans-serif",
+        "fontWeight": 400,
+        "fontSize": "13px",
+        "lineHeight": 1.525,
+        "letterSpacing": "0.25px"
+      },
+      "button": {
+        "fontFamily": "'Poppins', sans-serif",
+        "fontWeight": 400,
+        "fontSize": "13px",
+        "lineHeight": 1.525,
+        "textTransform": "uppercase",
+        "letterSpacing": "1.25px"
+      },
+      "caption": {
+        "fontFamily": "'Poppins', sans-serif",
+        "fontWeight": 400,
+        "fontSize": "12px",
+        "lineHeight": 1.525,
+        "letterSpacing": "0.4px"
+      },
+      "overline": {
+        "fontFamily": "'Poppins', sans-serif",
+        "fontWeight": 300,
+        "fontSize": "10px",
+        "lineHeight": 1.525,
+        "textTransform": "uppercase",
+        "letterSpacing": "1.5px"
+      }
+    },
+    "shape": {
+      "borderRadius": 10
+    },
+    "transitions": {
+      "easing": {
+        "easeInOut": "cubic-bezier(0.4, 0, 0.2, 1)",
+        "easeOut": "cubic-bezier(0.0, 0, 0.2, 1)",
+        "easeIn": "cubic-bezier(0.4, 0, 1, 1)",
+        "sharp": "cubic-bezier(0.4, 0, 0.6, 1)"
+      },
+      "duration": {
+        "shortest": 150,
+        "shorter": 200,
+        "short": 250,
+        "standard": 300,
+        "complex": 375,
+        "enteringScreen": 225,
+        "leavingScreen": 195
+      }
+    },
+    "zIndex": {
+      "mobileStepper": 1000,
+      "speedDial": 1050,
+      "appBar": 1100,
+      "drawer": 1200,
+      "modal": 1300,
+      "snackbar": 1400,
+      "tooltip": 1500,
+      "backdrop": 1101,
+      "navbarDropdownMenu": 1102,
+      "expandedSearchBar": 21103
+    }
+  }
+}

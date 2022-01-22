@@ -139,7 +139,8 @@ const HarminderaTheme = createMuiTheme({
     },
     MuiButton: {
       root: {
-        padding: getButtonPadding(16),
+        padding: getButtonPadding(15),
+        fontSize: configTypography.h6?.fontSize,
       },
       sizeLarge: {
         padding: getButtonPadding(20),

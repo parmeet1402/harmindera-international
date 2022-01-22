@@ -135,7 +135,7 @@ export const configColors: Config = {
 
   text: {
     primary: "#1E2839",
-    secondary: "#1E283950",
+    secondary: "#616161",
     disabled: "#1E283920",
     hint: "#1E283920",
   },
