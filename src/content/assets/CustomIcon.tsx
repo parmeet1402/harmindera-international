@@ -248,16 +248,33 @@ export const GlobeIcon = (props: any) => (
   </svg>
 );
 
-export const AnchorArrowDownIcon = (props: any) => (
-  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path
-      d="M15 7.5L10 12.5L5 7.5"
-      stroke="#0A0E20"
-      stroke-width="1.75"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-    />
-  </svg>
-);
+export const AnchorArrowDownIcon = (props: any) => {
+  const rotationAngle =
+    props.direction === "down"
+      ? 0
+      : props.direction === "up"
+      ? 180
+      : props.direction === "left"
+      ? 90
+      : -90;
+  return (
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 20 20"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      transform={`rotate(${rotationAngle})`}
+    >
+      <path
+        d="M15 7.5L10 12.5L5 7.5"
+        stroke={props.color || "#0A0E20"}
+        stroke-width="1.75"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+  );
+};
 
 export default CustomIcon;

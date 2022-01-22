@@ -12,6 +12,7 @@ import makeStyles from "@material-ui/core/styles/makeStyles";
 import { emphasize } from "@material-ui/core/styles/colorManipulator";
 
 import ItemsCarousel from "react-items-carousel";
+import { AnchorArrowDownIcon } from "@content/assets/CustomIcon";
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -202,6 +203,7 @@ const ProductsSection = () => {
 
   const handleTabChange = name => {
     setActiveTab(name);
+    setActiveItemIndex(0);
   };
 
   const [activeItemIndex, setActiveItemIndex] = useState(0);
@@ -209,7 +211,7 @@ const ProductsSection = () => {
   const isSmallMobile = false;
   const isMobile = false;
 
-  const getChevronWidth = () => (isSmallMobile ? 40 : isMobile ? 60 : 0);
+  const getChevronWidth = () => (isSmallMobile ? 40 : isMobile ? 60 : 60);
 
   const getNumberOfCards = () => (isSmallMobile ? 1 : isMobile ? 2 : 4);
 
@@ -260,9 +262,25 @@ const ProductsSection = () => {
           requestToChangeActive={setActiveItemIndex}
           activeItemIndex={activeItemIndex}
           numberOfCards={getNumberOfCards()}
-          gutter={20}
-          leftChevron={<span className="last-payment-carousel--arrows">{"<"}</span>}
-          rightChevron={<span className="last-payment-carousel--arrows">{">"}</span>}
+          gutter={10}
+          leftChevron={
+            <IconButton
+              aria-label="Scroll Down"
+              className={classes.scrollDownButton}
+              color="secondary"
+            >
+              <AnchorArrowDownIcon color="white" direction="left" />
+            </IconButton>
+          }
+          rightChevron={
+            <IconButton
+              aria-label="Scroll Down"
+              className={classes.scrollDownButton}
+              color="secondary"
+            >
+              <AnchorArrowDownIcon color="white" direction="right" />
+            </IconButton>
+          }
           outsideChevron
           chevronWidth={getChevronWidth()}
         >
