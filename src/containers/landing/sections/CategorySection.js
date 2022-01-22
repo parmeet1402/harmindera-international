@@ -1,5 +1,4 @@
 import React from "react";
-import { useStaticQuery, graphql } from "gatsby";
 
 // Material UI
 import Box from "@material-ui/core/Box";
@@ -23,7 +22,6 @@ const useStyles = makeStyles(theme => ({
     // height: "calc(100vh - 68px)",
     height: "100vh",
     textAlign: "center",
-    // background: "red",
     background: `linear-gradient(180deg, rgba(49, 98, 189, 0) 0%, rgba(49, 98, 189, 0.25) 100%)`,
   },
   heading: {
@@ -63,19 +61,19 @@ const content = {
       bgColor: "#FCA88B",
     },
     {
-      name: "Trending",
+      name: "Auto Parts",
       icon: <RickshawIcon />,
       slug: "/categories/auto-parts",
       bgColor: "#9EBEF1",
     },
     {
-      name: "Trending",
+      name: "Nut",
       icon: <NutIcon />,
       slug: "/categories/nut",
       bgColor: "#8CDBF9",
     },
     {
-      name: "Trending",
+      name: "Bolt",
       icon: <BoltIcon />,
       slug: "/categories/bolt",
       bgColor: "#BCA1F2",
@@ -124,18 +122,6 @@ const CategoryCard = ({ data }) => {
 };
 
 const CategorySection = () => {
-  // const {
-  //   allContentfulProductCategory: { nodes: productCategoriesObjects },
-  // } = useStaticQuery(graphql`
-  //   query CategoryQuery {
-  //     allContentfulProductCategory {
-  //       nodes {
-  //         name
-  //       }
-  //     }
-  //   }
-  // `);
-  // const productCategories = productCategoriesObjects.map(productCategory => productCategory.name);
   const classes = useStyles();
 
   return (
