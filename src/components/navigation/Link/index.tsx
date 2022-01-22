@@ -14,7 +14,7 @@ const isActive = (props: { isCurrent: boolean }) => {
 
 const Link = (props: Props & LinkProps) => {
   const { href, children, ...restProps } = props;
-
+  // console.log({ href });
   return (
     // @ts-ignore
     <MaterialLink

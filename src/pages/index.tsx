@@ -1,11 +1,12 @@
 import React from "react";
 import Layout, { SEO } from "@components/layout";
+import LandingContainer from "@containers/landing";
 
 const LandingPage = () => {
   return (
     <Layout>
       <SEO />
-      <h3>Reliable Manufacturer of JCB Parts</h3>
+      <LandingContainer />
     </Layout>
   );
 };

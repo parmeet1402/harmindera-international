@@ -91,20 +91,20 @@ const data = {
   reachUs: [
     {
       icon: <MailOutlineOutlined style={{ marginRight: "12px" }} color="secondary" />,
-      links: [{ label: "hello@harmindera.co", link: "" }],
+      links: [{ label: "hello@harmindera.co", link: "/" }],
     },
     {
       icon: <PhoneOutlined style={{ marginRight: "12px" }} color="secondary" />,
       links: [
-        { label: "+91 9876100890", link: "" },
-        { label: "+91 9876600890", link: "" },
-        { label: "+91 9356210290", link: "" },
+        { label: "+91 9876100890", link: "/" },
+        { label: "+91 9876600890", link: "/" },
+        { label: "+91 9356210290", link: "/" },
       ],
     },
 
     {
       icon: <RoomOutlined style={{ marginRight: "12px" }} color="secondary" />,
-      links: [{ label: "122-B Model House, Model Town,Ludhiana, 141002", link: "" }],
+      links: [{ label: "122-B Model House, Model Town,Ludhiana, 141002", link: "/" }],
     },
   ],
 };
@@ -302,13 +302,13 @@ const Footer = (props: Props) => {
                 <Typography variant="h5" style={{ marginBottom: "20px" }}>
                   Quick links
                 </Typography>
-                {data.quickLinks.map(item => {
+                {data.quickLinks.map((item, index) => {
                   return (
-                    <Grid>
+                    <Grid key={index}>
                       {item.icon ? item.icon : <></>}
                       <Grid direction="column" container>
-                        {item.links.map(link => (
-                          <Link href={link.link} classes={{ root: classes.linkStyles }}>
+                        {item.links.map((link, index) => (
+                          <Link key={index} href={link.link} classes={{ root: classes.linkStyles }}>
                             <Typography variant="body2">{link.label}</Typography>
                           </Link>
                         ))}
@@ -322,13 +322,14 @@ const Footer = (props: Props) => {
               <Typography variant="h5" style={{ marginBottom: "20px" }}>
                 Services
               </Typography>
-              {data.services.map(item => {
+              {data.services.map((item, index) => {
                 return (
-                  <Grid>
+                  <Grid key={index}>
                     {item.icon ? item.icon : <></>}
                     <Grid direction="column" container>
-                      {item.links.map(link => (
+                      {item.links.map((link, index) => (
                         <Link
+                          key={index}
                           href={link.link}
                           classes={{
                             root: classes.linkStyles,
@@ -346,13 +347,14 @@ const Footer = (props: Props) => {
               <Typography variant="h5" style={{ marginBottom: "20px" }}>
                 Reach us
               </Typography>
-              {data.reachUs.map(item => {
+              {data.reachUs.map((item, index) => {
                 return (
-                  <Grid container direction="row" wrap="nowrap">
+                  <Grid key={index} container direction="row" wrap="nowrap">
                     <Link href={item.links[0].link}>{item.icon ? item.icon : <></>}</Link>
                     <Grid container direction="column" style={{ marginBottom: "16px" }}>
-                      {item.links.map(link => (
+                      {item.links.map((link, index) => (
                         <Link
+                          key={index}
                           href={link.link}
                           classes={{
                             root: classes.linkStyles,

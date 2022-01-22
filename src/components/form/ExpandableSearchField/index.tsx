@@ -159,8 +159,8 @@ const ExpandableSearchField = () => {
     <>
       <Card classes={{ root: isFocused ? classes.cardRoot : classes.cardRootHidden }}>
         <List>
-          {[...Array(8)].map(() => (
-            <ListItem button>
+          {[...Array(8)].map((_, index) => (
+            <ListItem key={index} button>
               <ListItemIcon>
                 <InboxOutlined />
               </ListItemIcon>
