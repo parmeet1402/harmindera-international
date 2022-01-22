@@ -10,7 +10,7 @@ type Props = {
   article?: boolean;
 };
 const SEO = ({ title = "", description = "", image = "", article = false }: Props) => {
-  console.log(title, description, image, article);
+  // console.log(title, description, image, article);
   const { pathname } = useLocation();
 
   const { site } = useStaticQuery(
@@ -31,7 +31,7 @@ const SEO = ({ title = "", description = "", image = "", article = false }: Prop
     `,
   );
 
-  console.log(site);
+  // console.log(site);
 
   const { siteMetadata } = site;
 

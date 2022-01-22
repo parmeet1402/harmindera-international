@@ -23,8 +23,8 @@ const useStyles = makeStyles(
     console.log({ theme }) || {
       pad: theme.mixins.toolbar,
       main: {
-        minHeight: "calc(100vh - 72px)",
-        marginTop: "12px",
+        minHeight: "calc(100vh - 68px)",
+        marginTop: "8px",
       },
     },
 );
