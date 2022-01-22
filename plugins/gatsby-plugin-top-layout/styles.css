@@ -1,0 +1,8 @@
+.Typewriter {
+  display: inline-block;
+}
+
+html,
+body {
+  overflow-x: hidden;
+}

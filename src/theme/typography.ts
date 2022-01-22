@@ -58,14 +58,14 @@ export const configTypography: Config = {
   },
   h2: {
     fontFamily,
-    fontWeight: fontWeight.light,
+    fontWeight: fontWeight.bold,
     fontSize: "58px",
     lineHeight: 1.425,
     letterSpacing: "-0.5px",
   },
   h3: {
     fontFamily,
-    fontWeight: fontWeight.regular,
+    fontWeight: fontWeight.bold,
     fontSize: "46px",
     lineHeight: 1.45,
     letterSpacing: "0px",
@@ -94,7 +94,7 @@ export const configTypography: Config = {
   subtitle1: {
     fontFamily,
     fontWeight: fontWeight.regular,
-    fontSize: "15px",
+    fontSize: "18px",
     lineHeight: 1.525,
     letterSpacing: "0.15px",
   },

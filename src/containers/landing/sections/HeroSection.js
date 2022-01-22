@@ -4,19 +4,31 @@ import { useStaticQuery, graphql } from "gatsby";
 // Material UI
 import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
+import Button from "@material-ui/core/Button";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 
 import Typewriter from "typewriter-effect";
+import { Typography } from "@material-ui/core";
+import { SolidButton, TextButton } from "@components/form/Button";
 
 const useStyles = makeStyles(theme => ({
   grid: {
     backgroundColor: theme.palette.common.white,
+    height: "100vh",
+    padding: theme.spacing(12),
   },
   typewriterEffectWrapper: {
     color: theme.palette.primary.dark,
+    display: "inline-block",
   },
   typewriterEffectCursor: {
     color: theme.palette.primary.dark,
+  },
+  primaryButtonStyles: {
+    marginRight: theme.spacing(1),
+  },
+  subHeading: {
+    width: "80%",
   },
 }));
 
@@ -77,21 +89,34 @@ const HeroSection = () => {
   const classes = useStyles();
 
   return (
-    <Grid className={classes.grid}>
-      <h2>
-        Heading
-        <span id="categories"></span>
-        <Typewriter
-          color="red"
-          options={{
-            strings: productCategories,
-            autoStart: true,
-            loop: true,
-            cursorClassName: classes.typewriterEffectCursor,
-            wrapperClassName: classes.typewriterEffectWrapper,
-          }}
-        />
-      </h2>
+    <Grid container spacing={2} className={classes.grid}>
+      <Grid item xs={6}>
+        <Typography variant="h3" component="h1">
+          {content.heading}
+          <br />
+          <Typewriter
+            color="red"
+            options={{
+              strings: productCategories,
+              autoStart: true,
+              loop: true,
+              cursorClassName: classes.typewriterEffectCursor,
+              wrapperClassName: classes.typewriterEffectWrapper,
+            }}
+          />
+        </Typography>
+
+        <Typography variant="subtitle1" className={classes.subHeading}>
+          {content.subHeading}
+        </Typography>
+        <SolidButton size="medium" className={classes.primaryButtonStyles}>
+          {content.primaryButton}
+        </SolidButton>
+        <TextButton size="medium">{content.secondaryButton}</TextButton>
+      </Grid>
+      <Grid item xs={5}>
+        H
+      </Grid>
     </Grid>
   );
 };
@@ -101,10 +126,10 @@ export default HeroSection;
 // DONE: Add data for all the content of page
 // DONE: Add data for images
 
-// TODO: Base Grid UI
-// TODO: Heading UI
-// TODO: Subheading UI
-// TODO: Buttons UI
+// DONE: Base Grid UI
+// DONE: Heading UI
+// DONE: Subheading UI
+// DONE: Buttons UI
 // TODO: Secondary Text
 // TODO: Image Carousel UI (Slider)
 
