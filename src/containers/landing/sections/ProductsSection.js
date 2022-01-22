@@ -7,7 +7,9 @@ import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
+import Chip from "@material-ui/core/Chip";
 import makeStyles from "@material-ui/core/styles/makeStyles";
+import { emphasize } from "@material-ui/core/styles/colorManipulator";
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -21,6 +23,27 @@ const useStyles = makeStyles(theme => ({
   },
   subHeading: {
     color: theme.palette.common.white,
+  },
+  tabRow: {
+    marginTop: theme.spacing(9),
+  },
+  tab: {
+    margin: theme.spacing(1),
+    padding: theme.spacing(1),
+    border: "none",
+    borderRadius: theme.shape.borderRadius,
+    color: theme.palette.primary.light,
+    padding: theme.spacing(2),
+    "&hover": {
+      backgroundColor: theme.palette.common.white,
+    },
+  },
+  inactiveTab: {
+    color: theme.palette.common.white,
+    borderRadius: theme.shape.borderRadius,
+    "&hover": {
+      backgroundColor: theme.palette.common.white,
+    },
   },
 }));
 
@@ -96,6 +119,8 @@ const ProductsSection = () => {
     "Agriculture Products": [],
   });
 
+  const [activeTab, setActiveTab] = useState("JCB Parts");
+
   useEffect(() => {
     if (edges && edges.length > 0) {
       let obj = {
@@ -139,6 +164,10 @@ const ProductsSection = () => {
   // const [activeTab, setActiveTab] = useState("jcb");
   const classes = useStyles();
 
+  const handleTabChange = name => {
+    setActiveTab(name);
+  };
+
   return (
     <Box className={classes.container}>
       <Box pt={12}>
@@ -149,9 +178,23 @@ const ProductsSection = () => {
           {content.subHeading}
         </Typography>
       </Box>
-      {Object.keys(dataByCategory).map(name => (
-        <>{name}</>
-      ))}
+      <Grid className={classes.tabRow}>
+        {Object.keys(dataByCategory).map(name => (
+          <Chip
+            variant={activeTab === name ? "default" : "outlined"}
+            size="small"
+            label={name}
+            onClick={() => handleTabChange(name)}
+            clickable
+            classes={{
+              root: classes.tab,
+              outlined: classes.inactiveTab,
+            }}
+            // className={classes.tab}
+            // color="secondary"
+          />
+        ))}
+      </Grid>
       {/* <div className={classes.grid}>
       {content.categories.map(category => (
         <CategoryCard key={category.name} data={category} />
