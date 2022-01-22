@@ -53,6 +53,7 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-helmet": "^6.1.0",
+    "swiper": "^7.4.1",
     "typewriter-effect": "^2.18.2",
     "zustand": "^3.5.0"
   },

@@ -12,6 +12,20 @@ import { Typography } from "@material-ui/core";
 import { SolidButton, TextButton } from "@components/form/Button";
 import { GlobeIcon } from "@content/assets/CustomIcon";
 
+import { Swiper, SwiperSlide } from "swiper/react";
+
+import SwiperCore, { Pagination, Navigation, Autoplay } from "swiper";
+
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+import "swiper/css/bundle";
+
+// install Swiper modules
+SwiperCore.use([Pagination, Navigation, Autoplay]);
+
+const LEFT_SECTION_INNER_SPACING = 7;
+
 const useStyles = makeStyles(theme => ({
   grid: {
     backgroundColor: theme.palette.common.white,
@@ -21,7 +35,12 @@ const useStyles = makeStyles(theme => ({
   leftGridItem: {
     marginTop: theme.spacing(6),
   },
-  rightGridItem: {},
+  rightGridItem: {
+    marginLeft: "auto",
+    marginTop: theme.spacing(2),
+    userSelect: "none",
+    // marginLeft: theme.spacing(6),
+  },
   typewriterEffectWrapper: {
     color: theme.palette.primary.dark,
     display: "inline-block",
@@ -37,10 +56,30 @@ const useStyles = makeStyles(theme => ({
   },
   subHeading: {
     // width: "85%",
-    margin: theme.spacing(1, 0, 6),
+    margin: theme.spacing(1, 0, LEFT_SECTION_INNER_SPACING),
   },
   secondaryText: {
     marginLeft: theme.spacing(1),
+  },
+
+  swiper: {
+    height: "503px",
+    width: "422px",
+    background: theme.palette.grey[100],
+    borderRadius: theme.shape.borderRadius,
+  },
+  swiperSlide: {
+    background: theme.palette.grey[100],
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    textAlign: "center",
+
+    "&>img": {
+      height: "60%",
+      display: "block",
+      objectFit: "cover",
+    },
   },
 }));
 
@@ -137,7 +176,7 @@ const HeroSection = () => {
         </SolidButton>
         <TextButton size="medium">{content.secondaryButton}</TextButton>
         <br />
-        <Box display="flex" mt={6}>
+        <Box display="flex" mt={LEFT_SECTION_INNER_SPACING}>
           <GlobeIcon />
           <Typography className={classes.secondaryText} color="textSecondary">
             {content.secondaryText}
@@ -145,7 +184,28 @@ const HeroSection = () => {
         </Box>
       </Grid>
       <Grid item xs={5} className={classes.rightGridItem}>
-        {/* TODO: image slider */}
+        <Box h="400px">
+          <Swiper
+            slidesPerView={1}
+            spaceBetween={30}
+            loop={true}
+            pagination={{
+              clickable: true,
+            }}
+            navigation={false}
+            className={classes.swiper}
+            autoplay={{
+              delay: 2500,
+              disableOnInteraction: false,
+            }}
+          >
+            {content.images.map(({ original_url, name }) => (
+              <SwiperSlide className={classes.swiperSlide} key={name}>
+                <img src={original_url} alt={name} />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </Box>
       </Grid>
     </Grid>
   );
@@ -154,14 +214,13 @@ const HeroSection = () => {
 export default HeroSection;
 
 // DONE: Add data for all the content of page
-// DONE: Add data for images
 
 // DONE: Base Grid UI
 // DONE: Heading UI
 // DONE: Subheading UI
 // DONE: Buttons UI
 // DONE: Secondary Text
-// TODO: Image Carousel UI (Slider)
+// DONE: Image Carousel UI (Slider)
 
 // TODO: Buttons Functionality
 
