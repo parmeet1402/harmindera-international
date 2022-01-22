@@ -5,12 +5,13 @@ import { useStaticQuery, graphql } from "gatsby";
 import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
+import IconButton from "@material-ui/core/IconButton";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 
 import Typewriter from "typewriter-effect";
 import { Typography } from "@material-ui/core";
 import { SolidButton, TextButton } from "@components/form/Button";
-import { GlobeIcon } from "@content/assets/CustomIcon";
+import { AnchorArrowDownIcon, GlobeIcon } from "@content/assets/CustomIcon";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -29,8 +30,9 @@ const LEFT_SECTION_INNER_SPACING = 7;
 const useStyles = makeStyles(theme => ({
   grid: {
     backgroundColor: theme.palette.common.white,
-    height: "100vh",
+    height: "calc(100vh - 68px)",
     padding: theme.spacing(14),
+    position: "relative",
   },
   leftGridItem: {
     marginTop: theme.spacing(6),
@@ -80,6 +82,12 @@ const useStyles = makeStyles(theme => ({
       display: "block",
       objectFit: "cover",
     },
+  },
+  scrollDownButton: {
+    position: "absolute",
+    bottom: "40px",
+    left: "50%",
+    transform: "translateX(-50%)",
   },
 }));
 
@@ -151,6 +159,13 @@ const HeroSection = () => {
   const productCategories = productCategoriesObjects.map(productCategory => productCategory.name);
   const classes = useStyles();
 
+  const handlePrimaryButtonClick = () => {
+    // TODO: scroll to products section
+  };
+  const handleSecondaryButtonClick = () => {
+    // TODO: scroll to contact us section
+  };
+
   return (
     <Grid container spacing={2} className={classes.grid}>
       <Grid item xs={6} className={classes.leftGridItem}>
@@ -171,10 +186,16 @@ const HeroSection = () => {
         <Typography variant="subtitle1" className={classes.subHeading}>
           {content.subHeading}
         </Typography>
-        <SolidButton size="medium" className={classes.primaryButtonStyles}>
+        <SolidButton
+          size="medium"
+          className={classes.primaryButtonStyles}
+          onClick={handlePrimaryButtonClick}
+        >
           {content.primaryButton}{" "}
         </SolidButton>
-        <TextButton size="medium">{content.secondaryButton}</TextButton>
+        <TextButton size="medium" onClick={handleSecondaryButtonClick}>
+          {content.secondaryButton}
+        </TextButton>
         <br />
         <Box display="flex" mt={LEFT_SECTION_INNER_SPACING}>
           <GlobeIcon />
@@ -207,6 +228,9 @@ const HeroSection = () => {
           </Swiper>
         </Box>
       </Grid>
+      <IconButton aria-label="Scroll Down" className={classes.scrollDownButton} color="default">
+        <AnchorArrowDownIcon />
+      </IconButton>
     </Grid>
   );
 };
@@ -214,7 +238,6 @@ const HeroSection = () => {
 export default HeroSection;
 
 // DONE: Add data for all the content of page
-
 // DONE: Base Grid UI
 // DONE: Heading UI
 // DONE: Subheading UI
@@ -223,7 +246,5 @@ export default HeroSection;
 // DONE: Image Carousel UI (Slider)
 
 // TODO: Buttons Functionality
-
 // TODO: Scroll down functionality
-
 // TODO: Make Mobile version
