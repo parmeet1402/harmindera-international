@@ -11,9 +11,11 @@ import Chip from "@material-ui/core/Chip";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import { emphasize } from "@material-ui/core/styles/colorManipulator";
 
+import ItemsCarousel from "react-items-carousel";
+
 const useStyles = makeStyles(theme => ({
   container: {
-    height: "100vh",
+    // height: "100vh",
     textAlign: "center",
     background: theme.palette.primary.light,
   },
@@ -52,12 +54,44 @@ const content = {
   subHeading: "We serve premium quality products",
 };
 
+const useCardStyles = makeStyles(theme => ({
+  card: {
+    height: "302px",
+    width: "255px",
+    borderRadius: "9px",
+    // margin: "47px",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    userSelect: "none",
+  },
+  name: {
+    color: theme.palette.common.white,
+  },
+}));
+
+// todo: make it flexible for inverted theme as well
+// todo: add default images for each category
 const SingleProduct = ({ data }) => {
+  const classes = useCardStyles();
+  console.log({ data });
+  // check if image is present ?
+  const image = data.images
+    ? data.images[0].original_url
+    : "http://res.cloudinary.com/dybvtvzsm/image/upload/v1607859552/website/images/gdjqdrjmznzvongsgj1k.png";
   return (
     <Box>
-      Single Product Single Product
-      <span>dsf</span>
-      Single Product
+      <Box bgcolor={"white"} className={classes.card}>
+        <img src={image} height="200px" alt={data.name} />
+      </Box>
+      <Box mt={1} textAlign="left">
+        <Typography variant="subtitle1" className={classes.name}>
+          {data.name}
+        </Typography>
+        <Typography variant="subtitle2" className={classes.name}>
+          {data.category.name}
+        </Typography>
+      </Box>
     </Box>
   );
 };
@@ -121,6 +155,8 @@ const ProductsSection = () => {
 
   const [activeTab, setActiveTab] = useState("JCB Parts");
 
+  console.log({ edges });
+
   useEffect(() => {
     if (edges && edges.length > 0) {
       let obj = {
@@ -168,6 +204,19 @@ const ProductsSection = () => {
     setActiveTab(name);
   };
 
+  const [activeItemIndex, setActiveItemIndex] = useState(0);
+
+  const isSmallMobile = false;
+  const isMobile = false;
+
+  const getChevronWidth = () => (isSmallMobile ? 40 : isMobile ? 60 : 0);
+
+  const getNumberOfCards = () => (isSmallMobile ? 1 : isMobile ? 2 : 4);
+
+  const renderCategoryCards = () => {
+    return dataByCategory[activeTab].map(product => <SingleProduct data={product} />);
+  };
+
   return (
     <Box className={classes.container}>
       <Box pt={12}>
@@ -190,16 +239,36 @@ const ProductsSection = () => {
               root: classes.tab,
               outlined: classes.inactiveTab,
             }}
-            // className={classes.tab}
-            // color="secondary"
           />
         ))}
       </Grid>
+
       {/* <div className={classes.grid}>
       {content.categories.map(category => (
         <CategoryCard key={category.name} data={category} />
       ))}
     </div> */}
+      <div
+        style={{
+          padding: `0 ${getChevronWidth()}px`,
+          maxWidth: "1240px",
+          margin: "40px auto 0",
+          paddingBottom: "120px",
+        }}
+      >
+        <ItemsCarousel
+          requestToChangeActive={setActiveItemIndex}
+          activeItemIndex={activeItemIndex}
+          numberOfCards={getNumberOfCards()}
+          gutter={20}
+          leftChevron={<span className="last-payment-carousel--arrows">{"<"}</span>}
+          rightChevron={<span className="last-payment-carousel--arrows">{">"}</span>}
+          outsideChevron
+          chevronWidth={getChevronWidth()}
+        >
+          {renderCategoryCards()}
+        </ItemsCarousel>
+      </div>
     </Box>
   );
 };
@@ -207,8 +276,8 @@ const ProductsSection = () => {
 export default ProductsSection;
 
 // DONE: load data by every product
-// TODO: add Tabs UI and state
-// TODO: add Single Product Component UI
-// TODO: Add carousel Functionality
+// DONE: add Tabs UI and state
+// DONE: add Single Product Component UI
+// DONE: Add carousel Functionality
 // TODO: Add functionality of redirection
 // TODO: Add Button for View All
