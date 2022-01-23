@@ -4,13 +4,14 @@ import { useStaticQuery, graphql } from "gatsby";
 // Material UI
 import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
+import Container from "@material-ui/core/Container";
 import Button from "@material-ui/core/Button";
-import IconButton from "@material-ui/core/IconButton";
+// import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 
 import Typewriter from "typewriter-effect";
-import { SolidButton, TextButton } from "@components/form/Button";
+import { IconButton, SolidButton, TextButton } from "@components/form/Button";
 import { AnchorArrowDownIcon, GlobeIcon } from "@content/assets/CustomIcon";
 
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -28,11 +29,35 @@ SwiperCore.use([Pagination, Navigation, Autoplay]);
 const LEFT_SECTION_INNER_SPACING = 7;
 
 const useStyles = makeStyles(theme => ({
+  container: {
+    // maxWidth: theme.breakpoints.values.lg,
+  },
   grid: {
     backgroundColor: theme.palette.common.white,
     height: "calc(100vh - 68px)",
-    padding: theme.spacing(14),
     position: "relative",
+    paddingTop: theme.spacing(16),
+
+    "@media only screen and (max-height: 960px)": {
+      paddingTop: theme.spacing(12),
+    },
+    "@media only screen and (max-height: 768px)": {
+      paddingTop: theme.spacing(6),
+    },
+
+    "@media only screen and (max-height: 320px)": {
+      backgroundColor: theme.palette.success.main,
+    },
+
+    // "@media only screen and (max-height:1080px)": {
+    // background: "red",
+    // },
+    // margin: "0 auto",
+    // display: "flex",
+    // alignItems: "center",
+    // justifyContent: "center",
+    // padding: theme.spacing(14),
+    // [theme.breakpoints.down("sm")]: {},
   },
   leftGridItem: {
     marginTop: theme.spacing(6),
@@ -167,71 +192,73 @@ const HeroSection = () => {
   };
 
   return (
-    <Grid container spacing={2} className={classes.grid}>
-      <Grid item xs={6} className={classes.leftGridItem}>
-        <Typography variant="h3" className={classes.heading} component="h1">
-          {content.heading}
-          <Typewriter
-            color="red"
-            options={{
-              strings: productCategories,
-              autoStart: true,
-              loop: true,
-              cursorClassName: classes.typewriterEffectCursor,
-              wrapperClassName: classes.typewriterEffectWrapper,
-            }}
-          />
-        </Typography>
-
-        <Typography variant="subtitle1" className={classes.subHeading}>
-          {content.subHeading}
-        </Typography>
-        <SolidButton
-          size="medium"
-          className={classes.primaryButtonStyles}
-          onClick={handlePrimaryButtonClick}
-        >
-          {content.primaryButton}{" "}
-        </SolidButton>
-        <TextButton size="medium" onClick={handleSecondaryButtonClick}>
-          {content.secondaryButton}
-        </TextButton>
-        <br />
-        <Box display="flex" mt={LEFT_SECTION_INNER_SPACING}>
-          <GlobeIcon />
-          <Typography className={classes.secondaryText} color="textSecondary">
-            {content.secondaryText}
+    <Container maxWidth="lg" className={classes.container}>
+      <Grid container spacing={2} className={classes.grid}>
+        <Grid item xs={6} className={classes.leftGridItem}>
+          <Typography variant="h3" className={classes.heading} component="h1">
+            {content.heading}
+            <Typewriter
+              color="red"
+              options={{
+                strings: productCategories,
+                autoStart: true,
+                loop: true,
+                cursorClassName: classes.typewriterEffectCursor,
+                wrapperClassName: classes.typewriterEffectWrapper,
+              }}
+            />
           </Typography>
-        </Box>
-      </Grid>
-      <Grid item xs={5} className={classes.rightGridItem}>
-        <Box h="400px">
-          <Swiper
-            slidesPerView={1}
-            spaceBetween={30}
-            loop={true}
-            pagination={{
-              clickable: true,
-            }}
-            navigation={false}
-            className={classes.swiper}
-            autoplay={{
-              delay: 2500,
-              disableOnInteraction: false,
-            }}
+
+          <Typography variant="subtitle1" className={classes.subHeading}>
+            {content.subHeading}
+          </Typography>
+          <SolidButton
+            size="medium"
+            className={classes.primaryButtonStyles}
+            onClick={handlePrimaryButtonClick}
           >
-            {content.images.map(({ original_url, name }) => (
-              <SwiperSlide className={classes.swiperSlide} key={name}>
-                <img src={original_url} alt={name} />
-              </SwiperSlide>
-            ))}
-          </Swiper>
-        </Box>
+            {content.primaryButton}{" "}
+          </SolidButton>
+          <TextButton size="medium" onClick={handleSecondaryButtonClick}>
+            {content.secondaryButton}
+          </TextButton>
+          <br />
+          <Box display="flex" mt={LEFT_SECTION_INNER_SPACING}>
+            <GlobeIcon />
+            <Typography className={classes.secondaryText} color="textSecondary">
+              {content.secondaryText}
+            </Typography>
+          </Box>
+        </Grid>
+        <Grid item xs={5} className={classes.rightGridItem}>
+          <Box h="400px">
+            <Swiper
+              slidesPerView={1}
+              spaceBetween={30}
+              loop={true}
+              pagination={{
+                clickable: true,
+              }}
+              navigation={false}
+              className={classes.swiper}
+              autoplay={{
+                delay: 2500,
+                disableOnInteraction: false,
+              }}
+            >
+              {content.images.map(({ original_url, name }) => (
+                <SwiperSlide className={classes.swiperSlide} key={name}>
+                  <img src={original_url} alt={name} />
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </Box>
+        </Grid>
+        <IconButton aria-label="Scroll Down" className={classes.scrollDownButton} color="default">
+          <AnchorArrowDownIcon direction="down" />
+        </IconButton>
       </Grid>
-      <IconButton aria-label="Scroll Down" className={classes.scrollDownButton} color="default">
-        <AnchorArrowDownIcon direction="down" />
-      </IconButton>
-    </Grid>
+    </Container>
   );
 };
 
