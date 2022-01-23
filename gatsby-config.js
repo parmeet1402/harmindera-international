@@ -1,5 +1,14 @@
 // const path = require("path");
-const { author, title, description, keywords, siteUrl, defaultLang } = require("./config/site");
+const {
+  author,
+  title,
+  description,
+  keywords,
+  siteUrl,
+  defaultLang,
+  address,
+  contact,
+} = require("./config/site");
 
 module.exports = {
   siteMetadata: {
@@ -10,6 +19,9 @@ module.exports = {
     description,
     author,
     lang: defaultLang,
+    address,
+    email: contact.email,
+    phoneNumbers: contact.phoneNumbers,
   },
   plugins: [
     // TODO: Create Tracking Id for google analytics

@@ -20,22 +20,34 @@ module.exports = {
   },
   siteUrl: "https://harminderainternational.gatsbyjs.io",
 
-  address: {
-    city: "City",
-    region: "Region",
-    country: "Country",
-    zipCode: "ZipCode",
+  address: `B29/536/25C-2, Industrial Area C, Dhandari Kalan, Ludhiana, Punjab 141014`,
+
+  addressParts: {
+    line1: "B29/536/25C-2",
+    line2: "Industrial Area C, Dhandari Kalan",
+    city: "Ludhiana",
+    region: "Punjab",
+    country: "India",
+    pinCode: "141014",
   },
 
   contact: {
-    email: "email",
-    phoneNumber: "phone number",
+    email: "harminderainternational@gmail.com",
+    phoneNumbers: ["+91 9876100890", "+91 9356210890", "+91 9876600890"],
   },
-  foundingDate: "1970",
+  foundingDate: "1960",
 
   googleAnalyticsID: "dfd",
+
   socialLinks: {
     whatsapp: "",
+    facebook: "",
+    twitter: "",
+    instagram: "",
+  },
+
+  baseURLs: {
+    whatsapp: `http://api.whatsapp.com/send?phone=`,
   },
 
   // Used for App and Offline manifest e.g. Mobile Home Screen

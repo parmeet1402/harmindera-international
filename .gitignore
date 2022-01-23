@@ -78,3 +78,5 @@ yarn-error.log
 
 # JetBrains
 .idea/
+
+/notes
