@@ -13,6 +13,9 @@ import MailOutlineOutlined from "@material-ui/icons/MailOutlineOutlined";
 import PhoneOutlined from "@material-ui/icons/PhoneOutlined";
 import RoomOutlined from "@material-ui/icons/RoomOutlined";
 import WhatsApp from "@material-ui/icons/WhatsApp";
+// import { TextField } from "@material-ui/core";
+import TextField from "@components/form/TextField";
+import { SolidButton } from "@components/form/Button";
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -56,15 +59,21 @@ const useStyles = makeStyles(theme => ({
 
   leftContentContainer: {
     width: "320px",
+    marginLeft: "60px",
+    // marginTop: "12px",
     // background: "red",
   },
   rightContentContainer: {
-    background: "green",
-    width: "calc(100% - 320px)",
+    // background: "green",
+    width: "calc(100% - 450px)",
+    marginLeft: "auto",
   },
   paper: {
     height: "100%",
+    padding: theme.spacing(5),
+    textAlign: "left",
   },
+  paperHeading: { fontWeight: theme.typography.fontWeightBold },
 
   contactRow: {
     display: "flex",
@@ -79,6 +88,16 @@ const useStyles = makeStyles(theme => ({
   contactIcon: {},
 
   contactLinkText: {},
+  formControl: {
+    width: "calc(50% - 12px)",
+  },
+  formControlFullField: {
+    width: "100%",
+    // height: theme.spacing(12),
+  },
+  textInput: {
+    width: "100%",
+  },
 }));
 
 const content = {
@@ -125,7 +144,7 @@ const ContactUsSection = () => {
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d54789.801763578675!2d75.84239438757328!3d30.876515636190774!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391a9d67dc262cd5%3A0x97cb1643bce70173!2sHarmindera%20International!5e0!3m2!1sen!2sin!4v1642942272698!5m2!1sen!2sin"
             width="319px"
             height="252px"
-            style={{ border: 0, borderRadius: 9 }}
+            style={{ border: 0, borderRadius: 12 }}
             allowfullscreen=""
             loading="lazy"
             aria-hidden="false"
@@ -182,15 +201,82 @@ const ContactUsSection = () => {
         </Grid>
         <Grid direction="column" className={classes.rightContentContainer}>
           <Paper className={classes.paper}>
-            <Typography>Request Callback</Typography>
-            <Box>
-              <Grid></Grid>
-              <Grid></Grid>
-              <Grid></Grid>
+            <Typography className={classes.paperHeading} variant="h5">
+              Request Callback
+            </Typography>
+            <Box mt={5}>
+              <Box display="flex" justifyContent="space-between" mb={3}>
+                <TextField
+                  label="Your Name"
+                  placeholder="Your Name"
+                  id="outlined-size-small"
+                  variant="outlined"
+                  formControlProps={{
+                    classes: { root: classes.formControl },
+                  }}
+                  classes={{
+                    root: classes.textInput,
+                  }}
+                />
+                <TextField
+                  label="Email"
+                  placeholder="Email"
+                  id="outlined-size-small"
+                  variant="outlined"
+                  formControlProps={{
+                    classes: { root: classes.formControl },
+                  }}
+                  classes={{
+                    root: classes.textInput,
+                  }}
+                />
+              </Box>
+              <Box display="flex" justifyContent="space-between" mb={3}>
+                <TextField
+                  label="Phone"
+                  placeholder="Phone"
+                  id="outlined-size-small"
+                  variant="outlined"
+                  formControlProps={{
+                    classes: { root: classes.formControl },
+                  }}
+                  classes={{
+                    root: classes.textInput,
+                  }}
+                />
+                <TextField
+                  label="Country"
+                  placeholder="Country"
+                  id="outlined-size-small"
+                  variant="outlined"
+                  formControlProps={{
+                    classes: { root: classes.formControl },
+                  }}
+                  classes={{
+                    root: classes.textInput,
+                  }}
+                />
+              </Box>
+              <Box display="flex" justifyContent="space-between" mb={3}>
+                <TextField
+                  label="Your Name"
+                  placeholder="Your Name"
+                  id="outlined-size-small"
+                  variant="outlined"
+                  multiline
+                  formControlProps={{
+                    classes: { root: classes.formControlFullField },
+                  }}
+                  classes={{
+                    root: classes.textInput,
+                  }}
+                  rows={8}
+                />
+              </Box>
             </Box>
-            <Grid>
-              <Button>Send Message</Button>
-            </Grid>
+            <Box textAlign="center" mt={4}>
+              <SolidButton>Send Message</SolidButton>
+            </Box>
           </Paper>
         </Grid>
       </Grid>

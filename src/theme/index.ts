@@ -167,9 +167,9 @@ const HarminderaTheme = createMuiTheme({
           marginTop: "24px",
         },
         backgroundColor: configColors.grey["100"],
-        borderRadius: "10px",
+        borderRadius: "12px",
         padding: "11px 14px",
-        width: "424px",
+        width: "340px",
         position: "relative",
         border: `1px solid ${configColors.grey["200"]}`,
         "&$focused": {
@@ -182,6 +182,28 @@ const HarminderaTheme = createMuiTheme({
         padding: "16px 14px",
       },
     },
+    // MuiInput: {
+    //   root: {
+    //     "label + &": {
+    //       marginTop: "24px",
+    //     },
+    //     backgroundColor: configColors.grey["100"],
+    //     borderRadius: "10px",
+    //     padding: "11px 14px",
+    //     width: "224px",
+    //     position: "relative",
+    //     border: `1px solid ${configColors.grey["200"]}`,
+    //     "&$focused": {
+    //       backgroundColor: configColors.common.white,
+    //       border: `1px solid ${configColors.grey["400"]}`,
+    //     },
+    //   },
+
+    //   multiline: {
+    //     padding: "16px 14px",
+    //   },
+
+    // },
 
     MuiFormHelperText: {
       root: {
