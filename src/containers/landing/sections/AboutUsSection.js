@@ -10,8 +10,59 @@ import Chip from "@material-ui/core/Chip";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import { emphasize } from "@material-ui/core/styles/colorManipulator";
 import Image from "@components/Image";
+import { Paper } from "@material-ui/core";
+import { TextButton } from "@components/form/Button";
+import { ArrowIcon } from "@content/assets/CustomIcon";
+import Link from "@components/navigation/Link";
 
-const useStyles = makeStyles(theme => ({}));
+const useStyles = makeStyles(theme => ({
+  container: {
+    // height: "100vh",
+    textAlign: "center",
+    background: theme.palette.grey["100"],
+    paddingBottom: theme.spacing(12),
+  },
+  heading: {
+    marginBottom: theme.spacing(1),
+    color: theme.palette.text.primary,
+  },
+  subHeading: {
+    color: theme.palette.text.secondary,
+  },
+  grid: {
+    display: "grid",
+    gridTemplateColumns: "repeat(2, 1fr)",
+    gridTemplateRows: "repeat(2, 1fr)",
+    gap: theme.spacing(4),
+
+    width: "max-content",
+    marginTop: theme.spacing(6),
+    marginLeft: "auto",
+    marginRight: "auto",
+    textAlign: "center",
+  },
+  card: {
+    width: "350px",
+    height: "430px",
+    padding: theme.spacing(5, 4),
+    position: "relative",
+  },
+  cardLink: {
+    position: "absolute",
+    bottom: theme.spacing(5),
+    marginTop: theme.spacing(5),
+    color: theme.palette.primary.main,
+    display: "inline-flex",
+    alignItems: "center",
+    justifyContent: "center",
+    borderBottom: `1px solid transparent`,
+    "&:hover": {
+      // background: "red",
+      color: theme.palette.primary.main,
+      borderBottom: `1px solid ${theme.palette.primary.main}`,
+    },
+  },
+}));
 
 const content = {
   heading: "About Us",
@@ -48,6 +99,28 @@ const content = {
   ],
 };
 
+const Card = ({ data }) => {
+  const classes = useStyles();
+  return (
+    <Paper className={classes.card}>
+      <Image src={data.image} alt={data.title} />
+      <Box textAlign="left" mt={5}>
+        <Typography variant="h5">{data.title}</Typography>
+        <Typography variant="subtitle2">{data.text}</Typography>
+        <Link className={classes.cardLink} href="/about-us">
+          {/* <Grid> */}
+          Read More&nbsp;&nbsp;
+          <ArrowIcon direction="right" />
+          {/* </Grid> */}
+        </Link>
+        {/* <TextButton size="small">
+          {data.linkText}&nbsp;
+          <ArrowIcon direction="right" />
+        </TextButton> */}
+      </Box>
+    </Paper>
+  );
+};
 const AboutUsSection = () => {
   const classes = useStyles();
   return (
@@ -60,11 +133,9 @@ const AboutUsSection = () => {
           {content.subHeading}
         </Typography>
       </Box>
-      <div className="grid">
+      <div className={classes.grid}>
         {content.aboutCards.map((card, index) => (
-          <div>
-            {card.title}
-            </div>
+          <Card data={card} />
         ))}
       </div>
     </Box>
@@ -74,9 +145,9 @@ const AboutUsSection = () => {
 // DONE: add icons
 // DONE: static content for the section
 
-// TODO: Create grid ui
-// TODO: add Single card UI
-// TODO: Map with real data
+// DONE: Create grid ui
+// DONE: add Single card UI
+// DONE: Map with real data
 
 // TODO: Redirect to sections in about page
 
