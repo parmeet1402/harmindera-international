@@ -141,6 +141,10 @@ const HarminderaTheme = createMuiTheme({
       root: {
         padding: getButtonPadding(15),
         fontSize: configTypography.h6?.fontSize,
+        "@media only screen and (max-width: 1150px)": {
+          padding: getButtonPadding(6),
+          fontSize: "14px",
+        },
       },
       sizeLarge: {
         padding: getButtonPadding(20),
@@ -158,6 +162,10 @@ const HarminderaTheme = createMuiTheme({
         fontSize: "1rem",
         textTransform: "none",
         fontWeight: 500,
+        "@media only screen and (max-width: 1150px)": {
+          padding: getButtonPadding(6),
+          fontSize: "14px",
+        },
       },
       outlinedSecondary: {},
     },

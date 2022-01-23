@@ -26,11 +26,20 @@ import "swiper/css/bundle";
 // install Swiper modules
 SwiperCore.use([Pagination, Navigation, Autoplay]);
 
-const LEFT_SECTION_INNER_SPACING = 7;
+// const LEFT_SECTION_INNER_SPACING = 7;
 
 const useStyles = makeStyles(theme => ({
   container: {
     // maxWidth: theme.breakpoints.values.lg,
+    "@media only screen and (max-width: 1150px)": {
+      maxWidth: theme.breakpoints.values.md,
+    },
+    "@media only screen and (max-width: 800px)": {
+      maxWidth: theme.breakpoints.values.sm,
+    },
+    "@media only screen and (max-width: 600px)": {
+      maxWidth: theme.breakpoints.values.xl,
+    },
   },
   grid: {
     backgroundColor: theme.palette.common.white,
@@ -44,29 +53,33 @@ const useStyles = makeStyles(theme => ({
     "@media only screen and (max-height: 768px)": {
       paddingTop: theme.spacing(6),
     },
-
-    "@media only screen and (max-height: 320px)": {
-      backgroundColor: theme.palette.success.main,
+    "@media only screen and (max-height: 650px)": {
+      paddingTop: theme.spacing(2),
     },
 
-    // "@media only screen and (max-height:1080px)": {
-    // background: "red",
-    // },
-    // margin: "0 auto",
-    // display: "flex",
-    // alignItems: "center",
-    // justifyContent: "center",
-    // padding: theme.spacing(14),
-    // [theme.breakpoints.down("sm")]: {},
+    "@media only screen and (max-height: 500px)": {
+      paddingTop: 0,
+    },
   },
   leftGridItem: {
     marginTop: theme.spacing(6),
+    "@media only screen and (max-width: 800px)": {
+      marginTop: theme.spacing(1),
+      maxWidth: "100%",
+      width: "100%",
+      flexBasis: "auto",
+    },
   },
   rightGridItem: {
     marginLeft: "auto",
     marginTop: theme.spacing(2),
     userSelect: "none",
-    // marginLeft: theme.spacing(6),
+    "@media only screen and (max-width: 1150px)": {
+      marginTop: theme.spacing(6),
+    },
+    "@media only screen and (max-width: 800px)": {
+      display: "none",
+    },
   },
   typewriterEffectWrapper: {
     color: theme.palette.primary.dark,
@@ -77,16 +90,58 @@ const useStyles = makeStyles(theme => ({
   },
   primaryButtonStyles: {
     marginRight: theme.spacing(1),
+    "@media only screen and (max-width: 600px)": {
+      marginRight: 0,
+      width: "100%",
+    },
+  },
+  secondaryButtonStyles: {
+    "@media only screen and (max-width: 600px)": {
+      width: "100%",
+      marginTop: theme.spacing(1),
+    },
   },
   heading: {
-    // fontWeight: 900,
+    "@media only screen and (max-width: 600px)": {
+      // "&>br": {
+      //   display: "none",
+      // },
+    },
   },
   subHeading: {
-    // width: "85%",
-    margin: theme.spacing(1, 0, LEFT_SECTION_INNER_SPACING),
+    margin: theme.spacing(1, 0, 7),
+    "@media only screen and (max-width: 600px)": {
+      "&>br": {
+        display: "none",
+      },
+    },
+  },
+  secondaryTextContainer: {
+    marginTop: theme.spacing(7),
+    "@media only screen and (max-width: 600px)": {
+      // marginTop: theme.spacing(3),
+      marginTop: "0",
+      position: "absolute",
+      bottom: "100px",
+    },
   },
   secondaryText: {
     marginLeft: theme.spacing(1),
+    "@media only screen and (max-width: 1150px)": {
+      fontSize: "12px",
+    },
+    "@media only screen and (max-width: 600px)": {
+      "&>br": {
+        display: "none",
+      },
+    },
+  },
+
+  globeIcon: {
+    "@media only screen and (max-width: 1150px)": {
+      transform: "scale(0.8)",
+      marginTop: "-4px",
+    },
   },
 
   swiper: {
@@ -94,6 +149,10 @@ const useStyles = makeStyles(theme => ({
     width: "422px",
     background: theme.palette.grey[100],
     borderRadius: theme.shape.borderRadius,
+    "@media only screen and (max-width: 1150px)": {
+      height: "357px",
+      width: "300px",
+    },
   },
   swiperSlide: {
     background: theme.palette.grey[100],
@@ -119,7 +178,8 @@ const useStyles = makeStyles(theme => ({
 const content = {
   heading: (
     <>
-      Reliable manufacturer <br /> of{" "}
+      Reliable {window.innerWidth < 500 ? <br /> : null}manufacturer{" "}
+      {window.innerWidth < 500 ? null : <br />} of {window.innerWidth < 500 ? <br /> : null}
     </>
   ),
   subHeading: (
@@ -217,21 +277,24 @@ const HeroSection = () => {
             className={classes.primaryButtonStyles}
             onClick={handlePrimaryButtonClick}
           >
-            {content.primaryButton}{" "}
+            {content.primaryButton}
           </SolidButton>
-          <TextButton size="medium" onClick={handleSecondaryButtonClick}>
+          <TextButton
+            size="medium"
+            onClick={handleSecondaryButtonClick}
+            className={classes.secondaryButtonStyles}
+          >
             {content.secondaryButton}
           </TextButton>
-          <br />
-          <Box display="flex" mt={LEFT_SECTION_INNER_SPACING}>
-            <GlobeIcon />
+          <Box display="flex" className={classes.secondaryTextContainer}>
+            <GlobeIcon className={classes.globeIcon} />
             <Typography className={classes.secondaryText} color="textSecondary">
               {content.secondaryText}
             </Typography>
           </Box>
         </Grid>
         <Grid item xs={5} className={classes.rightGridItem}>
-          <Box h="400px">
+          <Box>
             <Swiper
               slidesPerView={1}
               spaceBetween={30}

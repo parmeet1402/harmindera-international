@@ -41,7 +41,7 @@ const fontWeight = {
 
 const fontFamily = "'Poppins', sans-serif";
 
-export const configTypography: Config = {
+export const configTypography: any = {
   fontFamily,
   htmlFontSize: 16,
   fontSize: 14,
@@ -69,6 +69,9 @@ export const configTypography: Config = {
     fontSize: "46px",
     lineHeight: 1.45,
     letterSpacing: "0px",
+    "@media only screen and (max-width: 1150px)": {
+      fontSize: "32px",
+    },
   },
   h4: {
     fontFamily,
@@ -90,6 +93,12 @@ export const configTypography: Config = {
     fontSize: "19px",
     lineHeight: 1.525,
     letterSpacing: "0.15px",
+    "@media only screen and (max-width: 1150px)": {
+      fontSize: "14px",
+    },
+    "@media only screen and (max-width: 1150px)": {
+      fontSize: "14px",
+    },
   },
   subtitle1: {
     fontFamily,
@@ -97,6 +106,9 @@ export const configTypography: Config = {
     fontSize: "18px",
     lineHeight: 1.525,
     letterSpacing: "0.15px",
+    "@media only screen and (max-width: 1150px)": {
+      fontSize: "13px",
+    },
   },
   subtitle2: {
     fontFamily,
