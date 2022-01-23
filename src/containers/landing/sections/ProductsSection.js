@@ -13,12 +13,14 @@ import { emphasize } from "@material-ui/core/styles/colorManipulator";
 
 import ItemsCarousel from "react-items-carousel";
 import { AnchorArrowDownIcon } from "@content/assets/CustomIcon";
+import { OutlinedButton } from "@components/form/Button";
 
 const useStyles = makeStyles(theme => ({
   container: {
     // height: "100vh",
     textAlign: "center",
     background: theme.palette.primary.light,
+    paddingBottom: theme.spacing(12),
   },
   heading: {
     marginBottom: theme.spacing(1),
@@ -75,7 +77,7 @@ const useCardStyles = makeStyles(theme => ({
 // todo: add default images for each category
 const SingleProduct = ({ data }) => {
   const classes = useCardStyles();
-  console.log({ data });
+  // console.log({ data });
   // check if image is present ?
   const image = data.images
     ? data.images[0].original_url
@@ -156,7 +158,7 @@ const ProductsSection = () => {
 
   const [activeTab, setActiveTab] = useState("JCB Parts");
 
-  console.log({ edges });
+  // console.log({ edges });
 
   useEffect(() => {
     if (edges && edges.length > 0) {
@@ -216,7 +218,9 @@ const ProductsSection = () => {
   const getNumberOfCards = () => (isSmallMobile ? 1 : isMobile ? 2 : 4);
 
   const renderCategoryCards = () => {
-    return dataByCategory[activeTab].map(product => <SingleProduct data={product} />);
+    return dataByCategory[activeTab].map(product => (
+      <SingleProduct key={product.name} data={product} />
+    ));
   };
 
   return (
@@ -232,6 +236,7 @@ const ProductsSection = () => {
       <Grid className={classes.tabRow}>
         {Object.keys(dataByCategory).map(name => (
           <Chip
+            key={name}
             variant={activeTab === name ? "default" : "outlined"}
             size="small"
             label={name}
@@ -255,7 +260,7 @@ const ProductsSection = () => {
           padding: `0 ${getChevronWidth()}px`,
           maxWidth: "1240px",
           margin: "40px auto 0",
-          paddingBottom: "120px",
+          paddingBottom: "40px",
         }}
       >
         <ItemsCarousel
@@ -287,6 +292,7 @@ const ProductsSection = () => {
           {renderCategoryCards()}
         </ItemsCarousel>
       </div>
+      <OutlinedButton>View All</OutlinedButton>
     </Box>
   );
 };
@@ -297,5 +303,6 @@ export default ProductsSection;
 // DONE: add Tabs UI and state
 // DONE: add Single Product Component UI
 // DONE: Add carousel Functionality
-// TODO: Add functionality of redirection
-// TODO: Add Button for View All
+// DONE: Add Button for View All
+// TODO: Add functionality of redirection from product cards
+// TODO: Add view all button functinoality

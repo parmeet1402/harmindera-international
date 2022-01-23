@@ -4,7 +4,7 @@ import React from "react";
 import { StaticQuery, graphql } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 
-const Image = ({ fileName, alt, ...restProps }) => (
+const Image = ({ src, alt, ...restProps }) => (
   <StaticQuery
     query={graphql`
       query BaseImageQuery {
@@ -24,10 +24,8 @@ const Image = ({ fileName, alt, ...restProps }) => (
       }
     `}
     render={({ images }) => {
-      console.log(images);
-      const image = images.edges.find(n => n.node.relativePath.includes(fileName));
+      const image = images.edges.find(n => n.node.relativePath.includes(src));
 
-      console.log(image);
       if (!image) {
         return null;
       }
@@ -43,7 +41,7 @@ const Image = ({ fileName, alt, ...restProps }) => (
 );
 
 /* Image.propTypes = {
-  fileName: PropTypes.string.isRequired,
+  src: PropTypes.string.isRequired,
   alt: PropTypes.string,
 };
  */

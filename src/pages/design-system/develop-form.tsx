@@ -7,7 +7,7 @@ const DevelopForm = () => {
   return (
     <form
       onSubmit={e => {
-        console.log(e);
+        // console.log(e);
       }}
     >
       <TextField placeholder="Hey" id="name-input" />

@@ -229,7 +229,7 @@ const HeroSection = () => {
         </Box>
       </Grid>
       <IconButton aria-label="Scroll Down" className={classes.scrollDownButton} color="default">
-        <AnchorArrowDownIcon />
+        <AnchorArrowDownIcon direction="down" />
       </IconButton>
     </Grid>
   );

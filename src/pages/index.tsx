@@ -3,7 +3,7 @@ import Layout, { SEO } from "@components/layout";
 import LandingContainer from "@containers/landing";
 
 const LandingPage = (props: any) => {
-  console.log({ props });
+  // console.log({ props });
   return (
     <Layout>
       <SEO />
