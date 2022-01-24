@@ -19,8 +19,10 @@ import {
 
 const useStyles = makeStyles(theme => ({
   container: {
+    paddingTop: theme.spacing(12),
+    paddingBottom: theme.spacing(36),
     // height: "calc(100vh - 68px)",
-    height: "100vh",
+    // height: "100vh",
     textAlign: "center",
     background: `linear-gradient(180deg, rgba(49, 98, 189, 0) 0%, rgba(49, 98, 189, 0.25) 100%)`,
   },

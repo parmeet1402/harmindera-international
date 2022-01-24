@@ -105,6 +105,9 @@ const HarminderaTheme = createMuiTheme({
     category: configColors.category,
   },
   typography: {
+    fontSize: 18,
+    // htmlFontSize: configTypography.htmlFontSize,
+    // fontSize: configTypography.fontSize,
     fontFamily: configTypography.fontFamily,
     h1: configTypography.h1,
     h2: configTypography.h2,
@@ -127,6 +130,13 @@ const HarminderaTheme = createMuiTheme({
   zIndex: configZIndex,
   breakpoints,
   overrides: {
+    MuiCssBaseline: {
+      "@global": {
+        html: {
+          fontSize: "112.5%",
+        },
+      },
+    },
     MuiGrid: {
       root: {
         wordBreak: "break-word",

@@ -43,8 +43,8 @@ const fontFamily = "'Poppins', sans-serif";
 
 export const configTypography: any = {
   fontFamily,
-  htmlFontSize: 16,
-  fontSize: 14,
+  htmlFontSize: 18,
+  fontSize: 18,
   fontWeightLight: fontWeight.light,
   fontWeightRegular: fontWeight.regular,
   fontWeightMedium: fontWeight.medium,
@@ -127,7 +127,7 @@ export const configTypography: any = {
   body2: {
     fontFamily,
     fontWeight: fontWeight.regular,
-    fontSize: "13px",
+    fontSize: "1rem",
     lineHeight: 1.525,
     letterSpacing: "0.25px",
   },
