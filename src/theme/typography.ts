@@ -66,11 +66,14 @@ export const configTypography: any = {
   h3: {
     fontFamily,
     fontWeight: fontWeight.bold,
-    fontSize: "2.56rem",
+    fontSize: "1.74rem",
     lineHeight: 1.45,
     letterSpacing: "0px",
-    "@media only screen and (max-width: 1150px)": {
+    "@media only screen and (min-width: 400px)": {
       fontSize: "1.78rem",
+    },
+    "@media only screen and (min-width: 1150px)": {
+      fontSize: "2.56rem",
     },
   },
   h4: {
@@ -93,18 +96,18 @@ export const configTypography: any = {
     fontSize: "1.06rem",
     lineHeight: 1.525,
     letterSpacing: "0.15px",
-    "@media only screen and (max-width: 1150px)": {
-      fontSize: "0.78rem",
-    },
+    // "@media only screen and (max-width: 1150px)": {
+    //   fontSize: "0.78rem",
+    // },
   },
   subtitle1: {
     fontFamily,
     fontWeight: fontWeight.regular,
-    fontSize: "1rem",
+    fontSize: "0.72rem",
     lineHeight: 1.525,
     letterSpacing: "0.15px",
-    "@media only screen and (max-width: 1150px)": {
-      fontSize: "0.72rem",
+    "@media only screen and (min-width: 1150px)": {
+      fontSize: "1rem",
     },
   },
   subtitle2: {

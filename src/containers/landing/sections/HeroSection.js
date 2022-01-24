@@ -5,8 +5,6 @@ import { useStaticQuery, graphql } from "gatsby";
 import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
 import Container from "@material-ui/core/Container";
-import Button from "@material-ui/core/Button";
-// import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 
@@ -22,6 +20,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "swiper/css/bundle";
+import clsx from "clsx";
 
 // install Swiper modules
 SwiperCore.use([Pagination, Navigation, Autoplay]);
@@ -30,130 +29,49 @@ SwiperCore.use([Pagination, Navigation, Autoplay]);
 
 const useStyles = makeStyles(theme => ({
   container: {
-    // maxWidth: theme.breakpoints.values.lg,
-    "@media only screen and (max-width: 1150px)": {
-      maxWidth: theme.breakpoints.values.md,
-    },
-    "@media only screen and (max-width: 800px)": {
-      maxWidth: theme.breakpoints.values.sm,
-    },
-    "@media only screen and (max-width: 600px)": {
-      maxWidth: theme.breakpoints.values.xl,
+    paddingBlock: "max(6vw, 2rem) max(10vw, 2rem)",
+    maxHeight: "100vh",
+  },
+  mediumDevicesAndUp: {
+    display: "none",
+    [theme.breakpoints.up("md")]: {
+      display: "block",
     },
   },
-  grid: {
-    backgroundColor: theme.palette.common.white,
-    height: "calc(100vh - 68px)",
-    position: "relative",
-    paddingTop: theme.spacing(16),
-
-    "@media only screen and (max-height: 960px)": {
-      paddingTop: theme.spacing(12),
-    },
-    "@media only screen and (max-height: 768px)": {
-      paddingTop: theme.spacing(6),
-    },
-    "@media only screen and (max-height: 650px)": {
-      paddingTop: theme.spacing(2),
-    },
-
-    "@media only screen and (max-height: 500px)": {
-      paddingTop: 0,
+  smallDesktopAndUp: {
+    display: "none",
+    [theme.breakpoints.up("lg")]: {
+      display: "flex",
     },
   },
-  leftGridItem: {
-    marginTop: theme.spacing(6),
-    "@media only screen and (max-width: 800px)": {
-      marginTop: theme.spacing(1),
-      maxWidth: "100%",
-      width: "100%",
-      flexBasis: "auto",
-    },
-  },
-  rightGridItem: {
-    marginLeft: "auto",
-    marginTop: theme.spacing(2),
-    userSelect: "none",
-    "@media only screen and (max-width: 1150px)": {
-      marginTop: theme.spacing(6),
-    },
-    "@media only screen and (max-width: 800px)": {
+  mobileDevicesOnly: {
+    display: "block",
+    [theme.breakpoints.up("md")]: {
       display: "none",
     },
   },
-  typewriterEffectWrapper: {
-    color: theme.palette.primary.dark,
-    display: "inline-block",
+  primaryMainTextColor: {
+    color: theme.palette.primary.main,
   },
-  typewriterEffectCursor: {
-    color: theme.palette.primary.dark,
-  },
-  primaryButtonStyles: {
-    marginRight: theme.spacing(1),
-    "@media only screen and (max-width: 600px)": {
-      marginRight: 0,
-      width: "100%",
-    },
-  },
-  secondaryButtonStyles: {
-    "@media only screen and (max-width: 600px)": {
-      width: "100%",
-      marginTop: theme.spacing(1),
-    },
-  },
-  heading: {
-    "@media only screen and (max-width: 600px)": {
-      // "&>br": {
-      //   display: "none",
-      // },
-    },
+  headingSize: {
+    // for very small devices, drop the heading size to even further
   },
   subHeading: {
-    margin: theme.spacing(1, 0, 7),
-    "@media only screen and (max-width: 600px)": {
-      "&>br": {
-        display: "none",
-      },
+    marginTop: "max(1.5vw, 1.1rem)",
+    marginBottom: "max(2vw, 2.5rem)",
+    [theme.breakpoints.up("lg")]: {
+      marginBlock: "0",
     },
   },
-  secondaryTextContainer: {
-    marginTop: theme.spacing(7),
-    "@media only screen and (max-width: 600px)": {
-      // marginTop: theme.spacing(3),
-      marginTop: "0",
-      position: "absolute",
-      bottom: "100px",
-    },
-  },
-  secondaryText: {
-    marginLeft: theme.spacing(1),
-    "@media only screen and (max-width: 1150px)": {
-      fontSize: "12px",
-    },
-    "@media only screen and (max-width: 600px)": {
-      "&>br": {
-        display: "none",
-      },
-    },
-  },
-
-  globeIcon: {
-    "@media only screen and (max-width: 1150px)": {
-      transform: "scale(0.8)",
-      marginTop: "-4px",
-    },
-  },
-
   swiper: {
-    height: "503px",
-    width: "422px",
+    userSelect: "none",
+    marginInline: "auto clamp(2rem, 0.2vw, 4rem)",
+    aspectRatio: 0.83896620278,
+    width: `clamp(300px, 30vw + 1rem, 422px)`,
     background: theme.palette.grey[100],
     borderRadius: theme.shape.borderRadius,
-    "@media only screen and (max-width: 1150px)": {
-      height: "357px",
-      width: "300px",
-    },
   },
+
   swiperSlide: {
     background: theme.palette.grey[100],
     display: "flex",
@@ -167,6 +85,12 @@ const useStyles = makeStyles(theme => ({
       objectFit: "cover",
     },
   },
+  secondaryTextContainer: {
+    marginTop: theme.spacing(1),
+  },
+  secondaryText: {
+    marginLeft: theme.spacing(1),
+  },
   scrollDownButton: {
     position: "absolute",
     bottom: "40px",
@@ -176,26 +100,6 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const content = {
-  heading: (
-    <>
-      Reliable {window.innerWidth < 500 ? <br /> : null}manufacturer{" "}
-      {window.innerWidth < 500 ? null : <br />} of {window.innerWidth < 500 ? <br /> : null}
-    </>
-  ),
-  subHeading: (
-    <>
-      Our team comprising of 500+ highly skilled engineers <br /> and workers is here to fulfil
-      needs for your business.
-    </>
-  ),
-  primaryButton: "Browser Products",
-  secondaryButton: "Contact Us",
-  secondaryText: (
-    <>
-      Trusted by over 160+ beloved clients of ours from <br /> all the leading countries in the
-      world
-    </>
-  ),
   images: [
     {
       id: "b9314081-f741-5cfb-a4f3-59f6b604af46",
@@ -253,74 +157,110 @@ const HeroSection = () => {
 
   return (
     <Container maxWidth="lg" className={classes.container}>
-      <Grid container spacing={2} className={classes.grid}>
-        <Grid item xs={6} className={classes.leftGridItem}>
-          <Typography variant="h3" className={classes.heading} component="h1">
-            {content.heading}
-            <Typewriter
-              color="red"
-              options={{
-                strings: productCategories,
-                autoStart: true,
-                loop: true,
-                cursorClassName: classes.typewriterEffectCursor,
-                wrapperClassName: classes.typewriterEffectWrapper,
-              }}
-            />
-          </Typography>
-
-          <Typography variant="subtitle1" className={classes.subHeading}>
-            {content.subHeading}
-          </Typography>
-          <SolidButton
-            size="medium"
-            className={classes.primaryButtonStyles}
-            onClick={handlePrimaryButtonClick}
-          >
-            {content.primaryButton}
-          </SolidButton>
-          <TextButton
-            size="medium"
-            onClick={handleSecondaryButtonClick}
-            className={classes.secondaryButtonStyles}
-          >
-            {content.secondaryButton}
-          </TextButton>
-          <Box display="flex" className={classes.secondaryTextContainer}>
-            <GlobeIcon className={classes.globeIcon} />
-            <Typography className={classes.secondaryText} color="textSecondary">
-              {content.secondaryText}
-            </Typography>
-          </Box>
-        </Grid>
-        <Grid item xs={5} className={classes.rightGridItem}>
-          <Box>
-            <Swiper
-              slidesPerView={1}
-              spaceBetween={30}
-              loop={true}
-              pagination={{
-                clickable: true,
-              }}
-              navigation={false}
-              className={classes.swiper}
-              autoplay={{
-                delay: 2500,
-                disableOnInteraction: false,
-              }}
+      <Grid container spacing={3}>
+        <Grid container item xs={12} md={6}>
+          <Grid item xs={12}>
+            <Typography
+              variant="h3"
+              component="h1"
+              className={clsx({
+                [classes.headingSize]: true,
+              })}
             >
-              {content.images.map(({ original_url, name }) => (
-                <SwiperSlide className={classes.swiperSlide} key={name}>
-                  <img src={original_url} alt={name} />
-                </SwiperSlide>
-              ))}
-            </Swiper>
-          </Box>
+              Reliable&nbsp;
+              <br className={classes.mobileDevicesOnly} />
+              manufacturer <br className={classes.mediumDevicesAndUp} />
+              of&nbsp;
+              <br className={classes.mobileDevicesOnly} />
+              <Typewriter
+                color="red"
+                options={{
+                  strings: productCategories,
+                  autoStart: true,
+                  loop: true,
+                  cursorClassName: clsx({
+                    [classes.primaryMainTextColor]: true,
+                  }),
+                  wrapperClassName: clsx({
+                    [classes.primaryMainTextColor]: true,
+                  }),
+                }}
+              />
+            </Typography>
+          </Grid>
+          <Grid item xs={12}>
+            <Typography variant="subtitle1" className={classes.subHeading}>
+              Our team comprising of 500+ highly skilled engineers{" "}
+              <br className={classes.mediumDevicesAndUp} />
+              and workers is here to fulfil needs for your business.
+            </Typography>
+          </Grid>
+          <Grid container spacing={1} item xs={12}>
+            <Grid item xs={12} lg={6}>
+              <SolidButton fullWidth onClick={handlePrimaryButtonClick}>
+                Browse Products
+              </SolidButton>
+            </Grid>
+            <Grid item xs={12} lg={6}>
+              <TextButton fullWidth onClick={handlePrimaryButtonClick}>
+                Contact Us
+              </TextButton>
+            </Grid>
+          </Grid>
+          <Grid
+            // container
+            spacing={1}
+            item
+            lg={12}
+            className={clsx({
+              [classes.smallDesktopAndUp]: true,
+            })}
+          >
+            <Grid item xs={1}>
+              <GlobeIcon />
+            </Grid>
+            <Grid item xs={11}>
+              <Typography className={classes.secondaryText} color="textSecondary">
+                Trusted by over 160+ beloved clients of ours from <br /> all the leading countries
+                in the world
+              </Typography>
+            </Grid>
+          </Grid>
         </Grid>
-        <IconButton aria-label="Scroll Down" className={classes.scrollDownButton} color="default">
-          <AnchorArrowDownIcon direction="down" />
-        </IconButton>
+        <Grid
+          item
+          className={clsx({
+            [classes.mediumDevicesAndUp]: true,
+          })}
+          md={6}
+          xs={0}
+          container
+        >
+          <Swiper
+            slidesPerView={1}
+            spaceBetween={30}
+            loop={true}
+            pagination={{
+              clickable: true,
+            }}
+            navigation={false}
+            className={classes.swiper}
+            autoplay={{
+              delay: 2500,
+              disableOnInteraction: false,
+            }}
+          >
+            {content.images.map(({ original_url, name }) => (
+              <SwiperSlide className={classes.swiperSlide} key={name}>
+                <img src={original_url} alt={name} />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </Grid>
       </Grid>
+      <IconButton aria-label="Scroll Down" className={classes.scrollDownButton} color="default">
+        <AnchorArrowDownIcon direction="down" />
+      </IconButton>
     </Container>
   );
 };

@@ -83,9 +83,9 @@ const breakpoints = createBreakpoints({
     xl: 1200, */
 
     xl: 1920,
-    lg: 1280,
-    md: 960,
-    sm: 600,
+    lg: 1200,
+    md: 720,
+    sm: 420,
     xs: 0,
   },
 });
@@ -134,6 +134,12 @@ const HarminderaTheme = createMuiTheme({
       "@global": {
         html: {
           fontSize: "112.5%",
+          // "@media only screen and (min-width: 400px)": {
+          //   fontSize: "78.25%",
+          // },
+
+          // "@media only screen and (min-width: 1150px)": {
+          // },
         },
       },
     },
