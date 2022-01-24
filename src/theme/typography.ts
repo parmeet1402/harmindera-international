@@ -79,9 +79,12 @@ export const configTypography: any = {
   h4: {
     fontFamily,
     fontWeight: fontWeight.regular,
-    fontSize: "1.83rem",
+    fontSize: "1.28rem",
     lineHeight: 1.475,
     letterSpacing: "0.25px",
+    "@media only screen and (min-width: 1150px)": {
+      fontSize: "1.83rem",
+    },
   },
   h5: {
     fontFamily,

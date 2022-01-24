@@ -16,33 +16,60 @@ import {
   Nut as NutIcon,
   Tractor as TractorIcon,
 } from "@content/assets/CustomIcon";
+import { Container } from "@material-ui/core";
 
 const useStyles = makeStyles(theme => ({
   container: {
-    paddingTop: theme.spacing(12),
-    paddingBottom: theme.spacing(36),
-    // height: "calc(100vh - 68px)",
-    // height: "100vh",
-    textAlign: "center",
     background: `linear-gradient(180deg, rgba(49, 98, 189, 0) 0%, rgba(49, 98, 189, 0.25) 100%)`,
+    textAlign: "left",
+    paddingBottom: theme.spacing(12),
+    [theme.breakpoints.up("md")]: {
+      textAlign: "center",
+      paddingTop: theme.spacing(12),
+      paddingBottom: theme.spacing(36),
+    },
   },
   heading: {
     marginBottom: theme.spacing(1),
+    fontSize: "1rem",
+    [theme.breakpoints.up("md")]: {
+      fontSize: "2rem",
+    },
+    "@media only screen and (min-width: 1150px)": {
+      fontSize: "3.23rem",
+    },
   },
-  subHeading: {},
+  subHeading: {
+    display: "none",
+    [theme.breakpoints.up("md")]: {
+      display: "block",
+    },
+  },
 
   grid: {
+    width: "100%",
     display: "grid",
-    gridTemplateColumns: "repeat(3, 1fr)",
-    gridTemplateRows: "repeat(2, 1fr)",
-    rowGap: theme.spacing(5),
-    columnGap: theme.spacing(4),
-
-    width: "max-content",
-    marginTop: theme.spacing(6),
+    gridTemplateColumns: "repeat(2, 1fr)",
+    gridTemplateRows: "repeat(3, 1fr)",
+    rowGap: theme.spacing(2),
+    columnGap: theme.spacing(2),
+    marginTop: theme.spacing(3),
     marginLeft: "auto",
     marginRight: "auto",
     textAlign: "center",
+
+    "@media only screen and (min-width:550px)": {
+      gridTemplateColumns: "repeat(3, 1fr)",
+      gridTemplateRows: "repeat(2, 1fr)",
+    },
+    [theme.breakpoints.up("md")]: {
+      marginTop: theme.spacing(6),
+      gridTemplateColumns: "repeat(3, 1fr)",
+      gridTemplateRows: "repeat(2, 1fr)",
+      width: "max-content",
+      rowGap: theme.spacing(5),
+      columnGap: theme.spacing(4),
+    },
   },
 }));
 
@@ -92,15 +119,18 @@ const content = {
 const useCategoryStyles = makeStyles(theme => ({
   categoryCard: {
     background: props => props.bgColor,
-    height: theme.spacing(25),
-    width: theme.spacing(28),
-
+    width: "100%",
+    aspectRatio: "1.12",
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
-
     borderRadius: theme.shape.borderRadius,
+
+    [theme.breakpoints.up("md")]: {
+      height: theme.spacing(25),
+      width: theme.spacing(28),
+    },
   },
   label: {
     color: theme.palette.common.white,
@@ -127,7 +157,7 @@ const CategorySection = () => {
   const classes = useStyles();
 
   return (
-    <Box className={classes.container}>
+    <Container className={classes.container} maxWidth="auto">
       <Box pt={12}>
         <Typography variant="h2" component="h2" className={classes.heading}>
           {content.heading}
@@ -141,7 +171,7 @@ const CategorySection = () => {
           <CategoryCard key={category.name} data={category} />
         ))}
       </div>
-    </Box>
+    </Container>
   );
 };
 

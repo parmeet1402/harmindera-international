@@ -92,10 +92,14 @@ const useStyles = makeStyles(theme => ({
     marginLeft: theme.spacing(1),
   },
   scrollDownButton: {
-    position: "absolute",
-    bottom: "40px",
-    left: "50%",
-    transform: "translateX(-50%)",
+    display: "none",
+    [theme.breakpoints.up("lg")]: {
+      display: "block",
+      position: "absolute",
+      bottom: "40px",
+      left: "50%",
+      transform: "translateX(-50%)",
+    },
   },
 }));
 

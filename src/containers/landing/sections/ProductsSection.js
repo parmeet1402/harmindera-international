@@ -292,7 +292,7 @@ const ProductsSection = () => {
           {renderCategoryCards()}
         </ItemsCarousel>
       </div>
-      <OutlinedButton>View All</OutlinedButton>
+      {/* <OutlinedButton>View All</OutlinedButton> */}
     </Box>
   );
 };
