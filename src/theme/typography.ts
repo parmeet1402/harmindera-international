@@ -91,11 +91,13 @@ export const configTypography: any = {
   h5: {
     fontFamily,
     fontWeight: fontWeight.regular,
-    fontSize: "1.28rem",
+    fontSize: "1rem",
     lineHeight: 1.5,
     letterSpacing: "0px",
     // TODO: Change base size and set the current size at a later width
-    
+    "@media only screen and (min-width: 1150px)": {
+      fontSize: "1.28rem",
+    },
   },
   h6: {
     fontFamily,
@@ -155,7 +157,6 @@ export const configTypography: any = {
     letterSpacing: "1.25px",
     textTransform: "uppercase",
     // TODO: Change base size and set the current size at a later width
-
   },
   caption: {
     fontFamily,
@@ -164,7 +165,6 @@ export const configTypography: any = {
     lineHeight: 1.525,
     letterSpacing: "0.4px",
     // TODO: Change base size and set the current size at a later width
-
   },
   overline: {
     fontFamily,
@@ -174,6 +174,5 @@ export const configTypography: any = {
     letterSpacing: "1.5px",
     textTransform: "uppercase",
     // TODO: Change base size and set the current size at a later width
-    
   },
 };

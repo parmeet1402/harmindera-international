@@ -10,42 +10,99 @@ import Chip from "@material-ui/core/Chip";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import { emphasize } from "@material-ui/core/styles/colorManipulator";
 import Image from "@components/Image";
-import { Paper } from "@material-ui/core";
+import { Container, Paper } from "@material-ui/core";
 import { TextButton } from "@components/form/Button";
 import { ArrowIcon } from "@content/assets/CustomIcon";
 import Link from "@components/navigation/Link";
 
 const useStyles = makeStyles(theme => ({
   container: {
-    // height: "100vh",
-    textAlign: "center",
-    background: theme.palette.grey["100"],
-    paddingBottom: theme.spacing(12),
+    textAlign: "left",
+    paddingBottom: theme.spacing(8),
+    background: theme.palette.common.white,
+
+    [theme.breakpoints.up("md")]: {
+      textAlign: "center",
+      paddingBottom: theme.spacing(20), // TODO: check if 12 is required
+      background: theme.palette.grey["100"],
+    },
   },
+
+  headingContainer: {
+    paddingTop: theme.spacing(6),
+    [theme.breakpoints.up("md")]: {
+      paddingTop: theme.spacing(12),
+    },
+  },
+
   heading: {
     marginBottom: theme.spacing(1),
-    color: theme.palette.text.primary,
+    color: theme.palette.common.black,
+    fontSize: "1rem",
+    [theme.breakpoints.up("md")]: {
+      fontSize: "2rem",
+    },
+    "@media only screen and (min-width: 1150px)": {
+      fontSize: "3.23rem",
+    },
   },
   subHeading: {
     color: theme.palette.text.secondary,
+    display: "none",
+    [theme.breakpoints.up("md")]: {
+      display: "block",
+    },
   },
   grid: {
+    width: "100%",
     display: "grid",
-    gridTemplateColumns: "repeat(2, 1fr)",
-    gridTemplateRows: "repeat(2, 1fr)",
-    gap: theme.spacing(4),
-
-    width: "max-content",
-    marginTop: theme.spacing(6),
+    gridTemplateColumns: "repeat(1, 1fr)",
+    rowGap: theme.spacing(2),
+    columnGap: theme.spacing(2),
+    marginTop: theme.spacing(3),
     marginLeft: "auto",
     marginRight: "auto",
     textAlign: "center",
+
+    // display: "grid",
+    // gridTemplateColumns: "repeat(2, 1fr)",
+    // gridTemplateRows: "repeat(2, 1fr)",
+    // gap: theme.spacing(4),
+
+    // width: "max-content",
+    // marginTop: theme.spacing(6),
+    // marginLeft: "auto",
+    // marginRight: "auto",
+    // textAlign: "center",
+
+    "@media only screen and (min-width:550px)": {
+      // gridTemplateColumns: "repeat(1, 1fr)",
+    },
+    [theme.breakpoints.up("md")]: {
+      marginTop: theme.spacing(6),
+      gridTemplateColumns: "repeat(2, 1fr)",
+      width: "max-content",
+    },
+    "@media only screen and (min-width:1150px)": {
+      rowGap: theme.spacing(5),
+      columnGap: theme.spacing(4),
+      // gridTemplateColumns: "repeat(1, 1fr)",
+    },
   },
   card: {
-    width: "350px",
+    width: "100%",
     height: "430px",
     padding: theme.spacing(5, 4),
     position: "relative",
+    background: theme.palette.grey["100"],
+    [theme.breakpoints.up("md")]: {
+      width: "clamp(300px,40vw,430px)",
+      height: "430px",
+      background: theme.palette.common.white,
+    },
+    "@media only screen and (min-width:1150px)": {
+      height: "500px",
+    },
   },
   cardLink: {
     position: "absolute",
@@ -61,6 +118,9 @@ const useStyles = makeStyles(theme => ({
       color: theme.palette.primary.main,
       borderBottom: `1px solid ${theme.palette.primary.main}`,
     },
+  },
+  cardHeading: {
+    fontWeight: theme.typography.fontWeightBold,
   },
 }));
 
@@ -105,18 +165,14 @@ const Card = ({ data }) => {
     <Paper className={classes.card}>
       <Image src={data.image} alt={data.title} />
       <Box textAlign="left" mt={5}>
-        <Typography variant="h5">{data.title}</Typography>
-        <Typography variant="subtitle2">{data.text}</Typography>
+        <Typography className={classes.cardHeading} variant="h5">
+          {data.title}
+        </Typography>
+        <Typography variant="subtitle1">{data.text}</Typography>
         <Link className={classes.cardLink} href="/about-us">
-          {/* <Grid> */}
           Read More&nbsp;&nbsp;
           <ArrowIcon direction="right" />
-          {/* </Grid> */}
         </Link>
-        {/* <TextButton size="small">
-          {data.linkText}&nbsp;
-          <ArrowIcon direction="right" />
-        </TextButton> */}
       </Box>
     </Paper>
   );
@@ -124,8 +180,8 @@ const Card = ({ data }) => {
 const AboutUsSection = () => {
   const classes = useStyles();
   return (
-    <Box className={classes.container}>
-      <Box pt={12}>
+    <Container className={classes.container} maxWidth="auto">
+      <Box className={classes.headingContainer}>
         <Typography variant="h2" component="h2" className={classes.heading}>
           {content.heading}
         </Typography>
@@ -138,7 +194,7 @@ const AboutUsSection = () => {
           <Card data={card} />
         ))}
       </div>
-    </Box>
+    </Container>
   );
 };
 

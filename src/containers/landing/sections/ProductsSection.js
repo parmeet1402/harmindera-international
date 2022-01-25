@@ -300,7 +300,7 @@ const ProductsSection = () => {
   const getChevronWidth = () =>
     isDesktopDeviceAndUp ? 60 : isMediumDeviceAndUp ? 40 : isWidthMoreThan550px ? 20 : 12;
   const getNumberOfCards = () =>
-    isDesktopDeviceAndUp ? 4 : isMediumDeviceAndUp ? 3 : isWidthMoreThan550px ? 2 : 1;
+    isDesktopDeviceAndUp ? 4 : isMediumDeviceAndUp ? 2 : isWidthMoreThan550px ? 2 : 1;
 
   const variant = isMediumDeviceAndUp ? "light" : "dark";
 
