@@ -16,87 +16,52 @@ import WhatsApp from "@material-ui/icons/WhatsApp";
 // import { TextField } from "@material-ui/core";
 import TextField from "@components/form/TextField";
 import { SolidButton } from "@components/form/Button";
+import { Container } from "@material-ui/core";
 
 const useStyles = makeStyles(theme => ({
   container: {
-    // height: "calc(100vh - 68px)",
-    height: "110vh",
-    position: "relative",
-    textAlign: "center",
-    background: theme.palette.primary.light,
+    textAlign: "left",
+    paddingBottom: theme.spacing(8),
+    background: theme.palette.common.white,
+
+    [theme.breakpoints.up("md")]: {
+      textAlign: "center",
+      paddingBottom: theme.spacing(20), // TODO: check if 12 is required
+      background: theme.palette.grey["100"],
+    },
   },
+
+  headingContainer: {
+    paddingTop: theme.spacing(6),
+    [theme.breakpoints.up("md")]: {
+      paddingTop: theme.spacing(12),
+    },
+  },
+
   heading: {
     marginBottom: theme.spacing(1),
-    color: theme.palette.common.white,
+    color: theme.palette.common.black,
+    fontSize: "1rem",
+    [theme.breakpoints.up("md")]: {
+      fontSize: "2rem",
+    },
+    "@media only screen and (min-width: 1150px)": {
+      fontSize: "3.23rem",
+    },
   },
   subHeading: {
-    color: theme.palette.common.white,
+    color: theme.palette.text.secondary,
+    display: "none",
+    [theme.breakpoints.up("md")]: {
+      display: "block",
+    },
   },
-  grid: {
-    // display: "grid",
-    // gridTemplateColumns: "repeat(3, 1fr)",
-    // gridTemplateRows: "repeat(2, 1fr)",
-    // rowGap: theme.spacing(5),
-    // columnGap: theme.spacing(4),
-    // width: "max-content",
-    // marginTop: theme.spacing(6),
-    // marginLeft: "auto",
-    // marginRight: "auto",
-    // textAlign: "center",
-  },
-  contentContainer: {
-    width: "80%",
-    height: "60%",
-    marginLeft: "auto",
-    marginRight: "auto",
-    marginTop: theme.spacing(6),
-    position: "relative",
-
-    display: "flex",
-    flexDirection: "row",
-    // border: "1px solid red",
-  },
-
-  leftContentContainer: {
-    width: "320px",
-    marginLeft: "60px",
-    // marginTop: "12px",
-    // background: "red",
-  },
-  rightContentContainer: {
-    // background: "green",
-    width: "calc(100% - 450px)",
-    marginLeft: "auto",
-  },
-  paper: {
-    height: "100%",
-    padding: theme.spacing(5),
-    textAlign: "left",
-  },
-  paperHeading: { fontWeight: theme.typography.fontWeightBold },
-
-  contactRow: {
-    display: "flex",
-    flexDirection: "row",
-    // justifyContent: "space-between",
-    alignItems: "center",
-    flexWrap: "nowrap",
-    paddingRight: theme.spacing(1),
-    margin: theme.spacing(3, 0, 1),
-  },
-
-  contactIcon: {},
-
-  contactLinkText: {},
-  formControl: {
-    width: "calc(50% - 12px)",
-  },
-  formControlFullField: {
-    width: "100%",
-    // height: theme.spacing(12),
-  },
-  textInput: {
-    width: "100%",
+  mapContainer: {
+    marginBottom: theme.spacing(2),
+    "&>iframe": {
+      width: "100%",
+      height: "60vw",
+    },
   },
 }));
 
@@ -129,158 +94,80 @@ const ContactUsSection = () => {
 
   //   https://goo.gl/maps/oNn9TP1dHEURTFGk8
   return (
-    <Box className={classes.container}>
-      <Box pt={12}>
+    <Container className={classes.container}>
+      <Box className={classes.headingContainer}>
         <Typography variant="h2" component="h2" className={classes.heading}>
           {content.heading}
         </Typography>
         <Typography variant="h4" component="span" className={classes.subHeading}>
           {content.subHeading}
         </Typography>
+        {/* Create a grid for containing both form and aside */}
+        <Grid container spacing={2}>
+          <Grid item xs={12} md={6}>
+            <Grid item className={classes.mapContainer}>
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d54789.801763578675!2d75.84239438757328!3d30.876515636190774!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391a9d67dc262cd5%3A0x97cb1643bce70173!2sHarmindera%20International!5e0!3m2!1sen!2sin!4v1642942272698!5m2!1sen!2sin"
+                // width="319px"
+                // height="252px"
+                style={{ border: 0, borderRadius: 12 }}
+                allowfullscreen=""
+                loading="lazy"
+                aria-hidden="false"
+                tabIndex="0"
+              />
+            </Grid>
+            <Grid container item xs={12} md={6} spacing={3}>
+              <Grid container item xs={12} alignItems="center">
+                <Grid item xs={3}>
+                  <IconButton aria-label="Location" color="default">
+                    <RoomOutlined color="primary" />
+                  </IconButton>
+                </Grid>
+                <Grid item xs={9}>
+                  <Typography variant="subtitle1" align="left" color="primary">
+                    {address}
+                  </Typography>
+                </Grid>
+              </Grid>
+              <Grid container item xs={12} alignItems="center">
+                <Grid item xs={3}>
+                  <IconButton aria-label="Phone" color="default">
+                    <PhoneOutlined color="primary" />
+                  </IconButton>
+                </Grid>
+                <Grid item xs={9}>
+                  <Typography variant="subtitle1" align="left" color="primary">
+                    {phoneNumbers[0]}
+                  </Typography>
+                  <Typography variant="subtitle1" align="left" color="primary">
+                    {phoneNumbers[1]}
+                  </Typography>
+                  <Typography variant="subtitle1" align="left" color="primary">
+                    {phoneNumbers[2]}
+                  </Typography>
+                </Grid>
+              </Grid>
+              <Grid container item xs={12} alignItems="center">
+                <Grid item xs={3}>
+                  <IconButton aria-label="Email" color="default">
+                    <MailOutlineOutlined color="primary" />
+                  </IconButton>
+                </Grid>
+                <Grid item xs={9}>
+                  <Typography variant="subtitle1" align="left" color="primary">
+                    {email}
+                  </Typography>
+                </Grid>
+              </Grid>
+            </Grid>
+          </Grid>
+          <Grid item xs={12} md={6}>
+            Right
+          </Grid>
+        </Grid>
       </Box>
-      <Grid direction="row" className={classes.contentContainer}>
-        <Grid direction="column" className={classes.leftContentContainer}>
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d54789.801763578675!2d75.84239438757328!3d30.876515636190774!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391a9d67dc262cd5%3A0x97cb1643bce70173!2sHarmindera%20International!5e0!3m2!1sen!2sin!4v1642942272698!5m2!1sen!2sin"
-            width="319px"
-            height="252px"
-            style={{ border: 0, borderRadius: 12 }}
-            allowfullscreen=""
-            loading="lazy"
-            aria-hidden="false"
-            tabIndex="0"
-          />
-          <Box display="flex" flexDirection="column" mt={3}>
-            <Box className={classes.contactRow}>
-              <Box marginRight={1.5}>
-                <RoomOutlined fontSize="large" color="secondary" />
-              </Box>
-              <Box>
-                <Typography variant="subtitle2" align="left" color="secondary">
-                  {address}
-                </Typography>
-              </Box>
-            </Box>
-            <Box className={classes.contactRow}>
-              <Box marginRight={1.5}>
-                <MailOutlineOutlined fontSize="large" color="secondary" />
-              </Box>
-              <Box>
-                <Typography variant="subtitle2" align="left" color="secondary">
-                  {email}
-                </Typography>
-              </Box>
-            </Box>
-            <Box className={classes.contactRow}>
-              <Box marginRight={1.5}>
-                <PhoneOutlined fontSize="large" color="secondary" />
-              </Box>
-              <Box>
-                <Typography variant="subtitle2" align="left" color="secondary">
-                  {phoneNumbers[0]}
-                </Typography>
-                <Typography variant="subtitle2" align="left" color="secondary">
-                  {phoneNumbers[1]}
-                </Typography>
-                <Typography variant="subtitle2" align="left" color="secondary">
-                  {phoneNumbers[2]}
-                </Typography>
-              </Box>
-            </Box>
-            <Box className={classes.contactRow}>
-              <Box marginRight={1.5}>
-                <WhatsApp fontSize="large" color="secondary" />
-              </Box>
-              <Box>
-                <Typography variant="subtitle2" align="left" color="secondary">
-                  {phoneNumbers[0]}
-                </Typography>
-              </Box>
-            </Box>
-          </Box>
-        </Grid>
-        <Grid direction="column" className={classes.rightContentContainer}>
-          <Paper className={classes.paper}>
-            <Typography className={classes.paperHeading} variant="h5">
-              Request Callback
-            </Typography>
-            <Box mt={5}>
-              <Box display="flex" justifyContent="space-between" mb={3}>
-                <TextField
-                  label="Your Name"
-                  placeholder="Your Name"
-                  id="outlined-size-small"
-                  variant="outlined"
-                  formControlProps={{
-                    classes: { root: classes.formControl },
-                  }}
-                  classes={{
-                    root: classes.textInput,
-                  }}
-                />
-                <TextField
-                  label="Email"
-                  placeholder="Email"
-                  id="outlined-size-small"
-                  variant="outlined"
-                  formControlProps={{
-                    classes: { root: classes.formControl },
-                  }}
-                  classes={{
-                    root: classes.textInput,
-                  }}
-                />
-              </Box>
-              <Box display="flex" justifyContent="space-between" mb={3}>
-                <TextField
-                  label="Phone"
-                  placeholder="Phone"
-                  id="outlined-size-small"
-                  variant="outlined"
-                  formControlProps={{
-                    classes: { root: classes.formControl },
-                  }}
-                  classes={{
-                    root: classes.textInput,
-                  }}
-                />
-                <TextField
-                  label="Country"
-                  placeholder="Country"
-                  id="outlined-size-small"
-                  variant="outlined"
-                  formControlProps={{
-                    classes: { root: classes.formControl },
-                  }}
-                  classes={{
-                    root: classes.textInput,
-                  }}
-                />
-              </Box>
-              <Box display="flex" justifyContent="space-between" mb={3}>
-                <TextField
-                  label="Your Name"
-                  placeholder="Your Name"
-                  id="outlined-size-small"
-                  variant="outlined"
-                  multiline
-                  formControlProps={{
-                    classes: { root: classes.formControlFullField },
-                  }}
-                  classes={{
-                    root: classes.textInput,
-                  }}
-                  rows={8}
-                />
-              </Box>
-            </Box>
-            <Box textAlign="center" mt={4}>
-              <SolidButton>Send Message</SolidButton>
-            </Box>
-          </Paper>
-        </Grid>
-      </Grid>
-    </Box>
+    </Container>
   );
 };
 
