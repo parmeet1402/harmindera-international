@@ -20,15 +20,25 @@ import { Container } from "@material-ui/core";
 
 const useStyles = makeStyles(theme => ({
   container: {
-    background: `linear-gradient(180deg, rgba(49, 98, 189, 0) 0%, rgba(49, 98, 189, 0.25) 100%)`,
     textAlign: "left",
-    paddingBottom: theme.spacing(12),
+    paddingBottom: theme.spacing(8),
+    background: theme.palette.common.white,
+    // background: "green",
+
     [theme.breakpoints.up("md")]: {
       textAlign: "center",
       paddingTop: theme.spacing(12),
       paddingBottom: theme.spacing(36),
+      background: `linear-gradient(180deg, rgba(49, 98, 189, 0) 0%, rgba(49, 98, 189, 0.25) 100%)`,
     },
   },
+  headingContainer: {
+    paddingTop: theme.spacing(6),
+    [theme.breakpoints.up("md")]: {
+      paddingTop: theme.spacing(12),
+    },
+  },
+
   heading: {
     marginBottom: theme.spacing(1),
     fontSize: "1rem",
@@ -158,7 +168,7 @@ const CategorySection = () => {
 
   return (
     <Container className={classes.container} maxWidth="auto">
-      <Box pt={12}>
+      <Box className={classes.headingContainer}>
         <Typography variant="h2" component="h2" className={classes.heading}>
           {content.heading}
         </Typography>

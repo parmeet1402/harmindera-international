@@ -55,6 +55,7 @@ export const configTypography: any = {
     fontSize: "5.17rem",
     lineHeight: 1.4,
     letterSpacing: "-1.5px",
+    // TODO: Change base size and set the current size at a later width
   },
   h2: {
     fontFamily,
@@ -62,6 +63,7 @@ export const configTypography: any = {
     fontSize: "3.23rem",
     lineHeight: 1.425,
     letterSpacing: "-0.5px",
+    // TODO: Change base size and set the current size at a later width
   },
   h3: {
     fontFamily,
@@ -92,6 +94,8 @@ export const configTypography: any = {
     fontSize: "1.28rem",
     lineHeight: 1.5,
     letterSpacing: "0px",
+    // TODO: Change base size and set the current size at a later width
+    
   },
   h6: {
     fontFamily,
@@ -99,6 +103,8 @@ export const configTypography: any = {
     fontSize: "1.06rem",
     lineHeight: 1.525,
     letterSpacing: "0.15px",
+    // TODO: Change base size and set the current size at a later width
+
     // "@media only screen and (max-width: 1150px)": {
     //   fontSize: "0.78rem",
     // },
@@ -116,9 +122,14 @@ export const configTypography: any = {
   subtitle2: {
     fontFamily,
     fontWeight: fontWeight.medium,
-    fontSize: "0.72rem",
+    fontSize: "0.56rem",
     lineHeight: 1.525,
     letterSpacing: "0.1px",
+    "@media only screen and (min-width: 1150px)": {
+      fontSize: "0.72rem",
+    },
+    // TODO: Change base size and set the current size at a later width
+    // TODO: Desktop Base size 13px (0.72rem)
   },
   body1: {
     fontFamily,
@@ -126,6 +137,7 @@ export const configTypography: any = {
     fontSize: "0.83rem",
     lineHeight: 1.525,
     letterSpacing: "0.5px",
+    // TODO: Change base size and set the current size at a later width
   },
   body2: {
     fontFamily,
@@ -133,6 +145,7 @@ export const configTypography: any = {
     fontSize: "1rem",
     lineHeight: 1.525,
     letterSpacing: "0.25px",
+    // TODO: Change base size and set the current size at a later width
   },
   button: {
     fontFamily,
@@ -141,6 +154,8 @@ export const configTypography: any = {
     lineHeight: 1.525,
     letterSpacing: "1.25px",
     textTransform: "uppercase",
+    // TODO: Change base size and set the current size at a later width
+
   },
   caption: {
     fontFamily,
@@ -148,6 +163,8 @@ export const configTypography: any = {
     fontSize: "0.67rem",
     lineHeight: 1.525,
     letterSpacing: "0.4px",
+    // TODO: Change base size and set the current size at a later width
+
   },
   overline: {
     fontFamily,
@@ -156,5 +173,7 @@ export const configTypography: any = {
     lineHeight: 1.525,
     letterSpacing: "1.5px",
     textTransform: "uppercase",
+    // TODO: Change base size and set the current size at a later width
+    
   },
 };
