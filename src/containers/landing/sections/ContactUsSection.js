@@ -57,11 +57,49 @@ const useStyles = makeStyles(theme => ({
     },
   },
   mapContainer: {
-    marginBottom: theme.spacing(2),
+    marginBottom: theme.spacing(4),
     "&>iframe": {
       width: "100%",
       height: "60vw",
     },
+  },
+  paper: {
+    marginTop: theme.spacing(4),
+    // background: "red",
+    // padding: theme.spacing(2),
+    // margin: "0 auto",
+    // textAlign: "center",
+    // width: "100%",
+    // position: "relative",
+    background: theme.palette.grey["100"],
+    // paddingTop: theme.spacing(2),
+    // background: theme.palette.common.white,
+    // paddingLeft: theme.spacing(2),
+    // paddingTop: theme.spacing(2),
+    padding: theme.spacing(2, 0, 6, 2),
+  },
+  paperHeading: {
+    paddingBlock: theme.spacing(3, 4),
+    paddingInline: theme.spacing(1),
+    fontWeight: theme.typography.fontWeightBold,
+  },
+
+  paperForm: {
+    //
+    // width: "100%",
+  },
+
+  formControlFullField: {
+    width: "100%",
+    // background: "white",
+    // height: theme.spacing(12),
+  },
+  textInput: {
+    width: "100%",
+    background: "white",
+  },
+  submitButtonContainer: {
+    marginTop: theme.spacing(4),
   },
 }));
 
@@ -103,7 +141,7 @@ const ContactUsSection = () => {
           {content.subHeading}
         </Typography>
         {/* Create a grid for containing both form and aside */}
-        <Grid container spacing={2}>
+        <Grid container spacing={2} component="form">
           <Grid item xs={12} md={6}>
             <Grid item className={classes.mapContainer}>
               <iframe
@@ -162,9 +200,100 @@ const ContactUsSection = () => {
               </Grid>
             </Grid>
           </Grid>
-          <Grid item xs={12} md={6}>
-            Right
-          </Grid>
+          <Paper className={classes.paper}>
+            <Grid container item xs={12} md={6}>
+              <Typography variant="h5" className={classes.paperHeading}>
+                Contact Form
+              </Typography>
+              <Grid container item xs={12} spacing={2} className={classes.paperForm}>
+                {/* <Grid container item xs={12} lg={6}> */}
+                <Grid item xs={12}>
+                  <TextField
+                    label="Your Name"
+                    placeholder="Your Name"
+                    id="outlined-size-small"
+                    variant="outlined"
+                    fullWidth
+                    formControlProps={{
+                      classes: { root: classes.formControlFullField },
+                    }}
+                    classes={{
+                      root: classes.textInput,
+                    }}
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    label="Email Address"
+                    placeholder="Email Address"
+                    id="outlined-size-small"
+                    variant="outlined"
+                    fullWidth
+                    formControlProps={{
+                      classes: { root: classes.formControlFullField },
+                    }}
+                    classes={{
+                      root: classes.textInput,
+                    }}
+                  />
+                </Grid>
+                {/* </Grid> */}
+                {/* <Grid container item xs={12} lg={6}> */}
+                <Grid item xs={12}>
+                  <TextField
+                    label="Phone"
+                    placeholder="Phone"
+                    id="outlined-size-small"
+                    variant="outlined"
+                    fullWidth
+                    formControlProps={{
+                      classes: { root: classes.formControlFullField },
+                    }}
+                    classes={{
+                      root: classes.textInput,
+                    }}
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    label="Country"
+                    placeholder="Country"
+                    id="outlined-size-small"
+                    variant="outlined"
+                    fullWidth
+                    formControlProps={{
+                      classes: { root: classes.formControlFullField },
+                    }}
+                    classes={{
+                      root: classes.textInput,
+                    }}
+                  />
+                </Grid>
+                {/* </Grid> */}
+                {/* <Grid container item xs={12} lg={6}> */}
+                <Grid item xs={12}>
+                  <TextField
+                    label="Message"
+                    placeholder="Message"
+                    id="outlined-size-small"
+                    variant="outlined"
+                    multiline
+                    formControlProps={{
+                      classes: { root: classes.formControlFullField },
+                    }}
+                    classes={{
+                      root: classes.textInput,
+                    }}
+                    rows={8}
+                  />
+                </Grid>
+                {/* </Grid> */}
+                <Grid className={classes.submitButtonContainer} item xs={12}>
+                  <SolidButton fullWidth>Send Message</SolidButton>
+                </Grid>
+              </Grid>
+            </Grid>
+          </Paper>
         </Grid>
       </Box>
     </Container>
