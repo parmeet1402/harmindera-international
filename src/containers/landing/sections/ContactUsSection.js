@@ -17,6 +17,8 @@ import WhatsApp from "@material-ui/icons/WhatsApp";
 import TextField from "@components/form/TextField";
 import { SolidButton } from "@components/form/Button";
 import { Container } from "@material-ui/core";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
+import { useTheme } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -27,7 +29,9 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.up("md")]: {
       textAlign: "center",
       paddingBottom: theme.spacing(20), // TODO: check if 12 is required
-      background: theme.palette.grey["100"],
+    },
+    [theme.breakpoints.up("lg")]: {
+      background: theme.palette.primary.light,
     },
   },
 
@@ -48,6 +52,9 @@ const useStyles = makeStyles(theme => ({
     "@media only screen and (min-width: 1150px)": {
       fontSize: "3.23rem",
     },
+    [theme.breakpoints.up("lg")]: {
+      color: theme.palette.common.white,
+    },
   },
   subHeading: {
     color: theme.palette.text.secondary,
@@ -55,28 +62,47 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.up("md")]: {
       display: "block",
     },
+    [theme.breakpoints.up("lg")]: {
+      color: theme.palette.common.white,
+    },
   },
   mapContainer: {
     marginBottom: theme.spacing(4),
+    [theme.breakpoints.up("md")]: {
+      marginTop: theme.spacing(4),
+    },
+    [theme.breakpoints.up("lg")]: {
+      height: "270px",
+      width: "428px",
+      margin: "32px auto",
+    },
+
     "&>iframe": {
       width: "100%",
-      height: "60vw",
+      height: "clamp(200px,60vw,400px)",
+      [theme.breakpoints.up("lg")]: {
+        height: "100%",
+        width: "100%",
+      },
     },
   },
   paper: {
     marginTop: theme.spacing(4),
-    // background: "red",
-    // padding: theme.spacing(2),
-    // margin: "0 auto",
-    // textAlign: "center",
-    // width: "100%",
-    // position: "relative",
     background: theme.palette.grey["100"],
-    // paddingTop: theme.spacing(2),
-    // background: theme.palette.common.white,
-    // paddingLeft: theme.spacing(2),
-    // paddingTop: theme.spacing(2),
     padding: theme.spacing(2, 0, 6, 2),
+
+    [theme.breakpoints.up("md")]: {
+      background: theme.palette.common.white,
+    },
+
+    [theme.breakpoints.up("lg")]: {
+      flexGrow: 0,
+      maxWidth: "50%",
+      flexBasis: "50%",
+
+      padding: theme.spacing(2, 2, 4, 4),
+      height: "100%",
+    },
   },
   paperHeading: {
     paddingBlock: theme.spacing(3, 4),
@@ -101,11 +127,27 @@ const useStyles = makeStyles(theme => ({
   submitButtonContainer: {
     marginTop: theme.spacing(4),
   },
+  contentContainer: {
+    [theme.breakpoints.up("lg")]: {
+      justifyContent: "space-evenly",
+      marginTop: theme.spacing(8),
+      maxWidth: "1200px",
+      margin: "0 auto",
+    },
+  },
+  contactItemList: {
+    margin: "0",
+  },
+  contactItemListRow: {
+    [theme.breakpoints.up("lg")]: {
+      padding: "12px 0px !important",
+    },
+  },
 }));
 
 const content = {
   heading: "Contact Us",
-  subHeading: "We are here to help you",
+  subHeading: "Let’s get in touch with us",
 };
 
 const ContactUsSection = () => {
@@ -130,9 +172,14 @@ const ContactUsSection = () => {
 
   console.log({ address, email, phoneNumbers });
 
+  const theme = useTheme();
+  const isDesktopDeviceAndUp = useMediaQuery(theme.breakpoints.up("lg"));
+  const iconColorVariant = isDesktopDeviceAndUp ? "secondary" : "default";
+  const textColorVariant = isDesktopDeviceAndUp ? "secondary" : "primary";
+
   //   https://goo.gl/maps/oNn9TP1dHEURTFGk8
   return (
-    <Container className={classes.container}>
+    <Container className={classes.container} maxWidth="auto">
       <Box className={classes.headingContainer}>
         <Typography variant="h2" component="h2" className={classes.heading}>
           {content.heading}
@@ -140,162 +187,163 @@ const ContactUsSection = () => {
         <Typography variant="h4" component="span" className={classes.subHeading}>
           {content.subHeading}
         </Typography>
-        {/* Create a grid for containing both form and aside */}
-        <Grid container spacing={2} component="form">
-          <Grid item xs={12} md={6}>
-            <Grid item className={classes.mapContainer}>
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d54789.801763578675!2d75.84239438757328!3d30.876515636190774!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391a9d67dc262cd5%3A0x97cb1643bce70173!2sHarmindera%20International!5e0!3m2!1sen!2sin!4v1642942272698!5m2!1sen!2sin"
-                // width="319px"
-                // height="252px"
-                style={{ border: 0, borderRadius: 12 }}
-                allowfullscreen=""
-                loading="lazy"
-                aria-hidden="false"
-                tabIndex="0"
-              />
+      </Box>
+      {/* Create a grid for containing both form and aside */}
+      <Grid container spacing={2} className={classes.contentContainer} component="form">
+        <Grid item xs={12} md={12} lg={5}>
+          <Grid item className={classes.mapContainer}>
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d54789.801763578675!2d75.84239438757328!3d30.876515636190774!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391a9d67dc262cd5%3A0x97cb1643bce70173!2sHarmindera%20International!5e0!3m2!1sen!2sin!4v1642942272698!5m2!1sen!2sin"
+              // width="319px"
+              // height="252px"
+              style={{ border: 0, borderRadius: 12 }}
+              allowfullscreen=""
+              loading="lazy"
+              aria-hidden="false"
+              tabIndex="0"
+            />
+          </Grid>
+          <Grid container item xs={12} md={12} className={classes.contactItemList} spacing={3}>
+            <Grid container item xs={12} alignItems="center" className={classes.contactItemListRow}>
+              <Grid item xs={3} sm={2} md={1} lg={2}>
+                <IconButton aria-label="Location" color={iconColorVariant}>
+                  <RoomOutlined color={textColorVariant} />
+                </IconButton>
+              </Grid>
+              <Grid item xs={9} sm={10} md={11} lg={10}>
+                <Typography variant="subtitle1" align="left" color={textColorVariant}>
+                  {address}
+                </Typography>
+              </Grid>
             </Grid>
-            <Grid container item xs={12} md={6} spacing={3}>
-              <Grid container item xs={12} alignItems="center">
-                <Grid item xs={3}>
-                  <IconButton aria-label="Location" color="default">
-                    <RoomOutlined color="primary" />
-                  </IconButton>
-                </Grid>
-                <Grid item xs={9}>
-                  <Typography variant="subtitle1" align="left" color="primary">
-                    {address}
-                  </Typography>
-                </Grid>
+            <Grid container item xs={12} alignItems="center" className={classes.contactItemListRow}>
+              <Grid item xs={3} sm={2} md={1} lg={2}>
+                <IconButton aria-label="Phone" color={iconColorVariant}>
+                  <PhoneOutlined color={textColorVariant} />
+                </IconButton>
               </Grid>
-              <Grid container item xs={12} alignItems="center">
-                <Grid item xs={3}>
-                  <IconButton aria-label="Phone" color="default">
-                    <PhoneOutlined color="primary" />
-                  </IconButton>
-                </Grid>
-                <Grid item xs={9}>
-                  <Typography variant="subtitle1" align="left" color="primary">
-                    {phoneNumbers[0]}
-                  </Typography>
-                  <Typography variant="subtitle1" align="left" color="primary">
-                    {phoneNumbers[1]}
-                  </Typography>
-                  <Typography variant="subtitle1" align="left" color="primary">
-                    {phoneNumbers[2]}
-                  </Typography>
-                </Grid>
+              <Grid item xs={9} sm={10} md={11} lg={10}>
+                <Typography variant="subtitle1" align="left" color={textColorVariant}>
+                  {phoneNumbers[0]}
+                </Typography>
+                <Typography variant="subtitle1" align="left" color={textColorVariant}>
+                  {phoneNumbers[1]}
+                </Typography>
+                <Typography variant="subtitle1" align="left" color={textColorVariant}>
+                  {phoneNumbers[2]}
+                </Typography>
               </Grid>
-              <Grid container item xs={12} alignItems="center">
-                <Grid item xs={3}>
-                  <IconButton aria-label="Email" color="default">
-                    <MailOutlineOutlined color="primary" />
-                  </IconButton>
-                </Grid>
-                <Grid item xs={9}>
-                  <Typography variant="subtitle1" align="left" color="primary">
-                    {email}
-                  </Typography>
-                </Grid>
+            </Grid>
+            <Grid container item xs={12} alignItems="center" className={classes.contactItemListRow}>
+              <Grid item xs={3} sm={2} md={1} lg={2}>
+                <IconButton aria-label="Email" color={iconColorVariant}>
+                  <MailOutlineOutlined color={textColorVariant} />
+                </IconButton>
+              </Grid>
+              <Grid item xs={9} sm={10} md={11} lg={10}>
+                <Typography variant="subtitle1" align="left" color={textColorVariant}>
+                  {email}
+                </Typography>
               </Grid>
             </Grid>
           </Grid>
-          <Paper className={classes.paper}>
-            <Grid container item xs={12} md={6}>
-              <Typography variant="h5" className={classes.paperHeading}>
-                Contact Form
-              </Typography>
-              <Grid container item xs={12} spacing={2} className={classes.paperForm}>
-                {/* <Grid container item xs={12} lg={6}> */}
-                <Grid item xs={12}>
-                  <TextField
-                    label="Your Name"
-                    placeholder="Your Name"
-                    id="outlined-size-small"
-                    variant="outlined"
-                    fullWidth
-                    formControlProps={{
-                      classes: { root: classes.formControlFullField },
-                    }}
-                    classes={{
-                      root: classes.textInput,
-                    }}
-                  />
-                </Grid>
-                <Grid item xs={12}>
-                  <TextField
-                    label="Email Address"
-                    placeholder="Email Address"
-                    id="outlined-size-small"
-                    variant="outlined"
-                    fullWidth
-                    formControlProps={{
-                      classes: { root: classes.formControlFullField },
-                    }}
-                    classes={{
-                      root: classes.textInput,
-                    }}
-                  />
-                </Grid>
-                {/* </Grid> */}
-                {/* <Grid container item xs={12} lg={6}> */}
-                <Grid item xs={12}>
-                  <TextField
-                    label="Phone"
-                    placeholder="Phone"
-                    id="outlined-size-small"
-                    variant="outlined"
-                    fullWidth
-                    formControlProps={{
-                      classes: { root: classes.formControlFullField },
-                    }}
-                    classes={{
-                      root: classes.textInput,
-                    }}
-                  />
-                </Grid>
-                <Grid item xs={12}>
-                  <TextField
-                    label="Country"
-                    placeholder="Country"
-                    id="outlined-size-small"
-                    variant="outlined"
-                    fullWidth
-                    formControlProps={{
-                      classes: { root: classes.formControlFullField },
-                    }}
-                    classes={{
-                      root: classes.textInput,
-                    }}
-                  />
-                </Grid>
-                {/* </Grid> */}
-                {/* <Grid container item xs={12} lg={6}> */}
-                <Grid item xs={12}>
-                  <TextField
-                    label="Message"
-                    placeholder="Message"
-                    id="outlined-size-small"
-                    variant="outlined"
-                    multiline
-                    formControlProps={{
-                      classes: { root: classes.formControlFullField },
-                    }}
-                    classes={{
-                      root: classes.textInput,
-                    }}
-                    rows={8}
-                  />
-                </Grid>
-                {/* </Grid> */}
-                <Grid className={classes.submitButtonContainer} item xs={12}>
-                  <SolidButton fullWidth>Send Message</SolidButton>
-                </Grid>
+        </Grid>
+        <Paper className={classes.paper}>
+          <Grid container item xs={12}>
+            <Typography variant="h5" className={classes.paperHeading}>
+              Contact Form
+            </Typography>
+            <Grid container item xs={12} spacing={2} className={classes.paperForm}>
+              {/* <Grid container item xs={12} lg={6}> */}
+              <Grid item xs={12} lg={6}>
+                <TextField
+                  label="Your Name"
+                  placeholder="Your Name"
+                  id="outlined-size-small"
+                  variant="outlined"
+                  fullWidth
+                  formControlProps={{
+                    classes: { root: classes.formControlFullField },
+                  }}
+                  classes={{
+                    root: classes.textInput,
+                  }}
+                />
+              </Grid>
+              <Grid item xs={12} lg={6}>
+                <TextField
+                  label="Email Address"
+                  placeholder="Email Address"
+                  id="outlined-size-small"
+                  variant="outlined"
+                  fullWidth
+                  formControlProps={{
+                    classes: { root: classes.formControlFullField },
+                  }}
+                  classes={{
+                    root: classes.textInput,
+                  }}
+                />
+              </Grid>
+              {/* </Grid> */}
+              {/* <Grid container item xs={12} lg={6}> */}
+              <Grid item xs={12} lg={6}>
+                <TextField
+                  label="Phone"
+                  placeholder="Phone"
+                  id="outlined-size-small"
+                  variant="outlined"
+                  fullWidth
+                  formControlProps={{
+                    classes: { root: classes.formControlFullField },
+                  }}
+                  classes={{
+                    root: classes.textInput,
+                  }}
+                />
+              </Grid>
+              <Grid item xs={12} lg={6}>
+                <TextField
+                  label="Country"
+                  placeholder="Country"
+                  id="outlined-size-small"
+                  variant="outlined"
+                  fullWidth
+                  formControlProps={{
+                    classes: { root: classes.formControlFullField },
+                  }}
+                  classes={{
+                    root: classes.textInput,
+                  }}
+                />
+              </Grid>
+              {/* </Grid> */}
+              {/* <Grid container item xs={12} lg={6}> */}
+              <Grid item xs={12}>
+                <TextField
+                  label="Message"
+                  placeholder="Message"
+                  id="outlined-size-small"
+                  variant="outlined"
+                  multiline
+                  formControlProps={{
+                    classes: { root: classes.formControlFullField },
+                  }}
+                  classes={{
+                    root: classes.textInput,
+                  }}
+                  rows={8}
+                />
+              </Grid>
+              {/* </Grid> */}
+              <Grid className={classes.submitButtonContainer} item xs={12}>
+                <SolidButton fullWidth>Send Message</SolidButton>
               </Grid>
             </Grid>
-          </Paper>
-        </Grid>
-      </Box>
+          </Grid>
+        </Paper>
+      </Grid>
+      {/* </Box> */}
     </Container>
   );
 };
