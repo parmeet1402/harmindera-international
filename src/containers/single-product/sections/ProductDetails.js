@@ -10,6 +10,7 @@ import {
   useMediaQuery,
 } from "@material-ui/core";
 import { useTheme } from "@material-ui/styles";
+import { ClockIcon, DeliveryTruckIcon, ShieldIcon } from "@content/assets/CustomIcon";
 
 // Format functions
 const getStringFromType = (obj, valueKey = "name") => obj[valueKey];
@@ -70,6 +71,16 @@ const useStyles = makeStyles(theme => ({
     marginLeft: theme.spacing(2),
     marginBlock: theme.spacing(2),
   },
+  featureContainer: {
+    textAlign: "center",
+  },
+  sizeRow: {
+    overflowX: "auto",
+    whiteSpace: "nowrap",
+  },
+  detailsSection: {
+    marginTop: theme.spacing(1),
+  },
 }));
 
 const ProductDetails = ({ product }) => {
@@ -91,7 +102,7 @@ const ProductDetails = ({ product }) => {
             </Box>
           </Box>
         </Grid>
-        <Grid container item xs={12} sm={6} spacing={2} style={{ marginTop: 8 }}>
+        <Grid container item xs={12} sm={6} spacing={2} className={classes.detailsSection}>
           <Grid item xs={12} className={classes.nameContainer}>
             <Typography className={classes.category}>{product.category.name}</Typography>
             <Typography variant="h3" className={classes.product}>
@@ -200,7 +211,7 @@ const ProductDetails = ({ product }) => {
               <Grid item xs={4}>
                 <Typography className={classes.label}>Sizes</Typography>
               </Grid>
-              <Grid item xs={8} style={{ overflowX: "auto", whiteSpace: "nowrap" }}>
+              <Grid item xs={8} className={classes.sizeRow}>
                 {product.sizes.map(size => (
                   <Chip size="small" variant="outlined" key={size} label={size} />
                 ))}
@@ -211,10 +222,31 @@ const ProductDetails = ({ product }) => {
           <Grid item xs={12} spacing={2} className={classes.ctaButtonContainer}>
             <SolidButton fullWidth>Contact Us</SolidButton>
           </Grid>
-          <Grid item xs={12} spacing={2}>
-            {/* TODO: Feature 1 */}
-            {/* TODO: Feature 2 */}
-            {/* TODO: Feature 3 */}
+          <Grid className={classes.featureContainer} container item xs={12}>
+            <Grid container item xs={4}>
+              <Grid item xs={12}>
+                <ShieldIcon />
+              </Grid>
+              <Grid item xs={12}>
+                <Typography variant="subtitle2">Product Quality</Typography>
+              </Grid>
+            </Grid>
+            <Grid container item xs={4}>
+              <Grid item xs={12}>
+                <DeliveryTruckIcon />
+              </Grid>
+              <Grid item xs={12}>
+                <Typography variant="subtitle2">Fast Delivery</Typography>
+              </Grid>
+            </Grid>
+            <Grid container item xs={4}>
+              <Grid item xs={12}>
+                <ClockIcon />
+              </Grid>
+              <Grid item xs={12}>
+                <Typography variant="subtitle2">24/7 Support</Typography>
+              </Grid>
+            </Grid>
           </Grid>
         </Grid>
       </Grid>

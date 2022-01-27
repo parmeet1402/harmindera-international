@@ -295,4 +295,80 @@ export const ArrowIcon = (props: any) => {
   );
 };
 
+export const ClockIcon = (props: any) => {
+  return (
+    <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M15 26.25C21.2132 26.25 26.25 21.2132 26.25 15C26.25 8.7868 21.2132 3.75 15 3.75C8.7868 3.75 3.75 8.7868 3.75 15C3.75 21.2132 8.7868 26.25 15 26.25Z"
+        stroke="#505050"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M15 8.75V15L18.75 18.75"
+        stroke="#505050"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+  );
+};
+
+export const DeliveryTruckIcon = (props: any) => {
+  return (
+    <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M8.75 23.75C10.1307 23.75 11.25 22.6307 11.25 21.25C11.25 19.8693 10.1307 18.75 8.75 18.75C7.36929 18.75 6.25 19.8693 6.25 21.25C6.25 22.6307 7.36929 23.75 8.75 23.75Z"
+        stroke="#505050"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M21.25 23.75C22.6307 23.75 23.75 22.6307 23.75 21.25C23.75 19.8693 22.6307 18.75 21.25 18.75C19.8693 18.75 18.75 19.8693 18.75 21.25C18.75 22.6307 19.8693 23.75 21.25 23.75Z"
+        stroke="#505050"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M16.25 7.5H22.5L26.25 13.75M6.25 21.25H3.75V16.25L6.25 21.25ZM2.5 6.25H16.25V21.25L2.5 6.25ZM11.25 21.25H18.75H11.25ZM23.75 21.25H26.25V13.75H16.25L23.75 21.25Z"
+        stroke="#505050"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M3.75 11.25H8.75"
+        stroke="#505050"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+  );
+};
+
+export const ShieldIcon = (props: any) => {
+  return (
+    <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M11.25 15L13.75 17.5L18.75 12.5"
+        stroke="#505050"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M15.0005 3.75C17.9203 6.33322 21.7311 7.67821 25.6255 7.5C26.1925 9.42877 26.366 11.4518 26.1357 13.449C25.9054 15.4461 25.2759 17.3766 24.2848 19.1257C23.2936 20.8747 21.961 22.4067 20.3661 23.6306C18.7712 24.8545 16.9465 25.7453 15.0005 26.25C13.0545 25.7453 11.2299 24.8545 9.63496 23.6306C8.04004 22.4067 6.70741 20.8747 5.71627 19.1257C4.72513 17.3766 4.09569 15.4461 3.86537 13.449C3.63505 11.4518 3.80853 9.42877 4.37553 7.5C8.26994 7.67821 12.0807 6.33322 15.0005 3.75"
+        stroke="#505050"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+  );
+};
 export default CustomIcon;
