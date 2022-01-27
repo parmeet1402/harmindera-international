@@ -4,7 +4,6 @@ import { ProductDetails } from "./sections";
 const SingleProductContainer = ({ product }) => {
   return (
     <>
-      <div style={{ marginLeft: 24 }}>Row/Row/Row</div>
       <ProductDetails product={product} />
     </>
   );

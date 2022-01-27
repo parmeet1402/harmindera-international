@@ -22,7 +22,7 @@ const Link = (props: Props & LinkProps) => {
       variant="body2"
       component={GatsbyLink}
       to={href}
-      underline="none"
+      // underline="none"
       getProps={isActive}
       {...restProps}
     >

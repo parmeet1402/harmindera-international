@@ -11,6 +11,9 @@ import {
 } from "@material-ui/core";
 import { useTheme } from "@material-ui/styles";
 import { ClockIcon, DeliveryTruckIcon, ShieldIcon } from "@content/assets/CustomIcon";
+import Breadcrumbs from "@material-ui/core/Breadcrumbs";
+import Link from "@components/navigation/Link";
+import kebabCase from "lodash/kebabCase";
 
 // Format functions
 const getStringFromType = (obj, valueKey = "name") => obj[valueKey];
@@ -109,6 +112,12 @@ const useStyles = makeStyles(theme => ({
       height: "clamp(500px, 65vh, 750px)",
     },
   },
+  breadcrumb: {
+    margin: theme.spacing(5, 1, 2),
+  },
+  breadcrumbLinks: {
+    fontSize: "14px",
+  },
 }));
 
 const ProductDetails = ({ product }) => {
@@ -122,6 +131,24 @@ const ProductDetails = ({ product }) => {
 
   return (
     <Container className={classes.container} maxWidth="auto">
+      <Breadcrumbs separator=">" aria-label="breadcrumb" className={classes.breadcrumb}>
+        <Link className={classes.breadcrumbLinks} color="primary" href="/">
+          Home
+        </Link>
+        <Link className={classes.breadcrumbLinks} color="primary" href="/products/">
+          Products
+        </Link>
+        <Link
+          className={classes.breadcrumbLinks}
+          color="primary"
+          href={`/products/${kebabCase(product.category.name)}`}
+        >
+          {product.category.name}
+        </Link>
+        <Typography className={classes.breadcrumbLinks} color="textPrimary">
+          {product.name}
+        </Typography>
+      </Breadcrumbs>
       <Grid container className={classes.contentContainer}>
         <Grid item xs={12} md={5} lg={5}>
           <Box className={classes.cardContainer}>
