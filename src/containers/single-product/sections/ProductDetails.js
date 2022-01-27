@@ -27,9 +27,17 @@ const useStyles = makeStyles(theme => ({
   container: {
     // background: "red",
   },
+  contentContainer: {
+    // [theme.breakpoints.up("lg")]: {
+    //   height: "70vh",
+    // },
+  },
 
   cardContainer: {
     marginTop: theme.spacing(2),
+    [theme.breakpoints.up("lg")]: {
+      height: "78vh",
+    },
   },
   cardImage: {
     height: "250px",
@@ -37,9 +45,12 @@ const useStyles = makeStyles(theme => ({
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
+    [theme.breakpoints.up("lg")]: {
+      height: "400px",
+    },
   },
   card: {
-    width: "100%",
+    height: "100%",
     paddingTop: "110%",
     position: "relative",
     borderRadius: "9px",
@@ -48,10 +59,16 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "center",
     userSelect: "none",
     background: theme.palette.grey[100],
+    [theme.breakpoints.up("lg")]: {
+      // height: "70vh",
+    },
   },
 
   nameContainer: {
     marginTop: theme.spacing(2),
+    [theme.breakpoints.up("lg")]: {
+      marginBottom: theme.spacing(1),
+    },
   },
   category: {
     color: theme.palette.primary.main,
@@ -77,9 +94,20 @@ const useStyles = makeStyles(theme => ({
   sizeRow: {
     overflowX: "auto",
     whiteSpace: "nowrap",
+    [theme.breakpoints.up("md")]: {
+      whiteSpace: "normal",
+    },
   },
   detailsSection: {
     marginTop: theme.spacing(1),
+    marginBottom: theme.spacing(2),
+    [theme.breakpoints.up("md")]: {
+      maxWidth: "500px",
+      marginBlock: theme.spacing(2),
+      marginLeft: theme.spacing(6),
+      // height: "100%",
+      height: "clamp(500px, 65vh, 750px)",
+    },
   },
 }));
 
@@ -93,16 +121,16 @@ const ProductDetails = ({ product }) => {
     : "http://res.cloudinary.com/dybvtvzsm/image/upload/v1607859552/website/images/gdjqdrjmznzvongsgj1k.png";
 
   return (
-    <Container className={classes.container}>
-      <Grid container>
-        <Grid item xs={12} sm={6}>
+    <Container className={classes.container} maxWidth="auto">
+      <Grid container className={classes.contentContainer}>
+        <Grid item xs={12} md={5} lg={5}>
           <Box className={classes.cardContainer}>
             <Box className={classes.card}>
               <img src={image} className={classes.cardImage} alt={product.name} />
             </Box>
           </Box>
         </Grid>
-        <Grid container item xs={12} sm={6} spacing={2} className={classes.detailsSection}>
+        <Grid container item xs={12} md={6} lg={7} spacing={2} className={classes.detailsSection}>
           <Grid item xs={12} className={classes.nameContainer}>
             <Typography className={classes.category}>{product.category.name}</Typography>
             <Typography variant="h3" className={classes.product}>
