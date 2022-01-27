@@ -11,18 +11,19 @@ import SingleProductContainer from "@containers/single-product";
 Required Properties
 code: string
 slug: string
-name: string
-category:{
+
+X name: string
+X category:{
   name: string
 }
-sizes: [string, string]
-material: [{name: string}, {name: string}]
-brand: {
+X sizes: [string, string]
+X material: [{name: string}, {name: string}]
+X brand: {
   name: string
 }
-finish: [{name: string}, {name: string}]
-packagingQuantity: number
-"packagingType": {
+X finish: [{name: string}, {name: string}]
+X packagingQuantity: number
+X "packagingType": {
   "name": string
 },
 
@@ -30,19 +31,19 @@ id: string
 slug: string
 
 Optional Properties
-images: [{original_url:string}, {original_url:string}]
-threadType: {
+X images: [{original_url:string}, {original_url:string}]
+X threadType: {
   name: string
 }
-"headType": {
+X "headType": {
   name: string
 }
-"tensileStrength": number,
-"shape": {
+- "tensileStrength": number,
+- "shape": {
   name: string
 },
-"whole": integer
-"quantityUnit": {
+- "whole": integer
+- "quantityUnit": {
   "unit": string
 },
 

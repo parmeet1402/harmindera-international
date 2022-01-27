@@ -16,10 +16,10 @@ const getStringFromType = (obj, valueKey = "name") => obj[valueKey];
 
 const getStringFromTypeArray = (
   material,
-  { separator = ",", valueKey = "name" } = { separator: ",", valueKey: "name" },
+  { separator = ",", valueKey = "name" } = { separator: ", ", valueKey: "name" },
 ) => {
   const materials = material.map(value => getStringFromType(value, valueKey));
-  return materials.join(`${separator} `);
+  return materials.join(separator);
 };
 
 const useStyles = makeStyles(theme => ({
@@ -62,10 +62,12 @@ const useStyles = makeStyles(theme => ({
     color: theme.palette.grey["500"],
   },
   detailsRow: {
-    width: "90%",
-    marginInline: "auto",
+    width: "85%",
+    marginRight: "auto",
+    marginLeft: theme.spacing(1),
   },
   ctaButtonContainer: {
+    marginLeft: theme.spacing(2),
     marginBlock: theme.spacing(2),
   },
 }));
@@ -89,7 +91,7 @@ const ProductDetails = ({ product }) => {
             </Box>
           </Box>
         </Grid>
-        <Grid container item xs={12} sm={6} spacing={1}>
+        <Grid container item xs={12} sm={6} spacing={2} style={{ marginTop: 8 }}>
           <Grid item xs={12} className={classes.nameContainer}>
             <Typography className={classes.category}>{product.category.name}</Typography>
             <Typography variant="h3" className={classes.product}>
@@ -98,10 +100,10 @@ const ProductDetails = ({ product }) => {
           </Grid>
           {product.material && (
             <Grid container item xs={12} spacing={2} className={classes.detailsRow}>
-              <Grid item xs={6}>
+              <Grid item xs={4}>
                 <Typography className={classes.label}>Material</Typography>
               </Grid>
-              <Grid item xs={6}>
+              <Grid item xs={8}>
                 <Typography>
                   {getStringFromTypeArray(product.material, { separator: "/" })}
                 </Typography>
@@ -110,73 +112,109 @@ const ProductDetails = ({ product }) => {
           )}
           {product.brand && (
             <Grid container item xs={12} spacing={2} className={classes.detailsRow}>
-              <Grid item xs={6}>
+              <Grid item xs={4}>
                 <Typography className={classes.label}>Brand</Typography>
               </Grid>
-              <Grid item xs={6}>
+              <Grid item xs={8}>
                 <Typography>{getStringFromType(product.brand)}</Typography>
               </Grid>
             </Grid>
           )}
           {product.finish && (
             <Grid container item xs={12} spacing={2} className={classes.detailsRow}>
-              <Grid item xs={6}>
+              <Grid item xs={4}>
                 <Typography className={classes.label}>Finish</Typography>
               </Grid>
-              <Grid item xs={6}>
+              <Grid item xs={8}>
                 <Typography>{getStringFromTypeArray(product.finish)}</Typography>
-              </Grid>
-            </Grid>
-          )}
-          {product.headType && (
-            <Grid container item xs={12} spacing={2} className={classes.detailsRow}>
-              <Grid item xs={6}>
-                <Typography className={classes.label}>Head Type</Typography>
-              </Grid>
-              <Grid item xs={6}>
-                <Typography>{getStringFromType(product.headType)}</Typography>
               </Grid>
             </Grid>
           )}
           {product.threadType && (
             <Grid container item xs={12} spacing={2} className={classes.detailsRow}>
-              <Grid item xs={6}>
+              <Grid item xs={4}>
                 <Typography className={classes.label}>Thread Type</Typography>
               </Grid>
-              <Grid item xs={6}>
+              <Grid item xs={8}>
                 <Typography>{getStringFromType(product.threadType)}</Typography>
+              </Grid>
+            </Grid>
+          )}
+          {product.tensileStrength && product.tensileStrength > 0 && (
+            <Grid container item xs={12} spacing={2} className={classes.detailsRow}>
+              <Grid item xs={4}>
+                <Typography className={classes.label}>Tensile Strength</Typography>
+              </Grid>
+              <Grid item xs={8}>
+                <Typography>{product.tensileStrength}</Typography>
+              </Grid>
+            </Grid>
+          )}
+          {product.whole && product.whole > 0 && (
+            <Grid container item xs={12} spacing={2} className={classes.detailsRow}>
+              <Grid item xs={4}>
+                <Typography className={classes.label}>Whole</Typography>
+              </Grid>
+              <Grid item xs={8}>
+                <Typography>{product.whole}</Typography>
+              </Grid>
+            </Grid>
+          )}
+          {product.headType && (
+            <Grid container item xs={12} spacing={2} className={classes.detailsRow}>
+              <Grid item xs={4}>
+                <Typography className={classes.label}>Head Type</Typography>
+              </Grid>
+              <Grid item xs={8}>
+                <Typography>{getStringFromType(product.headType)}</Typography>
+              </Grid>
+            </Grid>
+          )}
+
+          {product.shape && (
+            <Grid container item xs={12} spacing={2} className={classes.detailsRow}>
+              <Grid item xs={4}>
+                <Typography className={classes.label}>Shape</Typography>
+              </Grid>
+              <Grid item xs={8}>
+                <Typography>{getStringFromType(product.shape)}</Typography>
               </Grid>
             </Grid>
           )}
           {product.packagingQuantity && parseInt(product.packagingQuantity) > 0 && (
             <Grid container item xs={12} spacing={2} className={classes.detailsRow}>
-              <Grid item xs={6}>
+              <Grid item xs={4}>
                 <Typography className={classes.label}>Packaging</Typography>
               </Grid>
-              <Grid item xs={6}>
+              <Grid item xs={8}>
                 <Typography>
-                  {product.packagingQuantity} Pcs/Box {/* "Kg/Bag" */}
+                  {product.packagingQuantity} {product.quantityUnit.unit}/
+                  {product.packagingType.name}
                 </Typography>
               </Grid>
             </Grid>
           )}
+
           {product.sizes && (
             <Grid container item xs={12} spacing={2} className={classes.detailsRow}>
-              <Grid item xs={6}>
+              <Grid item xs={4}>
                 <Typography className={classes.label}>Sizes</Typography>
               </Grid>
-              <Grid item xs={6}>
+              <Grid item xs={8} style={{ overflowX: "auto", whiteSpace: "nowrap" }}>
                 {product.sizes.map(size => (
                   <Chip size="small" variant="outlined" key={size} label={size} />
                 ))}
               </Grid>
             </Grid>
           )}
+
           <Grid item xs={12} spacing={2} className={classes.ctaButtonContainer}>
             <SolidButton fullWidth>Contact Us</SolidButton>
           </Grid>
           <Grid item xs={12} spacing={2}>
-            Hey from feature section
+            {/* TODO: Feature 1 */}
+            {/* TODO: Feature 2 */}
+            {/* TODO: Feature 3 */}
           </Grid>
         </Grid>
       </Grid>
