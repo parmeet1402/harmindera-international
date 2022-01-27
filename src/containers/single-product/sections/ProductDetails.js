@@ -39,7 +39,7 @@ const useStyles = makeStyles(theme => ({
   cardContainer: {
     marginTop: theme.spacing(2),
     [theme.breakpoints.up("lg")]: {
-      height: "78vh",
+      height: "75vh",
     },
   },
   cardImage: {
@@ -113,7 +113,10 @@ const useStyles = makeStyles(theme => ({
     },
   },
   breadcrumb: {
-    margin: theme.spacing(5, 1, 2),
+    margin: theme.spacing(3, 1, 1),
+    [theme.breakpoints.up("md")]: {
+      margin: theme.spacing(5, 1, 2),
+    },
   },
   breadcrumbLinks: {
     fontSize: "14px",
