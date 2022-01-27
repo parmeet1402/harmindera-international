@@ -17,6 +17,9 @@ import {
   Tractor as TractorIcon,
 } from "@content/assets/CustomIcon";
 import { Container } from "@material-ui/core";
+import Link from "@components/navigation/Link";
+import Breadcrumbs from "@material-ui/core/Breadcrumbs";
+import kebabCase from "lodash/kebabCase";
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -80,6 +83,15 @@ const useStyles = makeStyles(theme => ({
       rowGap: theme.spacing(5),
       columnGap: theme.spacing(4),
     },
+  },
+  breadcrumb: {
+    margin: theme.spacing(3, 0, -3),
+    [theme.breakpoints.up("md")]: {
+      display: "none",
+    },
+  },
+  breadcrumbLinks: {
+    fontSize: "14px",
   },
 }));
 
@@ -163,11 +175,21 @@ const CategoryCard = ({ data }) => {
   );
 };
 
-const CategorySection = () => {
+const CategorySection = props => {
   const classes = useStyles();
 
   return (
     <Container className={classes.container} maxWidth="auto">
+      {props.showBreadcrumbs && (
+        <Breadcrumbs separator=">" aria-label="breadcrumb" className={classes.breadcrumb}>
+          <Link className={classes.breadcrumbLinks} color="primary" href="/">
+            Home
+          </Link>
+          <Typography className={classes.breadcrumbLinks} color="textPrimary">
+            Products
+          </Typography>
+        </Breadcrumbs>
+      )}
       <Box className={classes.headingContainer}>
         <Typography variant="h2" component="h2" className={classes.heading}>
           {content.heading}

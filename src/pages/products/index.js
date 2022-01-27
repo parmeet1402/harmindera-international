@@ -1,12 +1,13 @@
 import React from "react";
+import Layout, { SEO } from "@components/layout";
+import AllCategoriesContainer from "@containers/all-categories";
 
 const AllCategories = () => {
   return (
-    <div>
-      <h2>AllCategories AllCategories</h2>
-      <h2>AllCategories AllCategories</h2>
-      <h2>AllCategories AllCategories</h2>
-    </div>
+    <Layout>
+      <SEO />
+      <AllCategoriesContainer />
+    </Layout>
   );
 };
 
