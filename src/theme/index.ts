@@ -1,10 +1,10 @@
+import React from "react";
 import { createMuiTheme } from "@material-ui/core/styles";
 // import createBreakpoints from "@material-ui/core/styles/createBreakpoints";
 import { configColors } from "./palette";
 import { configTypography } from "./typography";
 import { configShadows } from "./shadows";
 import { configZIndex } from "./z-index";
-import React from "react";
 // import configOverrides from "./overrides";
 import createBreakpoints from "@material-ui/core/styles/createBreakpoints";
 
@@ -255,6 +255,13 @@ const HarminderaTheme = createMuiTheme({
           paddingLeft: "16px !important",
           paddingRight: "16px !important",
         },
+      },
+    },
+    MuiChip: {
+      sizeSmall: {
+        fontSize: "0.7rem",
+        margin: "0.1rem",
+        marginLeft: 0,
       },
     },
   },
