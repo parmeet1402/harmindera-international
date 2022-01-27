@@ -74,6 +74,7 @@ const Links = () => {
               classes={{
                 root: classes.link,
               }}
+              underline="none"
             >
               {label}
             </Link>

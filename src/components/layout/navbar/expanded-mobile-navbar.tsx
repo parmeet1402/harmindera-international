@@ -108,6 +108,8 @@ const ExpandedMobileNavbar = (props: Props) => {
               root: classes.link,
             }}
             key={item.label}
+            underline="none"
+
             // key={item.path}
             // onClick={shrinkMobileNavbar}
           >

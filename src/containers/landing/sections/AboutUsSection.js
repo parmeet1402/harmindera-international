@@ -169,7 +169,7 @@ const Card = ({ data }) => {
           {data.title}
         </Typography>
         <Typography variant="subtitle1">{data.text}</Typography>
-        <Link className={classes.cardLink} href="/about-us">
+        <Link className={classes.cardLink} href="/about-us" underline="none">
           Read More&nbsp;&nbsp;
           <ArrowIcon direction="right" />
         </Link>
