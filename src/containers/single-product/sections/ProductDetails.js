@@ -135,7 +135,7 @@ const ProductDetails = ({ product }) => {
   return (
     <Container className={classes.container} maxWidth="auto">
       <Breadcrumbs separator=">" aria-label="breadcrumb" className={classes.breadcrumb}>
-        <Link className={classes.breadcrumbLinks} color="primary" href="/">
+      <Link className={classes.breadcrumbLinks} color="primary" href="/">
           Home
         </Link>
         <Link className={classes.breadcrumbLinks} color="primary" href="/products/">
