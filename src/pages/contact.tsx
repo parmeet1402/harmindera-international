@@ -1,10 +1,12 @@
-import Layout from "@components/layout";
 import React from "react";
+import Layout, { SEO } from "@components/layout";
+import ContactUsContainer from "@containers/contact-us";
 
 const ContactUsPage = () => {
   return (
     <Layout>
-      <h2>Contact Us Page</h2>
+      <SEO />
+      <ContactUsContainer />
     </Layout>
   );
 };
