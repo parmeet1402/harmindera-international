@@ -20,8 +20,9 @@ const AboutUsContainer = () => {
 };
 
 // DONE: HEading Section
-// TODO: Experience Section
-// TODO: Quality Section
-// TODO: Why Choose Us Section
+// DONE: Experience Section
+// DONE: Quality Section
+// DONE: Why Choose Us Section
+// DONE: Contact Us Section
 
 export default AboutUsContainer;
