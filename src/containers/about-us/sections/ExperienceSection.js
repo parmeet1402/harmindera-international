@@ -57,6 +57,8 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.up("md")]: {
       marginTop: theme.spacing(2),
       // textAlign: "center",
+      width: "85%",
+      marginLeft: "auto",
     },
   },
   midSizeAndHigherDevicesOnly: {

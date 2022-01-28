@@ -74,7 +74,8 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.up("md")]: {
       // marginTop: theme.spacing(2),
       marginBottom: theme.spacing(6),
-      width: "90%",
+      width: "80%",
+      marginInline: "auto",
     },
   },
   listContainer: {
