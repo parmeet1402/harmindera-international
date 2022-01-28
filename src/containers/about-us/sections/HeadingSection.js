@@ -6,7 +6,7 @@ const useStyles = makeStyles(theme => ({
   container: {
     textAlign: "left",
     background: theme.palette.common.white,
-    paddingBlock: "clamp(32px, 6vw, 64px)",
+    paddingBlock: "clamp(32px, 5vw, 64px)",
     [theme.breakpoints.up("md")]: {
       textAlign: "center",
     },
