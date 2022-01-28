@@ -60,10 +60,15 @@ export const configTypography: any = {
   h2: {
     fontFamily,
     fontWeight: fontWeight.bold,
-    fontSize: "3.23rem",
+    fontSize: "1.78rem",
     lineHeight: 1.425,
     letterSpacing: "-0.5px",
-    // TODO: Change base size and set the current size at a later width
+    "@media only screen and (min-width: 400px)": {
+      fontSize: "1.84rem",
+    },
+    "@media only screen and (min-width: 1150px)": {
+      fontSize: "3.23rem",
+    },
   },
   h3: {
     fontFamily,

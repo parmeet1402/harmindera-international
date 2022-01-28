@@ -1,11 +1,12 @@
 import React from "react";
-import Layout from "@components/layout";
-
+import Layout, { SEO } from "@components/layout";
+import AboutUsContainer from "@containers/about-us/index";
 
 const AboutUsPage = () => {
   return (
     <Layout>
-      <h2>About Page</h2>
+      <SEO />
+      <AboutUsContainer />
     </Layout>
   );
 };
