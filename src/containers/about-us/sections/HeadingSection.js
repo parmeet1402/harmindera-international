@@ -5,14 +5,10 @@ import React from "react";
 const useStyles = makeStyles(theme => ({
   container: {
     textAlign: "left",
-    paddingBlock: theme.spacing(4),
     background: theme.palette.common.white,
+    paddingBlock: "clamp(32px, 6vw, 64px)",
     [theme.breakpoints.up("md")]: {
       textAlign: "center",
-      paddingBlock: theme.spacing(6),
-    },
-    [theme.breakpoints.up("lg")]: {
-      paddingBlock: theme.spacing(8),
     },
   },
 }));
