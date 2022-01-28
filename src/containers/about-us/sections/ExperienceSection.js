@@ -6,35 +6,60 @@ import Image from "@components/Image";
 const useStyles = makeStyles(theme => ({
   container: {
     textAlign: "left",
+    maxWidth: "1020px",
+    marginTop: theme.spacing(10),
   },
   heading: {
     marginBottom: theme.spacing(1),
     fontSize: "1rem",
     [theme.breakpoints.up("md")]: {
-      fontSize: "2rem",
+      marginBottom: theme.spacing(6),
+      fontWeight: 900,
+      fontSize: "1.78rem",
     },
     "@media only screen and (min-width: 1150px)": {
-      fontSize: "3.23rem",
+      fontSize: "2.56rem",
     },
   },
   grid: {
     display: "grid",
-    gridTemplateColumns: "repeat(6, 1fr)",
     rowGap: "1rem",
+    gridTemplateColumns: "repeat(6, 1fr)",
+    gridTemplateAreas: `"H H H H H H"
+    "I I I I I I"
+    "T T T T T T"`,
+    [theme.breakpoints.up("md")]: {
+      gridTemplateAreas: `"H H H H H H"
+      "T T T I I I"`,
+      columnGap: "5rem",
+    },
   },
   headingContainer: {
-    gridColumn: "span 6",
+    gridArea: "H",
+    [theme.breakpoints.up("md")]: {
+      textAlign: "center",
+    },
   },
   imageContainer: {
-    gridColumn: "span 6",
+    gridArea: "I",
     width: "100%",
     "&>div": {
       width: "100% !important",
       objectFit: "cover",
+      borderRadius: theme.shape.borderRadius,
     },
   },
   descriptionContainer: {
-    gridColumn: "span 6",
+    gridArea: "T",
+    [theme.breakpoints.up("md")]: {
+      marginTop: theme.spacing(2),
+    },
+  },
+  midSizeAndHigherDevicesOnly: {
+    display: "none",
+    [theme.breakpoints.up("md")]: {
+      display: "block",
+    },
   },
 }));
 
@@ -44,8 +69,9 @@ const ExperienceSection = () => {
     <Container className={classes.container} maxWidth="auto">
       <div className={classes.grid}>
         <div className={classes.headingContainer}>
-          <Typography variant="h2" component="h2" className={classes.heading}>
-            58+ Years of Industrial Experience
+          <Typography variant="h3" className={classes.heading}>
+            58+ Years of <br className={classes.midSizeAndHigherDevicesOnly} /> Industrial
+            Experience
           </Typography>
         </div>
         <div className={classes.imageContainer}>
