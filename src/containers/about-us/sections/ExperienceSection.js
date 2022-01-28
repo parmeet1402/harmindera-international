@@ -7,7 +7,10 @@ const useStyles = makeStyles(theme => ({
   container: {
     textAlign: "left",
     maxWidth: "1020px",
-    marginTop: theme.spacing(10),
+    marginBlock: theme.spacing(2, 8),
+    [theme.breakpoints.up("md")]: {
+      marginBlock: theme.spacing(20, 40),
+    },
   },
   heading: {
     marginBottom: theme.spacing(1),
@@ -53,6 +56,7 @@ const useStyles = makeStyles(theme => ({
     gridArea: "T",
     [theme.breakpoints.up("md")]: {
       marginTop: theme.spacing(2),
+      // textAlign: "center",
     },
   },
   midSizeAndHigherDevicesOnly: {
@@ -75,7 +79,7 @@ const ExperienceSection = () => {
           </Typography>
         </div>
         <div className={classes.imageContainer}>
-          <Image src="factory.png" width="100%" />
+          <Image src="factory.png" width="100%" alt="Factory" />
         </div>
         <div className={classes.descriptionContainer}>
           <Typography>
