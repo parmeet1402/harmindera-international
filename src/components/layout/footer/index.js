@@ -68,6 +68,23 @@ const useStyles = makeStyles(theme => ({
   link: {
     color: theme.palette.common.white,
   },
+  domLink: {
+    textDecoration: "none",
+    color: theme.palette.common.white,
+    position: "relative",
+    "&:hover": {
+      textDecoration: "underline",
+      // "&::after": {
+      //   content: '""',
+      //   position: "absolute",
+      //   left: 0,
+      //   bottom: 0,
+      //   width: "100%",
+      //   height: "1px",
+      //   background: theme.palette.common.white,
+      // },
+    },
+  },
 }));
 
 const Footer = props => {
@@ -102,7 +119,9 @@ const Footer = props => {
       <Grid className={classes.flexContainer} container spacing={6}>
         <Grid item container xs={12} md={6} lg={12}>
           <Grid item xs={12}>
-            <Logo variant="light" />
+            <Link href="/" underline="none">
+              <Logo variant="light" />
+            </Link>
           </Grid>
           <Grid item xs={2} lg={1} className={classes.iconContainer}>
             <IconButton
@@ -227,13 +246,34 @@ const Footer = props => {
           </Grid>
           <Grid item xs={10} md={9} className={`${classes.subLinks} ${classes.subLinkValues}`}>
             <Typography variant="body2" color="secondary" style={{ marginTop: "4px" }}>
-              {phoneNumbers[0]}
+              <a
+                href={`tel:${phoneNumbers[0].replaceAll(" ", "")}`}
+                className={classes.domLink}
+                underline="hover"
+                target="_blank"
+              >
+                {phoneNumbers[0]}
+              </a>
             </Typography>
             <Typography variant="body2" color="secondary" style={{ marginTop: "4px" }}>
-              {phoneNumbers[1]}
+              <a
+                href={`tel:${phoneNumbers[1].replaceAll(" ", "")}`}
+                className={classes.domLink}
+                underline="hover"
+                target="_blank"
+              >
+                {phoneNumbers[1]}
+              </a>
             </Typography>
             <Typography variant="body2" color="secondary" style={{ marginTop: "4px" }}>
-              {phoneNumbers[2]}
+              <a
+                href={`tel:${phoneNumbers[2].replaceAll(" ", "")}`}
+                className={classes.domLink}
+                underline="hover"
+                target="_blank"
+              >
+                {phoneNumbers[2]}
+              </a>
             </Typography>
           </Grid>
           <Grid item xs={1} className={classes.subLinks}>
@@ -241,7 +281,13 @@ const Footer = props => {
           </Grid>
           <Grid item xs={10} md={9} className={`${classes.subLinks} ${classes.subLinkValues}`}>
             <Typography variant="body2" color="secondary" style={{ marginTop: "4px" }}>
-              {address}
+              <a
+                href="https://goo.gl/maps/6io3YtPEfc6h9mAu5"
+                target="_blank"
+                className={classes.domLink}
+              >
+                {address}
+              </a>
             </Typography>
           </Grid>
         </Grid>
