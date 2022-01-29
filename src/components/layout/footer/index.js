@@ -35,12 +35,38 @@ const useStyles = makeStyles(theme => ({
     },
   },
   subLinks: {
-    marginLeft: "0.5em",
+    marginLeft: "0.3rem",
+    [theme.breakpoints.up("md")]: {
+      marginLeft: "0.2rem",
+    },
+    [theme.breakpoints.up("lg")]: {
+      marginLeft: "0.4rem",
+    },
+  },
+  subLinkValues: {
+    marginLeft: "0.5rem",
+    marginBottom: "0.3rem",
+    [theme.breakpoints.up("md")]: {
+      marginLeft: "2rem",
+    },
+    "@media only screen and (min-width: 900px)": {
+      marginLeft: "2.5rem",
+    },
+    [theme.breakpoints.up("lg")]: {
+      marginLeft: "1rem",
+    },
   },
   flexContainer: {
     alignItems: "flex-start",
     maxWidth: "1200px",
     margin: "0 auto",
+  },
+  iconContainer: {
+    marginTop: theme.spacing(1),
+    [theme.breakpoints.up("md")]: {
+      marginTop: theme.spacing(2),
+      marginBottom: theme.spacing(4),
+    },
   },
 }));
 
@@ -73,12 +99,12 @@ const Footer = props => {
 
   return (
     <Container className={classes.container} component="footer" maxWidth="none">
-      <Grid className={classes.flexContainer} container spacing={4}>
-        <Grid item container xs={12} md={6} lg={3}>
+      <Grid className={classes.flexContainer} container spacing={6}>
+        <Grid item container xs={12} md={6} lg={12}>
           <Grid item xs={12}>
             <Logo variant="light" />
           </Grid>
-          <Grid item xs={2}>
+          <Grid item xs={2} lg={1} className={classes.iconContainer}>
             <IconButton
               colorOverrides={{
                 icon: {
@@ -92,7 +118,7 @@ const Footer = props => {
               <WhatsApp />
             </IconButton>
           </Grid>
-          <Grid item xs={2}>
+          <Grid item xs={2} lg={1} className={classes.iconContainer}>
             <IconButton
               colorOverrides={{
                 icon: {
@@ -106,7 +132,7 @@ const Footer = props => {
               <RoomOutlined />
             </IconButton>
           </Grid>
-          <Grid item xs={2}>
+          <Grid item xs={2} lg={1} className={classes.iconContainer}>
             <IconButton
               colorOverrides={{
                 icon: {
@@ -120,7 +146,7 @@ const Footer = props => {
               <PhoneOutlined />
             </IconButton>
           </Grid>
-          <Grid item xs={2}>
+          <Grid item xs={2} lg={1} className={classes.iconContainer}>
             <IconButton
               colorOverrides={{
                 icon: {
@@ -135,7 +161,7 @@ const Footer = props => {
             </IconButton>
           </Grid>
         </Grid>
-        <Grid item container xs={12} md={6} lg={3} spacing={1}>
+        <Grid item container xs={12} md={6} lg={4} spacing={2}>
           <Grid item xs={12}>
             <Typography variant="h5" color="secondary">
               Quick Links
@@ -152,7 +178,7 @@ const Footer = props => {
             </Typography>
           </Grid>
         </Grid>
-        <Grid item container xs={12} md={6} lg={3} spacing={1}>
+        <Grid item container xs={12} md={6} lg={4} spacing={2}>
           <Grid item xs={12}>
             <Typography variant="h5" color="secondary">
               Products
@@ -166,7 +192,7 @@ const Footer = props => {
             </Grid>
           ))}
         </Grid>
-        <Grid item container xs={12} md={6} lg={3} spacing={1}>
+        <Grid item container xs={12} md={6} lg={4} spacing={2}>
           <Grid item xs={12}>
             <Typography variant="h5" color="secondary">
               Reach Us
@@ -175,30 +201,30 @@ const Footer = props => {
           <Grid item xs={1} className={classes.subLinks}>
             <MailOutlineOutlined color="secondary" fontSize="small" />
           </Grid>
-          <Grid item xs={10} className={classes.subLinks}>
-            <Typography variant="body2" color="secondary">
+          <Grid item xs={10} md={9} className={`${classes.subLinks} ${classes.subLinkValues}`}>
+            <Typography variant="body2" color="secondary" style={{ marginTop: "4px" }}>
               {email}
             </Typography>
           </Grid>
           <Grid item xs={1} className={classes.subLinks}>
             <PhoneOutlined color="secondary" fontSize="small" />
           </Grid>
-          <Grid item xs={10} className={classes.subLinks}>
-            <Typography variant="body2" color="secondary">
+          <Grid item xs={10} md={9} className={`${classes.subLinks} ${classes.subLinkValues}`}>
+            <Typography variant="body2" color="secondary" style={{ marginTop: "4px" }}>
               {phoneNumbers[0]}
             </Typography>
-            <Typography variant="body2" color="secondary">
+            <Typography variant="body2" color="secondary" style={{ marginTop: "4px" }}>
               {phoneNumbers[1]}
             </Typography>
-            <Typography variant="body2" color="secondary">
+            <Typography variant="body2" color="secondary" style={{ marginTop: "4px" }}>
               {phoneNumbers[2]}
             </Typography>
           </Grid>
           <Grid item xs={1} className={classes.subLinks}>
             <RoomOutlined color="secondary" fontSize="small" />
           </Grid>
-          <Grid item xs={10} className={classes.subLinks}>
-            <Typography variant="body2" color="secondary">
+          <Grid item xs={10} md={9} className={`${classes.subLinks} ${classes.subLinkValues}`}>
+            <Typography variant="body2" color="secondary" style={{ marginTop: "4px" }}>
               {address}
             </Typography>
           </Grid>
