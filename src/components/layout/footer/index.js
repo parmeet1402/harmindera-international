@@ -17,6 +17,8 @@ import { IconButton } from "@components/form/Button";
 import Link from "@components/navigation/Link";
 import { Logo } from "@content/assets/CustomIcon";
 
+import kebabCase from "lodash/kebabCase";
+
 const useStyles = makeStyles(theme => ({
   container: {
     backgroundColor: "#000",
@@ -62,6 +64,9 @@ const useStyles = makeStyles(theme => ({
       marginTop: theme.spacing(2),
       marginBottom: theme.spacing(4),
     },
+  },
+  link: {
+    color: theme.palette.common.white,
   },
 }));
 
@@ -170,12 +175,16 @@ const Footer = props => {
           </Grid>
           <Grid item xs={11} className={classes.subLinks}>
             <Typography variant="body2" color="secondary">
-              About
+              <Link href="/about" className={classes.link} underline="hover">
+                About
+              </Link>
             </Typography>
           </Grid>
           <Grid item xs={11} className={classes.subLinks}>
             <Typography variant="body2" color="secondary">
-              Contact Us
+              <Link href="/contact" className={classes.link} underline="hover">
+                Contact Us
+              </Link>
             </Typography>
           </Grid>
         </Grid>
@@ -188,7 +197,13 @@ const Footer = props => {
           {productCategories.map(({ name }) => (
             <Grid item xs={11} className={classes.subLinks}>
               <Typography variant="body2" color="secondary">
-                {name}
+                <Link
+                  href={`/products/${kebabCase(name)}`}
+                  className={classes.link}
+                  underline="hover"
+                >
+                  {name}
+                </Link>
               </Typography>
             </Grid>
           ))}
