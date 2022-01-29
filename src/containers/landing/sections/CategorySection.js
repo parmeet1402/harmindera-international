@@ -1,4 +1,5 @@
 import React from "react";
+import { navigate } from "gatsby";
 
 // Material UI
 import Box from "@material-ui/core/Box";
@@ -21,6 +22,11 @@ import Link from "@components/navigation/Link";
 import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 import kebabCase from "lodash/kebabCase";
 import { motion } from "framer-motion";
+import { useLocation } from "@reach/router";
+import useProductsStore from "@zustand/products";
+import { scroller } from "react-scroll";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
+import useTheme from "@material-ui/core/styles/useTheme";
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -103,38 +109,38 @@ const content = {
     {
       name: "Trending",
       icon: <TrendingIcon />,
-      slug: "/categories/trending",
+      slug: "/trending",
       bgColor: "#A0D69A",
-    },
-    {
-      name: "JCB Parts",
-      icon: <JCBIcon />,
-      slug: "/categories/jcb",
-      bgColor: "#FCA88B",
     },
     {
       name: "Auto Parts",
       icon: <RickshawIcon />,
-      slug: "/categories/auto-parts",
+      slug: "/products/auto-parts",
       bgColor: "#9EBEF1",
     },
     {
-      name: "Nut",
-      icon: <NutIcon />,
-      slug: "/categories/nut",
-      bgColor: "#8CDBF9",
+      name: "JCB Parts",
+      icon: <JCBIcon />,
+      slug: "/products/jcb-parts",
+      bgColor: "#FCA88B",
     },
     {
       name: "Bolt",
       icon: <BoltIcon />,
-      slug: "/categories/bolt",
+      slug: "/products/bolt",
       bgColor: "#BCA1F2",
     },
     {
-      name: "Agriculture Parts",
+      name: "Agriculture Products",
       icon: <TractorIcon />,
-      slug: "/categories/tractor",
+      slug: "/products/agriculture-products",
       bgColor: "#A3E3DA",
+    },
+    {
+      name: "Nut",
+      icon: <NutIcon />,
+      slug: "/products/nut",
+      bgColor: "#8CDBF9",
     },
   ],
 };
@@ -149,6 +155,7 @@ const useCategoryStyles = makeStyles(theme => ({
     alignItems: "center",
     justifyContent: "center",
     borderRadius: theme.shape.borderRadius,
+    cursor: "pointer",
 
     [theme.breakpoints.up("md")]: {
       height: theme.spacing(25),
@@ -158,30 +165,60 @@ const useCategoryStyles = makeStyles(theme => ({
   label: {
     color: theme.palette.common.white,
     marginTop: theme.spacing(1),
+    userSelect: "none",
   },
 }));
 
 const AnimatedBox = motion(Box);
 
 const CategoryCard = ({ data }) => {
+  const { activeTab, setActiveTab } = useProductsStore();
+  const theme = useTheme();
+  const { pathname } = useLocation();
+
+  const isMediumAndBiggerDevices = useMediaQuery(theme.breakpoints.up("md"));
+
   const handleCategoryClick = () => {
-    console.log(data.slug);
+    // console.log({ path, result: path === "/", data: data.name, name: `tab-${data.name}` });
+    // console.log(data.slug);
+    // DONE: When user is on route other than landing page, redirect to product specific page
+    if (pathname !== "/") {
+      navigate(data.slug);
+    } else {
+      // DONE: When user is on landing page
+      // DONE: Update the current product option selected
+      setActiveTab(data.name);
+      // TODO: Scroll horizontally to the current option only in the case of phone
+      // scroller.scrollTo(`tab-${data.name}`, {
+      //   duration: 700,
+      //   smooth: true,
+      //   // offset: isMediumAndBiggerDevices ? 60 : 0,
+      //   horizontal: true,
+      // });
+      // DONE: Scroll down to products section
+      scroller.scrollTo("landing__products-section", {
+        duration: 700,
+        smooth: true,
+        offset: isMediumAndBiggerDevices ? 60 : 0,
+      });
+    }
   };
+  // <Link href={`/products/${kebabCase(data.name)}`} underline="none">
   const classes = useCategoryStyles(data);
+
   return (
-    <Link href={`/products/${kebabCase(data.name)}`} underline="none">
-      <AnimatedBox
-        whileHover={{ scale: 1.07 }}
-        onClick={handleCategoryClick}
-        className={classes.categoryCard}
-      >
-        {data.icon}
-        <Typography variant="subtitle1" className={classes.label}>
-          {data.name}
-        </Typography>
-      </AnimatedBox>
-    </Link>
+    <AnimatedBox
+      whileHover={{ scale: 1.07 }}
+      onClick={handleCategoryClick}
+      className={classes.categoryCard}
+    >
+      {data.icon}
+      <Typography variant="subtitle1" className={classes.label}>
+        {data.name}
+      </Typography>
+    </AnimatedBox>
   );
+  // </Link>
 };
 
 const CategorySection = props => {

@@ -13,10 +13,12 @@ import { emphasize } from "@material-ui/core/styles/colorManipulator";
 
 import ItemsCarousel from "react-items-carousel";
 import { AnchorArrowDownIcon } from "@content/assets/CustomIcon";
-import { OutlinedButton } from "@components/form/Button";
+import { OutlinedButton, SolidButton } from "@components/form/Button";
 import { Container } from "@material-ui/core";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { useTheme } from "@material-ui/core/styles";
+import useProductsStore from "@zustand/products";
+import kebabCase from "lodash/kebabCase";
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -155,7 +157,7 @@ const useCardStyles = makeStyles(theme => ({
 // todo: add default images for each category
 const SingleProduct = ({ data, variant }) => {
   const classes = useCardStyles({ variant });
-  console.log({ classes });
+  // console.log({ classes });
   // console.log({ data });
   // check if image is present ?
   const image = data.images
@@ -235,7 +237,9 @@ const ProductsSection = () => {
     "Agriculture Products": [],
   });
 
-  const [activeTab, setActiveTab] = useState("JCB Parts");
+  const { activeTab, setActiveTab } = useProductsStore();
+
+  // const [activeTab, setActiveTab] = useState("JCB Parts");
 
   // console.log({ edges });
 
@@ -379,6 +383,17 @@ const ProductsSection = () => {
           {renderCategoryCards()}
         </ItemsCarousel>
       </div>
+      <Box alignItems="center" justifyContent="center" mt={isWidthMoreThan550px ? 12 : 4}>
+        {isMediumDeviceAndUp ? (
+          <OutlinedButton href={`/products/${kebabCase(activeTab)}`}>
+            View all Products
+          </OutlinedButton>
+        ) : (
+          <SolidButton fullWidth href={`/products/${kebabCase(activeTab)}`}>
+            View All Products
+          </SolidButton>
+        )}
+      </Box>
     </Container>
   );
 };
