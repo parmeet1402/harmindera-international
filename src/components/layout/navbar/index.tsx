@@ -54,7 +54,7 @@ const Navbar = (props: Props) => {
               <>
                 <Links />
                 {/* Right */}
-                <ExpandableSearchField />
+                {/* <ExpandableSearchField /> */}
               </>
             ) : (
               <>

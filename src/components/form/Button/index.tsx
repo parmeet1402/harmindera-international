@@ -134,6 +134,8 @@ interface IconBaseButtonProps {
     icon?: IconColorVariants;
     background?: IconColorVariants;
   };
+  href?: string;
+  target?: "_blank" | "_self" | "_parent" | "_top";
 
   // Required
   // "aria-label": string;
@@ -208,5 +210,5 @@ const IconButton: React.FC<IconBaseButtonProps & IconButtonProps> = props => {
 
 /* eslint-enable */
 
-export { SolidButton, OutlinedButton, TextButton, RoundedButton, IconButton};
+export { SolidButton, OutlinedButton, TextButton, RoundedButton, IconButton };
 export default ButtonBase;

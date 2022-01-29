@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { graphql, useStaticQuery } from "gatsby";
 
 // Material UI
 import Box from "@material-ui/core/Box";
@@ -29,6 +30,7 @@ const useStyles = makeStyles(theme => ({
   link: {
     "& h4": {
       marginLeft: "8px",
+      fontSize: "1.78rem",
     },
 
     "&#active-link--nav": {
@@ -46,6 +48,9 @@ const useStyles = makeStyles(theme => ({
   bold: {
     fontWeight: "bold",
   },
+  linksContainer: {
+    marginTop: theme.spacing(3),
+  },
 }));
 
 const links = [
@@ -57,6 +62,24 @@ const links = [
 
 const ExpandedMobileNavbar = (props: Props) => {
   const classes = useStyles();
+  const {
+    site: {
+      siteMetadata: { address, email, phoneNumbers },
+    },
+  } = useStaticQuery(
+    graphql`
+      query {
+        site {
+          siteMetadata {
+            title
+            address
+            email
+            phoneNumbers
+          }
+        }
+      }
+    `,
+  );
 
   const { isMobileNavbarExpanded, shrinkMobileNavbar } = useUIStore();
 
@@ -86,7 +109,7 @@ const ExpandedMobileNavbar = (props: Props) => {
       bgcolor="background.paper"
       className="avi"
     >
-      <TextField
+      {/* <TextField
         id="nav__search-input-field--mobile"
         placeholder="Search products"
         formControlProps={{ classes: { root: classes.formControl } }}
@@ -99,8 +122,9 @@ const ExpandedMobileNavbar = (props: Props) => {
           </InputAdornment>
         }
         autoComplete="off"
-      />
-      <div onClick={shrinkMobileNavbar}>
+      /> */}
+
+      <div onClick={shrinkMobileNavbar} className={classes.linksContainer}>
         {links.map(item => (
           <Link
             href={item.path}
@@ -122,14 +146,15 @@ const ExpandedMobileNavbar = (props: Props) => {
 
       {isFooterVisible && (
         <Box position="absolute" bottom="30px" width="80%" ml="2px">
-          <Typography variant="h6" classes={{ root: classes.bold }}>
+          <Typography variant="h4" classes={{ root: classes.bold }}>
             {config.title}
           </Typography>
-          <Typography variant="body2" style={{ width: "70%", marginBottom: "16px" }}>
-            17 Sua Road, Dhandari Kalan, Ludhiana, 141002
+          <Typography variant="body2" style={{ width: "90%", marginBottom: "16px" }}>
+            {address}
           </Typography>
           <Grid>
             <IconButton
+              href={`https://wa.me/${phoneNumbers[0].replaceAll(" ", "")}`}
               colorOverrides={{
                 icon: {
                   color: "text",
@@ -142,6 +167,8 @@ const ExpandedMobileNavbar = (props: Props) => {
               <WhatsApp />
             </IconButton>
             <IconButton
+              href="https://goo.gl/maps/6io3YtPEfc6h9mAu5"
+              target="_blank"
               colorOverrides={{
                 icon: {
                   color: "text",
@@ -154,6 +181,7 @@ const ExpandedMobileNavbar = (props: Props) => {
               <RoomOutlined />
             </IconButton>
             <IconButton
+              href="tel:+919876100890"
               colorOverrides={{
                 icon: {
                   color: "text",
@@ -166,6 +194,7 @@ const ExpandedMobileNavbar = (props: Props) => {
               <PhoneOutlined />
             </IconButton>
             <IconButton
+              href={`mailto:${email}`}
               colorOverrides={{
                 icon: {
                   color: "text",
