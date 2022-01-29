@@ -166,12 +166,14 @@ const CategoryCard = ({ data }) => {
   };
   const classes = useCategoryStyles(data);
   return (
-    <Box onClick={handleCategoryClick} className={classes.categoryCard}>
-      {data.icon}
-      <Typography variant="subtitle1" className={classes.label}>
-        {data.name}
-      </Typography>
-    </Box>
+    <Link href={`/products/${kebabCase(data.name)}`} underline="none">
+      <Box onClick={handleCategoryClick} className={classes.categoryCard}>
+        {data.icon}
+        <Typography variant="subtitle1" className={classes.label}>
+          {data.name}
+        </Typography>
+      </Box>
+    </Link>
   );
 };
 
