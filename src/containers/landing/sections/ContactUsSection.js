@@ -179,7 +179,7 @@ const ContactUsSection = () => {
 
   //   https://goo.gl/maps/oNn9TP1dHEURTFGk8
   return (
-    <Container className={classes.container} maxWidth="auto">
+    <Container name="landing__contact-us" className={classes.container} maxWidth="auto">
       <Box className={classes.headingContainer}>
         <Typography variant="h2" component="h2" className={classes.heading}>
           {content.heading}

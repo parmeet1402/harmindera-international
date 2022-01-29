@@ -15,12 +15,15 @@ import { AnchorArrowDownIcon, GlobeIcon } from "@content/assets/CustomIcon";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import SwiperCore, { Pagination, Navigation, Autoplay } from "swiper";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
+import useTheme from "@material-ui/core/styles/useTheme";
 
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "swiper/css/bundle";
 import clsx from "clsx";
+import { scroller } from "react-scroll";
 
 // install Swiper modules
 SwiperCore.use([Pagination, Navigation, Autoplay]);
@@ -151,12 +154,30 @@ const HeroSection = () => {
   `);
   const productCategories = productCategoriesObjects.map(productCategory => productCategory.name);
   const classes = useStyles();
+  const theme = useTheme();
+  const isMediumAndBiggerDevices = useMediaQuery(theme.breakpoints.up("md"));
 
   const handlePrimaryButtonClick = () => {
-    // TODO: scroll to products section
+    scroller.scrollTo("landing__products-section", {
+      duration: 700,
+      smooth: true,
+      offset: isMediumAndBiggerDevices ? 60 : 0,
+    });
   };
   const handleSecondaryButtonClick = () => {
-    // TODO: scroll to contact us section
+    scroller.scrollTo("landing__contact-us", {
+      duration: 700,
+      smooth: true,
+      offset: isMediumAndBiggerDevices ? 60 : 0,
+    });
+  };
+
+  const handleScrollToCategoryIcon = () => {
+    scroller.scrollTo("landing__category-section", {
+      duration: 700,
+      smooth: true,
+      offset: 150,
+    });
   };
 
   return (
@@ -206,7 +227,7 @@ const HeroSection = () => {
               </SolidButton>
             </Grid>
             <Grid item xs={12} lg={6}>
-              <TextButton fullWidth onClick={handlePrimaryButtonClick}>
+              <TextButton fullWidth onClick={handleSecondaryButtonClick}>
                 Contact Us
               </TextButton>
             </Grid>
@@ -262,7 +283,12 @@ const HeroSection = () => {
           </Swiper>
         </Grid>
       </Grid>
-      <IconButton aria-label="Scroll Down" className={classes.scrollDownButton} color="default">
+      <IconButton
+        aria-label="Scroll Down"
+        className={classes.scrollDownButton}
+        color="default"
+        onClick={handleScrollToCategoryIcon}
+      >
         <AnchorArrowDownIcon direction="down" />
       </IconButton>
     </Container>

@@ -1,3 +1,4 @@
+import { ReactNode } from "react";
 import create, { UseStore } from "zustand";
 import { _immer } from "./helpers";
 
@@ -11,6 +12,8 @@ interface UIStore {
   shrinkMobileNavbar(): void;
   keyboardOpened(): void;
   keyboardClosed(): void;
+  refs: any;
+  setRef: (key: string, ref: ReactNode) => void;
 }
 
 const useUIStore: UseStore<UIStore> = create(
@@ -50,6 +53,10 @@ const useUIStore: UseStore<UIStore> = create(
       set((state: UIStore) => {
         state.isKeyboardOpened = false;
       });
+    },
+    refs: {},
+    setRef: (key, ref) => {
+      set((state: UIStore) => (state.refs[key] = ref));
     },
   })),
 );

@@ -179,7 +179,7 @@ const CategorySection = props => {
   const classes = useStyles();
 
   return (
-    <Container className={classes.container} maxWidth="auto">
+    <Container name="landing__category-section" className={classes.container} maxWidth="auto">
       {props.showBreadcrumbs && (
         <Breadcrumbs separator=">" aria-label="breadcrumb" className={classes.breadcrumb}>
           <Link className={classes.breadcrumbLinks} color="primary" href="/">

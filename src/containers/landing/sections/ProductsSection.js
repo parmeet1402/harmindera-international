@@ -311,7 +311,7 @@ const ProductsSection = () => {
   };
 
   return (
-    <Container className={classes.container} maxWidth="auto">
+    <Container name="landing__products-section" className={classes.container} maxWidth="auto">
       <Box className={classes.headingContainer}>
         <Typography variant="h2" component="h2" className={classes.heading}>
           {content.heading}
