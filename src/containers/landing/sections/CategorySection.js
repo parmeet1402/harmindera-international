@@ -20,6 +20,7 @@ import { Container } from "@material-ui/core";
 import Link from "@components/navigation/Link";
 import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 import kebabCase from "lodash/kebabCase";
+import { motion } from "framer-motion";
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -160,6 +161,8 @@ const useCategoryStyles = makeStyles(theme => ({
   },
 }));
 
+const AnimatedBox = motion(Box);
+
 const CategoryCard = ({ data }) => {
   const handleCategoryClick = () => {
     console.log(data.slug);
@@ -167,12 +170,16 @@ const CategoryCard = ({ data }) => {
   const classes = useCategoryStyles(data);
   return (
     <Link href={`/products/${kebabCase(data.name)}`} underline="none">
-      <Box onClick={handleCategoryClick} className={classes.categoryCard}>
+      <AnimatedBox
+        whileHover={{ scale: 1.07 }}
+        onClick={handleCategoryClick}
+        className={classes.categoryCard}
+      >
         {data.icon}
         <Typography variant="subtitle1" className={classes.label}>
           {data.name}
         </Typography>
-      </Box>
+      </AnimatedBox>
     </Link>
   );
 };
