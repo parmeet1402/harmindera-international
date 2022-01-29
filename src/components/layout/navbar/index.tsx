@@ -16,6 +16,7 @@ import Links from "./links";
 import ExpandableSearchField from "@components/form/ExpandableSearchField";
 import { Logo } from "@content/assets/CustomIcon";
 import { IconButton } from "@components/form/Button";
+import Link from "@components/navigation/Link";
 
 // State
 import useUIStore from "@zustand/ui";
@@ -49,7 +50,10 @@ const Navbar = (props: Props) => {
         <AppBar position="fixed" color="secondary">
           <Toolbar>
             {/* Left */}
-            <Logo />
+            <Link href="/" underline="none">
+              <Logo />
+            </Link>
+
             {!isMobile ? (
               <>
                 <Links />
