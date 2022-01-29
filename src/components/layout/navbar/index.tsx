@@ -15,11 +15,12 @@ import ExpandedMobileNavbar from "./expanded-mobile-navbar";
 import Links from "./links";
 import ExpandableSearchField from "@components/form/ExpandableSearchField";
 import { Logo } from "@content/assets/CustomIcon";
-import { IconButton } from "@components/form/Button";
+import { IconButton, SolidButton } from "@components/form/Button";
 import Link from "@components/navigation/Link";
 
 // State
 import useUIStore from "@zustand/ui";
+import { Box } from "@material-ui/core";
 
 interface Props {
   window?: () => Window;
@@ -58,6 +59,11 @@ const Navbar = (props: Props) => {
               <>
                 <Links />
                 {/* Right */}
+                <Box ml="auto">
+                  <SolidButton href="/contact" size="small">
+                    Let's Work
+                  </SolidButton>
+                </Box>
                 {/* <ExpandableSearchField /> */}
               </>
             ) : (
