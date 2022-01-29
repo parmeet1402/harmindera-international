@@ -10,11 +10,7 @@ const links = [
   { label: "Home", link: "/" },
   { label: "About", link: "/about" },
   {
-    label: (
-      <span style={{ display: "inline-flex", alignItems: "center", marginTop: "-10px" }}>
-        Products <KeyboardArrowDown />
-      </span>
-    ),
+    label: "Products",
     link: "/products",
   },
   { label: "Contact Us", link: "/contact" },
