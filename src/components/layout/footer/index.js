@@ -19,12 +19,7 @@ import { Logo } from "@content/assets/CustomIcon";
 
 const useStyles = makeStyles(theme => ({
   container: {
-    // backgroundColor: theme.palette.common.black,
     backgroundColor: "#000",
-    // paddingInline: "0px",
-    // padding: "24px 0px",
-    // paddingBlock: "0px",
-    // margin: "0px",
     overflow: "hidden",
     paddingBlock: theme.spacing(4),
     [theme.breakpoints.up("md")]: {
@@ -106,6 +101,8 @@ const Footer = props => {
           </Grid>
           <Grid item xs={2} lg={1} className={classes.iconContainer}>
             <IconButton
+              href={`https://wa.me/${phoneNumbers[0].replaceAll(" ", "")}`}
+              target="_blank"
               colorOverrides={{
                 icon: {
                   color: "secondary",
@@ -120,6 +117,8 @@ const Footer = props => {
           </Grid>
           <Grid item xs={2} lg={1} className={classes.iconContainer}>
             <IconButton
+              href="https://goo.gl/maps/6io3YtPEfc6h9mAu5"
+              target="_blank"
               colorOverrides={{
                 icon: {
                   color: "secondary",
@@ -134,6 +133,7 @@ const Footer = props => {
           </Grid>
           <Grid item xs={2} lg={1} className={classes.iconContainer}>
             <IconButton
+              href="tel:+919876100890"
               colorOverrides={{
                 icon: {
                   color: "secondary",
@@ -148,6 +148,7 @@ const Footer = props => {
           </Grid>
           <Grid item xs={2} lg={1} className={classes.iconContainer}>
             <IconButton
+              href={`mailto:${email}`}
               colorOverrides={{
                 icon: {
                   color: "secondary",

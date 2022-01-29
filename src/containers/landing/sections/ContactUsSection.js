@@ -193,7 +193,7 @@ const ContactUsSection = () => {
         <Grid item xs={12} md={12} lg={5}>
           <Grid item className={classes.mapContainer}>
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d54789.801763578675!2d75.84239438757328!3d30.876515636190774!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391a9d67dc262cd5%3A0x97cb1643bce70173!2sHarmindera%20International!5e0!3m2!1sen!2sin!4v1642942272698!5m2!1sen!2sin"
+              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d4463.520174099868!2d75.9130532!3d30.858677!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391a9d67dc262cd5%3A0x97cb1643bce70173!2sHarmindera%20International!5e1!3m2!1sen!2sin!4v1643485718341!5m2!1sen!2sin"
               // width="319px"
               // height="252px"
               style={{ border: 0, borderRadius: 12 }}
