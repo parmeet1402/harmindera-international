@@ -19,7 +19,7 @@ const links = [
 const useStyles = makeStyles(theme => ({
   link: {
     margin: "12px",
-    fontWeight: theme.typography.fontWeightBold,
+    // fontWeight: theme.typography.fontWeightBold,
 
     "&#active-link--nav": {
       color: theme.palette.primary.main,
