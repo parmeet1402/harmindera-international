@@ -149,10 +149,13 @@ export const configTypography: any = {
   body2: {
     fontFamily,
     fontWeight: fontWeight.regular,
-    fontSize: "1rem",
+    fontSize: "0.72rem",
     lineHeight: 1.525,
     letterSpacing: "0.25px",
     // TODO: Change base size and set the current size at a later width
+    "@media only screen and (min-width: 1150px)": {
+      fontSize: "1rem",
+    },
   },
   button: {
     fontFamily,
