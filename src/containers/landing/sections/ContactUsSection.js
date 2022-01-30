@@ -21,6 +21,8 @@ import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { useTheme } from "@material-ui/core/styles";
 import useContactUsStore from "@zustand/contact";
 import { useForm } from "react-hook-form";
+import isEmpty from "lodash/isEmpty";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -161,8 +163,9 @@ const ContactUsSection = () => {
     setFocus,
     handleSubmit,
     setValue,
+    reset,
   } = useForm({
-    mode: "onChange",
+    mode: "all",
   });
   const { "contact-us": contactUsFormState = {}, ...restArgs } = watch(); // when pass nothing as argument, you are watching everything
 
@@ -199,19 +202,25 @@ const ContactUsSection = () => {
   // console.log({ address, email, phoneNumbers });
 
   const theme = useTheme();
+  const isMediumDevicesAndUp = useMediaQuery(theme.breakpoints.up("md"));
   const isDesktopDeviceAndUp = useMediaQuery(theme.breakpoints.up("lg"));
   const iconColorVariant = isDesktopDeviceAndUp ? "secondary" : "default";
   const textColorVariant = isDesktopDeviceAndUp ? "secondary" : "primary";
 
-  const handleFormSubmission = values => {
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleFormSubmission = ({ "contact-us": values }) => {
     console.log({ values });
     // TODO: Submit data to netlify forms
-
+    setIsLoading(true);
     // TODO: Submit the results to netlify's form data
 
     // TODO: Show Toast
 
     // TODO: Reset the form
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 3000);
   };
 
   //   https://goo.gl/maps/oNn9TP1dHEURTFGk8
@@ -226,13 +235,7 @@ const ContactUsSection = () => {
         </Typography>
       </Box>
       {/* Create a grid for containing both form and aside */}
-      <Grid
-        container
-        spacing={2}
-        className={classes.contentContainer}
-        component="form"
-        onSubmit={handleSubmit(handleFormSubmission)}
-      >
+      <Grid container spacing={2} className={classes.contentContainer}>
         <Grid item xs={12} md={12} lg={5}>
           <Grid item className={classes.mapContainer}>
             <iframe
@@ -291,7 +294,11 @@ const ContactUsSection = () => {
             </Grid>
           </Grid>
         </Grid>
-        <Paper className={classes.paper}>
+        <Paper
+          className={classes.paper}
+          component="form"
+          onSubmit={handleSubmit(handleFormSubmission)}
+        >
           <Grid container item xs={12}>
             <Typography variant="h5" className={classes.paperHeading}>
               Contact Form
@@ -325,6 +332,7 @@ const ContactUsSection = () => {
                   formName="contact-us"
                   error={errors?.["contact-us"]?.["name"]}
                   helperText={errors?.["contact-us"]?.["name"]?.message}
+                  disabled={isLoading}
                 />
               </Grid>
               <Grid item xs={12} lg={6}>
@@ -355,6 +363,7 @@ const ContactUsSection = () => {
                   formName="contact-us"
                   error={errors?.["contact-us"]?.["email"]}
                   helperText={errors?.["contact-us"]?.["email"]?.message}
+                  disabled={isLoading}
                 />
               </Grid>
               {/* </Grid> */}
@@ -390,6 +399,7 @@ const ContactUsSection = () => {
                   formName="contact-us"
                   error={errors?.["contact-us"]?.["phone"]}
                   helperText={errors?.["contact-us"]?.["phone"]?.message}
+                  disabled={isLoading}
                 />
               </Grid>
               <Grid item xs={12} lg={6}>
@@ -415,6 +425,7 @@ const ContactUsSection = () => {
                   formName="contact-us"
                   error={errors?.["contact-us"]?.["country"]}
                   helperText={errors?.["contact-us"]?.["country"]?.message}
+                  disabled={isLoading}
                 />
               </Grid>
               {/* </Grid> */}
@@ -443,11 +454,29 @@ const ContactUsSection = () => {
                   formName="contact-us"
                   error={errors?.["contact-us"]?.["message"]}
                   helperText={errors?.["contact-us"]?.["message"]?.message}
+                  disabled={isLoading}
                 />
               </Grid>
               {/* </Grid> */}
               <Grid className={classes.submitButtonContainer} item xs={12}>
-                <SolidButton fullWidth>Send Message</SolidButton>
+                <SolidButton
+                  disabled={
+                    !contactUsFormState.name ||
+                    !contactUsFormState.email ||
+                    !contactUsFormState.phone ||
+                    !contactUsFormState.country ||
+                    !contactUsFormState.message ||
+                    (errors && !isEmpty(errors["contact-us"]))
+                  }
+                  type="submit"
+                  fullWidth
+                >
+                  {isLoading ? (
+                    <CircularProgress size={isDesktopDeviceAndUp ? 28 : 20} color="secondary" />
+                  ) : (
+                    "Send Message"
+                  )}
+                </SolidButton>
               </Grid>
             </Grid>
           </Grid>
