@@ -7,7 +7,7 @@ export const wrapRootElement = ({ element }) => {
   return <TopLayout>{element}</TopLayout>;
 };
 
-export const onRouteUpdate = location => {
+export const onRouteUpdate = ({ location }) => {
   if (location.hash) {
     setTimeout(() => {
       document

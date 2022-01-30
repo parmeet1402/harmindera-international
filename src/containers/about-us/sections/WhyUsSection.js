@@ -90,9 +90,9 @@ const WhyUsSection = () => {
   const classes = useStyles();
 
   return (
-    <Container id="quality" className={classes.container} maxWidth="none">
+    <Container className={classes.container} maxWidth="none">
       <div className={classes.grid}>
-        <div className={classes.headingContainer}>
+        <div id="why-us" className={classes.headingContainer}>
           <Typography variant="h3" className={classes.heading}>
             Why Us?
           </Typography>

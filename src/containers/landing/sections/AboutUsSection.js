@@ -173,7 +173,7 @@ const Card = ({ data }) => {
           {data.title}
         </Typography>
         <Typography variant="subtitle1">{data.text}</Typography>
-        <Link className={classes.cardLink} href={`/about/${data.sectionId}`} underline="none">
+        <Link className={classes.cardLink} href={`/about#${data.sectionId}`} underline="none">
           Read More&nbsp;&nbsp;
           <ArrowIcon direction="right" />
         </Link>
