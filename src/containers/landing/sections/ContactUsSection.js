@@ -13,7 +13,6 @@ import MailOutlineOutlined from "@material-ui/icons/MailOutlineOutlined";
 import PhoneOutlined from "@material-ui/icons/PhoneOutlined";
 import RoomOutlined from "@material-ui/icons/RoomOutlined";
 import WhatsApp from "@material-ui/icons/WhatsApp";
-// import { TextField } from "@material-ui/core";
 import TextField from "@components/form/TextField";
 import { SolidButton } from "@components/form/Button";
 import { Container } from "@material-ui/core";
@@ -23,6 +22,12 @@ import useContactUsStore from "@zustand/contact";
 import { useForm } from "react-hook-form";
 import isEmpty from "lodash/isEmpty";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import Snackbar from "@material-ui/core/Snackbar";
+import MuiAlert from "@material-ui/lab/Alert";
+
+function Alert(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -154,6 +159,12 @@ const content = {
   subHeading: "Let’s get in touch with us",
 };
 
+const encode = data => {
+  return Object.keys(data)
+    .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+    .join("&");
+};
+
 const ContactUsSection = () => {
   const classes = useStyles();
   const {
@@ -208,19 +219,36 @@ const ContactUsSection = () => {
   const textColorVariant = isDesktopDeviceAndUp ? "secondary" : "primary";
 
   const [isLoading, setIsLoading] = useState(false);
+  const [isAlertShown, setIsAlertShown] = useState(false);
 
   const handleFormSubmission = ({ "contact-us": values }) => {
     console.log({ values });
-    // TODO: Submit data to netlify forms
+    // DONE: Submit data to netlify forms
     setIsLoading(true);
-    // TODO: Submit the results to netlify's form data
-
-    // TODO: Show Toast
+    // DONE: Submit the results to netlify's form data
+    // fetch("/", {
+    //   method: "POST",
+    //   headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    //   body: encode({ "form-name": "contact", ...values }),
+    // }).then(() => {
+    //   setIsAlertShown(true);
+    // });
+    // DONE: Show Toast
 
     // TODO: Reset the form
     setTimeout(() => {
       setIsLoading(false);
+      setIsAlertShown(true);
+      reset();
     }, 3000);
+  };
+
+  const handleSnackbarClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setIsAlertShown(false);
   };
 
   //   https://goo.gl/maps/oNn9TP1dHEURTFGk8
@@ -296,9 +324,14 @@ const ContactUsSection = () => {
         </Grid>
         <Paper
           className={classes.paper}
+          name="contact"
           component="form"
           onSubmit={handleSubmit(handleFormSubmission)}
+          data-netlify="true"
+          netlify-honeypot="bot-field"
         >
+          <input type="hidden" name="bot-field" />
+
           <Grid container item xs={12}>
             <Typography variant="h5" className={classes.paperHeading}>
               Contact Form
@@ -482,7 +515,16 @@ const ContactUsSection = () => {
           </Grid>
         </Paper>
       </Grid>
-      {/* </Box> */}
+      <Snackbar
+        anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
+        open={isAlertShown}
+        autoHideDuration={4000}
+        onClose={handleSnackbarClose}
+      >
+        <Alert onClose={handleSnackbarClose} severity="success">
+          Thanks for providing with your details, Looking forward to work with you!
+        </Alert>
+      </Snackbar>
     </Container>
   );
 };
