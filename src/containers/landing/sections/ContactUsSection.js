@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useStaticQuery, graphql } from "gatsby";
 
 // Material UI
@@ -19,6 +19,8 @@ import { SolidButton } from "@components/form/Button";
 import { Container } from "@material-ui/core";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { useTheme } from "@material-ui/core/styles";
+import useContactUsStore from "@zustand/contact";
+import { useForm } from "react-hook-form";
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -152,6 +154,30 @@ const content = {
 
 const ContactUsSection = () => {
   const classes = useStyles();
+  const {
+    register,
+    watch,
+    formState: { errors, ...formState },
+    setFocus,
+    handleSubmit,
+    setValue,
+  } = useForm({
+    mode: "onChange",
+  });
+  const { "contact-us": contactUsFormState = {}, ...restArgs } = watch(); // when pass nothing as argument, you are watching everything
+
+  // const [formState, setFormState] = useState({
+  //   name: "",
+  //   email: "",
+  //   phone: "",
+  //   country: "",
+  //   message: "",
+  // });
+
+  // const formState = useContactUsStore(state => state.formState);
+  // const updateFormState = useContactUsStore(state => state.updateFormState);
+
+  console.log({ formState, errors, contactUsFormState, restArgs });
 
   const {
     site: {
@@ -170,12 +196,23 @@ const ContactUsSection = () => {
     }
   `);
 
-  console.log({ address, email, phoneNumbers });
+  // console.log({ address, email, phoneNumbers });
 
   const theme = useTheme();
   const isDesktopDeviceAndUp = useMediaQuery(theme.breakpoints.up("lg"));
   const iconColorVariant = isDesktopDeviceAndUp ? "secondary" : "default";
   const textColorVariant = isDesktopDeviceAndUp ? "secondary" : "primary";
+
+  const handleFormSubmission = values => {
+    console.log({ values });
+    // TODO: Submit data to netlify forms
+
+    // TODO: Submit the results to netlify's form data
+
+    // TODO: Show Toast
+
+    // TODO: Reset the form
+  };
 
   //   https://goo.gl/maps/oNn9TP1dHEURTFGk8
   return (
@@ -189,7 +226,13 @@ const ContactUsSection = () => {
         </Typography>
       </Box>
       {/* Create a grid for containing both form and aside */}
-      <Grid container spacing={2} className={classes.contentContainer} component="form">
+      <Grid
+        container
+        spacing={2}
+        className={classes.contentContainer}
+        component="form"
+        onSubmit={handleSubmit(handleFormSubmission)}
+      >
         <Grid item xs={12} md={12} lg={5}>
           <Grid item className={classes.mapContainer}>
             <iframe
@@ -268,6 +311,20 @@ const ContactUsSection = () => {
                   classes={{
                     root: classes.textInput,
                   }}
+                  // value={formState.name}
+                  // onChange={e => updateFormState({ name: e.target.value })}
+                  validationSchema={{
+                    required: "This is required",
+                    pattern: {
+                      value: /^[a-z ,.'-]+$/gi,
+                      message: "Please enter a valid name",
+                    },
+                  }}
+                  register={register}
+                  name="name"
+                  formName="contact-us"
+                  error={errors?.["contact-us"]?.["name"]}
+                  helperText={errors?.["contact-us"]?.["name"]?.message}
                 />
               </Grid>
               <Grid item xs={12} lg={6}>
@@ -283,6 +340,21 @@ const ContactUsSection = () => {
                   classes={{
                     root: classes.textInput,
                   }}
+                  type="email"
+                  // value={formState.email}
+                  // onChange={e => updateFormState({ email: e.target.value })}
+                  validationSchema={{
+                    required: "This is required",
+                    pattern: {
+                      value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                      message: "Invalid email address",
+                    },
+                  }}
+                  register={register}
+                  name="email"
+                  formName="contact-us"
+                  error={errors?.["contact-us"]?.["email"]}
+                  helperText={errors?.["contact-us"]?.["email"]?.message}
                 />
               </Grid>
               {/* </Grid> */}
@@ -300,6 +372,24 @@ const ContactUsSection = () => {
                   classes={{
                     root: classes.textInput,
                   }}
+                  // value={formState.phone}
+                  // onChange={e => updateFormState({ phone: e.target.value })}
+                  validationSchema={{
+                    required: "This is required",
+                    pattern: {
+                      value: /^[0-9 +'-]+$/gi,
+                      message: "Invalid Phone Number",
+                    },
+                    minLength: {
+                      value: 8,
+                      message: "Must be at least 8 digits",
+                    },
+                  }}
+                  register={register}
+                  name="phone"
+                  formName="contact-us"
+                  error={errors?.["contact-us"]?.["phone"]}
+                  helperText={errors?.["contact-us"]?.["phone"]?.message}
                 />
               </Grid>
               <Grid item xs={12} lg={6}>
@@ -315,6 +405,16 @@ const ContactUsSection = () => {
                   classes={{
                     root: classes.textInput,
                   }}
+                  // value={formState.country}
+                  // onChange={e => updateFormState({ country: e.target.value })}
+                  validationSchema={{
+                    required: "This is required",
+                  }}
+                  register={register}
+                  name="country"
+                  formName="contact-us"
+                  error={errors?.["contact-us"]?.["country"]}
+                  helperText={errors?.["contact-us"]?.["country"]?.message}
                 />
               </Grid>
               {/* </Grid> */}
@@ -333,6 +433,16 @@ const ContactUsSection = () => {
                     root: classes.textInput,
                   }}
                   rows={8}
+                  // value={formState.message}
+                  // onChange={e => updateFormState({ message: e.target.value })}
+                  validationSchema={{
+                    required: "This is required",
+                  }}
+                  register={register}
+                  name="message"
+                  formName="contact-us"
+                  error={errors?.["contact-us"]?.["message"]}
+                  helperText={errors?.["contact-us"]?.["message"]?.message}
                 />
               </Grid>
               {/* </Grid> */}

@@ -15,6 +15,13 @@ interface Props {
   id: string;
   helperTextProps?: FormHelperTextProps;
   formControlProps?: FormControlProps;
+  register: (str: string, schema: any) => void;
+  validationSchema?: any;
+  errors?: {
+    message: string;
+    type: string;
+  };
+  formName?: string;
 }
 
 const useStyles = makeStyles(theme => ({
@@ -24,8 +31,21 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const TextField: React.FC<Props & InputProps> = props => {
-  const { formControlProps, helperTextProps, ...restProps } = props;
+  const {
+    formControlProps,
+    helperTextProps,
+    register,
+    name,
+    formName,
+    validationSchema,
+    errors,
+    ...restProps
+  } = props;
   const { root } = useStyles(props);
+  const FIELD_NAME = `${formName}.${name}`;
+  const errorMessage = errors?.message;
+  const errorType = errors?.type;
+  console.log({ errorMessage, errorType });
 
   return (
     <FormControl error={restProps.error} {...formControlProps}>
@@ -35,6 +55,7 @@ const TextField: React.FC<Props & InputProps> = props => {
         classes={{
           root,
         }}
+        {...register(FIELD_NAME, validationSchema)}
       />
       {props.helperText && (
         <FormHelperText error={restProps.error} {...helperTextProps}>
