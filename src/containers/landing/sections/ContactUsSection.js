@@ -154,7 +154,7 @@ const useStyles = makeStyles(theme => ({
   },
   link: {
     color: theme.palette.primary.main,
-    [theme.breakpoints.up("md")]: {
+    [theme.breakpoints.up("lg")]: {
       color: theme.palette.common.white,
     },
   },
@@ -162,7 +162,7 @@ const useStyles = makeStyles(theme => ({
     textDecoration: "none",
     color: theme.palette.primary.main,
     position: "relative",
-    [theme.breakpoints.up("md")]: {
+    [theme.breakpoints.up("lg")]: {
       color: theme.palette.common.white,
     },
     "&:hover": {

@@ -72,7 +72,7 @@ const useStyles = makeStyles(theme => ({
 const ExperienceSection = () => {
   const classes = useStyles();
   return (
-    <Container className={classes.container} maxWidth="auto">
+    <Container id="experience" className={classes.container} maxWidth="auto">
       <div className={classes.grid}>
         <div className={classes.headingContainer}>
           <Typography variant="h3" className={classes.heading}>

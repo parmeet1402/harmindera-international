@@ -107,14 +107,14 @@ export const configTypography: any = {
   h6: {
     fontFamily,
     fontWeight: fontWeight.medium,
-    fontSize: "1.06rem",
+    // fontSize: "1.06rem",
+    fontSize: "0.78rem",
     lineHeight: 1.525,
     letterSpacing: "0.15px",
-    // TODO: Change base size and set the current size at a later width
 
-    // "@media only screen and (max-width: 1150px)": {
-    //   fontSize: "0.78rem",
-    // },
+    "@media only screen and (min-width: 1150px)": {
+      fontSize: "1.06rem",
+    },
   },
   subtitle1: {
     fontFamily,

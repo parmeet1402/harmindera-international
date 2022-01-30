@@ -5,6 +5,7 @@ import {
   QualitySection,
   WhyUsSection,
   ContactUsSection,
+  InfrastructureSection,
 } from "./sections";
 
 const AboutUsContainer = () => {
@@ -12,6 +13,7 @@ const AboutUsContainer = () => {
     <>
       <HeadingSection />
       <ExperienceSection />
+      <InfrastructureSection />
       <QualitySection />
       <WhyUsSection />
       <ContactUsSection />

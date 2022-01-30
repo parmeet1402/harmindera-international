@@ -134,6 +134,7 @@ const content = {
         "Harmindera International was established in the year 1960, as a renowned name in the industry as a manufacturer and supplier of JCB Parts, Auto Parts, Agriculture Parts and Bolts. ",
       linkText: "Read More",
       image: "experience.png",
+      sectionId: "experience",
     },
     {
       title: "Why us?",
@@ -141,6 +142,7 @@ const content = {
         "We are the preferred choice of our customers owing to the rich customer experience, competitive prices in the industry and fulfilling the commitments through our passion and grit.",
       linkText: "Read More",
       image: "partnership.png",
+      sectionId: "why-us",
     },
     {
       title: "Infrastructure",
@@ -148,6 +150,7 @@ const content = {
         "We at Nirmal Sales frequently keep investing into our manufacruring units to ensure maximum quality and output in the shortest span of time.     ",
       linkText: "Read More",
       image: "conveyor-belt.png",
+      sectionId: "infrastructure",
     },
     {
       title: "Quality",
@@ -155,6 +158,7 @@ const content = {
         "The firm has an in house quality assurance team whose duty is to closely monitor the manufacturing process and make sure that no compromises are made in the quality of products.",
       linkText: "Read More",
       image: "quality.png",
+      sectionId: "quality",
     },
   ],
 };
@@ -169,7 +173,7 @@ const Card = ({ data }) => {
           {data.title}
         </Typography>
         <Typography variant="subtitle1">{data.text}</Typography>
-        <Link className={classes.cardLink} href="/about-us" underline="none">
+        <Link className={classes.cardLink} href={`/about/${data.sectionId}`} underline="none">
           Read More&nbsp;&nbsp;
           <ArrowIcon direction="right" />
         </Link>

@@ -90,7 +90,7 @@ const WhyUsSection = () => {
   const classes = useStyles();
 
   return (
-    <Container className={classes.container} maxWidth="none">
+    <Container id="quality" className={classes.container} maxWidth="none">
       <div className={classes.grid}>
         <div className={classes.headingContainer}>
           <Typography variant="h3" className={classes.heading}>
