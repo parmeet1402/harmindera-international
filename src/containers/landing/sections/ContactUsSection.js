@@ -152,6 +152,23 @@ const useStyles = makeStyles(theme => ({
       padding: "12px 0px !important",
     },
   },
+  link: {
+    color: theme.palette.primary.main,
+    [theme.breakpoints.up("md")]: {
+      color: theme.palette.common.white,
+    },
+  },
+  domLink: {
+    textDecoration: "none",
+    color: theme.palette.primary.main,
+    position: "relative",
+    [theme.breakpoints.up("md")]: {
+      color: theme.palette.common.white,
+    },
+    "&:hover": {
+      textDecoration: "underline",
+    },
+  },
 }));
 
 const content = {
@@ -280,43 +297,80 @@ const ContactUsSection = () => {
           <Grid container item xs={12} md={12} className={classes.contactItemList} spacing={3}>
             <Grid container item xs={12} alignItems="center" className={classes.contactItemListRow}>
               <Grid item xs={3} sm={2} md={1} lg={2}>
-                <IconButton aria-label="Location" color={iconColorVariant}>
+                <IconButton
+                  aria-label="Location"
+                  color={iconColorVariant}
+                  href="https://goo.gl/maps/6io3YtPEfc6h9mAu5"
+                  target="_blank"
+                >
                   <RoomOutlined color={textColorVariant} />
                 </IconButton>
               </Grid>
               <Grid item xs={9} sm={10} md={11} lg={10}>
                 <Typography variant="subtitle1" align="left" color={textColorVariant}>
-                  {address}
+                  <a
+                    href="https://goo.gl/maps/6io3YtPEfc6h9mAu5"
+                    target="_blank"
+                    className={classes.domLink}
+                  >
+                    {address}
+                  </a>
                 </Typography>
               </Grid>
             </Grid>
             <Grid container item xs={12} alignItems="center" className={classes.contactItemListRow}>
               <Grid item xs={3} sm={2} md={1} lg={2}>
-                <IconButton aria-label="Phone" color={iconColorVariant}>
+                <IconButton aria-label="Phone" color={iconColorVariant} href="tel:+919876100890">
                   <PhoneOutlined color={textColorVariant} />
                 </IconButton>
               </Grid>
               <Grid item xs={9} sm={10} md={11} lg={10}>
-                <Typography variant="subtitle1" align="left" color={textColorVariant}>
+                {/* <Typography variant="subtitle1" align="left" color={textColorVariant}>
                   {phoneNumbers[0]}
+                </Typography> */}
+                <Typography variant="subtitle1" align="left" color={textColorVariant}>
+                  <a
+                    href={`tel:${phoneNumbers[0].replaceAll(" ", "")}`}
+                    className={classes.domLink}
+                    underline="hover"
+                    target="_blank"
+                  >
+                    {phoneNumbers[0]}
+                  </a>
                 </Typography>
                 <Typography variant="subtitle1" align="left" color={textColorVariant}>
-                  {phoneNumbers[1]}
+                  <a
+                    href={`tel:${phoneNumbers[1].replaceAll(" ", "")}`}
+                    className={classes.domLink}
+                    underline="hover"
+                    target="_blank"
+                  >
+                    {phoneNumbers[1]}
+                  </a>
                 </Typography>
                 <Typography variant="subtitle1" align="left" color={textColorVariant}>
-                  {phoneNumbers[2]}
+                  <a
+                    href={`tel:${phoneNumbers[2].replaceAll(" ", "")}`}
+                    className={classes.domLink}
+                    underline="hover"
+                    target="_blank"
+                  >
+                    {phoneNumbers[2]}
+                  </a>
                 </Typography>
               </Grid>
             </Grid>
             <Grid container item xs={12} alignItems="center" className={classes.contactItemListRow}>
               <Grid item xs={3} sm={2} md={1} lg={2}>
-                <IconButton aria-label="Email" color={iconColorVariant}>
+                <IconButton aria-label="Email" color={iconColorVariant} href={`mailto:${email}`}>
                   <MailOutlineOutlined color={textColorVariant} />
                 </IconButton>
               </Grid>
               <Grid item xs={9} sm={10} md={11} lg={10}>
                 <Typography variant="subtitle1" align="left" color={textColorVariant}>
-                  {email}
+                  <a href={`mailto:${email}`} className={classes.domLink} underline="hover">
+                    {email}
+                  </a>
                 </Typography>
               </Grid>
             </Grid>

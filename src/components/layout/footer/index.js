@@ -238,7 +238,9 @@ const Footer = props => {
           </Grid>
           <Grid item xs={10} md={9} className={`${classes.subLinks} ${classes.subLinkValues}`}>
             <Typography variant="body2" color="secondary" style={{ marginTop: "4px" }}>
-              {email}
+              <a href={`mailto:${email}`} className={classes.domLink} underline="hover">
+                {email}
+              </a>
             </Typography>
           </Grid>
           <Grid item xs={1} className={classes.subLinks}>
