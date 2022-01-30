@@ -230,11 +230,11 @@ const ProductsSection = () => {
   `);
 
   const [dataByCategory, setDataByCategory] = useState({
-    "JCB Parts": [],
     "Auto Parts": [],
-    Nut: [],
+    "JCB Parts": [],
     Bolt: [],
     "Agriculture Products": [],
+    Nut: [],
   });
 
   const { activeTab, setActiveTab } = useProductsStore();
@@ -246,11 +246,11 @@ const ProductsSection = () => {
   useEffect(() => {
     if (edges && edges.length > 0) {
       let obj = {
-        "JCB Parts": [],
         "Auto Parts": [],
-        Nut: [],
+        "JCB Parts": [],
         Bolt: [],
         "Agriculture Products": [],
+        Nut: [],
       };
 
       edges.forEach(edge => {
