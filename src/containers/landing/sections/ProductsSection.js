@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useStaticQuery, graphql } from "gatsby";
+import { useStaticQuery, graphql, navigate } from "gatsby";
 
 // Material UI
 import Box from "@material-ui/core/Box";
@@ -113,8 +113,7 @@ const content = {
 
 const useCardStyles = makeStyles(theme => ({
   cardContainer: {
-    // width: "80%",
-    // marginInline: "auto",
+    cursor: "pointer",
   },
   card: {
     width: "100%",
@@ -153,7 +152,7 @@ const useCardStyles = makeStyles(theme => ({
   },
 }));
 
-// todo: make it flexible for inverted theme as well
+// done: make it flexible for inverted theme as well
 // todo: add default images for each category
 const SingleProduct = ({ data, variant }) => {
   const classes = useCardStyles({ variant });
@@ -163,8 +162,14 @@ const SingleProduct = ({ data, variant }) => {
   const image = data.images
     ? data.images[0].original_url
     : "http://res.cloudinary.com/dybvtvzsm/image/upload/v1607859552/website/images/gdjqdrjmznzvongsgj1k.png";
+
+  const handleProductCardClick = () => {
+    navigate(`/products/${kebabCase(data.category.name)}/${data.slug}`);
+  };
+
   return (
-    <Box className={classes.cardContainer}>
+    <Box className={classes.cardContainer} onClick={handleProductCardClick}>
+      >
       <Box className={classes.card}>
         <img src={image} className={classes.cardImage} alt={data.name} />
       </Box>

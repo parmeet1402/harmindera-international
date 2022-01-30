@@ -126,7 +126,7 @@ const useStyles = makeStyles(theme => ({
 const ProductDetails = ({ product }) => {
   const classes = useStyles();
 
-  console.log({ product });
+  // console.log({ product });
 
   const image = product.images
     ? product.images[0].original_url

@@ -2,7 +2,7 @@ import create from "zustand";
 import { _immer } from "./helpers";
 
 const useProductsStore = create(set => ({
-  activeTab: "JCB Parts",
+  activeTab: "Auto Parts",
   setActiveTab: str => {
     set(state => (state.activeTab = str));
   },

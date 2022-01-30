@@ -18,16 +18,13 @@ import useKeyboardOpen from "@utils/hooks/use-keyboard-open";
 // State
 import useUIStore from "@zustand/ui";
 
-const useStyles = makeStyles(
-  theme =>
-    console.log({ theme }) || {
-      pad: theme.mixins.toolbar,
-      main: {
-        minHeight: "calc(100vh - 68px)",
-        marginTop: "8px",
-      },
-    },
-);
+const useStyles = makeStyles(theme => ({
+  pad: theme.mixins.toolbar,
+  main: {
+    minHeight: "calc(100vh - 68px)",
+    marginTop: "8px",
+  },
+}));
 
 interface Props {
   name?: string;

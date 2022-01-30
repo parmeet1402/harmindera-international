@@ -10,7 +10,7 @@ const SingleProduct = ({
   pageContext: { name: categoryName },
   ...props
 }) => {
-  console.log({ products, categoryName });
+  // console.log({ products, categoryName });
   return (
     <Layout>
       <SEO />

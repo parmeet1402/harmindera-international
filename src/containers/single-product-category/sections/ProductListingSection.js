@@ -71,7 +71,7 @@ const useCardStyles = makeStyles(theme => ({
 // todo: add default images for each category
 const SingleProduct = ({ data, variant }) => {
   const classes = useCardStyles({ variant });
-  console.log({ classes });
+  // console.log({ classes });
   // console.log({ data });
   // check if image is present ?
   const image = data.images

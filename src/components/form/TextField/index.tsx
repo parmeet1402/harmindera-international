@@ -45,7 +45,6 @@ const TextField: React.FC<Props & InputProps> = props => {
   const FIELD_NAME = `${formName}.${name}`;
   const errorMessage = errors?.message;
   const errorType = errors?.type;
-  console.log({ errorMessage, errorType });
 
   return (
     <FormControl error={restProps.error} {...formControlProps}>
