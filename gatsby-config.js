@@ -35,7 +35,8 @@ module.exports = {
         trackingId,
       },
     }, */
-
+    `gatsby-plugin-material-ui`,
+    "gatsby-plugin-top-layout",
     {
       resolve: "gatsby-source-contentful",
       options: {
@@ -126,15 +127,15 @@ module.exports = {
         pagesPaths: ["/src/content/"],
       },
     },
-    "gatsby-plugin-top-layout",
-    {
-      resolve: "gatsby-plugin-material-ui",
-      // If you want to use styled components you should change the injection order.
-      options: {
-        // stylesProvider: {
-        //   injectFirst: true,
-        // },
-      },
-    },
+
+    // {
+    //   resolve: "gatsby-plugin-material-ui",
+    //   // If you want to use styled components you should change the injection order.
+    //   options: {
+    //     // stylesProvider: {
+    //     //   injectFirst: true,
+    //     // },
+    //   },
+    // },
   ],
 };

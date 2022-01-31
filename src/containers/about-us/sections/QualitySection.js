@@ -1,7 +1,6 @@
 import React from "react";
-import { Box, Container, Grid, Typography } from "@material-ui/core";
+import { Box, Container, Grid, makeStyles, Typography } from "@material-ui/core";
 import Image from "@components/Image";
-import { makeStyles } from "@material-ui/styles";
 import CheckIcon from "@material-ui/icons/Check";
 
 const useStyles = makeStyles(theme => ({

@@ -8,8 +8,8 @@ import {
   makeStyles,
   Typography,
   useMediaQuery,
+  useTheme,
 } from "@material-ui/core";
-import { useTheme } from "@material-ui/styles";
 import { ClockIcon, DeliveryTruckIcon, ShieldIcon } from "@content/assets/CustomIcon";
 import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 import Link from "@components/navigation/Link";

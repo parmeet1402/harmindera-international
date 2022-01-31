@@ -1,7 +1,6 @@
 import React from "react";
-import { Container, Box, Typography } from "@material-ui/core";
+import { Container, Box, Typography, makeStyles } from "@material-ui/core";
 import { SolidButton } from "@components/form/Button";
-import { makeStyles } from "@material-ui/styles";
 
 const useStyles = makeStyles(theme => ({
   container: {

@@ -1,6 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { Grid, Box, Container, Typography, makeStyles, useMediaQuery } from "@material-ui/core";
-import { useTheme } from "@material-ui/styles";
+import {
+  Grid,
+  Box,
+  Container,
+  Typography,
+  makeStyles,
+  useMediaQuery,
+  useTheme,
+} from "@material-ui/core";
 import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 import Link from "@components/navigation/Link";
 import kebabCase from "lodash/kebabCase";
