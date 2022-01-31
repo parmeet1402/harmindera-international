@@ -24,6 +24,7 @@ import isEmpty from "lodash/isEmpty";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert from "@material-ui/lab/Alert";
+import { useQuery } from "react-query";
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -184,6 +185,12 @@ const encode = data => {
 
 const ContactUsSection = ({ productName = "" }) => {
   const classes = useStyles();
+  const { data: countryName } = useQuery("country-ip", () => {
+    return fetch(`https://api.ipregistry.co/?key=${process.env.IP_KEY}`).then(res =>
+      res.json().then(data => data.location.country.name),
+    );
+  });
+
   const {
     register,
     watch,
@@ -196,6 +203,12 @@ const ContactUsSection = ({ productName = "" }) => {
     mode: "all",
   });
   const { "contact-us": contactUsFormState = {}, ...restArgs } = watch(); // when pass nothing as argument, you are watching everything
+
+  useEffect(() => {
+    if (countryName) {
+      setValue("contact-us.country", countryName);
+    }
+  }, [countryName]);
 
   // const [formState, setFormState] = useState({
   //   name: "",

@@ -56,6 +56,7 @@
     "react-helmet": "^6.1.0",
     "react-hook-form": "^7.25.3",
     "react-items-carousel": "^2.8.0",
+    "react-query": "^3.34.12",
     "react-scroll": "^1.8.4",
     "swiper": "^7.4.1",
     "typewriter-effect": "^2.18.2",
