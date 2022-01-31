@@ -182,16 +182,16 @@ const encode = data => {
     .join("&");
 };
 
-const ContactUsSection = () => {
+const ContactUsSection = ({ productName = "" }) => {
   const classes = useStyles();
   const {
     register,
     watch,
     formState: { errors, ...formState },
-    setFocus,
+
     handleSubmit,
-    setValue,
     reset,
+    setValue,
   } = useForm({
     mode: "all",
   });
@@ -226,6 +226,12 @@ const ContactUsSection = () => {
       }
     }
   `);
+
+  useEffect(() => {
+    if (productName) {
+      setValue("contact-us.message", `Hey, I want to know about ${productName}`);
+    }
+  }, [productName]);
 
   // console.log({ address, email, phoneNumbers });
 
@@ -362,13 +368,29 @@ const ContactUsSection = () => {
             </Grid>
             <Grid container item xs={12} alignItems="center" className={classes.contactItemListRow}>
               <Grid item xs={3} sm={2} md={1} lg={2}>
-                <IconButton aria-label="Email" color={iconColorVariant} href={`mailto:${email}`}>
+                <IconButton
+                  aria-label="Email"
+                  color={iconColorVariant}
+                  href={`mailto:${email}${
+                    productName
+                      ? `?subject=Query for ${productName}&body=Hey,%0A%0AI want to know about ${productName} `
+                      : ""
+                  }`}
+                >
                   <MailOutlineOutlined color={textColorVariant} />
                 </IconButton>
               </Grid>
               <Grid item xs={9} sm={10} md={11} lg={10}>
                 <Typography variant="subtitle1" align="left" color={textColorVariant}>
-                  <a href={`mailto:${email}`} className={classes.domLink} underline="hover">
+                  <a
+                    href={`mailto:${email}${
+                      productName
+                        ? `?subject=Query for ${productName}&body=Hey,%0A%0AI want to know about ${productName} `
+                        : ""
+                    }`}
+                    className={classes.domLink}
+                    underline="hover"
+                  >
                     {email}
                   </a>
                 </Typography>

@@ -14,6 +14,7 @@ import { ClockIcon, DeliveryTruckIcon, ShieldIcon } from "@content/assets/Custom
 import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 import Link from "@components/navigation/Link";
 import kebabCase from "lodash/kebabCase";
+import { scroller } from "react-scroll";
 
 // Format functions
 const getStringFromType = (obj, valueKey = "name") => obj[valueKey];
@@ -125,8 +126,18 @@ const useStyles = makeStyles(theme => ({
 
 const ProductDetails = ({ product }) => {
   const classes = useStyles();
+  const theme = useTheme();
+  const isMediumAndBiggerDevices = useMediaQuery(theme.breakpoints.up("md"));
 
   // console.log({ product });
+
+  const handleContactUsButtonClick = () => {
+    scroller.scrollTo("landing__contact-us", {
+      duration: 700,
+      smooth: true,
+      offset: isMediumAndBiggerDevices ? 60 : 0,
+    });
+  };
 
   const image = product.images
     ? product.images[0].original_url
@@ -135,7 +146,7 @@ const ProductDetails = ({ product }) => {
   return (
     <Container className={classes.container} maxWidth="auto">
       <Breadcrumbs separator=">" aria-label="breadcrumb" className={classes.breadcrumb}>
-      <Link className={classes.breadcrumbLinks} color="primary" href="/">
+        <Link className={classes.breadcrumbLinks} color="primary" href="/">
           Home
         </Link>
         <Link className={classes.breadcrumbLinks} color="primary" href="/products/">
@@ -278,7 +289,9 @@ const ProductDetails = ({ product }) => {
           )}
 
           <Grid item xs={12} spacing={2} className={classes.ctaButtonContainer}>
-            <SolidButton fullWidth>Contact Us</SolidButton>
+            <SolidButton fullWidth onClick={handleContactUsButtonClick}>
+              Contact Us
+            </SolidButton>
           </Grid>
           <Grid className={classes.featureContainer} container item xs={12}>
             <Grid container item xs={4}>

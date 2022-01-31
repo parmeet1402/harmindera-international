@@ -21,7 +21,7 @@ const SingleProductContainer = ({ product }) => {
     <>
       <ProductDetails product={product} />
       <Box className={classes.contactUsContainer}>
-        <ContactUsSection />
+        <ContactUsSection productName={product.name} />
       </Box>
     </>
   );
