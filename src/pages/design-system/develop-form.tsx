@@ -10,7 +10,7 @@ const DevelopForm = () => {
         // console.log(e);
       }}
     >
-      <TextField placeholder="Hey" id="name-input" />
+      {/* <TextField placeholder="Hey" id="name-input" />
       <TextField
         placeholder="Search"
         error
@@ -23,7 +23,7 @@ const DevelopForm = () => {
         }
         id="name-input"
       />
-      <TextField placeholder="Hey" id="name-input" multiline rows={5} />
+      <TextField placeholder="Hey" id="name-input" multiline rows={5} /> */}
     </form>
   );
 };
