@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
+import { safeWindow } from "@utils/ssr";
 
 const useKeyboardOpen = () => {
   const [prevScreenHeight, setPrevScreenHeight] = useState(0);
 
   const determineKeyboardOpen = () => {
-    const currentScreenHeight = window.innerHeight;
+    const currentScreenHeight = safeWindow.innerHeight;
 
     if (prevScreenHeight > currentScreenHeight) {
       setPrevScreenHeight(currentScreenHeight);

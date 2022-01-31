@@ -23,6 +23,7 @@ import { IconButton } from "@components/form/Button";
 
 // State
 import useUIStore from "@zustand/ui";
+import { safeWindow } from "@utils/ssr";
 
 interface Props {}
 
@@ -101,7 +102,7 @@ const ExpandedMobileNavbar = (props: Props) => {
   return (
     <Box
       position="absolute"
-      height={`${window.innerHeight - 58}px`}
+      height={`${safeWindow.innerHeight - 58}px`}
       width="100%"
       top="100px"
       mt="-32px"

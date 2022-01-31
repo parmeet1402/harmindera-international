@@ -7,6 +7,7 @@ import makeStyles from "@material-ui/core/styles/makeStyles";
 import { AnimatePresence, motion } from "framer-motion";
 import { useLocation } from "@reach/router";
 import clsx from "clsx";
+import { safeWindow } from "@utils/ssr";
 
 interface Props {
   children: ReactChildren | ReactChild | ReactNode;
@@ -42,7 +43,7 @@ const Transition = (props: Props) => {
   const cover1Styles = clsx(classes.cover, classes.cover1);
   const cover2Styles = clsx(classes.cover, classes.cover2);
   const cover3Styles = clsx(classes.cover, classes.cover3);
-  const currentScreenWidth = window.innerWidth;
+  const currentScreenWidth = safeWindow.innerWidth;
 
   const variants = {
     initial: {
