@@ -114,6 +114,13 @@ const content = {
 const useCardStyles = makeStyles(theme => ({
   cardContainer: {
     cursor: "pointer",
+    "&:hover img": {
+      transform: "translate(-50%, -50%) scale(1.15)",
+    },
+    "&:hover div:first-of-type": {
+      background: props =>
+        props.variant === "dark" ? theme.palette.grey[200] : theme.palette.grey[100],
+    },
   },
   card: {
     width: "100%",
@@ -126,6 +133,7 @@ const useCardStyles = makeStyles(theme => ({
     userSelect: "none",
     background: props =>
       props.variant === "dark" ? theme.palette.grey[100] : theme.palette.common.white,
+    transition: "background 0.3s ease-out",
   },
   ratioContainer: {
     width: "100%",
@@ -137,6 +145,7 @@ const useCardStyles = makeStyles(theme => ({
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
+    transition: "transform 0.3s ease-out",
   },
   name: {
     color: props =>

@@ -3,7 +3,7 @@ import { graphql } from "gatsby";
 import SingleProductCategoryContainer from "@containers/single-product-category";
 import Layout, { SEO } from "@components/layout";
 
-const SingleProduct = ({
+const SingleProductCategory = ({
   data: {
     allContentfulProduct: { edges: products },
   },
@@ -39,6 +39,4 @@ export const query = graphql`
   }
 `;
 
-// TODO: Map over products and return a list of products
-
-export default SingleProduct;
+export default SingleProductCategory;

@@ -4,6 +4,7 @@ import { useTheme } from "@material-ui/styles";
 import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 import Link from "@components/navigation/Link";
 import kebabCase from "lodash/kebabCase";
+import { navigate } from "gatsby";
 
 const useStyles = makeStyles(theme => ({
   container: {},
@@ -27,8 +28,15 @@ const useStyles = makeStyles(theme => ({
 
 const useCardStyles = makeStyles(theme => ({
   cardContainer: {
-    // width: "80%",
-    // marginInline: "auto",
+    cursor: "pointer",
+
+    "&:hover img": {
+      transform: "translate(-50%, -50%) scale(1.15)",
+    },
+    "&:hover div:first-of-type": {
+      background: props =>
+        props.variant === "dark" ? theme.palette.grey[200] : theme.palette.grey[100],
+    },
   },
   card: {
     width: "100%",
@@ -41,6 +49,7 @@ const useCardStyles = makeStyles(theme => ({
     userSelect: "none",
     background: props =>
       props.variant === "dark" ? theme.palette.grey[100] : theme.palette.common.white,
+    transition: "background 0.3s ease-out",
   },
   ratioContainer: {
     width: "100%",
@@ -52,6 +61,7 @@ const useCardStyles = makeStyles(theme => ({
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
+    transition: "transform 0.3s ease-out",
   },
   name: {
     color: props =>
@@ -77,8 +87,12 @@ const SingleProduct = ({ data, variant }) => {
   const image = data.images
     ? data.images[0].original_url
     : "http://res.cloudinary.com/dybvtvzsm/image/upload/v1607859552/website/images/gdjqdrjmznzvongsgj1k.png";
+  const handleProductCardClick = () => {
+    navigate(`/products/${kebabCase(data.category.name)}/${data.slug}`);
+  };
+
   return (
-    <Box className={classes.cardContainer}>
+    <Box className={classes.cardContainer} onClick={handleProductCardClick}>
       <Box className={classes.card}>
         <img src={image} className={classes.cardImage} alt={data.name} />
       </Box>
@@ -123,7 +137,7 @@ const ProductListingSection = ({ products, categoryName }) => {
             {categoryName}
           </Typography>
         </Grid>
-        <Grid className={classes.listingContainer} container item xs={12} spacing={2}>
+        <Grid className={classes.listingContainer} container item xs={12} spacing={4}>
           {renderAllProducts()}
         </Grid>
       </Grid>
