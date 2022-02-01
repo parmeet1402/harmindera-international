@@ -1,7 +1,7 @@
 module.exports = {
-  title: "Harmindera International",
+  title: "Harmindra International",
   keywords: [
-    "Harmindera International",
+    "Harmindra International",
     "Auto Part Manufacturer",
     "Flange Manufacturer in Ludhiana",
     "Nuts and Bolts Manufacturer",
@@ -10,7 +10,7 @@ module.exports = {
     "Manufacturer in Ludhiana",
     "Agriculture Parts Manufacturer in Ludhiana",
   ],
-  description: "Harmindera International is a ludhiana based manufacturing firm",
+  description: "Harmindra International is a ludhiana based manufacturing firm",
   author: "parmeetsingh1402",
   //   trackingId: "UA-119418003-5",
   defaultLang: "en",

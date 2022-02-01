@@ -131,7 +131,7 @@ const content = {
     {
       title: "59+ Years of experience",
       text:
-        "Harmindera International was established in the year 1960, as a renowned name in the industry as a manufacturer and supplier of JCB Parts, Auto Parts, Agriculture Parts and Bolts. ",
+        "Harmindra International was established in the year 1960, as a renowned name in the industry as a manufacturer and supplier of JCB Parts, Auto Parts, Agriculture Parts and Bolts. ",
       linkText: "Read More",
       image: "experience.png",
       sectionId: "experience",
@@ -147,7 +147,7 @@ const content = {
     {
       title: "Infrastructure",
       text:
-        "We at Nirmal Sales frequently keep investing into our manufacruring units to ensure maximum quality and output in the shortest span of time.     ",
+        "We at Nirmal Sales frequently keep investing into our manufacturing units to ensure maximum quality and output in the shortest span of time.     ",
       linkText: "Read More",
       image: "conveyor-belt.png",
       sectionId: "infrastructure",

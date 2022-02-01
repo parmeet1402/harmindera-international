@@ -1,4 +1,4 @@
-# Harmindera International  
+# Harmindra International
 It is an e-commerce website that serves as a product catalogue for a manufacturing firm.  
 
 [![Status](https://img.shields.io/badge/Status-Development-blue.svg)](https://shields.io/)

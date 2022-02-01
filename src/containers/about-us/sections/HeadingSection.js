@@ -22,7 +22,7 @@ const HeadingSection = () => {
         <br />
       </Typography>
       <Typography variant="h2" color="primary">
-        Harmindera International.
+        Harmindra International.
       </Typography>
     </Container>
   );
