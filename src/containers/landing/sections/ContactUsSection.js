@@ -258,14 +258,14 @@ const ContactUsSection = ({ productName = "" }) => {
   const [isAlertShown, setIsAlertShown] = useState(false);
 
   const handleFormSubmission = ({ "contact-us": values }) => {
-    console.log({ values });
+    console.log({ ...values });
     // DONE: Submit data to netlify forms
     setIsLoading(true);
     // DONE: Submit the results to netlify's form data
     fetch("/", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: encode({ "form-name": "contact-us", ...values }),
+      body: encode({ "form-name": "contact-usss", ...values }),
     })
       .then(() => {
         setIsLoading(false);
@@ -420,13 +420,15 @@ const ContactUsSection = ({ productName = "" }) => {
         </Grid>
         <Paper
           className={classes.paper}
-          name="contact-uss"
+          name="contact-usss"
+          // method="post"
           component="form"
           onSubmit={handleSubmit(handleFormSubmission)}
           data-netlify="true"
           // netlify-honeypot="bot-field"
         >
           {/* <input type="hidden" name="bot-field" /> */}
+          <input type="hidden" name="form-name" value="contact-usss" />
 
           <Grid container item xs={12}>
             <Typography variant="h5" className={classes.paperHeading}>
