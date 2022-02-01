@@ -420,7 +420,7 @@ const ContactUsSection = ({ productName = "" }) => {
         </Grid>
         <Paper
           className={classes.paper}
-          name="contact-us"
+          name="contact-uss"
           component="form"
           onSubmit={handleSubmit(handleFormSubmission)}
           data-netlify="true"
