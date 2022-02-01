@@ -77,7 +77,7 @@ const InfrastructureSection = () => {
           </Grid>
           <Grid item xs={12}>
             <Typography variant="body2">
-              We at Nirmal Sales frequently keep investing into our manufacruring units to ensure
+              We at Harmindra International frequently keep investing into our manufacturing units to ensure
               maximum quality and output in the shortest span of time.
             </Typography>
           </Grid>
@@ -90,7 +90,7 @@ const InfrastructureSection = () => {
           </Grid>
           <Grid item xs={12}>
             <Typography variant="body2">
-              There’s an in-house highty advanced and efficient CNC machinery unit. The firm also
+              There's an in-house highly advanced and efficient CNC machinery unit. The firm also
               houses a top of the line forging workshop.
             </Typography>
           </Grid>

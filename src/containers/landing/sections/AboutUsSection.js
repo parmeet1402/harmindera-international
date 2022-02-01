@@ -147,7 +147,7 @@ const content = {
     {
       title: "Infrastructure",
       text:
-        "We at Nirmal Sales frequently keep investing into our manufacturing units to ensure maximum quality and output in the shortest span of time.     ",
+        "We at Harmindra International frequently keep investing into our manufacturing units to ensure maximum quality and output in the shortest span of time.     ",
       linkText: "Read More",
       image: "conveyor-belt.png",
       sectionId: "infrastructure",
