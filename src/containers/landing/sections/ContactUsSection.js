@@ -424,9 +424,9 @@ const ContactUsSection = ({ productName = "" }) => {
           component="form"
           onSubmit={handleSubmit(handleFormSubmission)}
           data-netlify="true"
-          netlify-honeypot="bot-field"
+          // netlify-honeypot="bot-field"
         >
-          <input type="hidden" name="bot-field" />
+          {/* <input type="hidden" name="bot-field" /> */}
 
           <Grid container item xs={12}>
             <Typography variant="h5" className={classes.paperHeading}>
