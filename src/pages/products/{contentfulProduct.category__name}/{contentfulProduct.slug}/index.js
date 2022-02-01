@@ -47,10 +47,6 @@ export const query = graphql`
       quantityUnit {
         unit
       }
-      shape {
-        name
-      }
-      whole
       packagingQuantity
     }
   }

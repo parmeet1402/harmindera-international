@@ -2,7 +2,7 @@
 It is an e-commerce website that serves as a product catalogue for a manufacturing firm.  
 
 [![Status](https://img.shields.io/badge/Status-Development-blue.svg)](https://shields.io/)
-
+[![Netlify Status](https://api.netlify.com/api/v1/badges/977de8e9-c3d6-4382-a7b6-61101caa691f/deploy-status)](https://app.netlify.com/sites/ecstatic-engelbart-5878f6/deploys)
 
 
 <br />

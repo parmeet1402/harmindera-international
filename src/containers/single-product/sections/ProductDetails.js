@@ -49,8 +49,12 @@ const useStyles = makeStyles(theme => ({
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
+    objectFit: "contain",
+    maxWidth: props => (props.category === "Nut" ? "270px" : "320px"),
+
     [theme.breakpoints.up("lg")]: {
       height: "400px",
+      maxWidth: props => (props.category === "Nut" ? "350px" : "420px"),
     },
   },
   card: {
@@ -125,7 +129,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const ProductDetails = ({ product }) => {
-  const classes = useStyles();
+  const classes = useStyles({ category: product.category.name });
   const theme = useTheme();
   const isMediumAndBiggerDevices = useMediaQuery(theme.breakpoints.up("md"));
 

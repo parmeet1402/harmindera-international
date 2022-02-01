@@ -69,6 +69,8 @@ const useCardStyles = makeStyles(theme => ({
     left: "50%",
     transform: "translate(-50%, -50%)",
     transition: "transform 0.3s ease-out",
+    objectFit: "contain",
+    maxWidth: props => (props.category === "Nut" ? "150px" : "200px"),
   },
   name: {
     color: props =>
@@ -87,7 +89,7 @@ const useCardStyles = makeStyles(theme => ({
 // todo: make it flexible for inverted theme as well
 // todo: add default images for each category
 const SingleProduct = ({ data, variant }) => {
-  const classes = useCardStyles({ variant });
+  const classes = useCardStyles({ variant, category: data.category.name });
   // console.log({ classes });
   // console.log({ data });
   // check if image is present ?

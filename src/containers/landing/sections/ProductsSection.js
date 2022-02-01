@@ -141,6 +141,8 @@ const useCardStyles = makeStyles(theme => ({
 
   cardImage: {
     height: "200px",
+    objectFit: "contain",
+    maxWidth: props => (props.category === "Nut" ? "150px" : "220px"),
     position: "absolute",
     top: "50%",
     left: "50%",
@@ -164,7 +166,7 @@ const useCardStyles = makeStyles(theme => ({
 // done: make it flexible for inverted theme as well
 // todo: add default images for each category
 const SingleProduct = ({ data, variant }) => {
-  const classes = useCardStyles({ variant });
+  const classes = useCardStyles({ variant, category: data.category.name });
   // console.log({ classes });
   // console.log({ data });
   // check if image is present ?
@@ -178,7 +180,6 @@ const SingleProduct = ({ data, variant }) => {
 
   return (
     <Box className={classes.cardContainer} onClick={handleProductCardClick}>
-      >
       <Box className={classes.card}>
         <img src={image} className={classes.cardImage} alt={data.name} />
       </Box>
@@ -233,10 +234,6 @@ const ProductsSection = () => {
             quantityUnit {
               unit
             }
-            shape {
-              name
-            }
-            whole
           }
         }
       }
