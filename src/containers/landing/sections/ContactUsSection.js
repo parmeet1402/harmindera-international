@@ -262,21 +262,28 @@ const ContactUsSection = ({ productName = "" }) => {
     // DONE: Submit data to netlify forms
     setIsLoading(true);
     // DONE: Submit the results to netlify's form data
-    // fetch("/", {
-    //   method: "POST",
-    //   headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    //   body: encode({ "form-name": "contact", ...values }),
-    // }).then(() => {
-    //   setIsAlertShown(true);
-    // });
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: encode({ "form-name": "contact", ...values }),
+    })
+      .then(() => {
+        setIsLoading(false);
+        setIsAlertShown(true);
+        reset();
+      })
+      .catch(() => {
+        console.log({ error });
+        setIsLoading(false);
+    });
     // DONE: Show Toast
 
-    // TODO: Reset the form
-    setTimeout(() => {
-      setIsLoading(false);
-      setIsAlertShown(true);
-      reset();
-    }, 3000);
+    // // TODO: Reset the form
+    // setTimeout(() => {
+    //   setIsLoading(false);
+    //   setIsAlertShown(true);
+    //   reset();
+    // }, 3000);
   };
 
   const handleSnackbarClose = (event, reason) => {
