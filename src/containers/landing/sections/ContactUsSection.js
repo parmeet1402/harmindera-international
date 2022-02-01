@@ -257,15 +257,15 @@ const ContactUsSection = ({ productName = "" }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isAlertShown, setIsAlertShown] = useState(false);
 
-  const handleFormSubmission = ({ "contact-us": values }) => {
-    console.log({ values });
+  const handleFormSubmission = data => {
+    // console.log({ values });
     // DONE: Submit data to netlify forms
     setIsLoading(true);
     // DONE: Submit the results to netlify's form data
     fetch("/", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: encode({ "form-name": "contact", ...values }),
+      body: encode({ "form-name": "contact", ...data }),
     })
       .then(() => {
         setIsLoading(false);
@@ -275,7 +275,7 @@ const ContactUsSection = ({ productName = "" }) => {
       .catch(() => {
         console.log({ error });
         setIsLoading(false);
-    });
+      });
     // DONE: Show Toast
 
     // // TODO: Reset the form
