@@ -15,7 +15,7 @@ interface Props {
   id: string;
   helperTextProps?: FormHelperTextProps;
   formControlProps?: FormControlProps;
-  register: (str: string, schema: any) => void;
+  register: (str: any, schema: any) => void;
   validationSchema?: any;
   errors?: {
     message: string;
@@ -42,7 +42,8 @@ const TextField: React.FC<Props & InputProps> = props => {
     ...restProps
   } = props;
   const { root } = useStyles(props);
-  const FIELD_NAME = `${formName}.${name}`;
+  const FIELD_NAME = name;
+  // const FIELD_NAME = `${formName}.${name}`;
   const errorMessage = errors?.message;
   const errorType = errors?.type;
 

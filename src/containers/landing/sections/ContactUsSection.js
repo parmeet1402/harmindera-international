@@ -262,6 +262,11 @@ const ContactUsSection = ({ productName = "" }) => {
     // DONE: Submit data to netlify forms
     setIsLoading(true);
     // DONE: Submit the results to netlify's form data
+    // fetch("https://getform.io/f/015e1f0e-13a0-4852-9860-1348ae28918e", {
+    //   method: "POST",
+    //   data: values,
+    // });
+
     fetch("/", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
