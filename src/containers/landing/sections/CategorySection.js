@@ -109,7 +109,7 @@ const content = {
     {
       name: "Trending",
       icon: <TrendingIcon />,
-      slug: "/trending",
+      slug: "/products/trending",
       bgColor: "#A0D69A",
     },
     {

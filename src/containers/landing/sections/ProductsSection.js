@@ -234,6 +234,7 @@ const ProductsSection = () => {
             quantityUnit {
               unit
             }
+            isTrending
           }
         }
       }
@@ -241,6 +242,7 @@ const ProductsSection = () => {
   `);
 
   const [dataByCategory, setDataByCategory] = useState({
+    Trending: [],
     "Auto Parts": [],
     "JCB Parts": [],
     Bolt: [],
@@ -257,6 +259,7 @@ const ProductsSection = () => {
   useEffect(() => {
     if (edges && edges.length > 0) {
       let obj = {
+        Trending: [],
         "Auto Parts": [],
         "JCB Parts": [],
         Bolt: [],
@@ -265,6 +268,10 @@ const ProductsSection = () => {
       };
 
       edges.forEach(edge => {
+        // Push the product to trending product list
+        if (edge.node.isTrending) {
+          obj.Trending.push(edge.node);
+        }
         switch (edge.node.category.name) {
           case "Nut":
             obj.Nut.push(edge.node);
