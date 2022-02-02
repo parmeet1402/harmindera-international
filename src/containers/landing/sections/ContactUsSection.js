@@ -179,7 +179,7 @@ const content = {
 
 const encode = data => {
   return Object.keys(data)
-    .map(key => `contact-us.${encodeURIComponent(key)}` + "=" + encodeURIComponent(data[key]))
+    .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
     .join("&");
 };
 
