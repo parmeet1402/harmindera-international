@@ -80,15 +80,15 @@ const ExperienceSection = () => {
           </Typography>
         </div>
         <div className={classes.imageContainer}>
-          <Image src="factory.png" width="100%" alt="Factory" />
+          <Image src="factory-view.png" width="100%" alt="Factory" />
         </div>
         <div className={classes.descriptionContainer}>
           <Typography>
-            Harmindra International was established in the year 1960, as a renowned name in the industry as a
-            manufacturer and supplier of  Auto Parts, JCB Parts, Agriculture Parts, Nuts and Bolts.
-            Our entire range is held in high regard for its exceptional quality and correctness. The
-            products are widely known for its high strength, accurate dimensions, wear and tear
-            resistance, flexible delivery and durable finish.{" "}
+            Harmindra International was established in the year 1960, as a renowned name in the
+            industry as a manufacturer and supplier of Auto Parts, JCB Parts, Agriculture Parts,
+            Nuts and Bolts. Our entire range is held in high regard for its exceptional quality and
+            correctness. The products are widely known for its high strength, accurate dimensions,
+            wear and tear resistance, flexible delivery and durable finish.{" "}
           </Typography>
         </div>
       </div>

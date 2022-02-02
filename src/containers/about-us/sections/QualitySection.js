@@ -97,7 +97,7 @@ const QualitySection = () => {
           </Typography>
         </div>
         <div className={classes.imageContainer}>
-          <Image src="factory.png" alt="Factory" width="100%" />
+          <Image src="products-listing.png" alt="Factory" width="100%" />
         </div>
         <div className={classes.descriptionContainer}>
           <Typography>

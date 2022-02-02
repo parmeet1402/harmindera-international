@@ -59,7 +59,7 @@ const useStyles = makeStyles(theme => ({
     gridArea: "I",
     width: "100%",
     [theme.breakpoints.up("md")]: {
-      width: "70%",
+      width: "60%",
       marginInline: "auto",
     },
     "&>div": {
@@ -97,7 +97,7 @@ const WhyUsSection = () => {
           </Typography>
         </div>
         <div className={classes.imageContainer}>
-          <Image src="factory.png" alt="Factory" width="100%" />
+          <Image src="man-working.png" alt="Factory" width="100%" />
         </div>
         <div className={classes.descriptionContainer}>
           <Typography>
