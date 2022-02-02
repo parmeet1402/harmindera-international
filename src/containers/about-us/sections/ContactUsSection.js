@@ -5,6 +5,10 @@ import { SolidButton } from "@components/form/Button";
 const useStyles = makeStyles(theme => ({
   container: {
     width: "100%",
+    marginBlock: theme.spacing(2, 16),
+    [theme.breakpoints.up("md")]: {
+      marginBlock: theme.spacing(0, 42),
+    },
   },
   heading: {
     marginBottom: theme.spacing(1),
@@ -46,7 +50,9 @@ const ContactUsSection = () => {
         </Typography>
       </div>
       <Box className={classes.buttonContainer}>
-        <SolidButton fullWidth>Contact Us</SolidButton>
+        <SolidButton fullWidth href="/contact">
+          Contact Us
+        </SolidButton>
       </Box>
     </Container>
   );

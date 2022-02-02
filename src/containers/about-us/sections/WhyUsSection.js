@@ -17,7 +17,7 @@ const useStyles = makeStyles(theme => ({
     maxWidth: "1020px",
     marginBlock: theme.spacing(2, 8),
     [theme.breakpoints.up("md")]: {
-      marginBlock: theme.spacing(20, 40),
+      marginBlock: theme.spacing(20, 34),
     },
   },
   heading: {
