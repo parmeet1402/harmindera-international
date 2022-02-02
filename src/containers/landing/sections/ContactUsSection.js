@@ -265,7 +265,7 @@ const ContactUsSection = ({ productName = "" }) => {
     fetch("/", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: encode({ "form-name": "contact-demo", ...values }),
+      body: encode({ "form-name": "form-contact", ...values }),
     })
       .then(() => {
         setIsLoading(false);
@@ -421,7 +421,7 @@ const ContactUsSection = ({ productName = "" }) => {
         <Paper
           className={classes.paper}
           // method="post"
-          name="contact-demo"
+          name="form-contact"
           component="form"
           data-netlify={true}
           onSubmit={handleSubmit(handleFormSubmission)}
@@ -449,7 +449,7 @@ const ContactUsSection = ({ productName = "" }) => {
                   classes={{
                     root: classes.textInput,
                   }}
-                  // value={formState.name}
+                  value={contactUsFormState.name}
                   // onChange={e => updateFormState({ name: e.target.value })}
                   validationSchema={{
                     required: "This is required",
@@ -480,7 +480,7 @@ const ContactUsSection = ({ productName = "" }) => {
                     root: classes.textInput,
                   }}
                   type="email"
-                  // value={formState.email}
+                  value={contactUsFormState.email}
                   // onChange={e => updateFormState({ email: e.target.value })}
                   validationSchema={{
                     required: "This is required",
@@ -512,7 +512,7 @@ const ContactUsSection = ({ productName = "" }) => {
                   classes={{
                     root: classes.textInput,
                   }}
-                  // value={formState.phone}
+                  value={contactUsFormState.phone}
                   // onChange={e => updateFormState({ phone: e.target.value })}
                   validationSchema={{
                     required: "This is required",
@@ -546,7 +546,7 @@ const ContactUsSection = ({ productName = "" }) => {
                   classes={{
                     root: classes.textInput,
                   }}
-                  // value={formState.country}
+                  value={contactUsFormState.country}
                   // onChange={e => updateFormState({ country: e.target.value })}
                   validationSchema={{
                     required: "This is required",
@@ -575,7 +575,7 @@ const ContactUsSection = ({ productName = "" }) => {
                     root: classes.textInput,
                   }}
                   rows={8}
-                  // value={formState.message}
+                  value={contactUsFormState.message}
                   // onChange={e => updateFormState({ message: e.target.value })}
                   validationSchema={{
                     required: "This is required",
