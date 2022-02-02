@@ -265,7 +265,7 @@ const ContactUsSection = ({ productName = "" }) => {
     fetch("/", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: encode({ "form-name": "contact-us-form", ...values }),
+      body: encode({ "form-name": "contact-demo", ...values }),
     })
       .then(() => {
         setIsLoading(false);
@@ -420,11 +420,11 @@ const ContactUsSection = ({ productName = "" }) => {
         </Grid>
         <Paper
           className={classes.paper}
-          name="contact-us-form"
           // method="post"
+          name="contact-demo"
           component="form"
+          data-netlify={true}
           onSubmit={handleSubmit(handleFormSubmission)}
-          data-netlify="true"
           // netlify-honeypot="bot-field"
         >
           {/* <input type="hidden" name="bot-field" /> */}
