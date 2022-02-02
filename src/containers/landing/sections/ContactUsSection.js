@@ -202,11 +202,11 @@ const ContactUsSection = ({ productName = "" }) => {
   } = useForm({
     mode: "all",
   });
-  const { "contact-us": contactUsFormState = {}, ...restArgs } = watch(); // when pass nothing as argument, you are watching everything
+  const contactUsFormState = watch(); // when pass nothing as argument, you are watching everything
 
   useEffect(() => {
     if (countryName) {
-      setValue("contact-us.country", countryName);
+      setValue("country", countryName);
     }
   }, [countryName]);
 
@@ -242,7 +242,7 @@ const ContactUsSection = ({ productName = "" }) => {
 
   useEffect(() => {
     if (productName) {
-      setValue("contact-us.message", `Hey, I want to know about ${productName}`);
+      setValue("message", `Hey, I want to know about ${productName}`);
     }
   }, [productName]);
 
@@ -257,7 +257,7 @@ const ContactUsSection = ({ productName = "" }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isAlertShown, setIsAlertShown] = useState(false);
 
-  const handleFormSubmission = ({ "contact-us": values }) => {
+  const handleFormSubmission = (values) => {
     console.log({ ...values });
     // DONE: Submit data to netlify forms
     setIsLoading(true);
@@ -466,8 +466,8 @@ const ContactUsSection = ({ productName = "" }) => {
                   register={register}
                   name="name"
                   formName="contact-us"
-                  error={errors?.["contact-us"]?.["name"]}
-                  helperText={errors?.["contact-us"]?.["name"]?.message}
+                  error={errors?.["name"]}
+                  helperText={errors?.["name"]?.message}
                   disabled={isLoading}
                 />
               </Grid>
@@ -497,8 +497,8 @@ const ContactUsSection = ({ productName = "" }) => {
                   register={register}
                   name="email"
                   formName="contact-us"
-                  error={errors?.["contact-us"]?.["email"]}
-                  helperText={errors?.["contact-us"]?.["email"]?.message}
+                  error={errors?.["email"]}
+                  helperText={errors?.["email"]?.message}
                   disabled={isLoading}
                 />
               </Grid>
@@ -533,8 +533,8 @@ const ContactUsSection = ({ productName = "" }) => {
                   register={register}
                   name="phone"
                   formName="contact-us"
-                  error={errors?.["contact-us"]?.["phone"]}
-                  helperText={errors?.["contact-us"]?.["phone"]?.message}
+                  error={errors?.["phone"]}
+                  helperText={errors?.["phone"]?.message}
                   disabled={isLoading}
                 />
               </Grid>
@@ -559,8 +559,8 @@ const ContactUsSection = ({ productName = "" }) => {
                   register={register}
                   name="country"
                   formName="contact-us"
-                  error={errors?.["contact-us"]?.["country"]}
-                  helperText={errors?.["contact-us"]?.["country"]?.message}
+                  error={errors?.["country"]}
+                  helperText={errors?.["country"]?.message}
                   disabled={isLoading}
                 />
               </Grid>
@@ -588,8 +588,8 @@ const ContactUsSection = ({ productName = "" }) => {
                   register={register}
                   name="message"
                   formName="contact-us"
-                  error={errors?.["contact-us"]?.["message"]}
-                  helperText={errors?.["contact-us"]?.["message"]?.message}
+                  error={errors?.["message"]}
+                  helperText={errors?.["message"]?.message}
                   disabled={isLoading}
                 />
               </Grid>
