@@ -15,6 +15,7 @@ import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 import Link from "@components/navigation/Link";
 import kebabCase from "lodash/kebabCase";
 import { scroller } from "react-scroll";
+import { upgradeToHTTPS } from "@utils/url";
 
 // Format functions
 const getStringFromType = (obj, valueKey = "name") => obj[valueKey];
@@ -143,9 +144,11 @@ const ProductDetails = ({ product }) => {
     });
   };
 
-  const image = product.images
-    ? product.images[0].original_url
-    : "http://res.cloudinary.com/dybvtvzsm/image/upload/v1607859552/website/images/gdjqdrjmznzvongsgj1k.png";
+  const image = upgradeToHTTPS(
+    product.images
+      ? product.images[0].original_url
+      : "http://res.cloudinary.com/dybvtvzsm/image/upload/v1607859552/website/images/gdjqdrjmznzvongsgj1k.png",
+  );
 
   return (
     <Container className={classes.container} maxWidth="auto">
