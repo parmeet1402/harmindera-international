@@ -35,8 +35,9 @@ module.exports = {
     {
       resolve: "gatsby-source-contentful",
       options: {
-        accessToken: "Xg-7MV82KJiO4-daF2WTpR1baGCjd1d6W4p3FpOp1iU",
-        spaceId: "us6zmzxpvi4f",
+        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+        spaceId: process.env.CONTENTFUL_SPACE_ID,
+        forceFullSync: true,
       },
     },
     "gatsby-plugin-gatsby-cloud",
