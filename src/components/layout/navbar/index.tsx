@@ -6,7 +6,6 @@ import Toolbar from "@material-ui/core/Toolbar";
 import MenuRoundedIcon from "@material-ui/icons/MenuRounded";
 import CloseRoundedIcon from "@material-ui/icons/CloseRounded";
 import useTheme from "@material-ui/core/styles/useTheme";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
 import useScrollTrigger from "@material-ui/core/useScrollTrigger";
 import Slide from "@material-ui/core/Slide";
 
@@ -20,19 +19,24 @@ import Link from "@components/navigation/Link";
 
 // State
 import useUIStore from "@zustand/ui";
-import { Box } from "@material-ui/core";
+import { Box, Hidden, makeStyles } from "@material-ui/core";
 
 interface Props {
   window?: () => Window;
 }
+
+const useStyles = makeStyles(theme => ({
+  toolbar: {
+    display: "flex",
+    justifyContent: "space-between",
+  },
+}));
 
 const Navbar = (props: Props) => {
   const { window } = props;
 
   const { isMobileNavbarExpanded, expandMobileNavbar, shrinkMobileNavbar } = useUIStore();
   const theme = useTheme();
-
-  const isMediumOrBiggerDevice = useMediaQuery(theme.breakpoints.up("sm"));
 
   const trigger = useScrollTrigger({ target: window ? window() : undefined });
 
@@ -45,45 +49,49 @@ const Navbar = (props: Props) => {
     }
   };
 
+  const classes = useStyles();
+
   return (
     <>
       <Slide appear={false} direction="down" in={!trigger}>
         <AppBar position="fixed" color="secondary">
-          <Toolbar>
+          <Toolbar className={classes.toolbar}>
             {/* Left */}
-            <Link href="/" underline="none">
-              <Logo />
-            </Link>
-
-            {!isMediumOrBiggerDevice ? (
-              <>
-                <IconButton
-                  style={{ marginLeft: "auto" }}
-                  onClick={handleHamburgerMenuClick}
-                  colorOverrides={{
-                    icon: {
-                      color: "text",
-                      colorVariant: "primary",
-                      hover: "text",
-                      hoverVariant: "primary",
-                    },
-                  }}
-                >
-                  {isMobileNavbarExpanded ? <CloseRoundedIcon /> : <MenuRoundedIcon />}
-                </IconButton>
-              </>
-            ) : (
-              <>
+            <Box display="flex" alignItems="center">
+              <Link href="/" underline="none">
+                <Logo />
+              </Link>
+              <Hidden xsDown implementation="css">
                 <Links />
-                {/* Right */}
-                <Box ml="auto">
-                  <SolidButton href="/contact" size="small">
-                    Let's Work
-                  </SolidButton>
-                </Box>
-                {/* <ExpandableSearchField /> */}
-              </>
-            )}
+              </Hidden>
+            </Box>
+
+            <Hidden smUp implementation="css">
+              <IconButton
+                style={{ marginLeft: "auto" }}
+                onClick={handleHamburgerMenuClick}
+                colorOverrides={{
+                  icon: {
+                    color: "text",
+                    colorVariant: "primary",
+                    hover: "text",
+                    hoverVariant: "primary",
+                  },
+                }}
+              >
+                {isMobileNavbarExpanded ? <CloseRoundedIcon /> : <MenuRoundedIcon />}
+              </IconButton>
+            </Hidden>
+
+            <Hidden xsDown implementation="css">
+              {/* Right */}
+              <Box ml="auto">
+                <SolidButton href="/contact" size="small">
+                  Let's Work
+                </SolidButton>
+              </Box>
+              {/* <ExpandableSearchField /> */}
+            </Hidden>
           </Toolbar>
         </AppBar>
       </Slide>
