@@ -32,7 +32,7 @@ const Navbar = (props: Props) => {
   const { isMobileNavbarExpanded, expandMobileNavbar, shrinkMobileNavbar } = useUIStore();
   const theme = useTheme();
 
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isMediumOrBiggerDevice = useMediaQuery(theme.breakpoints.up("sm"));
 
   const trigger = useScrollTrigger({ target: window ? window() : undefined });
 
@@ -55,20 +55,8 @@ const Navbar = (props: Props) => {
               <Logo />
             </Link>
 
-            {!isMobile ? (
+            {!isMediumOrBiggerDevice ? (
               <>
-                <Links />
-                {/* Right */}
-                <Box ml="auto">
-                  <SolidButton href="/contact" size="small">
-                    Let's Work
-                  </SolidButton>
-                </Box>
-                {/* <ExpandableSearchField /> */}
-              </>
-            ) : (
-              <>
-                {/* Right */}
                 <IconButton
                   style={{ marginLeft: "auto" }}
                   onClick={handleHamburgerMenuClick}
@@ -83,6 +71,17 @@ const Navbar = (props: Props) => {
                 >
                   {isMobileNavbarExpanded ? <CloseRoundedIcon /> : <MenuRoundedIcon />}
                 </IconButton>
+              </>
+            ) : (
+              <>
+                <Links />
+                {/* Right */}
+                <Box ml="auto">
+                  <SolidButton href="/contact" size="small">
+                    Let's Work
+                  </SolidButton>
+                </Box>
+                {/* <ExpandableSearchField /> */}
               </>
             )}
           </Toolbar>

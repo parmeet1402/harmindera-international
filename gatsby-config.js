@@ -16,6 +16,10 @@ const {
 } = require("./config/site");
 
 module.exports = {
+  flags: {
+    DEV_WEBPACK_CACHE: false,
+    DEV_SSR: true,
+  },
   siteMetadata: {
     title,
     titleTemplate: `%s | ${title}`,
