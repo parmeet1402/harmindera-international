@@ -1,10 +1,13 @@
 import React from "react";
+import Layout, { SEO } from "@components/layout";
+import PageNotFoundContainer from "@containers/page-not-found";
 
 const PageNotFound = () => {
   return (
-    <div>
-      <h2>Page Not Found</h2>
-    </div>
+    <Layout>
+      <SEO title="Page not found" description="Page not found" />
+      <PageNotFoundContainer/>
+    </Layout>
   );
 };
 
