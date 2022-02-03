@@ -186,7 +186,7 @@ const encode = data => {
 const ContactUsSection = ({ productName = "" }) => {
   const classes = useStyles();
   const { data: countryName } = useQuery("country-ip", () => {
-    return fetch(`https://api.ipregistry.co/?key=${process.env.IP_KEY}`).then(res =>
+    return fetch(`https://api.ipregistry.co/?key=${process.env.GATSBY_IP_KEY}`).then(res =>
       res.json().then(data => data.location.country.name),
     );
   });
@@ -257,7 +257,7 @@ const ContactUsSection = ({ productName = "" }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isAlertShown, setIsAlertShown] = useState(false);
 
-  const handleFormSubmission = (values) => {
+  const handleFormSubmission = values => {
     console.log({ ...values });
     // DONE: Submit data to netlify forms
     setIsLoading(true);
