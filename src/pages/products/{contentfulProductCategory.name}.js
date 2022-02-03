@@ -13,7 +13,10 @@ const SingleProductCategory = ({
   // console.log({ products, categoryName });
   return (
     <Layout>
-      <SEO />
+      <SEO
+        title={`${categoryName} Products`}
+        description={`List of ${categoryName} products by Harmindra International`}
+      />
       <SingleProductCategoryContainer products={products} categoryName={categoryName} />
     </Layout>
   );

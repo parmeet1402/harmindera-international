@@ -25,6 +25,7 @@ const SEO = ({ title = "", description = "", image = "", article = false }: Prop
             description
             author
             lang
+            image
           }
         }
       }
@@ -38,75 +39,28 @@ const SEO = ({ title = "", description = "", image = "", article = false }: Prop
   const seo = {
     title: title || siteMetadata.title,
     description: description || siteMetadata.description,
-    image: `${siteMetadata.siteUrl}${image || siteMetadata.image}`,
+    image: `${article ? "" : siteMetadata.siteUrl}${image || siteMetadata.image}`,
     url: `${siteMetadata.siteUrl}${pathname}`,
   };
+
+  const isHomepage = pathname === "/";
 
   return (
     <Helmet
       title={seo.title}
-      titleTemplate={siteMetadata.titleTemplate}
+      titleTemplate={isHomepage ? seo.title : siteMetadata.titleTemplate}
       htmlAttributes={{ lang: siteMetadata.lang }}
-
-      // titleTemplate={`%s | ${site.siteMetadata.title}`}
-      /* meta={[
-        {
-          name: `description`,
-          content: metaDescription,
-        },
-        {
-          property: `og:title`,
-          content: title,
-        },
-        {
-          property: `og:description`,
-          content: metaDescription,
-        },
-        {
-          property: `og:type`,
-          content: `website`,
-        },
-        {
-          name: `twitter:card`,
-          content: `summary`,
-        },
-        {
-          name: `twitter:creator`,
-          content: site.siteMetadata.author,
-        },
-        {
-          name: `twitter:title`,
-          content: title,
-        },
-        {
-          name: `twitter:description`,
-          content: metaDescription,
-        },
-      ]
-        .concat(
-          keywords.length > 0
-            ? {
-                name: `keywords`,
-                content: keywords.join(`, `),
-              }
-            : [],
-        )
-        .concat(meta)} */
     >
       <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
       <meta name="description" content={seo.description} />
-      {/* TODO: Image */}¸{/* <meta name="image" content={seo.image} /> */}
+      <meta name="image" content={seo.image} />
       {seo.url && <meta property="og:url" content={seo.url} />}
-      {/* {(article ? true : null) && <meta property="og:type" content="article" />} */}
       {seo.title && <meta property="og:title" content={seo.title} />}
       {seo.description && <meta property="og:description" content={seo.description} />}
-      {/* TODO: Image */}
-      {/* {seo.image && <meta property="og:image" content={seo.image} />} */}
+      {seo.image && <meta property="og:image" content={seo.image} />}
       <meta name="twitter:card" content="summary_large_image" />
       {seo.title && <meta name="twitter:title" content={seo.title} />}
       {seo.description && <meta name="twitter:description" content={seo.description} />}
-      {/* TODO: Image */}
-      {/* {seo.image && <meta name="twitter:image" content={seo.image} />} */}
     </Helmet>
   );
 };

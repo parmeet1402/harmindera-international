@@ -18,7 +18,8 @@ module.exports = {
     en: "English",
     // ja: "日本語",
   },
-  siteUrl: "https://harminderainternational.gatsbyjs.io",
+  siteUrl: process.env.GATSBY_WEBSITE_URL,
+  image: "/images/logo.png",
 
   address: `B29/536/25C-2, Industrial Area C, Dhandari Kalan, Ludhiana, Punjab 141014`,
 

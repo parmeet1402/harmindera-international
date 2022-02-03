@@ -6,7 +6,16 @@ import SingleProductContainer from "@containers/single-product";
 const SingleProduct = ({ data: { contentfulProduct: product } }) => {
   return (
     <Layout>
-      <SEO />
+      <SEO
+        title={`${product.name} - ${product.category.name}`}
+        description={`Details of ${product.name} by Harmindra International`}
+        image={
+          product.images
+            ? product.images[0].original_url
+            : "http://res.cloudinary.com/dybvtvzsm/image/upload/v1607859552/website/images/gdjqdrjmznzvongsgj1k.png"
+        }
+        article
+      />
       <SingleProductContainer product={product} />
     </Layout>
   );

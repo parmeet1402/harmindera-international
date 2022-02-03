@@ -12,7 +12,10 @@ const TrendingPage = ({
   // console.log({ products, categoryName });
   return (
     <Layout>
-      <SEO />
+      <SEO
+        title={`Trending Products`}
+        description={`List of Trending Products by Harmindra International`}
+      />
       <SingleProductCategoryContainer products={products} categoryName={"Trending"} />
     </Layout>
   );

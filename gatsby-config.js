@@ -12,6 +12,7 @@ const {
   defaultLang,
   address,
   contact,
+  image,
 } = require("./config/site");
 
 module.exports = {
@@ -26,15 +27,9 @@ module.exports = {
     address,
     email: contact.email,
     phoneNumbers: contact.phoneNumbers,
+    image,
   },
   plugins: [
-    // TODO: Create Tracking Id for google analytics
-    /* {
-      resolve: "gatsby-plugin-google-analytics",
-      options: {
-        trackingId,
-      },
-    }, */
     `gatsby-plugin-material-ui`,
     "gatsby-plugin-top-layout",
     {
@@ -47,7 +42,12 @@ module.exports = {
     "gatsby-plugin-gatsby-cloud",
     "gatsby-plugin-image",
     "gatsby-plugin-react-helmet",
-    "gatsby-plugin-sitemap",
+    {
+      resolve: "gatsby-plugin-sitemap",
+      options: {
+        output: "/sitemap",
+      },
+    },
     {
       resolve: "gatsby-plugin-manifest",
       options: {
@@ -127,6 +127,7 @@ module.exports = {
         pagesPaths: ["/src/content/"],
       },
     },
+    "gatsby-plugin-netlify",
 
     // {
     //   resolve: "gatsby-plugin-material-ui",
