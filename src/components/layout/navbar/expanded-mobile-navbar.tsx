@@ -155,7 +155,7 @@ const ExpandedMobileNavbar = (props: Props) => {
           </Typography>
           <Grid>
             <IconButton
-              href={`https://wa.me/${phoneNumbers[0].replaceAll(" ", "")}`}
+              href={`https://wa.me/${phoneNumbers[0].replaceAll("+91 ", "91")}`}
               colorOverrides={{
                 icon: {
                   color: "text",

@@ -15,7 +15,7 @@ import RoomOutlined from "@material-ui/icons/RoomOutlined";
 import WhatsApp from "@material-ui/icons/WhatsApp";
 import TextField from "@components/form/TextField";
 import { SolidButton } from "@components/form/Button";
-import { Container } from "@material-ui/core";
+import { Container, Hidden } from "@material-ui/core";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { useTheme } from "@material-ui/core/styles";
 import useContactUsStore from "@zustand/contact";
@@ -421,6 +421,40 @@ const ContactUsSection = ({ productName = "" }) => {
                 </Typography>
               </Grid>
             </Grid>
+            {!isMediumDevicesAndUp && (
+              <Grid
+                container
+                item
+                xs={12}
+                alignItems="center"
+                className={classes.contactItemListRow}
+              >
+                <Grid item xs={3} sm={2} md={1} lg={2}>
+                  <IconButton
+                    aria-label="Email"
+                    color={iconColorVariant}
+                    href={`https://wa.me/${phoneNumbers[0].replaceAll("+91 ", "91")}${
+                      productName ? `?text=Hey,%0A%0AI want to know about ${productName} ` : ""
+                    }`}
+                  >
+                    <WhatsApp color={textColorVariant} />
+                  </IconButton>
+                </Grid>
+                <Grid item xs={9} sm={10} md={11} lg={10}>
+                  <Typography variant="subtitle1" align="left" color={textColorVariant}>
+                    <a
+                      href={`https://wa.me/${phoneNumbers[0].replaceAll("+91 ", "91")}${
+                        productName ? `?text=Hey,%0A%0AI want to know about ${productName} ` : ""
+                      }`}
+                      className={classes.domLink}
+                      underline="hover"
+                    >
+                      {phoneNumbers[0]}
+                    </a>
+                  </Typography>
+                </Grid>
+              </Grid>
+            )}
           </Grid>
         </Grid>
         <Paper

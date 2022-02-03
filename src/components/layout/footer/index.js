@@ -125,7 +125,7 @@ const Footer = props => {
           </Grid>
           <Grid item xs={2} lg={1} className={classes.iconContainer}>
             <IconButton
-              href={`https://wa.me/${phoneNumbers[0].replaceAll(" ", "")}`}
+              href={`https://wa.me/${phoneNumbers[0].replaceAll("+91 ", "91")}`}
               target="_blank"
               colorOverrides={{
                 icon: {
