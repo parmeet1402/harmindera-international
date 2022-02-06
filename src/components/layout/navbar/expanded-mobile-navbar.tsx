@@ -168,7 +168,7 @@ const ExpandedMobileNavbar = (props: Props) => {
               <WhatsApp />
             </IconButton>
             <IconButton
-              href="https://goo.gl/maps/6io3YtPEfc6h9mAu5"
+              href="https://goo.gl/maps/NbTXbrxUJ6coPinGA"
               target="_blank"
               colorOverrides={{
                 icon: {

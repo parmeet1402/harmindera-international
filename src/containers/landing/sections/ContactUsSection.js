@@ -331,7 +331,7 @@ const ContactUsSection = ({ productName = "" }) => {
                 <IconButton
                   aria-label="Location"
                   color={iconColorVariant}
-                  href="https://goo.gl/maps/6io3YtPEfc6h9mAu5"
+                  href="https://goo.gl/maps/NbTXbrxUJ6coPinGA"
                   target="_blank"
                 >
                   <RoomOutlined color={textColorVariant} />
@@ -340,7 +340,7 @@ const ContactUsSection = ({ productName = "" }) => {
               <Grid item xs={9} sm={10} md={11} lg={10}>
                 <Typography variant="subtitle1" align="left" color={textColorVariant}>
                   <a
-                    href="https://goo.gl/maps/6io3YtPEfc6h9mAu5"
+                    href="https://goo.gl/maps/NbTXbrxUJ6coPinGA"
                     target="_blank"
                     className={classes.domLink}
                   >

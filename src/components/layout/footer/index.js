@@ -141,7 +141,7 @@ const Footer = props => {
           </Grid>
           <Grid item xs={2} lg={1} className={classes.iconContainer}>
             <IconButton
-              href="https://goo.gl/maps/6io3YtPEfc6h9mAu5"
+              href="https://goo.gl/maps/NbTXbrxUJ6coPinGA"
               target="_blank"
               colorOverrides={{
                 icon: {
@@ -284,7 +284,7 @@ const Footer = props => {
           <Grid item xs={10} md={9} className={`${classes.subLinks} ${classes.subLinkValues}`}>
             <Typography variant="body2" color="secondary" style={{ marginTop: "4px" }}>
               <a
-                href="https://goo.gl/maps/6io3YtPEfc6h9mAu5"
+                href="https://goo.gl/maps/NbTXbrxUJ6coPinGA"
                 target="_blank"
                 className={classes.domLink}
               >
